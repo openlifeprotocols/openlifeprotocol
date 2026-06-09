@@ -1,0 +1,169 @@
+{
+  "id": "canonical_entity_registry_core_v1",
+  "uuid": "11111111-1111-4111-8111-111111111111",
+  "version": "1.0.0",
+  "entries": [
+    {
+      "concept": "document",
+      "ontology_type": "canonical",
+      "authoritative_schema": "schemas/0000-platform/core/document.schema.json",
+      "extends": null,
+      "description": "Authoritative life record/document primitive.",
+      "owner_account": "0000",
+      "status": "active"
+    },
+    {
+      "concept": "project",
+      "ontology_type": "canonical",
+      "authoritative_schema": "schemas/0000-platform/core/project.schema.json",
+      "extends": null,
+      "description": "Cross-domain project primitive.",
+      "owner_account": "0000",
+      "status": "active"
+    },
+    {
+      "concept": "goal",
+      "ontology_type": "canonical",
+      "authoritative_schema": "schemas/0000-platform/core/goal.schema.json",
+      "extends": null,
+      "description": "Cross-domain goal primitive.",
+      "owner_account": "0000",
+      "status": "active"
+    },
+    {
+      "concept": "organisation",
+      "ontology_type": "canonical",
+      "authoritative_schema": "schemas/0000-platform/core/organisation.schema.json",
+      "extends": null,
+      "description": "Canonical organization primitive.",
+      "owner_account": "0000",
+      "status": "active"
+    },
+    {
+      "concept": "actor",
+      "ontology_type": "canonical",
+      "authoritative_schema": "schemas/0000-platform/core/actor.schema.json",
+      "extends": null,
+      "description": "Canonical participant primitive.",
+      "owner_account": "0000",
+      "status": "active"
+    },
+    {
+      "concept": "payment",
+      "ontology_type": "canonical",
+      "authoritative_schema": "schemas/0000-platform/core/payment.schema.json",
+      "extends": null,
+      "description": "Canonical payment event primitive.",
+      "owner_account": "0000",
+      "status": "active"
+    },
+    {
+      "concept": "relationship",
+      "ontology_type": "canonical",
+      "authoritative_schema": "schemas/2000-relationships/relationships/relationship.schema.json",
+      "extends": null,
+      "description": "Canonical edge primitive.",
+      "owner_account": "2000",
+      "status": "active"
+    },
+    {
+      "concept": "opportunity",
+      "ontology_type": "canonical",
+      "authoritative_schema": "schemas/17000-opportunities/opportunities/opportunity.schema.json",
+      "extends": null,
+      "description": "Canonical pre-commitment potential primitive.",
+      "owner_account": "17000",
+      "status": "active"
+    },
+    {
+      "concept": "risk",
+      "ontology_type": "canonical",
+      "authoritative_schema": "schemas/19000-enterprise-ventures/19900-strategy/compliance-risk/risk.schema.json",
+      "extends": null,
+      "description": "Canonical downside-exposure primitive.",
+      "owner_account": "19000",
+      "status": "active"
+    },
+    {
+      "concept": "startup",
+      "ontology_type": "specialisation",
+      "authoritative_schema": "schemas/19000-enterprise-ventures/19200-startups/startups/startup.schema.json",
+      "extends": "organisation",
+      "description": "Organization specialization for venture-stage businesses.",
+      "owner_account": "19000",
+      "status": "active"
+    },
+    {
+      "concept": "customer",
+      "ontology_type": "specialisation",
+      "authoritative_schema": "schemas/19000-enterprise-ventures/19300-customers/customers/customer.schema.json",
+      "extends": "actor",
+      "description": "Actor specialization for commercial customer entities.",
+      "owner_account": "19000",
+      "status": "active"
+    },
+    {
+      "concept": "mentor",
+      "ontology_type": "specialisation",
+      "authoritative_schema": "schemas/5000-career-profession/5600-mentorship/mentorship/mentor.schema.json",
+      "extends": "actor",
+      "description": "Actor specialization for mentoring posture.",
+      "owner_account": "5000",
+      "status": "active"
+    },
+    {
+      "concept": "employee",
+      "ontology_type": "specialisation",
+      "authoritative_schema": "schemas/19000-enterprise-ventures/19800-hr/people/employee.schema.json",
+      "extends": "actor",
+      "description": "Actor specialization for employed role context.",
+      "owner_account": "19000",
+      "status": "active"
+    },
+    {
+      "concept": "contractor",
+      "ontology_type": "specialisation",
+      "authoritative_schema": "schemas/19000-enterprise-ventures/19800-hr/people/contractor.schema.json",
+      "extends": "actor",
+      "description": "Actor specialization for contract-based engagement.",
+      "owner_account": "19000",
+      "status": "active"
+    },
+    {
+      "concept": "creative-project",
+      "ontology_type": "extension",
+      "authoritative_schema": "schemas/11000-creativity/creator/creative-project.schema.json",
+      "extends": "project",
+      "description": "Project extension for creative production context.",
+      "owner_account": "11000",
+      "status": "active"
+    },
+    {
+      "concept": "consulting-engagement",
+      "ontology_type": "extension",
+      "authoritative_schema": "schemas/5000-career-profession/5400-consulting/consulting-engagement.schema.json",
+      "extends": "project",
+      "description": "Project extension for consulting delivery context.",
+      "owner_account": "5000",
+      "status": "active"
+    },
+    {
+      "concept": "wealth-dashboard",
+      "ontology_type": "view",
+      "authoritative_schema": "schemas/6000-wealth/wealth/wealth-dashboard.schema.json",
+      "extends": null,
+      "description": "Read-model/view over wealth primitives.",
+      "owner_account": "6000",
+      "status": "active"
+    },
+    {
+      "concept": "timeline-view",
+      "ontology_type": "view",
+      "authoritative_schema": "schemas/13000-life-story/timeline/timeline-view.schema.json",
+      "extends": null,
+      "description": "Read-model/view over events and milestones.",
+      "owner_account": "13000",
+      "status": "active"
+    }
+  ]
+}

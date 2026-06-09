@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Lifecycle Definition",
+  "description": "Entity-level lifecycle model with governed states and transitions.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^lifecycle_definition_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "entity_type": { "type": "string" },
+    "version": { "type": "string" },
+    "states": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "initial": { "type": "boolean" },
+          "terminal": { "type": "boolean" },
+          "description": { "type": "string" }
+        },
+        "required": ["name"]
+      }
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "trigger": { "type": "string" },
+          "conditions": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["from", "to"]
+      }
+    },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "entity_type", "version", "states"]
+}

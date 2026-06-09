@@ -1,19 +1,49 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Relationship Type",
-  "description": "Definition of a relationship type in the ontology.",
+  "description": "Governed definition of relationship predicates used across the Life Graph.",
   "type": "object",
   "properties": {
     "id": { "type": "string", "pattern": "^relationship_type_[a-zA-Z0-9_-]+$" },
     "uuid": { "type": "string", "format": "uuid" },
     "person_id": { "type": "string" },
-    "relationship_name": { "type": "string" },
+    "relationship_name": {
+      "type": "string",
+      "enum": [
+        "owns",
+        "works-for",
+        "advises",
+        "manages",
+        "funds",
+        "supports",
+        "blocks",
+        "enables",
+        "depends-on",
+        "causes",
+        "mitigates",
+        "fulfills",
+        "references"
+      ]
+    },
+    "relationship_category": {
+      "type": "string",
+      "enum": ["structural", "operational", "causal", "financial", "social", "knowledge", "governance"]
+    },
     "from_entity_type": { "type": "string" },
     "to_entity_type": { "type": "string" },
     "description": { "type": "string" },
     "cardinality": { "type": "string", "enum": ["one_to_one", "one_to_many", "many_to_one", "many_to_many"] },
     "directionality": { "type": "string", "enum": ["unidirectional", "bidirectional", "asymmetric"] },
     "inverse_relationship": { "type": "string" },
+    "active_default": { "type": "boolean", "default": true },
+    "supports_reasoning": { "type": "boolean", "default": true },
+    "reasoning_weight": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Relative strength when traversing graph edges for AI reasoning."
+    },
+    "evidence_required": { "type": "boolean", "default": false },
     "properties": { "type": "array", "items": { "type": "object", "properties": { "property_name": { "type": "string" }, "type": { "type": "string" }, "description": { "type": "string" } } } },
     "constraints": { "type": "array", "items": { "type": "string" } },
     "examples": { "type": "array", "items": { "type": "string" } },
@@ -23,6 +53,6 @@
     "created_date": { "type": "string", "format": "date-time" },
     "metadata": { "type": "object", "additionalProperties": true }
   },
-  "required": ["id", "uuid", "person_id", "relationship_name"],
+  "required": ["id", "uuid", "person_id", "relationship_name", "from_entity_type", "to_entity_type"],
   "_phase1_todo": ["Define relationship validation", "Define cardinality enforcement", "Define relationship querying"]
 }

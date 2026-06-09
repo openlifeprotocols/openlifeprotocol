@@ -1,0 +1,278 @@
+{
+  "version": "1.0.0",
+  "description": "Curated ontology metadata: relationships, lifecycle, provenance, sensitivity, retention, channels, roles, semantics, graph importance, and life domains.",
+  "curations": [
+    {
+      "schema": "document",
+      "relationships": [
+        {
+          "target": "actor",
+          "type": "references",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": "document-lifecycle",
+      "expectedAuthority": "user",
+      "sensitivity": "medium",
+      "retention": "permanent",
+      "channels": ["personal", "business"],
+      "roles": [],
+      "semanticDescription": "A record or artifact relevant to personal life.",
+      "graphImportance": "core",
+      "lifeDomains": ["planning"]
+    },
+    {
+      "schema": "project",
+      "relationships": [
+        {
+          "target": "goal",
+          "type": "fulfills",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "risk",
+          "type": "mitigates",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "opportunity",
+          "type": "explores",
+          "cardinality": "one",
+          "required": false
+        }
+      ],
+      "lifecycle": "project-lifecycle",
+      "expectedAuthority": "user",
+      "sensitivity": "medium",
+      "retention": "7-years",
+      "channels": ["personal", "business", "employment"],
+      "roles": ["operator", "founder", "employee"],
+      "semanticDescription": "An organized effort with defined scope and timeline.",
+      "graphImportance": "core",
+      "lifeDomains": ["planning", "career", "enterprise"]
+    },
+    {
+      "schema": "goal",
+      "relationships": [
+        {
+          "target": "project",
+          "type": "enabled-by",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "risk",
+          "type": "blocked-by",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "opportunity",
+          "type": "pursued-via",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": "goal-lifecycle",
+      "expectedAuthority": "user",
+      "sensitivity": "low",
+      "retention": "permanent",
+      "channels": ["personal", "business", "employment"],
+      "roles": [],
+      "semanticDescription": "A desired future outcome pursued by an actor.",
+      "graphImportance": "core",
+      "lifeDomains": ["planning", "learning", "career", "wealth"]
+    },
+    {
+      "schema": "risk",
+      "relationships": [
+        {
+          "target": "goal",
+          "type": "blocks",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "project",
+          "type": "threatens",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "decision",
+          "type": "informs",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": "risk-lifecycle",
+      "expectedAuthority": "user",
+      "sensitivity": "medium",
+      "retention": "permanent",
+      "channels": ["personal", "business"],
+      "roles": [],
+      "semanticDescription": "A potential future event with negative impact.",
+      "graphImportance": "core",
+      "lifeDomains": ["planning"]
+    },
+    {
+      "schema": "opportunity",
+      "relationships": [
+        {
+          "target": "goal",
+          "type": "enables",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "decision",
+          "type": "requires",
+          "cardinality": "one",
+          "required": false
+        }
+      ],
+      "lifecycle": "opportunity-lifecycle",
+      "expectedAuthority": "user",
+      "sensitivity": "low",
+      "retention": "permanent",
+      "channels": ["personal", "business"],
+      "roles": [],
+      "semanticDescription": "A potential future value creation or benefit.",
+      "graphImportance": "core",
+      "lifeDomains": ["planning", "learning", "career", "wealth"]
+    },
+    {
+      "schema": "decision",
+      "relationships": [
+        {
+          "target": "goal",
+          "type": "advances",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "risk",
+          "type": "acknowledges",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "opportunity",
+          "type": "commits-to",
+          "cardinality": "one",
+          "required": true
+        },
+        {
+          "target": "project",
+          "type": "initiates",
+          "cardinality": "one",
+          "required": false
+        }
+      ],
+      "lifecycle": "decision-lifecycle",
+      "expectedAuthority": "user",
+      "sensitivity": "medium",
+      "retention": "permanent",
+      "channels": ["personal", "business"],
+      "roles": [],
+      "semanticDescription": "A chosen commitment with consequences.",
+      "graphImportance": "core",
+      "lifeDomains": ["planning"]
+    },
+    {
+      "schema": "relationship",
+      "relationships": [
+        {
+          "target": "actor",
+          "type": "connects",
+          "cardinality": "many",
+          "required": true
+        }
+      ],
+      "lifecycle": "relationship-lifecycle",
+      "expectedAuthority": "user",
+      "sensitivity": "high",
+      "retention": "permanent",
+      "channels": ["personal", "business"],
+      "roles": [],
+      "semanticDescription": "A connection between actors.",
+      "graphImportance": "core",
+      "lifeDomains": ["relationships"]
+    },
+    {
+      "schema": "actor",
+      "relationships": [
+        {
+          "target": "relationship",
+          "type": "participates-in",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "decision",
+          "type": "makes",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": null,
+      "expectedAuthority": "user",
+      "sensitivity": "high",
+      "retention": "permanent",
+      "channels": ["personal", "business"],
+      "roles": [],
+      "semanticDescription": "An entity that participates in life events.",
+      "graphImportance": "core",
+      "lifeDomains": ["relationships"]
+    },
+    {
+      "schema": "payment",
+      "relationships": [
+        {
+          "target": "project",
+          "type": "funds",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "organisation",
+          "type": "flows-to",
+          "cardinality": "one",
+          "required": true
+        }
+      ],
+      "lifecycle": null,
+      "expectedAuthority": "authoritative",
+      "sensitivity": "high",
+      "retention": "permanent",
+      "channels": ["personal", "business"],
+      "roles": [],
+      "semanticDescription": "A transfer of value.",
+      "graphImportance": "supporting",
+      "lifeDomains": ["wealth"]
+    },
+    {
+      "schema": "organisation",
+      "relationships": [
+        {
+          "target": "actor",
+          "type": "employs",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": null,
+      "expectedAuthority": "authoritative",
+      "sensitivity": "low",
+      "retention": "permanent",
+      "channels": ["business", "employment"],
+      "roles": [],
+      "semanticDescription": "A legal or social entity.",
+      "graphImportance": "supporting",
+      "lifeDomains": ["enterprise", "career"]
+    }
+  ]
+}

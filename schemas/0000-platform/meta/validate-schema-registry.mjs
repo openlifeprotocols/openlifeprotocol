@@ -5,6 +5,9 @@ const registryPath = 'schemas/0000-platform/meta/schema-registry.json';
 const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
 
 const requiredEntryFields = ['schema', 'account', 'parent', 'path', 'canonical'];
+const validOntologyTypes = new Set(['canonical', 'extension', 'specialisation', 'view']);
+const validSensitivityLevels = new Set(['low', 'medium', 'high', 'public']);
+const validGraphImportance = new Set(['core', 'supporting', 'utility']);
 const schemaFiles = execSync("find schemas -name '*.schema.json' | sort", { encoding: 'utf8' })
   .trim()
   .split('\n')
@@ -57,6 +60,48 @@ for (const [index, entry] of entries.entries()) {
 
   if (typeof entry.canonical !== 'boolean') {
     errors.push(`canonical must be boolean: ${entry.path}`);
+  }
+
+  if ('authoritativePath' in entry) {
+    if (typeof entry.authoritativePath !== 'string') {
+      errors.push(`authoritativePath must be string: ${entry.path}`);
+    } else if (!fs.existsSync(entry.authoritativePath)) {
+      errors.push(`authoritativePath does not exist: ${entry.authoritativePath}`);
+    }
+  }
+
+  if ('ontologyType' in entry && !validOntologyTypes.has(entry.ontologyType)) {
+    errors.push(`ontologyType must be one of canonical|extension|specialisation|view: ${entry.path}`);
+  }
+
+  if ('relationships' in entry && !Array.isArray(entry.relationships)) {
+    errors.push(`relationships must be array: ${entry.path}`);
+  } else if (Array.isArray(entry.relationships)) {
+    for (const rel of entry.relationships) {
+      if (!rel.target || !rel.type) {
+        errors.push(`relationship must have target and type: ${entry.path}`);
+      }
+    }
+  }
+
+  if ('sensitivity' in entry && !validSensitivityLevels.has(entry.sensitivity)) {
+    errors.push(`sensitivity must be one of low|medium|high|public: ${entry.path}`);
+  }
+
+  if ('graphImportance' in entry && !validGraphImportance.has(entry.graphImportance)) {
+    errors.push(`graphImportance must be one of core|supporting|utility: ${entry.path}`);
+  }
+
+  if ('channels' in entry && !Array.isArray(entry.channels)) {
+    errors.push(`channels must be array: ${entry.path}`);
+  }
+
+  if ('roles' in entry && !Array.isArray(entry.roles)) {
+    errors.push(`roles must be array: ${entry.path}`);
+  }
+
+  if ('lifeDomains' in entry && !Array.isArray(entry.lifeDomains)) {
+    errors.push(`lifeDomains must be array: ${entry.path}`);
   }
 }
 

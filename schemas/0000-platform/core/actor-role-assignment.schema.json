@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Actor Role Assignment",
+  "description": "Assigns one or more roles to a canonical actor within a specific context.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^actor_role_assignment_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "actor_id": { "type": "string" },
+    "role": {
+      "type": "string",
+      "enum": [
+        "founder",
+        "employee",
+        "mentor",
+        "customer",
+        "advisor",
+        "contractor",
+        "shareholder",
+        "operator",
+        "parent",
+        "partner",
+        "investor",
+        "volunteer"
+      ]
+    },
+    "context_entity_type": { "type": "string" },
+    "context_entity_id": { "type": "string" },
+    "valid_from": { "type": "string", "format": "date-time" },
+    "valid_to": { "type": "string", "format": "date-time" },
+    "status": { "type": "string", "enum": ["active", "inactive", "pending"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "actor_id", "role", "context_entity_type", "context_entity_id"]
+}

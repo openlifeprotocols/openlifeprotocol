@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Decision Intelligence Link",
+  "description": "Graph links connecting a decision to evidence, alternatives, risks, opportunities, and outcomes.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^decision_intelligence_link_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "decision_id": { "type": "string" },
+    "link_type": {
+      "type": "string",
+      "enum": ["evidence", "alternative", "risk", "opportunity", "outcome"]
+    },
+    "target_entity_type": { "type": "string" },
+    "target_entity_id": { "type": "string" },
+    "weight": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "decision_id", "link_type", "target_entity_type", "target_entity_id"]
+}

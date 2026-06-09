@@ -6,6 +6,12 @@ const accountsPath = 'schemas/0000-platform/meta/accounts.json';
 
 const existing = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
 const accounts = JSON.parse(fs.readFileSync(accountsPath, 'utf8'));
+const curation = JSON.parse(fs.readFileSync('schemas/0000-platform/meta/schema-curation.json', 'utf8'));
+
+const curatedBySchema = new Map();
+for (const c of (curation.curations || [])) {
+  curatedBySchema.set(c.schema, c);
+}
 
 const byPath = new Map();
 for (const entry of existing.entries || []) {
@@ -45,6 +51,28 @@ const explicitExtends = new Map([
   ['operational-deliverable', 'deliverable'],
   ['operational-resource-allocation', 'resource-allocation'],
   ['operational-milestone', 'milestone']
+]);
+
+const ontologyTypeOverrides = new Map([
+  ['creative-project', 'extension'],
+  ['consulting-engagement', 'extension'],
+  ['engagement', 'extension'],
+  ['sales-contract', 'extension'],
+  ['sales-invoice', 'extension'],
+  ['invoice-finance-view', 'view'],
+  ['operational-workflow', 'extension'],
+  ['operational-deliverable', 'extension'],
+  ['operational-resource-allocation', 'extension'],
+  ['operational-milestone', 'extension'],
+  ['startup', 'specialisation'],
+  ['lead', 'specialisation'],
+  ['prospect', 'specialisation'],
+  ['customer', 'specialisation'],
+  ['employee', 'specialisation'],
+  ['mentor', 'specialisation'],
+  ['contractor', 'specialisation'],
+  ['wealth-dashboard', 'view'],
+  ['timeline-view', 'view']
 ]);
 
 const rows = schemaFiles.map((path) => {
@@ -89,12 +117,22 @@ const entries = rows.map((row) => {
   const previous = byPath.get(row.path) || {};
   const canonicalPath = canonicalPathBySchema.get(row.schema);
   const canonical = row.path === canonicalPath;
+  const authoritativePath = canonicalPath || row.path;
 
   let extendsSchema = null;
   if (explicitExtends.has(row.schema)) {
     extendsSchema = explicitExtends.get(row.schema);
   } else if (!canonical && groups.get(row.schema)?.length > 1) {
     extendsSchema = row.schema;
+  }
+
+  let ontologyType = 'canonical';
+  if (ontologyTypeOverrides.has(row.schema)) {
+    ontologyType = ontologyTypeOverrides.get(row.schema);
+  } else if (/(-view$|dashboard$)/.test(row.schema)) {
+    ontologyType = 'view';
+  } else if (!canonical && extendsSchema) {
+    ontologyType = 'specialisation';
   }
 
   const accountName = accountNameByCode.get(row.account) || 'Unknown';
@@ -104,15 +142,28 @@ const entries = rows.map((row) => {
     row.parent
   ])).filter(Boolean);
 
+  const curated = curatedBySchema.get(row.schema) || {};
   return {
     schema: row.schema,
     account: row.account,
     parent: row.parent,
     path: row.path,
+    authoritativePath,
     canonical: previous.canonical ?? canonical,
     extends: previous.extends ?? extendsSchema,
+    ontologyType: previous.ontologyType ?? ontologyType,
     canonicalReferences: Array.isArray(previous.canonicalReferences) ? previous.canonicalReferences : [],
-    tags: Array.isArray(previous.tags) ? previous.tags : tags
+    tags: Array.isArray(previous.tags) ? previous.tags : tags,
+    relationships: Array.isArray(previous.relationships) ? previous.relationships : (curated.relationships ?? []),
+    lifecycle: previous.lifecycle ?? (curated.lifecycle ?? null),
+    expectedAuthority: previous.expectedAuthority ?? (curated.expectedAuthority ?? null),
+    sensitivity: previous.sensitivity ?? (curated.sensitivity ?? "low"),
+    retention: previous.retention ?? (curated.retention ?? null),
+    channels: Array.isArray(previous.channels) ? previous.channels : (curated.channels ?? []),
+    roles: Array.isArray(previous.roles) ? previous.roles : (curated.roles ?? []),
+    semanticDescription: previous.semanticDescription ?? (curated.semanticDescription ?? null),
+    graphImportance: previous.graphImportance ?? (curated.graphImportance ?? "supporting"),
+    lifeDomains: Array.isArray(previous.lifeDomains) ? previous.lifeDomains : (curated.lifeDomains ?? [])
   };
 });
 
@@ -123,7 +174,7 @@ const out = {
   entryCount: entries.length,
   fields: {
     required: ['schema', 'account', 'parent', 'path', 'canonical'],
-    optional: ['extends', 'canonicalReferences', 'tags']
+    optional: ['extends', 'authoritativePath', 'ontologyType', 'canonicalReferences', 'tags', 'relationships', 'lifecycle', 'expectedAuthority', 'sensitivity', 'retention', 'channels', 'roles', 'semanticDescription', 'graphImportance', 'lifeDomains']
   },
   entries
 };

@@ -165,6 +165,21 @@ Default canonical primitives to reference or extend unless there is a clear reas
 - asset
 - liability
 
+## Ontology Architecture Layer
+
+To reach ontology maturity, every cross-cutting concept should be governed by these artifacts:
+- Canonical Entity Registry: classify concepts as `canonical`, `extension`, `specialisation`, or `view`.
+- Relationship Ontology: use governed relationship predicates.
+- Lifecycle Registry: define entity-level state machines.
+- Identity + Role Model: model actor as root, role as context.
+- Source-of-Truth Hierarchy: authoritative, verified, claimed, derived, generated.
+- Temporal Context: separate valid/effective/observed/recorded time.
+- Decision Intelligence Chain: decision -> evidence/alternatives/risks/opportunities -> outcome.
+- Life Graph Spec: define cross-domain reasoning intent and product-facing life areas.
+
+Design rule:
+- A new schema that introduces a cross-cutting concept should update or reference these ontology artifacts.
+
 ## Naming and Scope Heuristics
 
 - Use specific names for specific concepts: `time-block` not `time-item`.

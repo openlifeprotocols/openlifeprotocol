@@ -303,6 +303,17 @@ It is intentionally short, plain-language, and non-technical.
 - Consequence: Canonical concepts now have clearer ownership; wrappers are discoverable as extensions instead of competing definitions.
 - Follow-up: During schema review, reject new account-local duplicates when wrapper naming can express intent.
 
+## 2026-06-09 - Shift from schema architecture to ontology architecture
+
+- Date: 2026-06-09
+- Decision: Add explicit ontology governance artifacts (canonical entity registry, lifecycle definitions, relationship ontology, temporal context, identity-role assignments, life-area map, and Life Graph reasoning specs).
+- Status: accepted
+- Context: Domain coverage is high; remaining quality gains depend on machine-governable semantics rather than more schema count.
+- Rationale: AI readiness and duplication control require authoritative concept definitions, governed predicates, lifecycle/state semantics, and trust/temporal modeling.
+- Trade-offs: Additional governance artifacts increase maintenance overhead.
+- Consequence: Architecture is now oriented toward reasoning quality, explainability, and product-facing abstraction rather than raw schema volume.
+- Follow-up: Expand canonical entity registry coverage beyond seed concepts and wire ontology checks into CI policy.
+
 ## Style Decisions (Working Rules)
 
 - Date: 2026-06-09
