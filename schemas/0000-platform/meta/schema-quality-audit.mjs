@@ -45,7 +45,11 @@ const validLifeDomains = new Set([
   'person', 'relationships', 'health', 'learning', 'career', 'wealth', 'property',
   'mobility', 'digital-life', 'culture', 'creativity', 'community', 'life-story',
   'planning', 'administration', 'time', 'opportunities', 'risks', 'public-presence',
-  'enterprise'
+  'enterprise',
+  'legal', 'evidence', 'collections', 'notifications', 'search', 'knowledge',
+  'identity', 'audit', 'taxonomy', 'housing', 'family', 'education',
+  'social-impact', 'locations', 'travel', 'finance', 'employment', 'insurance',
+  'security', 'communication'
 ]);
 
 // Collect schema names by schema name (for duplicate detection)

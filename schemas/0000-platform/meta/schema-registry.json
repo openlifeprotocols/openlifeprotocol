@@ -1,7 +1,7 @@
 {
   "version": 3,
   "description": "Ontology registry for schema-to-account mapping, canonical lineage, and graph references (generated index).",
-  "generatedAt": "2026-06-09T22:05:20.347Z",
+  "generatedAt": "2026-06-09T22:30:57.139Z",
   "entryCount": 813,
   "fields": {
     "required": [
@@ -453,7 +453,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "An alert or notification for an upcoming event.",
-      "graphImportance": "supporting",
+      "graphImportance": "utility",
       "lifeDomains": [
         "time"
       ]
@@ -671,7 +671,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "A resource or possession with value.",
-      "graphImportance": "supporting",
+      "graphImportance": "core",
       "lifeDomains": [
         "wealth",
         "property"
@@ -932,7 +932,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "A point-in-time occurrence with participants.",
-      "graphImportance": "supporting",
+      "graphImportance": "core",
       "lifeDomains": [
         "life-story",
         "community"
@@ -971,7 +971,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "A fact or document that provides proof or basis for a claim.",
-      "graphImportance": "supporting",
+      "graphImportance": "utility",
       "lifeDomains": [
         "legal",
         "evidence"
@@ -1631,7 +1631,7 @@
       "relationships": [
         {
           "target": "*",
-          "type": "contains",
+          "type": "covers",
           "cardinality": "many",
           "required": false,
           "strength": 0.7,
@@ -2453,7 +2453,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "An automated alert or system message.",
-      "graphImportance": "supporting",
+      "graphImportance": "utility",
       "lifeDomains": [
         "notifications",
         "administration"
@@ -2802,7 +2802,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "A resource or possession with value.",
-      "graphImportance": "supporting",
+      "graphImportance": "core",
       "lifeDomains": [
         "wealth",
         "property"
@@ -3361,7 +3361,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "A result from a search query.",
-      "graphImportance": "supporting",
+      "graphImportance": "utility",
       "lifeDomains": [
         "search",
         "knowledge"
@@ -3478,7 +3478,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "A unique code or number that distinguishes an entity.",
-      "graphImportance": "supporting",
+      "graphImportance": "utility",
       "lifeDomains": [
         "administration",
         "identity"
@@ -3595,7 +3595,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "The origin, history, and authorship information for an entity.",
-      "graphImportance": "supporting",
+      "graphImportance": "utility",
       "lifeDomains": [
         "audit",
         "administration"
@@ -3816,7 +3816,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "A structured category system for organizing entities.",
-      "graphImportance": "supporting",
+      "graphImportance": "utility",
       "lifeDomains": [
         "taxonomy",
         "knowledge"
@@ -3881,7 +3881,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "A label or keyword used to organize and retrieve entities.",
-      "graphImportance": "supporting",
+      "graphImportance": "utility",
       "lifeDomains": [
         "search",
         "knowledge"
@@ -5344,7 +5344,7 @@
       "relationships": [
         {
           "target": "*",
-          "type": "contains",
+          "type": "covers",
           "cardinality": "many",
           "required": false,
           "strength": 0.7,
@@ -6052,7 +6052,7 @@
       "relationships": [
         {
           "target": "*",
-          "type": "contains",
+          "type": "covers",
           "cardinality": "many",
           "required": false,
           "strength": 0.7,
@@ -9407,7 +9407,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "A binding legal agreement.",
-      "graphImportance": "supporting",
+      "graphImportance": "core",
       "lifeDomains": [
         "wealth",
         "enterprise",
@@ -13406,7 +13406,7 @@
       "relationships": [
         {
           "target": "financial-account",
-          "type": "tracked-by",
+          "type": "linked-to",
           "cardinality": "one",
           "required": true,
           "strength": 0.7,
@@ -16850,7 +16850,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "A pointer or link to another entity or external source.",
-      "graphImportance": "supporting",
+      "graphImportance": "utility",
       "lifeDomains": [
         "learning",
         "knowledge"
@@ -17156,7 +17156,7 @@
       "relationships": [
         {
           "target": "employment",
-          "type": "updates",
+          "type": "advances",
           "cardinality": "one",
           "required": true,
           "strength": 0.7,
@@ -18193,7 +18193,7 @@
       "relationships": [
         {
           "target": "financial-account",
-          "type": "tracked-by",
+          "type": "linked-to",
           "cardinality": "one",
           "required": true,
           "strength": 0.7,
@@ -20496,7 +20496,7 @@
       "relationships": [
         {
           "target": "calendar-event",
-          "type": "contains",
+          "type": "covers",
           "cardinality": "many",
           "required": false,
           "strength": 0.7,
@@ -20884,7 +20884,7 @@
       "relationships": [
         {
           "target": "message",
-          "type": "contains",
+          "type": "covers",
           "cardinality": "many",
           "required": false,
           "strength": 0.7,
@@ -21783,7 +21783,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "An alert or notification for an upcoming event.",
-      "graphImportance": "supporting",
+      "graphImportance": "utility",
       "lifeDomains": [
         "time"
       ]
@@ -21882,7 +21882,7 @@
       "channels": [],
       "roles": [],
       "semanticDescription": "A permission or authorization rule for accessing resources.",
-      "graphImportance": "supporting",
+      "graphImportance": "utility",
       "lifeDomains": [
         "security",
         "administration"

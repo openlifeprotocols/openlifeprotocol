@@ -1920,7 +1920,7 @@
       "relationships": [
         {
           "target": "financial-account",
-          "type": "tracked-by",
+          "type": "linked-to",
           "cardinality": "one",
           "required": true,
           "strength": 0.7,
@@ -2540,7 +2540,7 @@
       "relationships": [
         {
           "target": "message",
-          "type": "contains",
+          "type": "covers",
           "cardinality": "many",
           "required": false,
           "strength": 0.7,
@@ -2713,7 +2713,7 @@
       "relationships": [
         {
           "target": "employment",
-          "type": "updates",
+          "type": "advances",
           "cardinality": "one",
           "required": true,
           "strength": 0.7,
@@ -3063,7 +3063,7 @@
       "relationships": [
         {
           "target": "*",
-          "type": "contains",
+          "type": "covers",
           "cardinality": "many",
           "required": false,
           "strength": 0.7,
@@ -3117,7 +3117,7 @@
       "relationships": [
         {
           "target": "financial-account",
-          "type": "tracked-by",
+          "type": "linked-to",
           "cardinality": "one",
           "required": true,
           "strength": 0.7,
@@ -3357,7 +3357,7 @@
       "relationships": [
         {
           "target": "calendar-event",
-          "type": "contains",
+          "type": "covers",
           "cardinality": "many",
           "required": false,
           "strength": 0.7,

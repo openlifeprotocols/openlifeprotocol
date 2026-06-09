@@ -176,7 +176,7 @@ const entries = rows.map((row) => {
     channels: Array.isArray(previous.channels) ? previous.channels : (curated.channels ?? []),
     roles: Array.isArray(previous.roles) ? previous.roles : (curated.roles ?? []),
     semanticDescription: previous.semanticDescription ?? (curated.semanticDescription ?? null),
-    graphImportance: previous.graphImportance ?? (curated.graphImportance ?? "supporting"),
+    graphImportance: curated.graphImportance ?? previous.graphImportance ?? "supporting",
     lifeDomains: (curated.lifeDomains?.length > 0) ? curated.lifeDomains : (Array.isArray(previous.lifeDomains) ? previous.lifeDomains : [])
   };
 });
