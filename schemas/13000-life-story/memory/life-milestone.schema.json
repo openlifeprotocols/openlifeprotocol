@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Milestone",
-  "description": "A life milestone — graduation, marriage, birth, achievement, accomplishment marking a significant point in time.",
+  "title": "Life Milestone",
+  "description": "A significant personal life checkpoint such as graduation, marriage, birth, or major achievement.",
   "type": "object",
   "properties": {
     "id": { "type": "string", "pattern": "^milestone_[a-zA-Z0-9_-]+$" },

@@ -36,7 +36,15 @@ const explicitExtends = new Map([
   ['financial-goals', 'goal'],
   ['startup', 'organisation'],
   ['lead', 'opportunity'],
-  ['prospect', 'opportunity']
+  ['prospect', 'opportunity'],
+  ['legal-contract', 'contract'],
+  ['sales-contract', 'contract'],
+  ['sales-invoice', 'invoice'],
+  ['invoice-finance-view', 'invoice'],
+  ['operational-workflow', 'workflow'],
+  ['operational-deliverable', 'deliverable'],
+  ['operational-resource-allocation', 'resource-allocation'],
+  ['operational-milestone', 'milestone']
 ]);
 
 const rows = schemaFiles.map((path) => {

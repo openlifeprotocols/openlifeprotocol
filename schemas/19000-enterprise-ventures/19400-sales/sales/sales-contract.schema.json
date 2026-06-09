@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Contract (Sales)",
-  "description": "A commercial contract between the business and a customer — MSA, SOW, SaaS subscription, or service agreement.",
+  "title": "Sales Contract",
+  "description": "Sales context wrapper for canonical contract records (MSA, SOW, subscription, service agreements).",
   "type": "object",
   "properties": {
     "id": { "type": "string", "pattern": "^sales_contract_[a-zA-Z0-9_-]+$" },

@@ -292,6 +292,17 @@ It is intentionally short, plain-language, and non-technical.
 - Consequence: Structured treatment of health, financial, legal, cyber, dependency risks, plus contingency plans.
 - Follow-up: Add periodic risk review cadence and links to mitigation actions.
 
+## 2026-06-09 - Eliminate duplicate concept names via explicit wrapper naming
+
+- Date: 2026-06-09
+- Decision: Keep one canonical schema name per concept and rename context wrappers to explicit variants (for example, `sales-contract`, `operational-workflow`, `invoice-finance-view`).
+- Status: accepted
+- Context: Duplicate names across accounts caused ontology ambiguity even when semantics were wrapper-style extensions.
+- Rationale: Explicit wrapper names preserve local context without fragmenting canonical concept identity.
+- Trade-offs: Slightly longer schema names and one-time rename churn.
+- Consequence: Canonical concepts now have clearer ownership; wrappers are discoverable as extensions instead of competing definitions.
+- Follow-up: During schema review, reject new account-local duplicates when wrapper naming can express intent.
+
 ## Style Decisions (Working Rules)
 
 - Date: 2026-06-09

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Operational Workflow",
+  "description": "Business operations context wrapper for canonical workflow records.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "olp_workflow_id": { "type": "string", "description": "Reference to core OLP workflow schema" },
+    "department_id": { "type": "string" },
+    "owner_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id"],
+  "_phase1_todo": ["Link to OLP workflow for full detail", "Define business-specific workflow extensions"]
+}

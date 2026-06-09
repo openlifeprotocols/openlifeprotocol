@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "deliverauble (Business Operations)",
-  "description": "Business operations context for deliverable. References the matching core OLP schema and adds business_id, department, and operational metadata.",
+  "title": "Operational Deliverable",
+  "description": "Business operations context wrapper for canonical deliverable records.",
   "type": "object",
   "properties": {
     "id": { "type": "string" },

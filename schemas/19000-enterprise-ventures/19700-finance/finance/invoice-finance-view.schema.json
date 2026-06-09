@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Invoice (Business Finance)",
-  "description": "Business finance view of an invoice — links commerce/invoice to customers, contracts, and revenue recognition.",
+  "title": "Invoice Finance View",
+  "description": "Finance context wrapper for canonical invoice records, linking billing events to accounting and recognition.",
   "type": "object",
   "properties": {
     "id": { "type": "string", "pattern": "^biz_invoice_[a-zA-Z0-9_-]+$" },

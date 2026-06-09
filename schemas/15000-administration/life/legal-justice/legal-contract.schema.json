@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Contract (Legal)",
-  "description": "A legally binding contract between parties — with terms, obligations, execution, and breach tracking.",
+  "title": "Legal Contract",
+  "description": "Legal-justice context wrapper for a canonical contract, including execution and breach tracking.",
   "type": "object",
   "properties": {
     "id": { "type": "string", "pattern": "^contract_lj_[a-zA-Z0-9_-]+$" },

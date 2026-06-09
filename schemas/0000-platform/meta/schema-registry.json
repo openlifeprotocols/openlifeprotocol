@@ -1,8 +1,8 @@
 {
   "version": 3,
   "description": "Ontology registry for schema-to-account mapping, canonical lineage, and graph references (generated index).",
-  "generatedAt": "2026-06-09T21:03:44.205Z",
-  "entryCount": 807,
+  "generatedAt": "2026-06-09T21:06:53.583Z",
+  "entryCount": 806,
   "fields": {
     "required": [
       "schema",
@@ -3942,6 +3942,20 @@
       ]
     },
     {
+      "schema": "life-milestone",
+      "account": "13000",
+      "parent": "memory",
+      "path": "schemas/13000-life-story/memory/life-milestone.schema.json",
+      "canonical": true,
+      "extends": null,
+      "canonicalReferences": [],
+      "tags": [
+        "13000",
+        "life-story",
+        "memory"
+      ]
+    },
+    {
       "schema": "life-story",
       "account": "13000",
       "parent": "memory",
@@ -3960,20 +3974,6 @@
       "account": "13000",
       "parent": "memory",
       "path": "schemas/13000-life-story/memory/memory.schema.json",
-      "canonical": true,
-      "extends": null,
-      "canonicalReferences": [],
-      "tags": [
-        "13000",
-        "life-story",
-        "memory"
-      ]
-    },
-    {
-      "schema": "milestone",
-      "account": "13000",
-      "parent": "memory",
-      "path": "schemas/13000-life-story/memory/milestone.schema.json",
       "canonical": true,
       "extends": null,
       "canonicalReferences": [],
@@ -4708,20 +4708,6 @@
       ]
     },
     {
-      "schema": "contract",
-      "account": "15000",
-      "parent": "legal-justice",
-      "path": "schemas/15000-administration/life/legal-justice/contract.schema.json",
-      "canonical": false,
-      "extends": "contract",
-      "canonicalReferences": [],
-      "tags": [
-        "15000",
-        "administration",
-        "legal-justice"
-      ]
-    },
-    {
       "schema": "conviction",
       "account": "15000",
       "parent": "legal-justice",
@@ -4840,6 +4826,20 @@
       "path": "schemas/15000-administration/life/legal-justice/judgment.schema.json",
       "canonical": true,
       "extends": null,
+      "canonicalReferences": [],
+      "tags": [
+        "15000",
+        "administration",
+        "legal-justice"
+      ]
+    },
+    {
+      "schema": "legal-contract",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/legal-contract.schema.json",
+      "canonical": true,
+      "extends": "contract",
       "canonicalReferences": [],
       "tags": [
         "15000",
@@ -5813,34 +5813,6 @@
       ]
     },
     {
-      "schema": "contract",
-      "account": "19000",
-      "parent": "sales",
-      "path": "schemas/19000-enterprise-ventures/19400-sales/sales/contract.schema.json",
-      "canonical": false,
-      "extends": "contract",
-      "canonicalReferences": [],
-      "tags": [
-        "19000",
-        "enterprise-ventures",
-        "sales"
-      ]
-    },
-    {
-      "schema": "invoice",
-      "account": "19000",
-      "parent": "sales",
-      "path": "schemas/19000-enterprise-ventures/19400-sales/sales/invoice.schema.json",
-      "canonical": false,
-      "extends": "invoice",
-      "canonicalReferences": [],
-      "tags": [
-        "19000",
-        "enterprise-ventures",
-        "sales"
-      ]
-    },
-    {
       "schema": "opportunity",
       "account": "19000",
       "parent": "sales",
@@ -5917,6 +5889,34 @@
       "path": "schemas/19000-enterprise-ventures/19400-sales/sales/sales-activity.schema.json",
       "canonical": true,
       "extends": null,
+      "canonicalReferences": [],
+      "tags": [
+        "19000",
+        "enterprise-ventures",
+        "sales"
+      ]
+    },
+    {
+      "schema": "sales-contract",
+      "account": "19000",
+      "parent": "sales",
+      "path": "schemas/19000-enterprise-ventures/19400-sales/sales/sales-contract.schema.json",
+      "canonical": true,
+      "extends": "contract",
+      "canonicalReferences": [],
+      "tags": [
+        "19000",
+        "enterprise-ventures",
+        "sales"
+      ]
+    },
+    {
+      "schema": "sales-invoice",
+      "account": "19000",
+      "parent": "sales",
+      "path": "schemas/19000-enterprise-ventures/19400-sales/sales/sales-invoice.schema.json",
+      "canonical": true,
+      "extends": "invoice",
       "canonicalReferences": [],
       "tags": [
         "19000",
@@ -6135,11 +6135,11 @@
       ]
     },
     {
-      "schema": "deliverable",
+      "schema": "operational-deliverable",
       "account": "19000",
       "parent": "operations",
-      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/deliverable.schema.json",
-      "canonical": false,
+      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/operational-deliverable.schema.json",
+      "canonical": true,
       "extends": "deliverable",
       "canonicalReferences": [],
       "tags": [
@@ -6149,12 +6149,40 @@
       ]
     },
     {
-      "schema": "milestone",
+      "schema": "operational-milestone",
       "account": "19000",
       "parent": "operations",
-      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/milestone.schema.json",
-      "canonical": false,
+      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/operational-milestone.schema.json",
+      "canonical": true,
       "extends": "milestone",
+      "canonicalReferences": [],
+      "tags": [
+        "19000",
+        "enterprise-ventures",
+        "operations"
+      ]
+    },
+    {
+      "schema": "operational-resource-allocation",
+      "account": "19000",
+      "parent": "operations",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/operational-resource-allocation.schema.json",
+      "canonical": true,
+      "extends": "resource-allocation",
+      "canonicalReferences": [],
+      "tags": [
+        "19000",
+        "enterprise-ventures",
+        "operations"
+      ]
+    },
+    {
+      "schema": "operational-workflow",
+      "account": "19000",
+      "parent": "operations",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/operational-workflow.schema.json",
+      "canonical": true,
+      "extends": "workflow",
       "canonicalReferences": [],
       "tags": [
         "19000",
@@ -6177,40 +6205,12 @@
       ]
     },
     {
-      "schema": "resource-allocation",
-      "account": "19000",
-      "parent": "operations",
-      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/resource-allocation.schema.json",
-      "canonical": false,
-      "extends": "resource-allocation",
-      "canonicalReferences": [],
-      "tags": [
-        "19000",
-        "enterprise-ventures",
-        "operations"
-      ]
-    },
-    {
       "schema": "sop",
       "account": "19000",
       "parent": "operations",
       "path": "schemas/19000-enterprise-ventures/19600-operations/operations/sop.schema.json",
       "canonical": true,
       "extends": null,
-      "canonicalReferences": [],
-      "tags": [
-        "19000",
-        "enterprise-ventures",
-        "operations"
-      ]
-    },
-    {
-      "schema": "workflow",
-      "account": "19000",
-      "parent": "operations",
-      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/workflow.schema.json",
-      "canonical": false,
-      "extends": "workflow",
       "canonicalReferences": [],
       "tags": [
         "19000",
@@ -6583,11 +6583,11 @@
       ]
     },
     {
-      "schema": "invoice",
+      "schema": "invoice-finance-view",
       "account": "19000",
       "parent": "finance",
-      "path": "schemas/19000-enterprise-ventures/19700-finance/finance/invoice.schema.json",
-      "canonical": false,
+      "path": "schemas/19000-enterprise-ventures/19700-finance/finance/invoice-finance-view.schema.json",
+      "canonical": true,
       "extends": "invoice",
       "canonicalReferences": [],
       "tags": [
@@ -8049,19 +8049,6 @@
         "4000",
         "learning",
         "education"
-      ]
-    },
-    {
-      "schema": "certification",
-      "account": "4000",
-      "parent": "learning",
-      "path": "schemas/4000-learning/learning/certification.schema.json",
-      "canonical": true,
-      "extends": null,
-      "canonicalReferences": [],
-      "tags": [
-        "4000",
-        "learning"
       ]
     },
     {

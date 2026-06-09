@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Invoice",
-  "description": "A commercial invoice for goods or services supplied between businesses or to consumers.",
+  "title": "Sales Invoice",
+  "description": "Sales context wrapper for canonical invoice records used in customer billing flows.",
   "type": "object",
   "properties": {
     "id": { "type": "string", "pattern": "^invoice_[a-zA-Z0-9_-]+$" },
