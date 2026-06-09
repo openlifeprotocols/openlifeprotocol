@@ -22,6 +22,20 @@ Finally, open [http://localhost:3000](http://localhost:3000) in your browser to 
 
 You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
 
+## Schema Mindset Workflow
+
+If you are adding or changing schemas, use this order of thinking:
+
+1. Choose account first (what area of life this belongs to).
+2. Choose channel next (personal, employment, founder, business, creator, investor, family, community).
+3. Choose role next (how the person is acting in that context).
+4. Reuse an existing schema if the concept is the same and only the channel/role differs.
+5. Create a new schema only when the concept itself is different.
+
+Reference guides:
+- `schemas/SCHEMA_CREATION_MINDSET.md`
+- `schemas/SCHEMA_DECISION_LOG.md`
+
 ## Global search
 
 This template includes a global search that's powered by the [FlexSearch](https://github.com/nextapps-de/flexsearch) library. It's available by clicking the search input or by using the `⌘K` shortcut.
