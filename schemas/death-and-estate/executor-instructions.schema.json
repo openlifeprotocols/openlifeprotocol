@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Executor Instructions",
+  "description": "Instructions and guidance for estate executor.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^executor_instructions_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "executor_person_id": { "type": "string" },
+    "alternate_executor_id": { "type": "string" },
+    "estate_overview": { "type": "string" },
+    "priority_tasks": { "type": "array", "items": { "type": "object", "properties": { "task_order": { "type": "integer" }, "task_description": { "type": "string" }, "deadline_days": { "type": "integer" }, "contact_ids": { "type": "array", "items": { "type": "string" } } } } },
+    "document_locations": { "type": "array", "items": { "type": "object", "properties": { "document_type": { "type": "string" }, "physical_location": { "type": "string" }, "digital_location": { "type": "string" }, "document_id": { "type": "string" } } } },
+    "account_information": { "type": "array", "items": { "type": "object", "properties": { "account_type": { "type": "string" }, "institution": { "type": "string" }, "account_number_last4": { "type": "string" }, "contact_person": { "type": "string" } } } },
+    "property_inventory": { "type": "array", "items": { "type": "string" } },
+    "debt_obligations": { "type": "array", "items": { "type": "object", "properties": { "creditor": { "type": "string" }, "balance": { "type": "number" }, "payoff_instructions": { "type": "string" } } } },
+    "beneficiary_instructions": { "type": "string" },
+    "charitable_giving_instructions": { "type": "string" },
+    "tax_considerations": { "type": "string" },
+    "professional_contacts": { "type": "array", "items": { "type": "object", "properties": { "role": { "type": "string" }, "person_name": { "type": "string" }, "contact_info": { "type": "string" } } } },
+    "special_instructions": { "type": "string" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "last_updated_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "executor_person_id"],
+  "_phase1_todo": ["Define executor access control", "Define task automation", "Define compliance tracking"]
+}

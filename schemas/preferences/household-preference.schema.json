@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Household Preference",
+  "description": "Shared household preferences and settings.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^household_preference_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "household_id": { "type": "string" },
+    "preference_type": { "type": "string", "enum": ["temperature", "lighting", "noise", "cleaning", "cooking", "security", "entertainment", "other"] },
+    "preference_name": { "type": "string" },
+    "preference_description": { "type": "string" },
+    "preferred_value": { "type": "string" },
+    "set_by_person_id": { "type": "string" },
+    "applies_to_rooms": { "type": "array", "items": { "type": "string" } },
+    "applies_to_times": { "type": "array", "items": { "type": "object", "properties": { "start_time": { "type": "string" }, "end_time": { "type": "string" }, "days": { "type": "array", "items": { "type": "string" } } } } },
+    "notification_threshold": { "type": "string" },
+    "is_automated": { "type": "boolean" },
+    "automation_rule": { "type": "string" },
+    "agreement_level": { "type": "string", "enum": ["unanimous", "majority", "compromise", "experimental"] },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "household_id"],
+  "_phase1_todo": ["Define preference conflicts", "Define automation rules", "Define shared preferences"]
+}

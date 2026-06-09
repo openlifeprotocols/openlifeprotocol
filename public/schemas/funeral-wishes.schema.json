@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Funeral Wishes",
+  "description": "Personal preferences for funeral and end-of-life arrangements.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^funeral_wishes_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "disposition_type": { "type": "string", "enum": ["burial", "cremation", "natural_burial", "alkaline_hydrolysis", "donation", "undecided"] },
+    "cremation_preferences": { "type": "object", "properties": { "location": { "type": "string" }, "urn_type": { "type": "string" }, "scattering_location": { "type": "string" }, "scattering_instructions": { "type": "string" } } },
+    "burial_preferences": { "type": "object", "properties": { "cemetery": { "type": "string" }, "plot_location": { "type": "string" }, "headstone_inscription": { "type": "string" }, "monument_preferences": { "type": "string" } } },
+    "funeral_service_type": { "type": "string", "enum": ["traditional", "memorial", "celebration_of_life", "none", "family_only"] },
+    "service_location_preference": { "type": "string" },
+    "religious_preferences": { "type": "string" },
+    "music_preferences": { "type": "array", "items": { "type": "string" } },
+    "readings_preferences": { "type": "array", "items": { "type": "string" } },
+    "flowers_preferences": { "type": "string" },
+    "charitable_donations": { "type": "array", "items": { "type": "object", "properties": { "organization": { "type": "string" }, "amount": { "type": "number" }, "message": { "type": "string" } } } },
+    "obituary_preferences": { "type": "string" },
+    "body_donation_preferences": { "type": "string" },
+    "organ_donation_preferences": { "type": "boolean" },
+    "budget_estimate": { "type": "number" },
+    "prepaid_arrangements": { "type": "array", "items": { "type": "string" } },
+    "contact_person_id": { "type": "string" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "last_updated_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define notification triggers", "Define prepaid tracking", "Define arrangement verification"]
+}

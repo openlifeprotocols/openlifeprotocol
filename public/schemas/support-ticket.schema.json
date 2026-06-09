@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Support Ticket",
+  "description": "Support request with service providers.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^support_ticket_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "provider_type": { "type": "string", "enum": ["bank", "utility", "government", "telecom", "insurance", "isp", "other"] },
+    "provider_name": { "type": "string" },
+    "ticket_number": { "type": "string" },
+    "account_number_last4": { "type": "string" },
+    "issue_category": { "type": "string" },
+    "issue_description": { "type": "string" },
+    "priority": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+    "status": { "type": "string", "enum": ["open", "in_progress", "waiting_for_info", "escalated", "resolved", "closed"] },
+    "created_date": { "type": "string", "format": "date-time" },
+    "last_updated_date": { "type": "string", "format": "date-time" },
+    "resolved_date": { "type": "string", "format": "date-time" },
+    "contact_name": { "type": "string" },
+    "contact_phone": { "type": "string" },
+    "contact_email": { "type": "string" },
+    "reference_documents": { "type": "array", "items": { "type": "string" } },
+    "expected_resolution_date": { "type": "string", "format": "date" },
+    "resolution_summary": { "type": "string" },
+    "follow_up_required": { "type": "boolean" },
+    "satisfaction_rating": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "provider_name"],
+  "_phase1_todo": ["Define ticket escalation", "Define SLA tracking", "Define resolution automation"]
+}

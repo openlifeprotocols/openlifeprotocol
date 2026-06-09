@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Complaint",
+  "description": "Formal complaint or dispute.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^complaint_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "complaint_type": { "type": "string", "enum": ["consumer_complaint", "service_complaint", "billing_dispute", "product_quality", "fraud", "discrimination", "other"] },
+    "complaint_against": { "type": "string" },
+    "complaint_category": { "type": "string" },
+    "complaint_date": { "type": "string", "format": "date" },
+    "incident_date": { "type": "string", "format": "date" },
+    "complaint_number": { "type": "string" },
+    "complaint_description": { "type": "string" },
+    "supporting_documents": { "type": "array", "items": { "type": "string" } },
+    "damages_claimed": { "type": "number" },
+    "currency": { "type": "string" },
+    "status": { "type": "string", "enum": ["filed", "acknowledged", "under_investigation", "resolved", "escalated", "dismissed"] },
+    "complaint_channel": { "type": "string", "enum": ["direct_contact", "ombudsman", "regulator", "court", "consumer_protection"] },
+    "response_received": { "type": "boolean" },
+    "response_date": { "type": "string", "format": "date" },
+    "resolution": { "type": "string" },
+    "resolution_date": { "type": "string", "format": "date" },
+    "satisfaction_level": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "follow_up_action": { "type": "string" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "complaint_type"],
+  "_phase1_todo": ["Define complaint escalation", "Define resolution tracking", "Define refund/credit automation"]
+}

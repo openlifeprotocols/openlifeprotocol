@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Membership",
+  "description": "Professional or organization membership.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^membership_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "organization_name": { "type": "string" },
+    "membership_type": { "type": "string", "enum": ["professional_association", "trade_union", "club", "society", "alumni", "other"] },
+    "membership_level": { "type": "string" },
+    "membership_number": { "type": "string" },
+    "member_status": { "type": "string", "enum": ["active", "inactive", "suspended", "honorary"] },
+    "join_date": { "type": "string", "format": "date" },
+    "renewal_date": { "type": "string", "format": "date" },
+    "annual_dues": { "type": "number" },
+    "currency": { "type": "string" },
+    "payment_status": { "type": "string", "enum": ["paid", "pending", "overdue"] },
+    "benefits": { "type": "array", "items": { "type": "string" } },
+    "roles_or_positions": { "type": "array", "items": { "type": "string" } },
+    "contact_person": { "type": "string" },
+    "website": { "type": "string", "format": "uri" },
+    "renewal_alert_sent": { "type": "boolean" },
+    "digital_card": { "type": "string" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "organization_name"],
+  "_phase1_todo": ["Define dues payment tracking", "Define renewal reminders", "Define benefit management"]
+}

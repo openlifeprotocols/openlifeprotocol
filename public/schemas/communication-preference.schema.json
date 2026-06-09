@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Communication Preference",
+  "description": "Communication channel and frequency preferences.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^communication_preference_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "contact_person_id": { "type": "string" },
+    "communication_context": { "type": "string", "enum": ["family", "work", "social", "professional", "general"] },
+    "preferred_channels": { "type": "array", "items": { "type": "string", "enum": ["email", "phone", "text", "video_call", "in_person", "mail", "messenger", "slack", "other"] } },
+    "primary_channel": { "type": "string" },
+    "backup_channel": { "type": "string" },
+    "communication_frequency": { "type": "string", "enum": ["daily", "weekly", "bi_weekly", "monthly", "quarterly", "as_needed"] },
+    "preferred_time_of_day": { "type": "string" },
+    "preferred_days": { "type": "array", "items": { "type": "string" } },
+    "do_not_contact_times": { "type": "array", "items": { "type": "object", "properties": { "start_time": { "type": "string" }, "end_time": { "type": "string" } } } },
+    "urgent_override": { "type": "boolean" },
+    "communication_style": { "type": "string", "enum": ["formal", "casual", "brief", "detailed", "visual"] },
+    "response_expectation_hours": { "type": "integer" },
+    "prefer_written_confirmation": { "type": "boolean" },
+    "language_preference": { "type": "string" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define preference enforcement", "Define communication routing", "Define preference learning"]
+}

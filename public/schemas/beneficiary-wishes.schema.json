@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Beneficiary Wishes",
+  "description": "Messages, wishes, and instructions for beneficiaries.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^beneficiary_wishes_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "beneficiary_person_id": { "type": "string" },
+    "message_type": { "type": "string", "enum": ["general_message", "specific_instructions", "emotional_letter", "practical_guidance", "final_wishes"] },
+    "message_content": { "type": "string" },
+    "item_allocation": { "type": "object", "properties": { "item_description": { "type": "string" }, "sentimental_value": { "type": "string" }, "financial_value": { "type": "number" }, "special_instructions": { "type": "string" } } },
+    "financial_wishes": { "type": "object", "properties": { "inheritance_amount": { "type": "number" }, "conditions": { "type": "string" }, "distribution_timeline": { "type": "string" } } },
+    "personal_items_list": { "type": "array", "items": { "type": "string" } },
+    "story_or_memory": { "type": "string" },
+    "advice_or_guidance": { "type": "string" },
+    "delivery_instructions": { "type": "string", "enum": ["immediate", "on_milestone", "delayed", "conditional"] },
+    "is_confidential": { "type": "boolean" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "beneficiary_person_id"],
+  "_phase1_todo": ["Define message delivery scheduling", "Define conditional releases", "Define privacy enforcement"]
+}
