@@ -24,10 +24,10 @@ const lexend = localFont({
 export const metadata: Metadata = {
   title: {
     template: '%s - Open Life Protocol',
-    default: 'Open Life Protocol - Standardizing Life and Business Workflows',
+    default: 'Open Life Protocol - The contract-first standard for life, business, and AI',
   },
   description:
-    'The Open Life Protocol (OLP) is a contract-first standard for life, business, and AI-native workflows, like OpenAPI for your entire life.',
+    'The Open Life Protocol (OLP) is the contract-first standard for life, business, and AI. Standardize any process the way OpenAPI standardized APIs.',
 }
 
 export default function RootLayout({

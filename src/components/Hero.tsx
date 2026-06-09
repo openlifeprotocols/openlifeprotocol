@@ -62,8 +62,8 @@ export function Hero() {
                 Standardize any workflow.
               </p>
               <p className="mt-3 text-2xl tracking-tight text-slate-400">
-                The Open Life Protocol brings OpenAPI's contract-first power to
-                every process that matters: hiring, moving, business formation, and more.
+                The contract-first standard for life, business, and AI. Standardize
+                hiring, moving, business formation, healthcare, and thousands of workflows.
               </p>
               <div className="mt-8 flex gap-4 md:justify-center lg:justify-start">
                 <Button href="/">Get started</Button>

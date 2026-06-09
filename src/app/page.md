@@ -2,7 +2,7 @@
 title: Open Life Protocol
 ---
 
-The contract-first standard for life, business, and AI workflows. {% .lead %}
+The contract-first standard for life, business, and AI. {% .lead %}
 
 Like OpenAPI, but for every process that matters.
 
