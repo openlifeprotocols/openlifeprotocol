@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Revenue",
+  "description": "Income earned from selling goods, services, or assets in a given period. The top line.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^revenue_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "entity_id": { "type": "string", "description": "Business, project, or person this revenue belongs to" },
+    "period": {
+      "type": "object",
+      "properties": {
+        "from": { "type": "string", "format": "date" },
+        "to": { "type": "string", "format": "date" },
+        "label": { "type": "string", "examples": ["2026-Q2", "Jan 2026", "FY2025-26"] }
+      },
+      "required": ["from", "to"]
+    },
+    "revenue_type": { "type": "string", "enum": ["product_sales", "service_fees", "subscription", "rental", "interest", "royalties", "grant", "commission", "other"] },
+    "gross_amount": { "type": "number" },
+    "returns_refunds": { "type": "number", "default": 0 },
+    "discounts": { "type": "number", "default": 0 },
+    "net_amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "invoice_ids": { "type": "array", "items": { "type": "string" } },
+    "payment_ids": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "entity_id", "period", "revenue_type", "net_amount", "currency"],
+  "_phase1_todo": [
+    "Define revenue recognition policy (IFRS 15/ASC 606)",
+    "Define deferred revenue",
+    "Define revenue by segment/product",
+    "Define revenue forecasting"
+  ]
+}

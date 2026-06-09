@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Transaction",
+  "description": "A single financial transaction — a debit or credit between two accounts. The atomic unit of financial movement.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^txn_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "from_account_id": { "type": "string" },
+    "to_account_id": { "type": "string" },
+    "amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "transaction_type": {
+      "type": "string",
+      "enum": ["payment", "transfer", "refund", "direct_debit", "standing_order", "cash_withdrawal", "deposit", "interest", "fee", "adjustment", "reversal"]
+    },
+    "description": { "type": "string" },
+    "reference": { "type": "string" },
+    "initiated_at": { "type": "string", "format": "date-time" },
+    "settled_at": { "type": "string", "format": "date-time" },
+    "payment_id": { "type": "string" },
+    "invoice_id": { "type": "string" },
+    "category": { "type": "string", "description": "User-defined category, e.g., 'groceries', 'utilities'" },
+    "status": { "type": "string", "enum": ["pending", "settled", "failed", "reversed", "disputed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "amount", "currency", "transaction_type", "initiated_at"],
+  "_phase1_todo": [
+    "Define transaction categorisation ML",
+    "Define reconciliation matching",
+    "Define disputed transaction workflow",
+    "Define transaction limits and controls"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Material Specification",
+  "description": "A specified material for use in a construction or renovation project — linking Material to project requirements, substitution rules, and sustainability targets.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^material_spec_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "construction_project_id": { "type": "string" },
+    "bom_id": { "type": "string" },
+    "material_id": { "type": "string" },
+    "specified_by_id": { "type": "string" },
+    "location_description": { "type": "string", "description": "Where in the building this applies, e.g., 'External walls'" },
+    "standard_or_code": { "type": "string", "description": "Applicable standard, e.g., BS 5534, Eurocode 6" },
+    "grade_or_specification": { "type": "string" },
+    "approved_alternatives": { "type": "array", "items": { "type": "string" }, "description": "Material IDs of approved substitutes" },
+    "sustainability_notes": { "type": "string" },
+    "embodied_carbon_target_kg": { "type": "number" },
+    "is_approved": { "type": "boolean" },
+    "approved_by_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "construction_project_id", "material_id"],
+  "_phase1_todo": [
+    "Define material approval workflow",
+    "Define contractor material substitution requests",
+    "Define embodied carbon budget tracking",
+    "Define material traceability for Building Safety Act"
+  ]
+}

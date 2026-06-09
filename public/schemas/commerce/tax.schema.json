@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tax (Commerce)",
+  "description": "A tax obligation or return in a commercial context — VAT, corporation tax, sales tax. Complements the personal finance tax schema.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^tax_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "entity_id": { "type": "string" },
+    "tax_type": { "type": "string", "enum": ["vat", "gst", "sales_tax", "corporation_tax", "income_tax", "withholding_tax", "payroll_tax", "customs_duty", "other"] },
+    "tax_year": { "type": "string", "examples": ["2025-26", "2026"] },
+    "period": {
+      "type": "object",
+      "properties": {
+        "from": { "type": "string", "format": "date" },
+        "to": { "type": "string", "format": "date" }
+      }
+    },
+    "jurisdiction_id": { "type": "string" },
+    "taxable_amount": { "type": "number" },
+    "tax_rate": { "type": "number" },
+    "tax_due": { "type": "number" },
+    "tax_paid": { "type": "number" },
+    "tax_credit": { "type": "number" },
+    "refund_due": { "type": "number" },
+    "currency": { "type": "string" },
+    "reference": { "type": "string" },
+    "filing_deadline": { "type": "string", "format": "date" },
+    "filed_date": { "type": "string", "format": "date" },
+    "payment_deadline": { "type": "string", "format": "date" },
+    "paid_date": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["not_filed", "filed", "amended", "paid", "overdue", "under_investigation"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "entity_id", "tax_type", "tax_year", "tax_due", "currency"],
+  "_phase1_todo": [
+    "Define Making Tax Digital (MTD) integration",
+    "Define VAT return automation from invoices",
+    "Define tax scheme (flat rate, cash, standard)",
+    "Define multi-jurisdiction tax compliance"
+  ]
+}

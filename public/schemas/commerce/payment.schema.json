@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Payment",
+  "description": "A payment instruction — the act of paying. Generates one or more Transactions. Links invoices, orders, and subscriptions to money movement.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^payment_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "payer_id": { "type": "string" },
+    "payee_id": { "type": "string" },
+    "amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "payment_method": {
+      "type": "string",
+      "enum": ["bank_transfer", "direct_debit", "card", "paypal", "cash", "cheque", "crypto", "voucher", "buy_now_pay_later"]
+    },
+    "payment_rail": { "type": "string", "enum": ["bacs", "faster_payments", "chaps", "sepa", "swift", "card_network", "open_banking"], "description": "Payment network used" },
+    "reference": { "type": "string" },
+    "for_invoice_id": { "type": "string" },
+    "for_order_id": { "type": "string" },
+    "for_subscription_id": { "type": "string" },
+    "initiated_at": { "type": "string", "format": "date-time" },
+    "settled_at": { "type": "string", "format": "date-time" },
+    "transaction_ids": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["pending", "authorised", "settled", "failed", "refunded", "disputed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "payer_id", "payee_id", "amount", "currency", "payment_method"],
+  "_phase1_todo": [
+    "Define payment retry logic",
+    "Define split payment handling",
+    "Define payment authorisation chain",
+    "Define PCI DSS compliance scope"
+  ]
+}

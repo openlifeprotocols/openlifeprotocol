@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Deliverable",
+  "description": "A tangible or verifiable output that a project must produce.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^deliverable_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "project_id": { "type": "string" },
+    "milestone_id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "deliverable_type": { "type": "string", "enum": ["document", "physical_item", "software", "service_completion", "approval", "report", "installation", "other"] },
+    "acceptance_criteria": { "type": "array", "items": { "type": "string" } },
+    "due_date": { "type": "string", "format": "date" },
+    "completed_date": { "type": "string", "format": "date" },
+    "responsible_id": { "type": "string" },
+    "reviewer_id": { "type": "string" },
+    "document_ids": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["not_started", "in_progress", "submitted", "accepted", "rejected", "waived"] },
+    "rejection_reason": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "project_id", "name", "deliverable_type", "due_date"],
+  "_phase1_todo": [
+    "Define deliverable acceptance workflow",
+    "Define deliverable quality checklist",
+    "Define rework tracking",
+    "Define deliverable archiving"
+  ]
+}

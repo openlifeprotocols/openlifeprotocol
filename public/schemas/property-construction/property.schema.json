@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Property",
+  "description": "A property record in the property-construction domain — combining land and building for development, valuation, and project contexts.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^property_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "address_id": { "type": "string" },
+    "land_id": { "type": "string" },
+    "building_id": { "type": "string" },
+    "property_type": { "type": "string", "enum": ["residential", "commercial", "industrial", "mixed_use", "development_site", "land_only"] },
+    "tenure": { "type": "string", "enum": ["freehold", "leasehold", "commonhold", "shared_ownership"] },
+    "title_number": { "type": "string" },
+    "uprn": { "type": "string" },
+    "owner_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "actor_id": { "type": "string" },
+          "ownership_share": { "type": "number" },
+          "ownership_type": { "type": "string", "enum": ["joint_tenants", "tenants_in_common", "sole"] }
+        }
+      }
+    },
+    "estimated_value": { "type": "number" },
+    "estimated_value_date": { "type": "string", "format": "date" },
+    "currency": { "type": "string" },
+    "construction_project_ids": { "type": "array", "items": { "type": "string" } },
+    "inspection_ids": { "type": "array", "items": { "type": "string" } },
+    "maintenance_ids": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "address_id", "property_type", "tenure"],
+  "_phase1_todo": [
+    "Define property transaction history",
+    "Define development appraisal",
+    "Define valuation methodology",
+    "Define property defect tracking"
+  ]
+}

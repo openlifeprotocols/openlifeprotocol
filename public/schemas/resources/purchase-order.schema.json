@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Purchase Order",
+  "description": "A formal order sent to a supplier requesting delivery of goods, materials, or services.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^purchase_order_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "po_number": { "type": "string" },
+    "buyer_id": { "type": "string" },
+    "supplier_id": { "type": "string" },
+    "project_id": { "type": "string" },
+    "ordered_date": { "type": "string", "format": "date" },
+    "required_by_date": { "type": "string", "format": "date" },
+    "delivery_address_id": { "type": "string" },
+    "line_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "material_id": { "type": "string" },
+          "product_id": { "type": "string" },
+          "description": { "type": "string" },
+          "quantity": { "type": "number" },
+          "unit_of_measure": { "type": "string" },
+          "unit_price": { "type": "number" },
+          "subtotal": { "type": "number" },
+          "quantity_received": { "type": "number" }
+        }
+      }
+    },
+    "subtotal": { "type": "number" },
+    "tax_total": { "type": "number" },
+    "total": { "type": "number" },
+    "currency": { "type": "string" },
+    "invoice_ids": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["draft", "approved", "sent", "partially_received", "received", "cancelled", "disputed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "po_number", "buyer_id", "supplier_id", "ordered_date", "total", "currency"],
+  "_phase1_todo": [
+    "Define goods received note (GRN)",
+    "Define three-way match (PO/GRN/invoice)",
+    "Define PO approval limits",
+    "Define PO change control"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Account",
+  "description": "A financial account of any type — bank, credit, investment, or internal ledger account. The container for money flows.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^account_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "holder_ids": { "type": "array", "items": { "type": "string" } },
+    "account_type": {
+      "type": "string",
+      "enum": ["bank_current", "bank_savings", "credit_card", "loan", "mortgage", "investment", "pension", "crypto_wallet", "internal_ledger", "escrow", "trust", "expense", "revenue", "other"]
+    },
+    "name": { "type": "string" },
+    "institution_id": { "type": "string" },
+    "currency": { "type": "string" },
+    "balance": { "type": "number" },
+    "balance_date": { "type": "string", "format": "date" },
+    "credit_limit": { "type": "number" },
+    "interest_rate": { "type": "number" },
+    "is_liability": { "type": "boolean", "description": "True for loan/credit accounts" },
+    "opened_date": { "type": "string", "format": "date" },
+    "closed_date": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["active", "dormant", "frozen", "closed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "holder_ids", "account_type", "currency"],
+  "_phase1_todo": [
+    "Define open banking integration (PSD2/CDR)",
+    "Define account aggregation rules",
+    "Define account closure waterfall",
+    "Define multi-currency account handling"
+  ]
+}

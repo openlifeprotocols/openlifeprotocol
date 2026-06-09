@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Renovation",
+  "description": "A renovation, refurbishment, or improvement project on an existing property — smaller in scope than a full construction project.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^renovation_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "property_id": { "type": "string" },
+    "owner_id": { "type": "string" },
+    "project_id": { "type": "string" },
+    "renovation_type": { "type": "string", "enum": ["kitchen_refit", "bathroom_refit", "extension", "loft_conversion", "basement_conversion", "garage_conversion", "rewire", "plumbing", "decoration", "roof", "windows_doors", "landscaping", "accessibility_adaptation", "other"] },
+    "description": { "type": "string" },
+    "requires_planning_permission": { "type": "boolean" },
+    "planning_permit_id": { "type": "string" },
+    "requires_building_regs": { "type": "boolean" },
+    "building_regs_permit_id": { "type": "string" },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "budget": { "type": "number" },
+    "actual_cost": { "type": "number" },
+    "currency": { "type": "string" },
+    "contractor_ids": { "type": "array", "items": { "type": "string" } },
+    "estimated_value_added": { "type": "number" },
+    "status": { "type": "string", "enum": ["planning", "approved", "in_progress", "snagging", "complete", "cancelled"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "property_id", "owner_id", "renovation_type"],
+  "_phase1_todo": [
+    "Define permitted development rights checking",
+    "Define renovation value uplift assessment",
+    "Define snagging list workflow",
+    "Define VAT reclaim for new build/renovation"
+  ]
+}

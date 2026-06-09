@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Order",
+  "description": "A purchase or sales order — the commitment to buy or sell goods or services at an agreed price.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^order_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "order_number": { "type": "string" },
+    "order_type": { "type": "string", "enum": ["purchase_order", "sales_order", "work_order", "change_order"] },
+    "buyer_id": { "type": "string" },
+    "seller_id": { "type": "string" },
+    "project_id": { "type": "string" },
+    "quote_id": { "type": "string" },
+    "ordered_date": { "type": "string", "format": "date" },
+    "required_by_date": { "type": "string", "format": "date" },
+    "delivery_address_id": { "type": "string" },
+    "line_items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "product_id": { "type": "string" },
+          "service_id": { "type": "string" },
+          "material_id": { "type": "string" },
+          "description": { "type": "string" },
+          "quantity": { "type": "number" },
+          "unit": { "type": "string" },
+          "unit_price": { "type": "number" },
+          "subtotal": { "type": "number" },
+          "delivery_date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "subtotal": { "type": "number" },
+    "tax_total": { "type": "number" },
+    "total": { "type": "number" },
+    "currency": { "type": "string" },
+    "payment_terms": { "type": "string" },
+    "invoice_ids": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["draft", "submitted", "approved", "partially_fulfilled", "fulfilled", "cancelled", "disputed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "order_number", "order_type", "buyer_id", "seller_id", "ordered_date", "total", "currency"],
+  "_phase1_todo": [
+    "Define partial fulfilment tracking",
+    "Define change order approval",
+    "Define order-to-invoice automation",
+    "Define returns and refunds"
+  ]
+}

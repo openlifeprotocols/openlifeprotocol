@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Money",
+  "description": "A monetary amount with currency, precision, and optional exchange rate context. The atomic unit of financial value in OLP.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^money_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "value": { "type": "number", "description": "Numeric amount — positive for credit, negative for debit" },
+    "currency": { "type": "string", "description": "ISO 4217 currency code", "examples": ["GBP", "USD", "EUR"] },
+    "precision": { "type": "integer", "default": 2 },
+    "exchange_rate": {
+      "type": "object",
+      "description": "Rate used if converted from another currency",
+      "properties": {
+        "from_currency": { "type": "string" },
+        "rate": { "type": "number" },
+        "rate_date": { "type": "string", "format": "date" },
+        "source": { "type": "string" }
+      }
+    },
+    "as_of": { "type": "string", "format": "date-time", "description": "Point in time this amount is valid" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["value", "currency"],
+  "_phase1_todo": [
+    "Define rounding rules by currency",
+    "Define multi-currency reconciliation",
+    "Define historical FX rate sources",
+    "Define crypto/non-fiat currency support"
+  ]
+}

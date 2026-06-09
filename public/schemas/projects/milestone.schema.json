@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Milestone",
+  "description": "A significant checkpoint in a project — a point in time where key deliverables must be complete.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^milestone_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "project_id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "target_date": { "type": "string", "format": "date" },
+    "actual_date": { "type": "string", "format": "date" },
+    "deliverable_ids": { "type": "array", "items": { "type": "string" } },
+    "payment_triggered": { "type": "boolean", "description": "Does completion trigger a payment?" },
+    "payment_amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "invoice_id": { "type": "string" },
+    "depends_on_milestone_ids": { "type": "array", "items": { "type": "string" } },
+    "completed_by_id": { "type": "string" },
+    "verified_by_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["not_started", "in_progress", "complete", "overdue", "waived"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "project_id", "name", "target_date"],
+  "_phase1_todo": [
+    "Define milestone acceptance criteria",
+    "Define milestone payment certification",
+    "Define milestone dispute process",
+    "Define milestone slip impact analysis"
+  ]
+}

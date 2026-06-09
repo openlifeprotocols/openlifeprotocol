@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Room",
+  "description": "A room or defined space within a building — with usage, dimensions, and fittings.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^room_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "building_id": { "type": "string" },
+    "name": { "type": "string", "examples": ["Kitchen", "Living Room", "Bedroom 1"] },
+    "room_type": { "type": "string", "enum": ["bedroom", "bathroom", "kitchen", "living_room", "dining_room", "utility", "office", "garage", "storage", "hallway", "garden", "commercial_space", "other"] },
+    "floor": { "type": "integer", "description": "0 = ground, -1 = basement, 1 = first floor" },
+    "area_sqm": { "type": "number" },
+    "dimensions": {
+      "type": "object",
+      "properties": {
+        "length_m": { "type": "number" },
+        "width_m": { "type": "number" },
+        "height_m": { "type": "number" }
+      }
+    },
+    "features": { "type": "array", "items": { "type": "string" }, "examples": [["ensuite", "built_in_wardrobe", "bay_window"]] },
+    "condition": { "type": "string", "enum": ["excellent", "good", "fair", "poor", "needs_renovation"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "building_id", "room_type"],
+  "_phase1_todo": [
+    "Define room measurements for area calculations",
+    "Define room condition reporting",
+    "Define room-level energy monitoring",
+    "Define room accessibility features"
+  ]
+}

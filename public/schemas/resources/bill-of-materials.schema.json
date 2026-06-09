@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bill of Materials",
+  "description": "A structured list of materials, components, and quantities needed to build a product or complete a project.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^bom_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "for_product_id": { "type": "string" },
+    "for_project_id": { "type": "string" },
+    "version": { "type": "string" },
+    "bom_type": { "type": "string", "enum": ["engineering", "manufacturing", "construction", "design"] },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "line_number": { "type": "integer" },
+          "material_id": { "type": "string" },
+          "product_id": { "type": "string" },
+          "description": { "type": "string" },
+          "quantity": { "type": "number" },
+          "unit_of_measure": { "type": "string" },
+          "unit_cost": { "type": "number" },
+          "line_total": { "type": "number" },
+          "supplier_id": { "type": "string" },
+          "lead_time_days": { "type": "integer" },
+          "is_critical": { "type": "boolean" }
+        },
+        "required": ["description", "quantity", "unit_of_measure"]
+      }
+    },
+    "total_material_cost": { "type": "number" },
+    "currency": { "type": "string" },
+    "status": { "type": "string", "enum": ["draft", "approved", "superseded"] },
+    "approved_by_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "name", "bom_type", "lines"],
+  "_phase1_todo": [
+    "Define multi-level BOM (assemblies within assemblies)",
+    "Define BOM costing roll-up",
+    "Define BOM vs actuals variance",
+    "Define BOM change control"
+  ]
+}

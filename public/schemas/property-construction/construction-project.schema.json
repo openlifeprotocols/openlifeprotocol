@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Construction Project",
+  "description": "A construction or major works project — newbuild, extension, renovation, or refurbishment.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^construction_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "project_id": { "type": "string", "description": "Links to core Project schema" },
+    "property_id": { "type": "string" },
+    "client_id": { "type": "string" },
+    "construction_type": { "type": "string", "enum": ["newbuild", "extension", "renovation", "refurbishment", "conversion", "demolition", "fit_out", "infrastructure", "other"] },
+    "description": { "type": "string" },
+    "contract_type": { "type": "string", "enum": ["jct_minor_works", "jct_design_build", "jct_standard", "nec3", "nec4", "fidic", "bespoke"] },
+    "main_contractor_id": { "type": "string" },
+    "architect_id": { "type": "string" },
+    "structural_engineer_id": { "type": "string" },
+    "project_manager_id": { "type": "string" },
+    "planning_permit_id": { "type": "string" },
+    "building_regs_permit_id": { "type": "string" },
+    "start_date": { "type": "string", "format": "date" },
+    "practical_completion_date": { "type": "string", "format": "date" },
+    "actual_completion_date": { "type": "string", "format": "date" },
+    "contract_sum": { "type": "number" },
+    "currency": { "type": "string" },
+    "defects_liability_period_months": { "type": "integer" },
+    "defects_liability_end": { "type": "string", "format": "date" },
+    "retention_percentage": { "type": "number" },
+    "bom_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["pre_construction", "mobilising", "in_progress", "practical_completion", "defects_period", "final_account", "closed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "property_id", "client_id", "construction_type", "contract_sum", "currency"],
+  "_phase1_todo": [
+    "Define CDM (Construction Design Management) compliance",
+    "Define practical completion certificate",
+    "Define snagging list workflow",
+    "Define final account settlement"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Supplier",
+  "description": "A supplier of goods, materials, or services — vendor, contractor, or subcontractor.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^supplier_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "actor_id": { "type": "string" },
+    "name": { "type": "string" },
+    "supplier_type": { "type": "string", "enum": ["manufacturer", "distributor", "wholesaler", "contractor", "subcontractor", "freelancer", "utility", "professional_service", "other"] },
+    "categories": { "type": "array", "items": { "type": "string" } },
+    "address_id": { "type": "string" },
+    "contact_point_ids": { "type": "array", "items": { "type": "string" } },
+    "payment_terms": { "type": "string", "examples": ["30 days net", "immediate"] },
+    "currency": { "type": "string" },
+    "vat_number": { "type": "string" },
+    "bank_account_id": { "type": "string" },
+    "approved": { "type": "boolean" },
+    "approved_date": { "type": "string", "format": "date" },
+    "performance_rating": { "type": "number", "minimum": 0, "maximum": 5 },
+    "insurance_expiry": { "type": "string", "format": "date" },
+    "accreditations": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["active", "suspended", "inactive", "blacklisted"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "name", "supplier_type"],
+  "_phase1_todo": [
+    "Define supplier onboarding/KYB workflow",
+    "Define supplier performance scoring",
+    "Define supplier risk management",
+    "Define single-source dependency flagging"
+  ]
+}

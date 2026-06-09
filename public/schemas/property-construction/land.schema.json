@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Land",
+  "description": "A parcel of land — with title, boundaries, planning designation, and ownership.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^land_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "title_number": { "type": "string" },
+    "uprn": { "type": "string" },
+    "address_id": { "type": "string" },
+    "area_sqm": { "type": "number" },
+    "area_hectares": { "type": "number" },
+    "planning_designation": { "type": "string", "enum": ["residential", "commercial", "industrial", "agricultural", "green_belt", "national_park", "brownfield", "mixed_use"] },
+    "owner_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "actor_id": { "type": "string" },
+          "share": { "type": "number" }
+        }
+      }
+    },
+    "covenants": { "type": "array", "items": { "type": "string" } },
+    "easements": { "type": "array", "items": { "type": "string" } },
+    "contamination_status": { "type": "string", "enum": ["clean", "unknown", "contaminated", "remediated"] },
+    "flood_risk_zone": { "type": "string" },
+    "estimated_value": { "type": "number" },
+    "currency": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "area_sqm", "planning_designation"],
+  "_phase1_todo": [
+    "Define land registry integration",
+    "Define planning constraint data feeds",
+    "Define compulsory purchase procedures",
+    "Define land value uplift tracking"
+  ]
+}

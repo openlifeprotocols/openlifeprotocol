@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Budget",
+  "description": "A financial budget — planned income and expenditure for a period, project, or entity.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^budget_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "entity_id": { "type": "string" },
+    "project_id": { "type": "string" },
+    "name": { "type": "string" },
+    "period": {
+      "type": "object",
+      "properties": {
+        "from": { "type": "string", "format": "date" },
+        "to": { "type": "string", "format": "date" },
+        "label": { "type": "string" }
+      },
+      "required": ["from", "to"]
+    },
+    "total_budget": { "type": "number" },
+    "currency": { "type": "string" },
+    "lines": {
+      "type": "array",
+      "description": "Budget line items by category",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": { "type": "string" },
+          "description": { "type": "string" },
+          "budgeted_amount": { "type": "number" },
+          "actual_amount": { "type": "number" },
+          "variance": { "type": "number" },
+          "is_income": { "type": "boolean" }
+        },
+        "required": ["category", "budgeted_amount"]
+      }
+    },
+    "total_income_budgeted": { "type": "number" },
+    "total_expenditure_budgeted": { "type": "number" },
+    "total_income_actual": { "type": "number" },
+    "total_expenditure_actual": { "type": "number" },
+    "contingency": { "type": "number", "description": "Reserved contingency amount" },
+    "contingency_used": { "type": "number" },
+    "status": { "type": "string", "enum": ["draft", "approved", "active", "overspent", "closed"] },
+    "approved_by_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "entity_id", "name", "period", "total_budget", "currency"],
+  "_phase1_todo": [
+    "Define budget vs actuals alerts",
+    "Define budget reforecast workflow",
+    "Define budget approval chain",
+    "Define budget rollover procedures"
+  ]
+}

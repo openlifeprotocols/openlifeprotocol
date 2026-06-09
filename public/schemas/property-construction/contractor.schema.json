@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contractor",
+  "description": "A contractor or subcontractor engaged on a construction or property project.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^contractor_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "actor_id": { "type": "string" },
+    "name": { "type": "string" },
+    "contractor_type": { "type": "string", "enum": ["main_contractor", "subcontractor", "specialist", "sole_trader", "consultant"] },
+    "trades": { "type": "array", "items": { "type": "string" }, "examples": [["groundworks", "brickwork", "roofing", "plumbing", "electrical"]] },
+    "qualifications": { "type": "array", "items": { "type": "string" }, "examples": [["CSCS", "Gas Safe", "Part P", "NICEIC", "NHBC"]] },
+    "public_liability_limit": { "type": "number" },
+    "insurance_expiry": { "type": "string", "format": "date" },
+    "address_id": { "type": "string" },
+    "contact_point_ids": { "type": "array", "items": { "type": "string" } },
+    "approved": { "type": "boolean" },
+    "performance_rating": { "type": "number", "minimum": 0, "maximum": 5 },
+    "defect_history": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["active", "suspended", "blacklisted"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "name", "contractor_type", "trades"],
+  "_phase1_todo": [
+    "Define contractor vetting workflow",
+    "Define CIS (Construction Industry Scheme) registration",
+    "Define contractor performance reviews",
+    "Define contractor insurance alerts"
+  ]
+}
