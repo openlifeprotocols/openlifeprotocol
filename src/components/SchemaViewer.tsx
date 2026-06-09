@@ -86,7 +86,7 @@ function PropertyRow({
                     key={val}
                     className="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 px-2 py-1 rounded text-xs"
                   >
-                    "{val}"
+                    &quot;{val}&quot;
                   </code>
                 ))}
               </div>
@@ -160,7 +160,7 @@ export function SchemaViewer({
       }
     }
     loadSchema()
-  }, [filename])
+  }, [filename, category])
 
   if (error) {
     return (
