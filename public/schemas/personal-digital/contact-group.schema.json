@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contact Group",
+  "description": "A named group of contacts — family, work, emergency, or custom.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^contact_group_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "contact_ids": { "type": "array", "items": { "type": "string" } },
+    "group_type": { "type": "string", "enum": ["family", "work", "emergency", "social", "medical", "legal", "custom"] },
+    "source": { "type": "string", "enum": ["google", "apple", "microsoft", "manual"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "name"],
+  "_phase1_todo": [
+    "Define group-to-OLP-household mapping",
+    "Define group notification broadcasting",
+    "Define emergency group auto-detection"
+  ]
+}

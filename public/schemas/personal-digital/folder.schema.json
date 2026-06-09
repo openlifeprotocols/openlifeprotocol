@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Folder",
+  "description": "A folder in cloud storage — a logical container for drive files, with access control and OLP classification.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^folder_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "provider": { "type": "string", "enum": ["google_drive", "icloud_drive", "onedrive", "dropbox", "box", "other"] },
+    "provider_folder_id": { "type": "string" },
+    "name": { "type": "string" },
+    "path": { "type": "string" },
+    "parent_folder_id": { "type": "string" },
+    "file_count": { "type": "integer" },
+    "size_bytes": { "type": "integer" },
+    "is_shared": { "type": "boolean" },
+    "shared_with": { "type": "array", "items": { "type": "string", "format": "email" } },
+    "life_area_slug": { "type": "string", "description": "OLP life area this folder primarily holds" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "provider", "name"],
+  "_phase1_todo": [
+    "Define OLP suggested folder taxonomy",
+    "Define folder-to-case mapping",
+    "Define folder access audit",
+    "Define folder encryption status"
+  ]
+}

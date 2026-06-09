@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Album",
+  "description": "A photo album or shared album — a named collection of photos and videos.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^album_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "provider": { "type": "string", "enum": ["google_photos", "icloud_photos", "amazon_photos", "other"] },
+    "provider_album_id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "is_shared": { "type": "boolean" },
+    "shared_with": { "type": "array", "items": { "type": "string", "format": "email" } },
+    "cover_photo_id": { "type": "string" },
+    "photo_count": { "type": "integer" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "date_range": {
+      "type": "object",
+      "properties": {
+        "from": { "type": "string", "format": "date" },
+        "to": { "type": "string", "format": "date" }
+      }
+    },
+    "linked_event_id": { "type": "string" },
+    "linked_trip_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "provider", "name"],
+  "_phase1_todo": [
+    "Define album-to-life-event auto-linking",
+    "Define shared album estate transfer",
+    "Define album memory digest generation",
+    "Define album deduplication"
+  ]
+}

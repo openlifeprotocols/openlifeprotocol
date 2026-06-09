@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Photo",
+  "description": "A photo in a personal photo library — metadata only. The photo itself is not stored in OLP. Enables life event linkage, memory timelines, and estate planning.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^photo_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "provider": { "type": "string", "enum": ["google_photos", "icloud_photos", "amazon_photos", "dropbox", "local", "other"] },
+    "provider_media_id": { "type": "string" },
+    "filename": { "type": "string" },
+    "mime_type": { "type": "string", "enum": ["image/jpeg", "image/png", "image/heic", "image/gif", "image/webp", "video/mp4", "video/mov", "other"] },
+    "media_type": { "type": "string", "enum": ["photo", "video", "screenshot", "scan"] },
+    "taken_at": { "type": "string", "format": "date-time" },
+    "uploaded_at": { "type": "string", "format": "date-time" },
+    "location": {
+      "type": "object",
+      "properties": {
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "place_name": { "type": "string" },
+        "country": { "type": "string" }
+      }
+    },
+    "width": { "type": "integer" },
+    "height": { "type": "integer" },
+    "size_bytes": { "type": "integer" },
+    "is_favourite": { "type": "boolean" },
+    "is_hidden": { "type": "boolean" },
+    "album_ids": { "type": "array", "items": { "type": "string" } },
+    "people_detected": { "type": "array", "items": { "type": "string" }, "description": "OLP Actor IDs of recognised people" },
+    "linked_event_id": { "type": "string", "description": "Life event this photo belongs to" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "provider", "taken_at"],
+  "_phase1_todo": [
+    "Define photo-to-life-event auto-tagging",
+    "Define facial recognition linkage (privacy consent required)",
+    "Define photo estate handover",
+    "Define photo deduplication"
+  ]
+}

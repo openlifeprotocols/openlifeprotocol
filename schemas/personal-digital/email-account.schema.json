@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Email Account",
+  "description": "An email account — inbox credentials reference, provider, aliases, and storage quota. Credentials are never stored; only metadata needed to understand what accounts exist.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^email_account_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "email_address": { "type": "string", "format": "email" },
+    "display_name": { "type": "string" },
+    "provider": { "type": "string", "enum": ["gmail", "outlook", "yahoo", "icloud", "protonmail", "fastmail", "custom_imap", "other"] },
+    "aliases": { "type": "array", "items": { "type": "string", "format": "email" } },
+    "account_type": { "type": "string", "enum": ["personal", "work", "shared", "alias_only"] },
+    "storage_quota_gb": { "type": "number" },
+    "storage_used_gb": { "type": "number" },
+    "two_factor_enabled": { "type": "boolean" },
+    "recovery_email": { "type": "string", "format": "email" },
+    "recovery_phone": { "type": "string" },
+    "created_date": { "type": "string", "format": "date" },
+    "last_accessed": { "type": "string", "format": "date-time" },
+    "forwarding_to": { "type": "string", "format": "email" },
+    "death_instructions": { "type": "string", "enum": ["delete", "archive", "forward_to_executor", "no_instruction"] },
+    "credential_reference_id": { "type": "string", "description": "Reference to digital-life/credential-reference — no password stored here" },
+    "status": { "type": "string", "enum": ["active", "inactive", "suspended", "closed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "email_address", "provider"],
+  "_phase1_todo": [
+    "Define OAuth scope for read-only email analysis",
+    "Define IMAP/SMTP credential vault integration",
+    "Define inbox unsubscribe workflow",
+    "Define account closure checklist on death"
+  ]
+}

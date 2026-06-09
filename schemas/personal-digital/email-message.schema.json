@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Email Message",
+  "description": "A single email message — metadata only. Body content is not stored; only what's needed to classify, link, and act on an email within OLP.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^email_msg_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "account_id": { "type": "string" },
+    "thread_id": { "type": "string" },
+    "message_id": { "type": "string", "description": "RFC 5322 Message-ID header" },
+    "from": { "type": "string", "format": "email" },
+    "to": { "type": "array", "items": { "type": "string", "format": "email" } },
+    "cc": { "type": "array", "items": { "type": "string", "format": "email" } },
+    "subject": { "type": "string" },
+    "received_at": { "type": "string", "format": "date-time" },
+    "sent_at": { "type": "string", "format": "date-time" },
+    "direction": { "type": "string", "enum": ["inbound", "outbound"] },
+    "has_attachments": { "type": "boolean" },
+    "attachment_count": { "type": "integer" },
+    "label_ids": { "type": "array", "items": { "type": "string" } },
+    "is_read": { "type": "boolean" },
+    "is_starred": { "type": "boolean" },
+    "importance": { "type": "string", "enum": ["low", "normal", "high"] },
+    "classification": {
+      "type": "string",
+      "enum": ["government_official", "financial", "legal", "medical", "subscription", "receipt", "booking_confirmation", "work", "personal", "marketing", "spam", "other"],
+      "description": "OLP-inferred classification"
+    },
+    "linked_case_id": { "type": "string" },
+    "linked_document_id": { "type": "string" },
+    "linked_subscription_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "account_id", "from", "subject", "received_at"],
+  "_phase1_todo": [
+    "Define email classification ML model",
+    "Define auto-link to OLP cases from email",
+    "Define receipt/invoice extraction pipeline",
+    "Define GDPR-compliant email body handling"
+  ]
+}

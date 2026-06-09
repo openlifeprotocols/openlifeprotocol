@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Email Label",
+  "description": "An email label or folder — a user-defined or system-defined tag used to organise email.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^email_label_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "account_id": { "type": "string" },
+    "name": { "type": "string" },
+    "provider_id": { "type": "string", "description": "ID in the email provider's system" },
+    "label_type": { "type": "string", "enum": ["system", "user_defined", "olp_inferred"] },
+    "colour": { "type": "string" },
+    "parent_label_id": { "type": "string" },
+    "message_count": { "type": "integer" },
+    "olp_classification": { "type": "string", "description": "OLP life area this label maps to" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "account_id", "name", "label_type"],
+  "_phase1_todo": [
+    "Define OLP auto-labelling rules",
+    "Define label-to-life-area mapping",
+    "Define label sync across providers",
+    "Define label cleanup workflow"
+  ]
+}
