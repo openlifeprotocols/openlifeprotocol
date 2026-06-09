@@ -678,7 +678,7 @@
       "roles": [],
       "semanticDescription": "A label or keyword used to organize and retrieve entities.",
       "graphImportance": "utility",
-      "lifeDomains": []
+      "lifeDomains": ["search", "knowledge"]
     },
     {
       "schema": "classification",
@@ -698,7 +698,7 @@
       "roles": [],
       "semanticDescription": "A structured category system for organizing entities.",
       "graphImportance": "utility",
-      "lifeDomains": []
+      "lifeDomains": ["taxonomy", "knowledge"]
     },
     {
       "schema": "status",
@@ -718,7 +718,7 @@
       "roles": [],
       "semanticDescription": "A state indicator for the current condition of an entity.",
       "graphImportance": "utility",
-      "lifeDomains": []
+      "lifeDomains": ["planning", "project-management"]
     },
     {
       "schema": "reference",
@@ -738,7 +738,7 @@
       "roles": [],
       "semanticDescription": "A pointer or link to another entity or external source.",
       "graphImportance": "utility",
-      "lifeDomains": []
+      "lifeDomains": ["learning", "knowledge"]
     },
     {
       "schema": "identifier",
@@ -758,7 +758,7 @@
       "roles": [],
       "semanticDescription": "A unique code or number that distinguishes an entity.",
       "graphImportance": "utility",
-      "lifeDomains": []
+      "lifeDomains": ["administration", "identity"]
     },
     {
       "schema": "evidence",
@@ -778,7 +778,7 @@
       "roles": [],
       "semanticDescription": "A fact or document that provides proof or basis for a claim.",
       "graphImportance": "utility",
-      "lifeDomains": []
+      "lifeDomains": ["legal", "evidence"]
     },
     {
       "schema": "provenance",
@@ -798,7 +798,7 @@
       "roles": [],
       "semanticDescription": "The origin, history, and authorship information for an entity.",
       "graphImportance": "utility",
-      "lifeDomains": []
+      "lifeDomains": ["audit", "administration"]
     },
     {
       "schema": "timeline",
@@ -838,7 +838,7 @@
       "roles": [],
       "semanticDescription": "A geographic place or coordinate where an entity exists.",
       "graphImportance": "supporting",
-      "lifeDomains": []
+      "lifeDomains": ["locations", "travel"]
     },
     {
       "schema": "person",
@@ -2500,7 +2500,7 @@
       "roles": [],
       "semanticDescription": "A permission or authorization rule for accessing resources.",
       "graphImportance": "utility",
-      "lifeDomains": ["security"]
+      "lifeDomains": ["security", "administration"]
     }
   ]
 }
