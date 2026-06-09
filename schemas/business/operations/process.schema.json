@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Process",
+  "description": "A documented business process — the repeatable sequence of activities that produces an outcome.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^process_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "process_type": { "type": "string", "enum": ["core", "support", "management"] },
+    "department_id": { "type": "string" },
+    "owner_id": { "type": "string" },
+    "inputs": { "type": "array", "items": { "type": "string" } },
+    "outputs": { "type": "array", "items": { "type": "string" } },
+    "steps": { "type": "array", "items": { "type": "object", "properties": { "step": { "type": "integer" }, "description": { "type": "string" }, "responsible": { "type": "string" } } } },
+    "kpis": { "type": "array", "items": { "type": "string" } },
+    "sop_id": { "type": "string" },
+    "automation_level": { "type": "string", "enum": ["manual", "semi_automated", "fully_automated"] },
+    "status": { "type": "string", "enum": ["active", "under_review", "deprecated"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name", "process_type"],
+  "_phase1_todo": ["Define BPMN export", "Define process mining integration", "Define process cost analysis"]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Risk",
+  "description": "A business risk — an uncertain event or condition that, if it occurs, could have a positive or negative effect on objectives.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^risk_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "category": { "type": "string", "enum": ["strategic", "operational", "financial", "compliance_legal", "reputational", "technology", "people", "market", "environmental", "other"] },
+    "owner_id": { "type": "string" },
+    "probability": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "impact": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "risk_score": { "type": "integer", "minimum": 1, "maximum": 25 },
+    "inherent_rating": { "type": "string", "enum": ["critical", "high", "medium", "low"] },
+    "residual_rating": { "type": "string", "enum": ["critical", "high", "medium", "low"] },
+    "control_ids": { "type": "array", "items": { "type": "string" } },
+    "treatment": { "type": "string", "enum": ["accept", "mitigate", "transfer", "avoid"] },
+    "review_date": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["open", "mitigated", "closed", "accepted"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "title", "category", "probability", "impact"],
+  "_phase1_todo": ["Define risk heat map", "Define risk appetite thresholds", "Define risk escalation workflow"]
+}

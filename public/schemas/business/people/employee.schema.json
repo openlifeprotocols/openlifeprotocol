@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Employee (Business)",
+  "description": "An employee record within a business — extending the work/employment schema with business-specific context: department, role, cost centre.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^biz_employee_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "person_id": { "type": "string" },
+    "employment_id": { "type": "string", "description": "Reference to work/employment.schema.json" },
+    "employee_number": { "type": "string" },
+    "department_id": { "type": "string" },
+    "role_id": { "type": "string" },
+    "team_id": { "type": "string" },
+    "reports_to_id": { "type": "string" },
+    "location_id": { "type": "string" },
+    "cost_centre": { "type": "string" },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["active", "on_leave", "notice_period", "ended"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "person_id"],
+  "_phase1_todo": ["Define org chart position", "Define succession planning", "Define skills matrix"]
+}

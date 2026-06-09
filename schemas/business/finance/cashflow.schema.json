@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cashflow",
+  "description": "A cashflow statement or projection — the movement of cash in and out of the business over a period.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^cashflow_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "period": { "type": "object", "properties": { "from": { "type": "string", "format": "date" }, "to": { "type": "string", "format": "date" }, "label": { "type": "string" } }, "required": ["from", "to"] },
+    "cashflow_type": { "type": "string", "enum": ["actual", "forecast", "combined"] },
+    "opening_balance": { "type": "number" },
+    "inflows": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "category": { "type": "string" }, "amount": { "type": "number" }, "date": { "type": "string", "format": "date" } } }
+    },
+    "outflows": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "category": { "type": "string" }, "amount": { "type": "number" }, "date": { "type": "string", "format": "date" } } }
+    },
+    "total_inflows": { "type": "number" },
+    "total_outflows": { "type": "number" },
+    "net_cashflow": { "type": "number" },
+    "closing_balance": { "type": "number" },
+    "runway_months": { "type": "number", "description": "Months of runway at current burn rate" },
+    "currency": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "period", "cashflow_type", "currency"],
+  "_phase1_todo": ["Define 13-week rolling cashflow", "Define runway alert thresholds", "Define bank feed integration"]
+}

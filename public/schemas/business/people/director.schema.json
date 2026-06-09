@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Director",
+  "description": "A company director — with statutory responsibilities, appointment date, and filing obligations.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^director_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "person_id": { "type": "string" },
+    "director_type": { "type": "string", "enum": ["executive", "non_executive", "managing", "chairman", "independent", "shadow"] },
+    "appointed_date": { "type": "string", "format": "date" },
+    "resigned_date": { "type": "string", "format": "date" },
+    "registered_with_companies_house": { "type": "boolean" },
+    "service_address_id": { "type": "string" },
+    "responsibilities": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["active", "resigned", "disqualified"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "person_id", "director_type", "appointed_date"],
+  "_phase1_todo": ["Define director duty of care obligations", "Define director disqualification tracking", "Define board meeting minutes"]
+}

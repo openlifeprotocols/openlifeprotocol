@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Customer",
+  "description": "A customer of the business — individual or organisation, with lifetime value, segment, and health score.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^customer_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": { "type": "array", "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] } },
+    "business_id": { "type": "string" },
+    "actor_id": { "type": "string", "description": "Person or business entity" },
+    "customer_type": { "type": "string", "enum": ["b2c_individual", "b2b_company", "b2g_government", "other"] },
+    "account_id": { "type": "string" },
+    "segment_id": { "type": "string" },
+    "owner_id": { "type": "string", "description": "Account manager" },
+    "acquired_date": { "type": "string", "format": "date" },
+    "acquisition_channel": { "type": "string" },
+    "lifetime_value": { "type": "number" },
+    "annual_recurring_revenue": { "type": "number" },
+    "currency": { "type": "string" },
+    "health_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "nps_score": { "type": "integer", "minimum": -100, "maximum": 100 },
+    "churn_risk": { "type": "string", "enum": ["low", "medium", "high", "churned"] },
+    "status": { "type": "string", "enum": ["active", "at_risk", "churned", "reactivated", "prospect"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "customer_type"],
+  "_phase1_todo": ["Define customer health scoring algorithm", "Define churn prediction", "Define LTV calculation", "Define customer 360 view"]
+}

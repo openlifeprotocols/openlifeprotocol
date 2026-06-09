@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Customer Segment",
+  "description": "A defined segment of customers sharing characteristics — used for pricing, targeting, and reporting.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^segment_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "criteria": { "type": "object", "description": "Segmentation criteria as key-value rules", "additionalProperties": true },
+    "segment_type": { "type": "string", "enum": ["firmographic", "behavioural", "demographic", "psychographic", "value_based", "product_usage"] },
+    "customer_count": { "type": "integer" },
+    "avg_ltv": { "type": "number" },
+    "currency": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name"],
+  "_phase1_todo": ["Define dynamic segment rules engine", "Define segment-to-campaign mapping", "Define segment revenue attribution"]
+}

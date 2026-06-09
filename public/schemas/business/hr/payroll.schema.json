@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "payroll (HR)",
+  "description": "HR context for payroll. References work/payroll.schema.json and adds business-specific fields: approver, department, cost centre.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "employee_id": { "type": "string" },
+    "department_id": { "type": "string" },
+    "approver_id": { "type": "string" },
+    "status": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "employee_id"],
+  "_phase1_todo": ["Link to work/payroll for full detail", "Define payroll workflow", "Define payroll compliance checks"]
+}

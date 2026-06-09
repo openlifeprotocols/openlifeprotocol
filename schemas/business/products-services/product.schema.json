@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Product (Business)",
+  "description": "A business product in the context of CRM, catalogue, and revenue tracking. References resources/product for physical/digital details.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^biz_product_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "resource_product_id": { "type": "string", "description": "Reference to resources/product.schema.json" },
+    "name": { "type": "string" },
+    "sku": { "type": "string" },
+    "category": { "type": "string" },
+    "pricing_id": { "type": "string" },
+    "cogs": { "type": "number" },
+    "gross_margin": { "type": "number" },
+    "currency": { "type": "string" },
+    "units_sold_ytd": { "type": "integer" },
+    "revenue_ytd": { "type": "number" },
+    "target_segment_ids": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["active", "discontinued", "coming_soon"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name"],
+  "_phase1_todo": ["Define product margin analysis", "Define product roadmap linking", "Define product-to-campaign attribution"]
+}

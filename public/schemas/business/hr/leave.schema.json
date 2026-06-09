@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Leave",
+  "description": "An employee leave request and approval — annual leave, sick leave, parental leave, or other absence.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^leave_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "employee_id": { "type": "string" },
+    "approver_id": { "type": "string" },
+    "leave_type": { "type": "string", "enum": ["annual", "sick", "maternity", "paternity", "shared_parental", "adoption", "compassionate", "unpaid", "study", "jury_duty", "other"] },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "days": { "type": "number" },
+    "half_day": { "type": "boolean" },
+    "notes": { "type": "string" },
+    "cover_person_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["requested", "approved", "rejected", "cancelled"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "employee_id", "leave_type", "start_date", "end_date"],
+  "_phase1_todo": ["Define leave entitlement calculation", "Define carry-over rules", "Define statutory vs contractual leave", "Define sick leave trigger points"]
+}

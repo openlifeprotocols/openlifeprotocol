@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Customer Journey",
+  "description": "The defined stages a customer moves through — from awareness to advocacy — with touchpoints and conversion events.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^customer_journey_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "name": { "type": "string" },
+    "applies_to_segment_id": { "type": "string" },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "touchpoints": { "type": "array", "items": { "type": "string" } },
+          "goal": { "type": "string" },
+          "success_metric": { "type": "string" },
+          "avg_duration_days": { "type": "integer" }
+        },
+        "required": ["name"]
+      }
+    },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name", "stages"],
+  "_phase1_todo": ["Define journey analytics", "Define friction point detection", "Define personalisation triggers"]
+}

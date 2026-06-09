@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Opportunity",
+  "description": "A sales opportunity — a specific deal being pursued with a prospect or customer.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^opportunity_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "account_id": { "type": "string" },
+    "prospect_id": { "type": "string" },
+    "name": { "type": "string" },
+    "pipeline_id": { "type": "string" },
+    "stage": { "type": "string" },
+    "owner_id": { "type": "string" },
+    "value": { "type": "number" },
+    "currency": { "type": "string" },
+    "probability": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "weighted_value": { "type": "number" },
+    "expected_close_date": { "type": "string", "format": "date" },
+    "actual_close_date": { "type": "string", "format": "date" },
+    "deal_type": { "type": "string", "enum": ["new_business", "expansion", "renewal", "cross_sell", "upsell"] },
+    "products": { "type": "array", "items": { "type": "string" } },
+    "competitors": { "type": "array", "items": { "type": "string" } },
+    "lost_reason": { "type": "string" },
+    "status": { "type": "string", "enum": ["open", "won", "lost", "no_decision"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name", "value", "currency"],
+  "_phase1_todo": ["Define win/loss analysis", "Define deal desk approval", "Define multi-year deal structuring"]
+}

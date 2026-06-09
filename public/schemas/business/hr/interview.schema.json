@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Interview",
+  "description": "An interview record — structured or unstructured, with feedback and scoring.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^interview_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "candidate_id": { "type": "string" },
+    "job_id": { "type": "string" },
+    "interview_type": { "type": "string", "enum": ["screening", "technical", "competency", "values", "panel", "presentation", "final", "offer"] },
+    "interviewer_ids": { "type": "array", "items": { "type": "string" } },
+    "scheduled_at": { "type": "string", "format": "date-time" },
+    "duration_minutes": { "type": "integer" },
+    "format": { "type": "string", "enum": ["in_person", "video", "phone"] },
+    "scorecard": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "criterion": { "type": "string" },
+          "score": { "type": "integer", "minimum": 1, "maximum": 5 },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "overall_recommendation": { "type": "string", "enum": ["strong_yes", "yes", "no", "strong_no"] },
+    "notes": { "type": "string" },
+    "status": { "type": "string", "enum": ["scheduled", "completed", "cancelled", "no_show"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "candidate_id", "job_id", "interview_type", "scheduled_at"],
+  "_phase1_todo": ["Define structured interview guide templates", "Define interviewer calibration", "Define bias detection flags"]
+}

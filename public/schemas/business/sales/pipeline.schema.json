@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pipeline",
+  "description": "A sales pipeline — the defined stages and rules through which opportunities progress.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^pipeline_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "name": { "type": "string" },
+    "pipeline_type": { "type": "string", "enum": ["new_business", "account_management", "renewal", "channel", "partnership"] },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "probability": { "type": "integer" },
+          "entry_criteria": { "type": "string" },
+          "exit_criteria": { "type": "string" },
+          "avg_days_in_stage": { "type": "integer" }
+        },
+        "required": ["name", "probability"]
+      }
+    },
+    "currency": { "type": "string" },
+    "owner_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "archived"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name", "stages"],
+  "_phase1_todo": ["Define pipeline velocity metrics", "Define stage conversion benchmarks", "Define pipeline health scoring"]
+}

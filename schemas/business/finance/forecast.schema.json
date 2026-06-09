@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Forecast",
+  "description": "A financial or sales forecast — projected revenue, costs, or headcount over a future period.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^forecast_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "forecast_type": { "type": "string", "enum": ["revenue", "cost", "headcount", "cashflow", "pipeline"] },
+    "name": { "type": "string" },
+    "period": { "type": "object", "properties": { "from": { "type": "string", "format": "date" }, "to": { "type": "string", "format": "date" }, "label": { "type": "string" } }, "required": ["from", "to"] },
+    "prepared_by_id": { "type": "string" },
+    "scenario": { "type": "string", "enum": ["base", "upside", "downside", "stretch"] },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": { "type": "string" },
+          "period_label": { "type": "string" },
+          "forecast_amount": { "type": "number" },
+          "actual_amount": { "type": "number" },
+          "variance": { "type": "number" }
+        }
+      }
+    },
+    "total_forecast": { "type": "number" },
+    "total_actual": { "type": "number" },
+    "currency": { "type": "string" },
+    "assumptions": { "type": "array", "items": { "type": "string" } },
+    "confidence": { "type": "string", "enum": ["low", "medium", "high"] },
+    "status": { "type": "string", "enum": ["draft", "approved", "superseded"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "forecast_type", "period", "currency"],
+  "_phase1_todo": ["Define rolling forecast workflow", "Define forecast vs actuals alert", "Define bottom-up vs top-down methods"]
+}

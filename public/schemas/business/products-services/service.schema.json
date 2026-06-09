@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Service (Business)",
+  "description": "A business service in the context of CRM, delivery, and profitability. References resources/service for delivery details.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^biz_service_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "resource_service_id": { "type": "string", "description": "Reference to resources/service.schema.json" },
+    "name": { "type": "string" },
+    "category": { "type": "string" },
+    "pricing_id": { "type": "string" },
+    "cost_to_deliver": { "type": "number" },
+    "revenue_ytd": { "type": "number" },
+    "currency": { "type": "string" },
+    "delivery_team_id": { "type": "string" },
+    "sla_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "discontinued", "beta"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name"],
+  "_phase1_todo": ["Define service capacity planning", "Define service profitability tracking", "Define service SLA monitoring"]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Capacity",
+  "description": "A capacity record — the available and committed capacity of a team, machine, or resource over a period.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^capacity_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "resource_type": { "type": "string", "enum": ["team", "person", "machine", "facility"] },
+    "resource_id": { "type": "string" },
+    "period": { "type": "object", "properties": { "from": { "type": "string", "format": "date" }, "to": { "type": "string", "format": "date" } }, "required": ["from", "to"] },
+    "total_hours": { "type": "number" },
+    "committed_hours": { "type": "number" },
+    "available_hours": { "type": "number" },
+    "utilisation_percentage": { "type": "number" },
+    "bottleneck": { "type": "boolean" },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "resource_type", "resource_id", "period"],
+  "_phase1_todo": ["Define capacity planning horizon", "Define over-capacity alerts", "Define hiring trigger from capacity data"]
+}

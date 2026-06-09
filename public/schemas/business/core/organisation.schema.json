@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Organisation",
+  "description": "An organisational unit within or associated with a business — subsidiary, holding company, division, or partnership.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^organisation_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "parent_organisation_id": { "type": "string" },
+    "name": { "type": "string" },
+    "org_type": { "type": "string", "enum": ["holding_company", "subsidiary", "division", "joint_venture", "franchise", "partnership", "ngo", "other"] },
+    "ownership_percentage": { "type": "number", "minimum": 0, "maximum": 100 },
+    "jurisdiction_id": { "type": "string" },
+    "registered_address_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "dormant", "closed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "name", "org_type"],
+  "_phase1_todo": ["Define org chart visualisation", "Define consolidation accounting", "Define cross-entity trading rules"]
+}

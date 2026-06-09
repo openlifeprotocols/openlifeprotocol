@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sales Activity",
+  "description": "A logged sales activity — call, email, meeting, demo, or follow-up.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^sales_activity_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "opportunity_id": { "type": "string" },
+    "account_id": { "type": "string" },
+    "contact_id": { "type": "string" },
+    "performed_by_id": { "type": "string" },
+    "activity_type": { "type": "string", "enum": ["call", "email", "meeting", "demo", "proposal_sent", "follow_up", "linkedin", "event", "site_visit", "other"] },
+    "subject": { "type": "string" },
+    "notes": { "type": "string" },
+    "occurred_at": { "type": "string", "format": "date-time" },
+    "duration_minutes": { "type": "integer" },
+    "outcome": { "type": "string" },
+    "next_action": { "type": "string" },
+    "next_action_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "activity_type", "occurred_at"],
+  "_phase1_todo": ["Define activity auto-logging from email/calendar", "Define activity to next step automation", "Define activity benchmarking per rep"]
+}

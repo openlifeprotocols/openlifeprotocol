@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Founder",
+  "description": "A founder of the business — with equity, vesting, and involvement history.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^founder_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "person_id": { "type": "string" },
+    "co_founder_ids": { "type": "array", "items": { "type": "string" } },
+    "founding_date": { "type": "string", "format": "date" },
+    "equity_percentage": { "type": "number" },
+    "vesting_schedule": { "type": "string" },
+    "cliff_months": { "type": "integer" },
+    "current_role": { "type": "string" },
+    "is_active": { "type": "boolean" },
+    "departed_date": { "type": "string", "format": "date" },
+    "departure_reason": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "person_id", "founding_date"],
+  "_phase1_todo": ["Define founder share dilution tracking", "Define founder departure buyout", "Define co-founder agreement"]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Feature",
+  "description": "A product or service feature — a discrete capability included or excluded from offerings and packages.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^feature_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "category": { "type": "string" },
+    "is_core": { "type": "boolean" },
+    "is_add_on": { "type": "boolean" },
+    "limits": { "type": "object", "description": "Usage limits when included", "additionalProperties": true },
+    "status": { "type": "string", "enum": ["active", "beta", "deprecated", "coming_soon"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name"],
+  "_phase1_todo": ["Define feature flag management", "Define feature usage analytics", "Define feature deprecation workflow"]
+}

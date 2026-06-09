@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pricing",
+  "description": "A pricing configuration — the rules, rates, and models for how a product or service is priced.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^pricing_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "name": { "type": "string" },
+    "pricing_model": { "type": "string", "enum": ["flat_rate", "per_user", "per_unit", "usage_based", "tiered", "volume", "freemium", "cost_plus", "value_based", "custom"] },
+    "currency": { "type": "string" },
+    "base_price": { "type": "number" },
+    "unit": { "type": "string", "description": "e.g., user, seat, API call, GB" },
+    "tiers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "number" },
+          "to": { "type": "number" },
+          "unit_price": { "type": "number" },
+          "flat_fee": { "type": "number" }
+        }
+      }
+    },
+    "minimum_commitment": { "type": "number" },
+    "free_tier_limit": { "type": "number" },
+    "discounts": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "valid_from": { "type": "string", "format": "date" },
+    "valid_to": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["active", "draft", "archived"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name", "pricing_model", "currency"],
+  "_phase1_todo": ["Define price change notification workflow", "Define grandfathering rules", "Define multi-currency pricing"]
+}

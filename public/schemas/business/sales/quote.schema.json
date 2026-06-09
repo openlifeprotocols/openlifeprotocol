@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Quote (Sales)",
+  "description": "A sales quote sent to a prospect or customer. Extends commerce/quote with CRM context: opportunity, owner, and approval.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^sales_quote_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "opportunity_id": { "type": "string" },
+    "account_id": { "type": "string" },
+    "contact_id": { "type": "string" },
+    "commerce_quote_id": { "type": "string", "description": "Reference to commerce/quote.schema.json" },
+    "owner_id": { "type": "string" },
+    "approval_required": { "type": "boolean" },
+    "approved_by_id": { "type": "string" },
+    "discount_approved": { "type": "number" },
+    "version": { "type": "integer" },
+    "supersedes_quote_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["draft", "pending_approval", "sent", "accepted", "rejected", "expired", "superseded"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "opportunity_id"],
+  "_phase1_todo": ["Define discount approval matrix", "Define quote versioning workflow", "Define CPQ (configure price quote) rules"]
+}

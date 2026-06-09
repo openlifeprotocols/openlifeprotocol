@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ubusiness template (Business Registry)",
+  "description": "Business registry schema for business-template — reusable templates and reference data.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "description": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "draft", "archived"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "name"],
+  "_phase1_todo": ["Define business-template publish workflow", "Define business-template versioning", "Define business-template deployment"]
+}

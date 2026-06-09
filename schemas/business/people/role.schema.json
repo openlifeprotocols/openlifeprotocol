@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Role",
+  "description": "A defined role within the business — job title, level, responsibilities, and required skills.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^role_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "department_id": { "type": "string" },
+    "title": { "type": "string" },
+    "level": { "type": "string", "enum": ["intern", "junior", "mid", "senior", "lead", "manager", "director", "vp", "c_suite", "other"] },
+    "function": { "type": "string" },
+    "reports_to_role_id": { "type": "string" },
+    "responsibilities": { "type": "array", "items": { "type": "string" } },
+    "required_skills": { "type": "array", "items": { "type": "string" } },
+    "salary_band_min": { "type": "number" },
+    "salary_band_max": { "type": "number" },
+    "currency": { "type": "string" },
+    "is_filled": { "type": "boolean" },
+    "headcount": { "type": "integer" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "title", "level"],
+  "_phase1_todo": ["Define role competency framework", "Define role grading and levelling", "Define role succession planning"]
+}

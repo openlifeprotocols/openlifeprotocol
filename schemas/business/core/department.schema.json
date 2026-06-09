@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Department",
+  "description": "A functional department within a business — the organisational unit people belong to.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^department_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "parent_department_id": { "type": "string" },
+    "name": { "type": "string" },
+    "code": { "type": "string" },
+    "function": { "type": "string", "enum": ["executive", "finance", "hr", "sales", "marketing", "operations", "it", "legal", "product", "engineering", "customer_success", "procurement", "logistics", "r_and_d", "other"] },
+    "head_person_id": { "type": "string" },
+    "cost_centre_code": { "type": "string" },
+    "budget_id": { "type": "string" },
+    "member_ids": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["active", "restructuring", "closed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name", "function"],
+  "_phase1_todo": ["Define org chart relationships", "Define department cost tracking", "Define RACI matrix"]
+}

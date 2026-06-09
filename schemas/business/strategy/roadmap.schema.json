@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "roadmap (Strategy)",
+  "description": "Business strategy schema for roadmap.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "name": { "type": "string" },
+    "owner_id": { "type": "string" },
+    "period": { "type": "string" },
+    "status": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name"],
+  "_phase1_todo": ["Define roadmap framework", "Define roadmap reporting workflow"]
+}

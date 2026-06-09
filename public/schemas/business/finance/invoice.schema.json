@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Invoice (Business Finance)",
+  "description": "Business finance view of an invoice — links commerce/invoice to customers, contracts, and revenue recognition.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^biz_invoice_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "commerce_invoice_id": { "type": "string" },
+    "customer_id": { "type": "string" },
+    "contract_id": { "type": "string" },
+    "sales_order_id": { "type": "string" },
+    "department_id": { "type": "string" },
+    "cost_centre": { "type": "string" },
+    "revenue_recognised": { "type": "boolean" },
+    "recognised_period": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "commerce_invoice_id", "customer_id"],
+  "_phase1_todo": ["Define IFRS 15 revenue recognition", "Define deferred revenue tracking", "Define invoice aging report"]
+}

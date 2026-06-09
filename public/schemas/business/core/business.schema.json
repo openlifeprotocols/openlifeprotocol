@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Business",
+  "description": "The root business record — the legal and operational entity. All other business schemas reference this.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^business_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": { "type": "array", "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] } },
+    "legal_name": { "type": "string" },
+    "trading_name": { "type": "string" },
+    "legal_entity_id": { "type": "string" },
+    "business_type": { "type": "string", "enum": ["sole_trader", "partnership", "llp", "ltd", "plc", "charity", "cic", "cooperative", "franchise", "other"] },
+    "stage": { "type": "string", "enum": ["idea", "pre_revenue", "early_stage", "growth", "established", "scale_up", "exit_preparation", "dormant"] },
+    "industry_id": { "type": "string" },
+    "founded_date": { "type": "string", "format": "date" },
+    "website": { "type": "string", "format": "uri" },
+    "description": { "type": "string" },
+    "mission": { "type": "string" },
+    "vision": { "type": "string" },
+    "logo_url": { "type": "string" },
+    "registered_address_id": { "type": "string" },
+    "primary_location_id": { "type": "string" },
+    "employee_count": { "type": "integer" },
+    "annual_revenue": { "type": "number" },
+    "currency": { "type": "string" },
+    "fiscal_year_end": { "type": "string", "description": "MM-DD, e.g. 03-31" },
+    "status": { "type": "string", "enum": ["active", "dormant", "dissolved", "in_administration"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "legal_name", "business_type"],
+  "_phase1_todo": ["Define business lifecycle events", "Define multi-entity group structure", "Define business health scoring", "Define Companies House sync"]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Package",
+  "description": "A bundled package — multiple offerings or tiers combined at a single price point.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^package_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "tier": { "type": "string", "enum": ["starter", "growth", "professional", "enterprise", "custom"] },
+    "included_offering_ids": { "type": "array", "items": { "type": "string" } },
+    "included_feature_ids": { "type": "array", "items": { "type": "string" } },
+    "limits": { "type": "object", "description": "Usage limits per feature/resource", "additionalProperties": true },
+    "price": { "type": "number" },
+    "currency": { "type": "string" },
+    "billing_frequency": { "type": "string", "enum": ["monthly", "annual", "one_off"] },
+    "popular": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["active", "deprecated", "coming_soon"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name", "price", "currency"],
+  "_phase1_todo": ["Define tier migration workflow", "Define package comparison matrix", "Define add-on handling"]
+}

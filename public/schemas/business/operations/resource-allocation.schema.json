@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "resource allocation (Business Operations)",
+  "description": "Business operations context for resource-allocation. References the matching core OLP schema and adds business_id, department, and operational metadata.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "olp_resource_allocation_id": { "type": "string", "description": "Reference to core OLP resource-allocation schema" },
+    "department_id": { "type": "string" },
+    "owner_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id"],
+  "_phase1_todo": ["Link to OLP resource-allocation for full detail", "Define business-specific resource-allocation extensions"]
+}

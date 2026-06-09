@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Offering",
+  "description": "A business offering — the packaged combination of products, services, and pricing that constitutes what the business sells.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^offering_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "offering_type": { "type": "string", "enum": ["product", "service", "bundle", "subscription", "platform", "marketplace"] },
+    "target_segment_ids": { "type": "array", "items": { "type": "string" } },
+    "product_ids": { "type": "array", "items": { "type": "string" } },
+    "service_ids": { "type": "array", "items": { "type": "string" } },
+    "pricing_id": { "type": "string" },
+    "feature_ids": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["active", "deprecated", "coming_soon"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name", "offering_type"],
+  "_phase1_todo": ["Define offering value proposition", "Define offering competitive positioning", "Define offering retirement workflow"]
+}

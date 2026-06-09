@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Performance Review",
+  "description": "An employee performance review — annual, mid-year, or probation.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^perf_review_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "employee_id": { "type": "string" },
+    "reviewer_id": { "type": "string" },
+    "review_type": { "type": "string", "enum": ["annual", "mid_year", "probation", "pip", "360"] },
+    "period": { "type": "object", "properties": { "from": { "type": "string", "format": "date" }, "to": { "type": "string", "format": "date" } } },
+    "objectives": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "objective": { "type": "string" }, "rating": { "type": "string" }, "notes": { "type": "string" } } }
+    },
+    "overall_rating": { "type": "string", "enum": ["exceptional", "exceeds_expectations", "meets_expectations", "needs_improvement", "unsatisfactory"] },
+    "salary_increase": { "type": "number" },
+    "bonus": { "type": "number" },
+    "currency": { "type": "string" },
+    "development_plan": { "type": "string" },
+    "signed_by_employee": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["in_progress", "complete", "disputed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "employee_id", "reviewer_id", "review_type"],
+  "_phase1_todo": ["Define calibration sessions", "Define 360 feedback collection", "Define PIP workflow", "Define pay review linkage"]
+}

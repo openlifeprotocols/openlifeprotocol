@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Incident",
+  "description": "A business incident — a security breach, operational failure, near-miss, or compliance breach.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^incident_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "title": { "type": "string" },
+    "incident_type": { "type": "string", "enum": ["security_breach", "data_breach", "operational_failure", "system_outage", "health_safety", "compliance_breach", "fraud", "near_miss", "other"] },
+    "severity": { "type": "string", "enum": ["critical", "high", "medium", "low"] },
+    "reported_by_id": { "type": "string" },
+    "occurred_at": { "type": "string", "format": "date-time" },
+    "discovered_at": { "type": "string", "format": "date-time" },
+    "reported_at": { "type": "string", "format": "date-time" },
+    "description": { "type": "string" },
+    "affected_systems": { "type": "array", "items": { "type": "string" } },
+    "affected_people_count": { "type": "integer" },
+    "data_subjects_affected": { "type": "boolean" },
+    "ico_notified": { "type": "boolean" },
+    "ico_notification_date": { "type": "string", "format": "date" },
+    "root_cause": { "type": "string" },
+    "corrective_actions": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["open", "investigating", "contained", "resolved", "closed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "title", "incident_type", "severity", "occurred_at"],
+  "_phase1_todo": ["Define ICO 72-hour notification workflow", "Define incident playbooks", "Define post-incident review"]
+}

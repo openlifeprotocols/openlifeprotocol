@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Team",
+  "description": "A team — a group of people working together on a function, product, or project.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^team_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "department_id": { "type": "string" },
+    "name": { "type": "string" },
+    "team_type": { "type": "string", "enum": ["functional", "product", "project", "cross_functional", "squad", "pod", "other"] },
+    "lead_id": { "type": "string" },
+    "member_ids": { "type": "array", "items": { "type": "string" } },
+    "mission": { "type": "string" },
+    "okr_ids": { "type": "array", "items": { "type": "string" } },
+    "tools": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["active", "disbanded"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name", "team_type"],
+  "_phase1_todo": ["Define team capacity planning", "Define team health metrics", "Define team retrospective workflow"]
+}

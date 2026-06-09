@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Catalogue",
+  "description": "A product/service catalogue — the versioned, published list of what the business offers and at what price.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^catalogue_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "name": { "type": "string" },
+    "version": { "type": "string" },
+    "effective_date": { "type": "string", "format": "date" },
+    "currency": { "type": "string" },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "offering_id": { "type": "string" },
+          "package_id": { "type": "string" },
+          "product_id": { "type": "string" },
+          "service_id": { "type": "string" },
+          "pricing_id": { "type": "string" },
+          "visible": { "type": "boolean" }
+        }
+      }
+    },
+    "status": { "type": "string", "enum": ["draft", "active", "archived"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name", "version"],
+  "_phase1_todo": ["Define catalogue publish workflow", "Define catalogue-to-quote integration", "Define catalogue localisation"]
+}

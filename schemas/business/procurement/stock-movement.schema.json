@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "stock movement (Business Procurement)",
+  "description": "Business procurement context for stock-movement. References resources/stock-movement.schema.json and adds business_id, approval workflow, and cost centre.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "resource_stock_movement_id": { "type": "string", "description": "Reference to resources/stock-movement.schema.json" },
+    "department_id": { "type": "string" },
+    "cost_centre": { "type": "string" },
+    "approved_by_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id"],
+  "_phase1_todo": ["Link to resources/stock-movement for full detail", "Define procurement approval workflow"]
+}

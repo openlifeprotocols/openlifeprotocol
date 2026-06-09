@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Branch",
+  "description": "A branch or regional office of a business.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^branch_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "location_id": { "type": "string" },
+    "name": { "type": "string" },
+    "branch_code": { "type": "string" },
+    "branch_manager_id": { "type": "string" },
+    "opened_date": { "type": "string", "format": "date" },
+    "closed_date": { "type": "string", "format": "date" },
+    "profit_centre": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["active", "closed", "planned"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name"],
+  "_phase1_todo": ["Define branch P&L reporting", "Define branch target-setting", "Define branch compliance monitoring"]
+}

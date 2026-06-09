@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "tax (Business Finance)",
+  "description": "Business finance context for tax. References commerce/tax.schema.json and adds business_id, department, cost_centre, and reporting period linkage.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "commerce_tax_id": { "type": "string", "description": "Reference to commerce/tax.schema.json" },
+    "department_id": { "type": "string" },
+    "cost_centre": { "type": "string" },
+    "reporting_period": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id"],
+  "_phase1_todo": ["Link to commerce/tax for full detail", "Define business-specific tax rules"]
+}

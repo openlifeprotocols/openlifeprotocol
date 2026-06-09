@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "company formed",
+  "description": "Business lifecycle event: company-formed. Extends core OLP Event schema with business context.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "event_id": { "type": "string", "description": "Reference to core OLP Event record" },
+    "occurred_at": { "type": "string", "format": "date-time" },
+    "actor_id": { "type": "string" },
+    "description": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "occurred_at"],
+  "_phase1_todo": ["Define company-formed downstream triggers", "Define company-formed notification workflow"]
+}

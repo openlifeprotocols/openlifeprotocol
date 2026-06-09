@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "suubscription (Business Finance)",
+  "description": "Business finance context for subscription. References commerce/subscription.schema.json and adds business_id, department, cost_centre, and reporting period linkage.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "commerce_subscription_id": { "type": "string", "description": "Reference to commerce/subscription.schema.json" },
+    "department_id": { "type": "string" },
+    "cost_centre": { "type": "string" },
+    "reporting_period": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id"],
+  "_phase1_todo": ["Link to commerce/subscription for full detail", "Define business-specific subscription rules"]
+}

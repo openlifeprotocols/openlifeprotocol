@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "customer health (Support Success)",
+  "description": "Business support and success schema for customer-health.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "customer_id": { "type": "string" },
+    "owner_id": { "type": "string" },
+    "status": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id"],
+  "_phase1_todo": ["Define customer-health workflow", "Define customer-health SLA tracking"]
+}

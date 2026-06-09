@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Shareholder",
+  "description": "A shareholder of the business — with share class, quantity, and ownership percentage.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^shareholder_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "actor_id": { "type": "string", "description": "Person or organisation holding shares" },
+    "share_class": { "type": "string", "enum": ["ordinary", "preference", "deferred", "employee_option", "growth", "a_ordinary", "b_ordinary"] },
+    "shares_held": { "type": "integer" },
+    "ownership_percentage": { "type": "number" },
+    "nominal_value": { "type": "number" },
+    "paid_value": { "type": "number" },
+    "currency": { "type": "string" },
+    "is_psc": { "type": "boolean", "description": "Person with Significant Control (>25%)" },
+    "acquired_date": { "type": "string", "format": "date" },
+    "disposed_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "actor_id", "share_class", "shares_held"],
+  "_phase1_todo": ["Define share transfer workflow", "Define PSC register compliance", "Define dilution calculation"]
+}

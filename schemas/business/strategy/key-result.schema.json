@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Key Result",
+  "description": "A measurable key result — the quantitative success measure for an OKR objective.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^key_result_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "objective_id": { "type": "string" },
+    "title": { "type": "string" },
+    "metric": { "type": "string" },
+    "starting_value": { "type": "number" },
+    "target_value": { "type": "number" },
+    "current_value": { "type": "number" },
+    "unit": { "type": "string" },
+    "progress": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "owner_id": { "type": "string" },
+    "kpi_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["on_track", "at_risk", "off_track", "complete"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "objective_id", "title", "target_value"],
+  "_phase1_todo": ["Define automated KR data feeds", "Define KR confidence scoring", "Define stretch vs committed KRs"]
+}

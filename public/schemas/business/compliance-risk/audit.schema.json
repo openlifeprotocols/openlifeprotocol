@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "audit (Compliance Risk)",
+  "description": "Business compliance-risk schema for audit.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "name": { "type": "string" },
+    "owner_id": { "type": "string" },
+    "review_date": { "type": "string", "format": "date" },
+    "status": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name"],
+  "_phase1_todo": ["Define audit framework", "Define audit review workflow", "Define audit audit trail"]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ubusiness asset (Business Assets)",
+  "description": "Business asset schema for business-asset. References resources/asset.schema.json where applicable.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "name": { "type": "string" },
+    "asset_value": { "type": "number" },
+    "currency": { "type": "string" },
+    "acquired_date": { "type": "string", "format": "date" },
+    "status": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "name"],
+  "_phase1_todo": ["Define business-asset asset register", "Define business-asset depreciation schedule", "Define business-asset disposal workflow"]
+}

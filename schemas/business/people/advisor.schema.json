@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Advisor",
+  "description": "A business advisor, mentor, or board observer — with remit, equity, and engagement terms.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^advisor_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "person_id": { "type": "string" },
+    "advisor_type": { "type": "string", "enum": ["strategic", "technical", "financial", "legal", "commercial", "board_observer", "mentor", "investor", "other"] },
+    "remit": { "type": "string" },
+    "equity_percentage": { "type": "number" },
+    "fee": { "type": "number" },
+    "currency": { "type": "string" },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "nda_signed": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["active", "ended"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "person_id", "advisor_type"],
+  "_phase1_todo": ["Define advisor agreement template", "Define advisor equity vesting", "Define advisor meeting cadence"]
+}
