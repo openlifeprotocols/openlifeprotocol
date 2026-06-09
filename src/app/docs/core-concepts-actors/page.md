@@ -69,6 +69,12 @@ actor:
 
 ---
 
+## Actor Schema
+
+{% schema filename="actor.schema.json" title="Actor Schema" %}
+
+---
+
 ## Actor Relationships
 
 - **Actor → Event** - Actor involved in event

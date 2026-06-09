@@ -73,6 +73,12 @@ event:
 
 ---
 
+## Event Schema
+
+{% schema filename="event.schema.json" title="Event Schema" %}
+
+---
+
 ## Event Properties
 
 - `id` - Unique event identifier
