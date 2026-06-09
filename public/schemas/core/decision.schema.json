@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Decision",
+  "description": "A Decision represents a choice or determination made during a case by a human or AI system. Decisions are tracked with evidence, reasoning, and outcomes.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the decision",
+      "pattern": "^decision_[a-zA-Z0-9_-]+$",
+      "examples": ["decision_approve_1", "decision_reject_2"]
+    },
+    "case_id": {
+      "type": "string",
+      "description": "Reference to the case this decision is part of"
+    },
+    "task_id": {
+      "type": "string",
+      "description": "Reference to the task that required this decision"
+    },
+    "question": {
+      "type": "string",
+      "description": "The question being decided",
+      "examples": ["Is the will valid?", "Is the applicant eligible?", "Should we approve this application?"]
+    },
+    "decision_type": {
+      "type": "string",
+      "description": "Type of decision",
+      "enum": ["approval", "rejection", "escalation", "conditional", "data_validation", "compliance_check", "risk_assessment"],
+      "examples": ["approval", "conditional"]
+    },
+    "outcome": {
+      "type": "string",
+      "description": "The decision outcome",
+      "enum": ["approved", "rejected", "approved_with_conditions", "needs_review", "pending"],
+      "examples": ["approved", "approved_with_conditions"]
+    },
+    "made_by_actor_id": {
+      "type": "string",
+      "description": "Human or AI actor who made the decision"
+    },
+    "made_by_actor_type": {
+      "type": "string",
+      "enum": ["person", "ai_agent", "system"],
+      "description": "Type of actor that made the decision"
+    },
+    "reasoning": {
+      "type": "string",
+      "description": "Explanation of the decision rationale"
+    },
+    "evidence": {
+      "type": "array",
+      "description": "Documents or data points that supported this decision",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["document", "data_point", "rule", "precedent"]
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "applicable_rules": {
+      "type": "array",
+      "description": "Rules or policies that guided this decision",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rule_id": {
+            "type": "string"
+          },
+          "rule_name": {
+            "type": "string"
+          },
+          "matched": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "confidence_score": {
+      "type": "number",
+      "description": "Confidence in this decision (0-1) if made by AI",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the decision was made"
+    },
+    "reviewed_by_actor_id": {
+      "type": "string",
+      "description": "If reviewed, who reviewed it"
+    },
+    "reviewed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the decision was reviewed"
+    },
+    "review_notes": {
+      "type": "string",
+      "description": "Notes from the review"
+    },
+    "conditions": {
+      "type": "array",
+      "description": "Conditions attached to an approved_with_conditions outcome",
+      "items": {
+        "type": "string"
+      }
+    },
+    "appeal_deadline": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Deadline for appealing this decision"
+    },
+    "appealed": {
+      "type": "boolean",
+      "description": "Whether this decision was appealed"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Custom metadata",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "case_id", "question", "decision_type", "outcome", "made_by_actor_id", "created_at"],
+  "examples": [
+    {
+      "id": "decision_will_validation_001",
+      "case_id": "case_death_uk_2026_001",
+      "task_id": "task_probate_review_001",
+      "question": "Is the will valid and authentic?",
+      "decision_type": "approval",
+      "outcome": "approved",
+      "made_by_actor_id": "person_solicitor_789",
+      "made_by_actor_type": "person",
+      "reasoning": "Will has been authenticated against Register Office records, signatures verified, no disputes found.",
+      "evidence": [
+        {
+          "id": "doc_will_1",
+          "type": "document",
+          "description": "Original will document"
+        },
+        {
+          "id": "doc_signature_verification_1",
+          "type": "document",
+          "description": "Signature verification report"
+        }
+      ],
+      "applicable_rules": [
+        {
+          "rule_id": "rule_will_authentication",
+          "rule_name": "UK Will Authentication Rules",
+          "matched": true
+        }
+      ],
+      "created_at": "2026-06-09T15:00:00Z",
+      "reviewed_by_actor_id": "person_senior_solicitor_999",
+      "reviewed_at": "2026-06-10T09:00:00Z",
+      "review_notes": "Approved. Standard probate documentation complete."
+    }
+  ],
+  "_phase1_todo": [
+    "Define decision appeal and reconsideration process",
+    "Define decision audit trail and compliance tracking",
+    "Define bias detection in AI-assisted decisions",
+    "Define explainability requirements for AI decisions",
+    "Define decision precedent and consistency checking",
+    "Define decision reversal and correction procedures",
+    "Define decision performance metrics",
+    "Define delegated decision authority levels"
+  ]
+}

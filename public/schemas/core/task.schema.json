@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task",
+  "description": "A Task is an atomic unit of work that must be completed as part of a case. Tasks are created from workflow steps and assigned to specific actors.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the task",
+      "pattern": "^task_[a-zA-Z0-9_-]+$",
+      "examples": ["task_probate_review_1", "task_onboarding_docs_2"]
+    },
+    "case_id": {
+      "type": "string",
+      "description": "Reference to the case this task belongs to"
+    },
+    "workflow_step_id": {
+      "type": "string",
+      "description": "Reference to the workflow step that created this task"
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable title for this task",
+      "examples": ["Review Will", "Collect Death Certificate", "Send Offer Letter"]
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of what must be done"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of task",
+      "enum": [
+        "review",
+        "approval",
+        "document_collection",
+        "data_entry",
+        "notification",
+        "decision",
+        "manual_action",
+        "api_call",
+        "verification"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "description": "Current status of the task",
+      "enum": ["created", "assigned", "in_progress", "on_hold", "pending_approval", "completed", "failed", "cancelled"],
+      "examples": ["in_progress", "pending_approval"]
+    },
+    "assigned_to_actor_id": {
+      "type": "string",
+      "description": "Actor responsible for completing this task"
+    },
+    "assigned_by_actor_id": {
+      "type": "string",
+      "description": "Actor who assigned this task"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the task was created"
+    },
+    "assigned_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the task was assigned"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When work on the task started"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this task should be completed"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the task was completed"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "normal", "high", "urgent"],
+      "description": "Priority level for this task"
+    },
+    "required_documents": {
+      "type": "array",
+      "description": "Documents needed to complete this task",
+      "items": {
+        "type": "string"
+      }
+    },
+    "instructions": {
+      "type": "string",
+      "description": "Detailed instructions for completing the task"
+    },
+    "estimated_hours": {
+      "type": "number",
+      "description": "Estimated hours to complete this task"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Custom metadata specific to this task",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "case_id", "title", "type", "status", "assigned_to_actor_id", "created_at"],
+  "examples": [
+    {
+      "id": "task_probate_review_001",
+      "case_id": "case_death_uk_2026_001",
+      "workflow_step_id": "step_probate_validation",
+      "title": "Review Will and Assets",
+      "description": "Verify will authenticity and assess estate value",
+      "type": "review",
+      "status": "in_progress",
+      "assigned_to_actor_id": "person_solicitor_789",
+      "assigned_by_actor_id": "person_executor_456",
+      "created_at": "2026-06-09T10:00:00Z",
+      "assigned_at": "2026-06-09T10:05:00Z",
+      "started_at": "2026-06-09T11:00:00Z",
+      "due_date": "2026-06-16T17:00:00Z",
+      "priority": "high",
+      "required_documents": ["doc_will", "doc_death_cert"],
+      "estimated_hours": 4,
+      "instructions": "Verify the will is valid, check for any disputes, assess total estate value including property, investments, and liabilities."
+    }
+  ],
+  "_phase1_todo": [
+    "Define task assignment rules and permissions",
+    "Define task reassignment workflow",
+    "Define task dependencies and blocking",
+    "Define task escalation rules (auto-escalate if overdue)",
+    "Define task history and audit trail",
+    "Define task performance metrics",
+    "Define task collaboration/comments",
+    "Define task attachments and evidence collection"
+  ]
+}

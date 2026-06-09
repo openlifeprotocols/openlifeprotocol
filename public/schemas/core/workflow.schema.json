@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workflow",
+  "description": "A Workflow is a reusable process definition that describes how to handle a specific type of case. It defines steps, decisions, required documents, and outcomes.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the workflow template",
+      "pattern": "^workflow_[a-zA-Z0-9_-]+$",
+      "examples": ["workflow_death_probate_uk", "workflow_hiring_acme"]
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the workflow",
+      "examples": ["Death - Probate and Estate (UK)", "Employee Hiring (Standard)"]
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of what this workflow handles"
+    },
+    "version": {
+      "type": "string",
+      "description": "Version of this workflow",
+      "examples": ["1.0.0", "2.1.0"]
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of workflow (death, move, hiring, etc.)",
+      "enum": [
+        "death",
+        "birth",
+        "move",
+        "hiring",
+        "termination",
+        "business_formation",
+        "business_closure",
+        "healthcare_enrollment",
+        "marriage",
+        "divorce"
+      ]
+    },
+    "jurisdiction": {
+      "type": "string",
+      "description": "Geographic jurisdiction this workflow applies to",
+      "examples": ["UK", "US-CA", "US-NY", "International"]
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of this workflow definition",
+      "enum": ["draft", "active", "deprecated", "archived"],
+      "examples": ["active"]
+    },
+    "steps": {
+      "type": "array",
+      "description": "Ordered sequence of steps in this workflow",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for this step"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the step"
+          },
+          "description": {
+            "type": "string",
+            "description": "What this step does"
+          },
+          "type": {
+            "type": "string",
+            "enum": ["task", "decision", "communication", "document_collection", "notification"],
+            "description": "Type of step"
+          },
+          "required": {
+            "type": "boolean",
+            "description": "Whether this step is required or optional"
+          },
+          "depends_on": {
+            "type": "array",
+            "description": "Other steps that must complete before this one",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "required_documents": {
+      "type": "array",
+      "description": "Documents that must be provided for this workflow",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "required": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "decision_points": {
+      "type": "array",
+      "description": "Decision gates in the workflow",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "question": {
+            "type": "string"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "actors_involved": {
+      "type": "array",
+      "description": "Types of actors that participate (executor, beneficiary, solicitor, etc.)",
+      "items": {
+        "type": "string"
+      }
+    },
+    "estimated_duration_days": {
+      "type": "integer",
+      "description": "Expected number of days to complete this workflow"
+    },
+    "parallel_enabled": {
+      "type": "boolean",
+      "description": "Whether steps can run in parallel",
+      "examples": [true, false]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this workflow was created"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this workflow was last updated"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Custom metadata",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "name", "type", "version", "status", "steps"],
+  "_phase1_todo": [
+    "Define workflow DSL (YAML/JSON syntax for defining workflows)",
+    "Define workflow versioning and compatibility",
+    "Define workflow conditions and branching logic",
+    "Define workflow execution permissions",
+    "Define workflow performance SLAs",
+    "Define workflow rollback/compensation logic",
+    "Define workflow monitoring and observability",
+    "Define workflow integration with external systems"
+  ]
+}

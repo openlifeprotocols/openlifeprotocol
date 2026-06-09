@@ -1,0 +1,220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Asset",
+  "description": "An Asset represents a valuable resource, financial holding, or liability associated with an actor or case. Assets include property, money, investments, debts, and obligations.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the asset",
+      "pattern": "^asset_[a-zA-Z0-9_-]+$",
+      "examples": ["asset_property_1", "asset_bank_account_456", "asset_liability_789"]
+    },
+    "actor_id": {
+      "type": "string",
+      "description": "Actor who owns or has liability for this asset"
+    },
+    "case_id": {
+      "type": "string",
+      "description": "Reference to case if asset is case-specific"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the asset",
+      "examples": ["Family Home", "Bank Account - Current", "Mortgage"]
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the asset"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of asset",
+      "enum": [
+        "property_real_estate",
+        "vehicle",
+        "bank_account",
+        "investment_account",
+        "retirement_account",
+        "shares_stocks",
+        "business_interest",
+        "intellectual_property",
+        "cash",
+        "cryptocurrency",
+        "insurance_policy",
+        "pension",
+        "debt_loan",
+        "mortgage",
+        "credit_card_debt",
+        "tax_liability",
+        "other"
+      ]
+    },
+    "asset_class": {
+      "type": "string",
+      "enum": ["asset", "liability"],
+      "description": "Whether this is an asset or liability"
+    },
+    "value": {
+      "type": "number",
+      "description": "Current market or book value"
+    },
+    "currency": {
+      "type": "string",
+      "description": "Currency of the value",
+      "examples": ["GBP", "USD", "EUR"]
+    },
+    "value_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date the value was assessed"
+    },
+    "owner_actor_id": {
+      "type": "string",
+      "description": "Actual owner if different from actor_id (e.g., joint ownership)"
+    },
+    "co_owners": {
+      "type": "array",
+      "description": "Other actors with ownership interest",
+      "items": {
+        "type": "object",
+        "properties": {
+          "actor_id": {
+            "type": "string"
+          },
+          "ownership_percentage": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "transferred", "liquidated", "written_off", "disputed", "frozen"],
+      "description": "Current status of the asset"
+    },
+    "location": {
+      "type": "string",
+      "description": "Geographic location of the asset"
+    },
+    "secured_by": {
+      "type": "string",
+      "description": "What secures this asset (e.g., property for mortgage)"
+    },
+    "encumbrances": {
+      "type": "array",
+      "description": "Liens or charges against this asset",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "holder": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "documentation": {
+      "type": "array",
+      "description": "References to supporting documents (title deeds, account statements, etc.)",
+      "items": {
+        "type": "string"
+      }
+    },
+    "acquisition_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When the asset was acquired"
+    },
+    "acquisition_cost": {
+      "type": "number",
+      "description": "Original purchase price"
+    },
+    "disposal_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When the asset was disposed of"
+    },
+    "disposal_proceeds": {
+      "type": "number",
+      "description": "Amount received from disposal"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Due date for liability payments"
+    },
+    "interest_rate": {
+      "type": "number",
+      "description": "Interest rate for liabilities"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Custom metadata specific to the asset",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "actor_id", "name", "type", "asset_class", "value", "currency", "status"],
+  "examples": [
+    {
+      "id": "asset_property_family_home_001",
+      "actor_id": "person_john_doe_123",
+      "case_id": "case_death_uk_2026_001",
+      "name": "Family Home - 42 Oak Street",
+      "description": "Three-bedroom detached house in London",
+      "type": "property_real_estate",
+      "asset_class": "asset",
+      "value": 750000,
+      "currency": "GBP",
+      "value_date": "2026-06-09",
+      "status": "active",
+      "location": "London, UK",
+      "co_owners": [
+        {
+          "actor_id": "person_spouse_456",
+          "ownership_percentage": 50
+        }
+      ],
+      "encumbrances": [
+        {
+          "type": "mortgage",
+          "amount": 200000,
+          "holder": "Example Bank"
+        }
+      ],
+      "acquisition_date": "2000-03-15",
+      "acquisition_cost": 250000,
+      "documentation": ["doc_property_deed_1", "doc_mortgage_agreement_1"]
+    },
+    {
+      "id": "asset_mortgage_liability_001",
+      "actor_id": "person_john_doe_123",
+      "case_id": "case_death_uk_2026_001",
+      "name": "Mortgage - Example Bank",
+      "type": "mortgage",
+      "asset_class": "liability",
+      "value": 200000,
+      "currency": "GBP",
+      "value_date": "2026-06-09",
+      "status": "active",
+      "secured_by": "asset_property_family_home_001",
+      "interest_rate": 2.5,
+      "due_date": "2040-03-15"
+    }
+  ],
+  "_phase1_todo": [
+    "Define asset valuation methods and standards",
+    "Define asset lifecycle tracking and depreciation",
+    "Define asset transfer and inheritance rules by jurisdiction",
+    "Define asset tax implications (capital gains, inheritance tax)",
+    "Define asset dispute resolution mechanisms",
+    "Define asset inventory and reconciliation procedures",
+    "Define asset performance tracking for investments",
+    "Define asset insurance and protection requirements"
+  ]
+}

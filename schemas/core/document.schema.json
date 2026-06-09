@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Document",
+  "description": "A Document represents evidence, proof, or information required or produced during a case. Documents can be uploaded, verified, and tracked through the workflow.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the document",
+      "pattern": "^doc_[a-zA-Z0-9_-]+$",
+      "examples": ["doc_death_cert_123", "doc_will_456"]
+    },
+    "case_id": {
+      "type": "string",
+      "description": "Reference to the case this document is associated with"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the document",
+      "examples": ["Death Certificate", "Last Will and Testament", "Offer Letter"]
+    },
+    "type": {
+      "type": "string",
+      "description": "Type/category of document",
+      "enum": [
+        "death_certificate",
+        "birth_certificate",
+        "marriage_certificate",
+        "will",
+        "power_of_attorney",
+        "identification",
+        "proof_of_residency",
+        "employment_contract",
+        "offer_letter",
+        "salary_slip",
+        "tax_return",
+        "bank_statement",
+        "invoice",
+        "receipt",
+        "medical_record",
+        "insurance_policy",
+        "property_deed",
+        "business_registration",
+        "other"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the document"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the document",
+      "enum": ["pending", "submitted", "verified", "rejected", "expired", "archived"],
+      "examples": ["verified", "pending"]
+    },
+    "required": {
+      "type": "boolean",
+      "description": "Whether this document is required for the case"
+    },
+    "uploaded_by_actor_id": {
+      "type": "string",
+      "description": "Actor who uploaded/provided this document"
+    },
+    "uploaded_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the document was uploaded"
+    },
+    "verified_by_actor_id": {
+      "type": "string",
+      "description": "Actor who verified this document"
+    },
+    "verified_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the document was verified"
+    },
+    "file_hash": {
+      "type": "string",
+      "description": "Hash of the file for integrity verification",
+      "examples": ["sha256_abc123def456"]
+    },
+    "file_size_bytes": {
+      "type": "integer",
+      "description": "Size of the file in bytes"
+    },
+    "mime_type": {
+      "type": "string",
+      "description": "MIME type of the document",
+      "examples": ["application/pdf", "image/jpeg", "text/plain"]
+    },
+    "storage_location": {
+      "type": "string",
+      "description": "URL or reference to where the document is stored"
+    },
+    "expiry_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When this document expires (if applicable)"
+    },
+    "version": {
+      "type": "integer",
+      "description": "Version number of this document"
+    },
+    "previous_version_id": {
+      "type": "string",
+      "description": "Reference to previous version of this document"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Custom metadata specific to this document",
+      "additionalProperties": true
+    },
+    "verification_notes": {
+      "type": "string",
+      "description": "Notes from verification process"
+    }
+  },
+  "required": ["id", "case_id", "name", "type", "status", "required"],
+  "examples": [
+    {
+      "id": "doc_death_cert_2026_001",
+      "case_id": "case_death_uk_2026_001",
+      "name": "Death Certificate - John Doe",
+      "type": "death_certificate",
+      "description": "Official death certificate issued by Register Office",
+      "status": "verified",
+      "required": true,
+      "uploaded_by_actor_id": "person_executor_456",
+      "uploaded_at": "2026-06-09T09:30:00Z",
+      "verified_by_actor_id": "person_solicitor_789",
+      "verified_at": "2026-06-09T10:00:00Z",
+      "file_hash": "sha256_abc123def456",
+      "file_size_bytes": 245632,
+      "mime_type": "application/pdf",
+      "storage_location": "s3://olp-documents/death-certs/2026/001.pdf",
+      "version": 1,
+      "verification_notes": "Verified against Register Office records. Valid and authentic."
+    }
+  ],
+  "_phase1_todo": [
+    "Define document signing and authentication mechanisms",
+    "Define document encryption and security standards",
+    "Define document lifecycle and retention policies",
+    "Define document versioning and change tracking",
+    "Define document approval workflows",
+    "Define document template system",
+    "Define electronic signature requirements by jurisdiction",
+    "Define document search and indexing capabilities"
+  ]
+}

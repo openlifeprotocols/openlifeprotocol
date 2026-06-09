@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Case",
+  "description": "A Case represents an instance of a process running for a particular Actor or set of Actors. It tracks the state, tasks, documents, and outcomes of a specific workflow execution.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the case",
+      "pattern": "^case_[a-zA-Z0-9_-]+$",
+      "examples": ["case_move_2026_123", "case_hiring_acme_corp_456"]
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of case (death, move, hiring, business_formation, etc.)",
+      "enum": [
+        "death",
+        "birth",
+        "move",
+        "hiring",
+        "termination",
+        "business_formation",
+        "business_closure",
+        "healthcare_enrollment",
+        "marriage",
+        "divorce"
+      ],
+      "examples": ["death", "move", "hiring"]
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable title for this case instance",
+      "examples": ["John Doe Death Case", "Move to London"]
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the case"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current state of the case",
+      "enum": ["opened", "in_progress", "pending_review", "on_hold", "completed", "failed", "cancelled"],
+      "examples": ["in_progress", "pending_review"]
+    },
+    "principal_actor_id": {
+      "type": "string",
+      "description": "The primary actor this case is about (person, organization, etc.)"
+    },
+    "related_actor_ids": {
+      "type": "array",
+      "description": "Other actors involved in this case (executors, beneficiaries, etc.)",
+      "items": {
+        "type": "string"
+      }
+    },
+    "workflow_id": {
+      "type": "string",
+      "description": "Reference to the workflow template used for this case"
+    },
+    "triggering_event_id": {
+      "type": "string",
+      "description": "The event that triggered this case"
+    },
+    "jurisdiction": {
+      "type": "string",
+      "description": "Geographic jurisdiction for this case (e.g., country, state, region)",
+      "examples": ["UK", "US-CA", "US-NY"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the case was created"
+    },
+    "opened_by_actor_id": {
+      "type": "string",
+      "description": "Actor who opened/created this case"
+    },
+    "deadline": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Deadline for case completion"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the case was completed"
+    },
+    "task_ids": {
+      "type": "array",
+      "description": "Tasks that are part of this case",
+      "items": {
+        "type": "string"
+      }
+    },
+    "document_ids": {
+      "type": "array",
+      "description": "Documents required or uploaded for this case",
+      "items": {
+        "type": "string"
+      }
+    },
+    "outcome_id": {
+      "type": "string",
+      "description": "Reference to the final outcome of this case"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Custom metadata and case-specific data",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "type", "title", "status", "principal_actor_id", "created_at", "opened_by_actor_id"],
+  "examples": [
+    {
+      "id": "case_death_uk_2026_001",
+      "type": "death",
+      "title": "John Doe Death - Probate and Estate",
+      "description": "Estate settlement and probate process for John Doe",
+      "status": "in_progress",
+      "principal_actor_id": "person_john_doe_123",
+      "related_actor_ids": ["person_executor_456", "org_solicitor_789"],
+      "workflow_id": "workflow_death_probate_uk",
+      "triggering_event_id": "event_death_123",
+      "jurisdiction": "UK",
+      "created_at": "2026-06-09T10:00:00Z",
+      "opened_by_actor_id": "person_executor_456",
+      "deadline": "2027-06-09T00:00:00Z",
+      "task_ids": ["task_probate_1", "task_probate_2"],
+      "document_ids": ["doc_death_cert", "doc_will"],
+      "metadata": {
+        "estate_value": 500000,
+        "currency": "GBP"
+      }
+    }
+  ],
+  "_phase1_todo": [
+    "Define complete case lifecycle state machine",
+    "Define case priority levels and urgency",
+    "Define case escalation rules",
+    "Define case history/audit trail structure",
+    "Define case linking (related cases)",
+    "Define case assignment to actors/teams",
+    "Define SLA/timeout handling",
+    "Add case search and filtering capabilities"
+  ]
+}

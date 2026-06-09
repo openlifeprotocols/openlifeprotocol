@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import clsx from 'clsx'
 
 interface SchemaProperty {
@@ -25,14 +25,6 @@ interface Schema {
   type: string
   properties: Record<string, SchemaProperty>
   required?: string[]
-}
-
-async function loadSchema(filename: string): Promise<Schema> {
-  const response = await fetch(`/schemas/core/${filename}`)
-  if (!response.ok) {
-    throw new Error(`Failed to load schema: ${filename}`)
-  }
-  return response.json()
 }
 
 function PropertyBadge({ type, required }: { type?: string | string[]; required?: boolean }) {
@@ -142,47 +134,73 @@ function PropertyRow({
   )
 }
 
-export async function SchemaViewer({
+export function SchemaViewer({
   filename,
   title: customTitle,
 }: {
   filename: string
   title?: string
 }) {
-  try {
-    const schema = await loadSchema(filename)
-    const title = customTitle || schema.title
+  const [schema, setSchema] = useState<Schema | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
-    return (
-      <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6">
-        <div className="mb-6">
-          <h3 className="font-display text-2xl font-semibold text-slate-900 dark:text-white mb-2">
-            {title}
-          </h3>
-          {schema.description && (
-            <p className="text-slate-600 dark:text-slate-400">{schema.description}</p>
-          )}
-        </div>
+  useEffect(() => {
+    async function loadSchema() {
+      try {
+        const response = await fetch(`/schemas/core/${filename}`)
+        if (!response.ok) {
+          throw new Error(`Failed to load schema: ${filename}`)
+        }
+        const data = await response.json()
+        setSchema(data)
+      } catch (err) {
+        setError((err as Error).message)
+      }
+    }
+    loadSchema()
+  }, [filename])
 
-        <div className="space-y-2">
-          {schema.properties &&
-            Object.entries(schema.properties).map(([key, value]) => (
-              <PropertyRow
-                key={key}
-                name={key}
-                prop={value}
-                required={schema.required?.includes(key)}
-              />
-            ))}
-        </div>
-      </div>
-    )
-  } catch (error) {
+  if (error) {
     return (
       <div className="rounded-lg border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20 p-4 text-red-900 dark:text-red-200">
         <p className="font-semibold">Failed to load schema</p>
-        <p className="text-sm">{(error as Error).message}</p>
+        <p className="text-sm">{error}</p>
       </div>
     )
   }
+
+  if (!schema) {
+    return (
+      <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 p-6">
+        <p className="text-slate-600 dark:text-slate-400">Loading schema...</p>
+      </div>
+    )
+  }
+
+  const title = customTitle || schema.title
+
+  return (
+    <div className="rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-6">
+      <div className="mb-6">
+        <h3 className="font-display text-2xl font-semibold text-slate-900 dark:text-white mb-2">
+          {title}
+        </h3>
+        {schema.description && (
+          <p className="text-slate-600 dark:text-slate-400">{schema.description}</p>
+        )}
+      </div>
+
+      <div className="space-y-2">
+        {schema.properties &&
+          Object.entries(schema.properties).map(([key, value]) => (
+            <PropertyRow
+              key={key}
+              name={key}
+              prop={value}
+              required={schema.required?.includes(key)}
+            />
+          ))}
+      </div>
+    </div>
+  )
 }
