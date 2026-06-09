@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "description": "Ontology registry for schema-to-account mapping and canonical graph references.",
+  "entries": [
+    {
+      "schema": "mortgage",
+      "account": "7000",
+      "parent": "housing",
+      "path": "schemas/7000-property/housing/mortgage.schema.json",
+      "canonicalReferences": [
+        "document",
+        "payment",
+        "liability"
+      ]
+    },
+    {
+      "schema": "goal",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/goal.schema.json",
+      "canonicalReferences": [
+        "actor",
+        "event",
+        "relationship"
+      ]
+    },
+    {
+      "schema": "relationship",
+      "account": "2000",
+      "parent": "relationships",
+      "path": "schemas/2000-relationships/relationships/relationship.schema.json",
+      "canonicalReferences": [
+        "actor",
+        "document",
+        "event"
+      ]
+    },
+    {
+      "schema": "project",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/project.schema.json",
+      "canonicalReferences": [
+        "goal",
+        "risk",
+        "document"
+      ]
+    },
+    {
+      "schema": "opportunity",
+      "account": "17000",
+      "parent": "opportunities",
+      "path": "schemas/17000-opportunities/opportunities/opportunity.schema.json",
+      "canonicalReferences": [
+        "actor",
+        "relationship",
+        "decision"
+      ]
+    }
+  ]
+}

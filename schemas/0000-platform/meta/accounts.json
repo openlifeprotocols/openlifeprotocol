@@ -1,0 +1,107 @@
+{
+  "0000": {
+    "name": "Platform",
+    "slug": "platform",
+    "folder": "0000-platform"
+  },
+  "1000": {
+    "name": "Person",
+    "slug": "person",
+    "folder": "1000-person"
+  },
+  "2000": {
+    "name": "Relationships",
+    "slug": "relationships",
+    "folder": "2000-relationships"
+  },
+  "3000": {
+    "name": "Health",
+    "slug": "health",
+    "folder": "3000-health"
+  },
+  "4000": {
+    "name": "Learning",
+    "slug": "learning",
+    "folder": "4000-learning"
+  },
+  "5000": {
+    "name": "Career & Profession",
+    "slug": "career-profession",
+    "folder": "5000-career-profession"
+  },
+  "6000": {
+    "name": "Wealth",
+    "slug": "wealth",
+    "folder": "6000-wealth"
+  },
+  "7000": {
+    "name": "Property",
+    "slug": "property",
+    "folder": "7000-property"
+  },
+  "8000": {
+    "name": "Mobility",
+    "slug": "mobility",
+    "folder": "8000-mobility"
+  },
+  "9000": {
+    "name": "Digital Life",
+    "slug": "digital-life",
+    "folder": "9000-digital-life"
+  },
+  "9500": {
+    "name": "Public Presence",
+    "slug": "public-presence",
+    "folder": "9500-public-presence"
+  },
+  "10000": {
+    "name": "Culture",
+    "slug": "culture",
+    "folder": "10000-culture"
+  },
+  "11000": {
+    "name": "Creativity",
+    "slug": "creativity",
+    "folder": "11000-creativity"
+  },
+  "12000": {
+    "name": "Community Impact",
+    "slug": "community-impact",
+    "folder": "12000-community-impact"
+  },
+  "13000": {
+    "name": "Life Story",
+    "slug": "life-story",
+    "folder": "13000-life-story"
+  },
+  "14000": {
+    "name": "Planning",
+    "slug": "planning",
+    "folder": "14000-planning"
+  },
+  "15000": {
+    "name": "Administration",
+    "slug": "administration",
+    "folder": "15000-administration"
+  },
+  "16000": {
+    "name": "Time",
+    "slug": "time",
+    "folder": "16000-time"
+  },
+  "17000": {
+    "name": "Opportunities",
+    "slug": "opportunities",
+    "folder": "17000-opportunities"
+  },
+  "18000": {
+    "name": "Risks",
+    "slug": "risks",
+    "folder": "18000-risks"
+  },
+  "19000": {
+    "name": "Enterprise & Ventures",
+    "slug": "enterprise-ventures",
+    "folder": "19000-enterprise-ventures"
+  }
+}
