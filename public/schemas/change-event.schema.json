@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Change Event",
+  "description": "Record of data change or modification.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^change_event_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "actor_id": { "type": "string" },
+    "actor_type": { "type": "string", "enum": ["user", "system", "api", "scheduled_job", "automated_rule"] },
+    "change_type": { "type": "string", "enum": ["create", "update", "delete", "merge", "split", "restore", "archive"] },
+    "resource_type": { "type": "string" },
+    "resource_id": { "type": "string" },
+    "resource_name": { "type": "string" },
+    "changed_fields": { "type": "array", "items": { "type": "object", "properties": { "field_name": { "type": "string" }, "old_value": { "type": "string" }, "new_value": { "type": "string" } } } },
+    "change_reason": { "type": "string" },
+    "change_date": { "type": "string", "format": "date-time" },
+    "change_source": { "type": "string" },
+    "change_approved_by": { "type": "string" },
+    "requires_approval": { "type": "boolean" },
+    "is_approved": { "type": "boolean" },
+    "approval_date": { "type": "string", "format": "date-time" },
+    "is_reversible": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define change approval workflow", "Define change notification", "Define change rollback"]
+}

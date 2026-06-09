@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Document Template",
+  "description": "Reusable document template.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^document_template_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "template_name": { "type": "string" },
+    "template_description": { "type": "string" },
+    "document_type": { "type": "string" },
+    "category": { "type": "string" },
+    "content": { "type": "string" },
+    "content_format": { "type": "string", "enum": ["markdown", "html", "plaintext", "rtf", "docx"] },
+    "variables": { "type": "array", "items": { "type": "object", "properties": { "variable_name": { "type": "string" }, "placeholder": { "type": "string" }, "data_type": { "type": "string" }, "is_required": { "type": "boolean" } } } },
+    "sections": { "type": "array", "items": { "type": "string" } },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "is_public": { "type": "boolean" },
+    "usage_count": { "type": "integer" },
+    "last_used_date": { "type": "string", "format": "date-time" },
+    "version_number": { "type": "string" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "last_updated_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define template versioning", "Define variable validation", "Define template sharing"]
+}

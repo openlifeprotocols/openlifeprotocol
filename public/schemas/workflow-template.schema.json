@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workflow Template",
+  "description": "Reusable workflow or process template.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^workflow_template_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "workflow_name": { "type": "string" },
+    "workflow_description": { "type": "string" },
+    "workflow_type": { "type": "string", "enum": ["approval", "escalation", "notification", "data_processing", "document_management", "other"] },
+    "steps": { "type": "array", "items": { "type": "object", "properties": { "step_id": { "type": "string" }, "step_name": { "type": "string" }, "step_order": { "type": "integer" }, "action_type": { "type": "string" }, "assignee_role": { "type": "string" }, "estimated_duration_hours": { "type": "number" }, "conditions": { "type": "array", "items": { "type": "string" } }, "on_success": { "type": "string" }, "on_failure": { "type": "string" }, "notifications": { "type": "array", "items": { "type": "string" } } } } },
+    "entry_conditions": { "type": "array", "items": { "type": "string" } },
+    "exit_conditions": { "type": "array", "items": { "type": "string" } },
+    "variables": { "type": "array", "items": { "type": "string" } },
+    "estimated_total_duration_hours": { "type": "number" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "is_public": { "type": "boolean" },
+    "usage_count": { "type": "integer" },
+    "version_number": { "type": "string" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define workflow DSL", "Define step dependencies", "Define workflow monitoring"]
+}

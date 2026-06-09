@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Processing Queue",
+  "description": "Queue for processing intake items.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^processing_queue_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "queue_name": { "type": "string" },
+    "queue_type": { "type": "string", "enum": ["fifo", "priority", "weighted", "custom"] },
+    "max_concurrent_items": { "type": "integer" },
+    "current_queue_length": { "type": "integer" },
+    "items_in_queue": { "type": "array", "items": { "type": "object", "properties": { "item_id": { "type": "string" }, "position": { "type": "integer" }, "priority_score": { "type": "number" }, "estimated_duration_minutes": { "type": "integer" } } } },
+    "total_items_processed": { "type": "integer" },
+    "average_processing_time_minutes": { "type": "number" },
+    "items_completed_today": { "type": "integer" },
+    "is_active": { "type": "boolean" },
+    "is_paused": { "type": "boolean" },
+    "pause_reason": { "type": "string" },
+    "last_activity_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define queue optimization", "Define SLA tracking", "Define queue analytics"]
+}

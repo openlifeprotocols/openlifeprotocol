@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Backup Snapshot",
+  "description": "Point-in-time backup snapshot.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^backup_snapshot_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "backup_plan_id": { "type": "string" },
+    "snapshot_timestamp": { "type": "string", "format": "date-time" },
+    "snapshot_type": { "type": "string", "enum": ["full", "incremental", "differential"] },
+    "snapshot_status": { "type": "string", "enum": ["in_progress", "completed", "failed", "verified", "deleted"] },
+    "snapshot_size_mb": { "type": "number" },
+    "compressed_size_mb": { "type": "number" },
+    "compression_ratio": { "type": "number" },
+    "entities_included": { "type": "integer" },
+    "storage_location": { "type": "string" },
+    "storage_uri": { "type": "string" },
+    "checksum": { "type": "string" },
+    "encryption_key_id": { "type": "string" },
+    "is_verified": { "type": "boolean" },
+    "verification_date": { "type": "string", "format": "date-time" },
+    "retention_until_date": { "type": "string", "format": "date" },
+    "is_retrievable": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "backup_plan_id"],
+  "_phase1_todo": ["Define snapshot validation", "Define snapshot retrieval", "Define backup analytics"]
+}

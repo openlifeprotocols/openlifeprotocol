@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Admin Event",
+  "description": "System administration or configuration event.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^admin_event_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "admin_id": { "type": "string" },
+    "event_type": { "type": "string", "enum": ["user_management", "permission_change", "system_config", "backup", "restore", "security_update", "maintenance", "integration_change", "encryption_update", "data_purge"] },
+    "action_description": { "type": "string" },
+    "affected_scope": { "type": "string", "enum": ["single_user", "group", "entire_system"] },
+    "affected_users": { "type": "array", "items": { "type": "string" } },
+    "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+    "event_date": { "type": "string", "format": "date-time" },
+    "event_status": { "type": "string", "enum": ["initiated", "in_progress", "completed", "failed", "rolled_back"] },
+    "reason_for_action": { "type": "string" },
+    "approval_required": { "type": "boolean" },
+    "approved_by": { "type": "string" },
+    "approval_date": { "type": "string", "format": "date-time" },
+    "impact_assessment": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "admin_id"],
+  "_phase1_todo": ["Define admin approval flows", "Define admin alerts", "Define compliance audit"]
+}

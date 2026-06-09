@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Digest",
+  "description": "Aggregated notification digest (daily/weekly/monthly).",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^digest_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "digest_type": { "type": "string", "enum": ["daily", "weekly", "monthly", "custom"] },
+    "period_start": { "type": "string", "format": "date-time" },
+    "period_end": { "type": "string", "format": "date-time" },
+    "digest_date": { "type": "string", "format": "date" },
+    "notification_ids_included": { "type": "array", "items": { "type": "string" } },
+    "notification_count": { "type": "integer" },
+    "high_priority_count": { "type": "integer" },
+    "categories": { "type": "object", "additionalProperties": { "type": "integer" } },
+    "digest_content": { "type": "string" },
+    "is_sent": { "type": "boolean" },
+    "sent_date": { "type": "string", "format": "date-time" },
+    "is_read": { "type": "boolean" },
+    "read_date": { "type": "string", "format": "date-time" },
+    "delivery_method": { "type": "string", "enum": ["email", "sms", "push", "in_app"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define digest customization", "Define digest formatting", "Define digest analytics"]
+}

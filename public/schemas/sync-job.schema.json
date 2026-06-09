@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sync Job",
+  "description": "Synchronization job with external system.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^sync_job_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_system_id": { "type": "string" },
+    "sync_type": { "type": "string", "enum": ["full_sync", "incremental_sync", "bidirectional", "one_way", "on_demand"] },
+    "direction": { "type": "string", "enum": ["outbound", "inbound", "bidirectional"] },
+    "job_status": { "type": "string", "enum": ["scheduled", "running", "completed", "failed", "paused"] },
+    "started_date": { "type": "string", "format": "date-time" },
+    "completed_date": { "type": "string", "format": "date-time" },
+    "records_synced": { "type": "integer" },
+    "records_updated": { "type": "integer" },
+    "records_created": { "type": "integer" },
+    "records_deleted": { "type": "integer" },
+    "conflicts_detected": { "type": "integer" },
+    "conflicts_resolved": { "type": "integer" },
+    "errors_encountered": { "type": "integer" },
+    "error_log": { "type": "string" },
+    "sync_duration_seconds": { "type": "integer" },
+    "next_scheduled_sync": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "external_system_id"],
+  "_phase1_todo": ["Define sync scheduling", "Define conflict resolution", "Define sync monitoring"]
+}

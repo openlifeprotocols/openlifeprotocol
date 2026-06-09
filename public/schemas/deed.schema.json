@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Deed",
+  "description": "Property deed or legal conveyance.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^deed_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "grantor_person_id": { "type": "string" },
+    "grantee_person_id": { "type": "string" },
+    "property_id": { "type": "string" },
+    "deed_type": { "type": "string", "enum": ["warranty", "quitclaim", "special_warranty", "grant", "sheriff", "tax", "reconveyance"] },
+    "property_address": { "type": "string" },
+    "legal_description": { "type": "string" },
+    "parcel_number": { "type": "string" },
+    "county": { "type": "string" },
+    "state": { "type": "string" },
+    "execution_date": { "type": "string", "format": "date" },
+    "recording_date": { "type": "string", "format": "date" },
+    "book_number": { "type": "string" },
+    "page_number": { "type": "string" },
+    "document_id": { "type": "string" },
+    "consideration_amount": { "type": "number" },
+    "is_notarized": { "type": "boolean" },
+    "covenants": { "type": "array", "items": { "type": "string" } },
+    "encumbrances": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "grantor_person_id"],
+  "_phase1_todo": ["Define lien tracking", "Define title verification", "Define encumbrance management"]
+}

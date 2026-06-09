@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Notification Preference",
+  "description": "User notification preferences and settings.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^notification_preference_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "notification_type": { "type": "string" },
+    "delivery_method": { "type": "array", "items": { "type": "string", "enum": ["email", "sms", "push", "in_app", "slack", "webhook"] } },
+    "is_enabled": { "type": "boolean" },
+    "priority_threshold": { "type": "string", "enum": ["all", "medium_and_above", "high_and_above", "critical_only"] },
+    "quiet_hours_enabled": { "type": "boolean" },
+    "quiet_hours_start": { "type": "string", "format": "time" },
+    "quiet_hours_end": { "type": "string", "format": "time" },
+    "batch_notifications": { "type": "boolean" },
+    "batch_frequency": { "type": "string", "enum": ["realtime", "hourly", "daily", "weekly"] },
+    "frequency_limit_per_day": { "type": "integer" },
+    "opt_in_list": { "type": "array", "items": { "type": "string" } },
+    "opt_out_list": { "type": "array", "items": { "type": "string" } },
+    "last_updated": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define preference templates", "Define preference migration", "Define A/B testing"]
+}

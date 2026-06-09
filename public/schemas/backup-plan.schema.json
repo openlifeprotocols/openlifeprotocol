@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Backup Plan",
+  "description": "Backup strategy and schedule.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^backup_plan_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "plan_name": { "type": "string" },
+    "description": { "type": "string" },
+    "backup_type": { "type": "string", "enum": ["full", "incremental", "differential", "mixed"] },
+    "backup_frequency": { "type": "string", "enum": ["realtime", "hourly", "daily", "weekly", "monthly", "quarterly"] },
+    "backup_schedule": { "type": "string" },
+    "retention_days": { "type": "integer" },
+    "retention_count": { "type": "integer" },
+    "storage_location": { "type": "string", "enum": ["local", "cloud", "hybrid", "offsite"] },
+    "storage_provider": { "type": "string" },
+    "encryption_enabled": { "type": "boolean" },
+    "encryption_algorithm": { "type": "string" },
+    "compression_enabled": { "type": "boolean" },
+    "is_active": { "type": "boolean" },
+    "estimated_storage_gb": { "type": "number" },
+    "cost_per_month": { "type": "number" },
+    "last_backup_date": { "type": "string", "format": "date-time" },
+    "next_backup_date": { "type": "string", "format": "date-time" },
+    "backup_job_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define backup verification", "Define disaster recovery", "Define compliance tracking"]
+}

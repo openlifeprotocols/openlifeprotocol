@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sync Conflict",
+  "description": "Conflict detected during synchronization.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^sync_conflict_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "sync_job_id": { "type": "string" },
+    "entity_type": { "type": "string" },
+    "local_entity_id": { "type": "string" },
+    "external_entity_id": { "type": "string" },
+    "conflict_type": { "type": "string", "enum": ["update_conflict", "delete_conflict", "field_conflict", "timestamp_conflict"] },
+    "local_version": { "type": "object", "additionalProperties": true },
+    "external_version": { "type": "object", "additionalProperties": true },
+    "conflicting_fields": { "type": "array", "items": { "type": "string" } },
+    "conflict_detected_date": { "type": "string", "format": "date-time" },
+    "resolution_status": { "type": "string", "enum": ["unresolved", "auto_resolved", "manual_resolved", "escalated"] },
+    "resolution_strategy": { "type": "string", "enum": ["keep_local", "keep_external", "merge", "manual", "skip"] },
+    "resolved_by_person_id": { "type": "string" },
+    "resolution_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "sync_job_id"],
+  "_phase1_todo": ["Define conflict detection", "Define merge strategies", "Define conflict reporting"]
+}

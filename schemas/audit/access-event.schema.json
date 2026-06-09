@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Access Event",
+  "description": "Record of data access event.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^access_event_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "actor_id": { "type": "string" },
+    "actor_type": { "type": "string", "enum": ["user", "system", "api", "scheduled_job", "external_integration"] },
+    "action": { "type": "string", "enum": ["read", "view", "download", "export", "list", "search", "query"] },
+    "resource_type": { "type": "string" },
+    "resource_id": { "type": "string" },
+    "resource_name": { "type": "string" },
+    "access_method": { "type": "string", "enum": ["ui", "api", "export", "mobile", "email", "report"] },
+    "ip_address": { "type": "string" },
+    "user_agent": { "type": "string" },
+    "access_date": { "type": "string", "format": "date-time" },
+    "access_duration_seconds": { "type": "integer" },
+    "access_granted": { "type": "boolean" },
+    "access_denied_reason": { "type": "string" },
+    "result": { "type": "string", "enum": ["success", "denied", "error"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define access policies", "Define audit reporting", "Define compliance audit"]
+}

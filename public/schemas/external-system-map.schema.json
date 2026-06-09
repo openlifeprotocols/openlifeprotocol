@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "External System Map",
+  "description": "Mapping between local and external system entities.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^external_system_map_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_system_id": { "type": "string" },
+    "local_entity_type": { "type": "string" },
+    "local_entity_id": { "type": "string" },
+    "external_entity_type": { "type": "string" },
+    "external_entity_id": { "type": "string" },
+    "external_system_name": { "type": "string" },
+    "mapping_status": { "type": "string", "enum": ["active", "inactive", "conflicted", "broken"] },
+    "last_synced_date": { "type": "string", "format": "date-time" },
+    "sync_direction": { "type": "string", "enum": ["inbound", "outbound", "bidirectional"] },
+    "field_mappings": { "type": "array", "items": { "type": "object", "properties": { "local_field": { "type": "string" }, "external_field": { "type": "string" }, "transformation": { "type": "string" } } } },
+    "creation_date": { "type": "string", "format": "date-time" },
+    "last_verified_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "local_entity_id", "external_entity_id"],
+  "_phase1_todo": ["Define field transformation", "Define mapping validation", "Define mapping analytics"]
+}
