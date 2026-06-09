@@ -1,7 +1,7 @@
 {
   "version": 3,
   "description": "Ontology registry for schema-to-account mapping, canonical lineage, and graph references (generated index).",
-  "generatedAt": "2026-06-09T21:24:08.670Z",
+  "generatedAt": "2026-06-09T21:27:34.847Z",
   "entryCount": 811,
   "fields": {
     "required": [
@@ -605,7 +605,7 @@
           "required": false
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "actor-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "high",
       "retention": "permanent",
@@ -636,7 +636,7 @@
         "core"
       ],
       "relationships": [],
-      "lifecycle": null,
+      "lifecycle": "asset-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
@@ -1029,7 +1029,7 @@
           "required": false
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "organisation-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "low",
       "retention": "permanent",
@@ -1100,7 +1100,7 @@
           "required": true
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "payment-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
@@ -1703,7 +1703,7 @@
       "path": "schemas/0000-platform/graph/relationship.schema.json",
       "authoritativePath": "schemas/2000-relationships/relationships/relationship.schema.json",
       "canonical": false,
-      "extends": "relationship",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -2443,7 +2443,7 @@
       "path": "schemas/0000-platform/registry/review.schema.json",
       "authoritativePath": "schemas/10000-culture/film/review.schema.json",
       "canonical": false,
-      "extends": "review",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -2521,7 +2521,7 @@
       "path": "schemas/0000-platform/resources/asset.schema.json",
       "authoritativePath": "schemas/0000-platform/core/asset.schema.json",
       "canonical": false,
-      "extends": "asset",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -2530,7 +2530,7 @@
         "resources"
       ],
       "relationships": [],
-      "lifecycle": null,
+      "lifecycle": "asset-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
@@ -4965,7 +4965,7 @@
       "path": "schemas/10000-culture/collections/collection.schema.json",
       "authoritativePath": "schemas/0000-platform/folders/collection.schema.json",
       "canonical": false,
-      "extends": "collection",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -5636,7 +5636,7 @@
       "path": "schemas/10000-culture/interests/collection.schema.json",
       "authoritativePath": "schemas/0000-platform/folders/collection.schema.json",
       "canonical": false,
-      "extends": "collection",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -5661,7 +5661,7 @@
       "parent": "interests",
       "path": "schemas/10000-culture/interests/creative-project.schema.json",
       "authoritativePath": "schemas/10000-culture/interests/creative-project.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": "project",
       "ontologyType": "extension",
       "canonicalReferences": [],
@@ -6156,7 +6156,7 @@
       "path": "schemas/11000-creativity/creator/course.schema.json",
       "authoritativePath": "schemas/4000-learning/learning/course.schema.json",
       "canonical": false,
-      "extends": "course",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -6546,7 +6546,7 @@
       "path": "schemas/11000-creativity/intellectual-property/license.schema.json",
       "authoritativePath": "schemas/4000-learning/credentials/license.schema.json",
       "canonical": false,
-      "extends": "license",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -6988,7 +6988,7 @@
       "path": "schemas/12000-community-impact/environment/sustainability-goal.schema.json",
       "authoritativePath": "schemas/12000-community-impact/environment/sustainability-goal.schema.json",
       "canonical": true,
-      "extends": "goal",
+      "extends": null,
       "ontologyType": "canonical",
       "canonicalReferences": [],
       "tags": [
@@ -7014,7 +7014,7 @@
       "path": "schemas/12000-community-impact/social-impact/impact-goal.schema.json",
       "authoritativePath": "schemas/12000-community-impact/social-impact/impact-goal.schema.json",
       "canonical": true,
-      "extends": "goal",
+      "extends": null,
       "ontologyType": "canonical",
       "canonicalReferences": [],
       "tags": [
@@ -7508,7 +7508,7 @@
       "path": "schemas/13000-life-story/memory/achievement.schema.json",
       "authoritativePath": "schemas/10000-culture/gaming/achievement.schema.json",
       "canonical": false,
-      "extends": "achievement",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -7819,7 +7819,7 @@
       "parent": "timeline",
       "path": "schemas/13000-life-story/timeline/timeline-view.schema.json",
       "authoritativePath": "schemas/13000-life-story/timeline/timeline-view.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": null,
       "ontologyType": "view",
       "canonicalReferences": [],
@@ -7898,7 +7898,7 @@
       "path": "schemas/14000-planning/decision-making/decision-outcome.schema.json",
       "authoritativePath": "schemas/14000-planning/workflow/decision-outcome.schema.json",
       "canonical": false,
-      "extends": "decision-outcome",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -7924,7 +7924,7 @@
       "path": "schemas/14000-planning/decision-making/decision-review.schema.json",
       "authoritativePath": "schemas/14000-planning/workflow/decision-review.schema.json",
       "canonical": false,
-      "extends": "decision-review",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -8025,7 +8025,7 @@
       "path": "schemas/14000-planning/planning/review.schema.json",
       "authoritativePath": "schemas/10000-culture/film/review.schema.json",
       "canonical": false,
-      "extends": "review",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -8101,8 +8101,8 @@
       "parent": "projects",
       "path": "schemas/14000-planning/projects/milestone.schema.json",
       "authoritativePath": "schemas/14000-planning/projects/milestone.schema.json",
-      "canonical": false,
-      "extends": "milestone",
+      "canonical": true,
+      "extends": null,
       "ontologyType": "canonical",
       "canonicalReferences": [],
       "tags": [
@@ -8111,7 +8111,7 @@
         "projects"
       ],
       "relationships": [],
-      "lifecycle": null,
+      "lifecycle": "milestone-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
@@ -8163,7 +8163,7 @@
         "projects"
       ],
       "relationships": [],
-      "lifecycle": null,
+      "lifecycle": "resource-allocation-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "7-years",
@@ -8622,7 +8622,7 @@
       "path": "schemas/15000-administration/government/license.schema.json",
       "authoritativePath": "schemas/4000-learning/credentials/license.schema.json",
       "canonical": false,
-      "extends": "license",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -9038,7 +9038,7 @@
       "path": "schemas/15000-administration/life/legal-justice/claim.schema.json",
       "authoritativePath": "schemas/0000-platform/registry/claim.schema.json",
       "canonical": false,
-      "extends": "claim",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -9064,7 +9064,7 @@
       "path": "schemas/15000-administration/life/legal-justice/conviction.schema.json",
       "authoritativePath": "schemas/1000-person/beliefs/conviction.schema.json",
       "canonical": false,
-      "extends": "conviction",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -9090,7 +9090,7 @@
       "path": "schemas/15000-administration/life/legal-justice/court-case.schema.json",
       "authoritativePath": "schemas/15000-administration/legal/court-case.schema.json",
       "canonical": false,
-      "extends": "court-case",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -9194,7 +9194,7 @@
       "path": "schemas/15000-administration/life/legal-justice/dispute.schema.json",
       "authoritativePath": "schemas/15000-administration/legal/dispute.schema.json",
       "canonical": false,
-      "extends": "dispute",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -9298,7 +9298,7 @@
       "path": "schemas/15000-administration/life/legal-justice/legal-contract.schema.json",
       "authoritativePath": "schemas/15000-administration/life/legal-justice/legal-contract.schema.json",
       "canonical": true,
-      "extends": "contract",
+      "extends": null,
       "ontologyType": "canonical",
       "canonicalReferences": [],
       "tags": [
@@ -9376,7 +9376,7 @@
       "path": "schemas/15000-administration/life/legal-justice/legal-representative.schema.json",
       "authoritativePath": "schemas/15000-administration/legal/legal-representative.schema.json",
       "canonical": false,
-      "extends": "legal-representative",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -10043,7 +10043,7 @@
       "path": "schemas/17000-opportunities/opportunities/introduction.schema.json",
       "authoritativePath": "schemas/2000-relationships/2400-networks/introduction.schema.json",
       "canonical": false,
-      "extends": "introduction",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -10474,7 +10474,7 @@
       "path": "schemas/19000-enterprise-ventures/19100-business/core/organisation.schema.json",
       "authoritativePath": "schemas/0000-platform/core/organisation.schema.json",
       "canonical": false,
-      "extends": "organisation",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -10490,7 +10490,7 @@
           "required": false
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "organisation-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "low",
       "retention": "permanent",
@@ -10643,7 +10643,7 @@
       "path": "schemas/19000-enterprise-ventures/19100-business/registry/workflow-pack.schema.json",
       "authoritativePath": "schemas/0000-platform/registry/workflow-pack.schema.json",
       "canonical": false,
-      "extends": "workflow-pack",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -10798,7 +10798,7 @@
       "parent": "startups",
       "path": "schemas/19000-enterprise-ventures/19200-startups/startups/startup.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19200-startups/startups/startup.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": "organisation",
       "ontologyType": "specialisation",
       "canonicalReferences": [],
@@ -10825,7 +10825,7 @@
       "path": "schemas/19000-enterprise-ventures/19300-customers/customers/account.schema.json",
       "authoritativePath": "schemas/6000-wealth/commerce/account.schema.json",
       "canonical": false,
-      "extends": "account",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -10851,7 +10851,7 @@
       "path": "schemas/19000-enterprise-ventures/19300-customers/customers/contact.schema.json",
       "authoritativePath": "schemas/9000-digital-life/personal-digital/contact.schema.json",
       "canonical": false,
-      "extends": "contact",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -10928,7 +10928,7 @@
       "parent": "customers",
       "path": "schemas/19000-enterprise-ventures/19300-customers/customers/customer.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19300-customers/customers/customer.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
@@ -10954,7 +10954,7 @@
       "parent": "customers",
       "path": "schemas/19000-enterprise-ventures/19300-customers/customers/lead.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19300-customers/customers/lead.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": "opportunity",
       "ontologyType": "specialisation",
       "canonicalReferences": [],
@@ -10980,7 +10980,7 @@
       "parent": "customers",
       "path": "schemas/19000-enterprise-ventures/19300-customers/customers/prospect.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19300-customers/customers/prospect.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": "opportunity",
       "ontologyType": "specialisation",
       "canonicalReferences": [],
@@ -11163,7 +11163,7 @@
       "path": "schemas/19000-enterprise-ventures/19400-sales/sales/opportunity.schema.json",
       "authoritativePath": "schemas/17000-opportunities/opportunities/opportunity.schema.json",
       "canonical": false,
-      "extends": "opportunity",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -11210,7 +11210,7 @@
       "path": "schemas/19000-enterprise-ventures/19400-sales/sales/order.schema.json",
       "authoritativePath": "schemas/6000-wealth/commerce/order.schema.json",
       "canonical": false,
-      "extends": "order",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -11236,7 +11236,7 @@
       "path": "schemas/19000-enterprise-ventures/19400-sales/sales/pipeline.schema.json",
       "authoritativePath": "schemas/17000-opportunities/opportunities/pipeline.schema.json",
       "canonical": false,
-      "extends": "pipeline",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -11288,7 +11288,7 @@
       "path": "schemas/19000-enterprise-ventures/19400-sales/sales/quote.schema.json",
       "authoritativePath": "schemas/6000-wealth/commerce/quote.schema.json",
       "canonical": false,
-      "extends": "quote",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -11339,7 +11339,7 @@
       "parent": "sales",
       "path": "schemas/19000-enterprise-ventures/19400-sales/sales/sales-contract.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19400-sales/sales/sales-contract.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": "contract",
       "ontologyType": "extension",
       "canonicalReferences": [],
@@ -11365,7 +11365,7 @@
       "parent": "sales",
       "path": "schemas/19000-enterprise-ventures/19400-sales/sales/sales-invoice.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19400-sales/sales/sales-invoice.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": "invoice",
       "ontologyType": "extension",
       "canonicalReferences": [],
@@ -11418,7 +11418,7 @@
       "path": "schemas/19000-enterprise-ventures/19500-marketing/marketing/audience.schema.json",
       "authoritativePath": "schemas/9500-public-presence/social-media/audience.schema.json",
       "canonical": false,
-      "extends": "audience",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -11444,7 +11444,7 @@
       "path": "schemas/19000-enterprise-ventures/19500-marketing/marketing/campaign.schema.json",
       "authoritativePath": "schemas/12000-community-impact/civic/campaign.schema.json",
       "canonical": false,
-      "extends": "campaign",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -11470,7 +11470,7 @@
       "path": "schemas/19000-enterprise-ventures/19500-marketing/marketing/channel.schema.json",
       "authoritativePath": "schemas/0000-platform/core/channel.schema.json",
       "canonical": false,
-      "extends": "channel",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -11781,7 +11781,7 @@
       "parent": "operations",
       "path": "schemas/19000-enterprise-ventures/19600-operations/operations/operational-deliverable.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19600-operations/operations/operational-deliverable.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": "deliverable",
       "ontologyType": "extension",
       "canonicalReferences": [],
@@ -11807,7 +11807,7 @@
       "parent": "operations",
       "path": "schemas/19000-enterprise-ventures/19600-operations/operations/operational-milestone.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19600-operations/operations/operational-milestone.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": "milestone",
       "ontologyType": "extension",
       "canonicalReferences": [],
@@ -11833,7 +11833,7 @@
       "parent": "operations",
       "path": "schemas/19000-enterprise-ventures/19600-operations/operations/operational-resource-allocation.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19600-operations/operations/operational-resource-allocation.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": "resource-allocation",
       "ontologyType": "extension",
       "canonicalReferences": [],
@@ -11859,7 +11859,7 @@
       "parent": "operations",
       "path": "schemas/19000-enterprise-ventures/19600-operations/operations/operational-workflow.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19600-operations/operations/operational-workflow.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": "workflow",
       "ontologyType": "extension",
       "canonicalReferences": [],
@@ -11938,7 +11938,7 @@
       "path": "schemas/19000-enterprise-ventures/19600-operations/procurement/bill-of-materials.schema.json",
       "authoritativePath": "schemas/0000-platform/resources/bill-of-materials.schema.json",
       "canonical": false,
-      "extends": "bill-of-materials",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -11964,7 +11964,7 @@
       "path": "schemas/19000-enterprise-ventures/19600-operations/procurement/bill.schema.json",
       "authoritativePath": "schemas/6000-wealth/bills/bill.schema.json",
       "canonical": false,
-      "extends": "bill",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -11990,7 +11990,7 @@
       "path": "schemas/19000-enterprise-ventures/19600-operations/procurement/inventory-item.schema.json",
       "authoritativePath": "schemas/0000-platform/resources/inventory-item.schema.json",
       "canonical": false,
-      "extends": "inventory-item",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12016,7 +12016,7 @@
       "path": "schemas/19000-enterprise-ventures/19600-operations/procurement/material.schema.json",
       "authoritativePath": "schemas/0000-platform/resources/material.schema.json",
       "canonical": false,
-      "extends": "material",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12042,7 +12042,7 @@
       "path": "schemas/19000-enterprise-ventures/19600-operations/procurement/purchase-order.schema.json",
       "authoritativePath": "schemas/0000-platform/resources/purchase-order.schema.json",
       "canonical": false,
-      "extends": "purchase-order",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12094,7 +12094,7 @@
       "path": "schemas/19000-enterprise-ventures/19600-operations/procurement/supplier.schema.json",
       "authoritativePath": "schemas/0000-platform/resources/supplier.schema.json",
       "canonical": false,
-      "extends": "supplier",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12276,7 +12276,7 @@
       "path": "schemas/19000-enterprise-ventures/19600-operations/products-services/product.schema.json",
       "authoritativePath": "schemas/0000-platform/resources/product.schema.json",
       "canonical": false,
-      "extends": "product",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12302,7 +12302,7 @@
       "path": "schemas/19000-enterprise-ventures/19600-operations/products-services/service.schema.json",
       "authoritativePath": "schemas/0000-platform/resources/service.schema.json",
       "canonical": false,
-      "extends": "service",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12406,7 +12406,7 @@
       "path": "schemas/19000-enterprise-ventures/19700-finance/assets/intellectual-property.schema.json",
       "authoritativePath": "schemas/11000-creativity/intellectual-property/intellectual-property.schema.json",
       "canonical": false,
-      "extends": "intellectual-property",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12432,7 +12432,7 @@
       "path": "schemas/19000-enterprise-ventures/19700-finance/assets/property.schema.json",
       "authoritativePath": "schemas/7000-property/housing/property.schema.json",
       "canonical": false,
-      "extends": "property",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12458,7 +12458,7 @@
       "path": "schemas/19000-enterprise-ventures/19700-finance/assets/vehicle.schema.json",
       "authoritativePath": "schemas/7000-property/vehicles/vehicle.schema.json",
       "canonical": false,
-      "extends": "vehicle",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12484,7 +12484,7 @@
       "path": "schemas/19000-enterprise-ventures/19700-finance/finance/budget.schema.json",
       "authoritativePath": "schemas/6000-wealth/commerce/budget.schema.json",
       "canonical": false,
-      "extends": "budget",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12536,7 +12536,7 @@
       "path": "schemas/19000-enterprise-ventures/19700-finance/finance/cost.schema.json",
       "authoritativePath": "schemas/6000-wealth/commerce/cost.schema.json",
       "canonical": false,
-      "extends": "cost",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12613,7 +12613,7 @@
       "parent": "finance",
       "path": "schemas/19000-enterprise-ventures/19700-finance/finance/invoice-finance-view.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19700-finance/finance/invoice-finance-view.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": "invoice",
       "ontologyType": "view",
       "canonicalReferences": [],
@@ -12640,7 +12640,7 @@
       "path": "schemas/19000-enterprise-ventures/19700-finance/finance/payment.schema.json",
       "authoritativePath": "schemas/0000-platform/core/payment.schema.json",
       "canonical": false,
-      "extends": "payment",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12662,7 +12662,7 @@
           "required": true
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "payment-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
@@ -12684,7 +12684,7 @@
       "path": "schemas/19000-enterprise-ventures/19700-finance/finance/profit-loss.schema.json",
       "authoritativePath": "schemas/6000-wealth/commerce/profit-loss.schema.json",
       "canonical": false,
-      "extends": "profit-loss",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12710,7 +12710,7 @@
       "path": "schemas/19000-enterprise-ventures/19700-finance/finance/revenue.schema.json",
       "authoritativePath": "schemas/6000-wealth/commerce/revenue.schema.json",
       "canonical": false,
-      "extends": "revenue",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12736,7 +12736,7 @@
       "path": "schemas/19000-enterprise-ventures/19700-finance/finance/subscription.schema.json",
       "authoritativePath": "schemas/6000-wealth/commerce/subscription.schema.json",
       "canonical": false,
-      "extends": "subscription",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -12762,7 +12762,7 @@
       "path": "schemas/19000-enterprise-ventures/19700-finance/finance/tax.schema.json",
       "authoritativePath": "schemas/6000-wealth/finance/tax.schema.json",
       "canonical": false,
-      "extends": "tax",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -13048,7 +13048,7 @@
       "path": "schemas/19000-enterprise-ventures/19800-hr/people/contractor.schema.json",
       "authoritativePath": "schemas/7000-property/property-construction/contractor.schema.json",
       "canonical": false,
-      "extends": "contractor",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -13099,7 +13099,7 @@
       "parent": "people",
       "path": "schemas/19000-enterprise-ventures/19800-hr/people/employee.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19800-hr/people/employee.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
@@ -13386,7 +13386,7 @@
       "path": "schemas/19000-enterprise-ventures/19900-strategy/compliance-risk/license.schema.json",
       "authoritativePath": "schemas/4000-learning/credentials/license.schema.json",
       "canonical": false,
-      "extends": "license",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -13618,7 +13618,7 @@
       "path": "schemas/19000-enterprise-ventures/19900-strategy/strategy/objective.schema.json",
       "authoritativePath": "schemas/14000-planning/planning/objective.schema.json",
       "canonical": false,
-      "extends": "objective",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -13930,7 +13930,7 @@
       "path": "schemas/2000-relationships/community/membership.schema.json",
       "authoritativePath": "schemas/4000-learning/credentials/membership.schema.json",
       "canonical": false,
-      "extends": "membership",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -14216,7 +14216,7 @@
       "path": "schemas/2000-relationships/parenting/parenting-goal.schema.json",
       "authoritativePath": "schemas/2000-relationships/parenting/parenting-goal.schema.json",
       "canonical": true,
-      "extends": "goal",
+      "extends": null,
       "ontologyType": "canonical",
       "canonicalReferences": [],
       "tags": [
@@ -15188,8 +15188,8 @@
       "parent": "credentials",
       "path": "schemas/4000-learning/credentials/certification.schema.json",
       "authoritativePath": "schemas/4000-learning/credentials/certification.schema.json",
-      "canonical": false,
-      "extends": "certification",
+      "canonical": true,
+      "extends": null,
       "ontologyType": "canonical",
       "canonicalReferences": [],
       "tags": [
@@ -15198,7 +15198,7 @@
         "credentials"
       ],
       "relationships": [],
-      "lifecycle": null,
+      "lifecycle": "certification-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "low",
       "retention": "permanent",
@@ -15472,7 +15472,7 @@
       "path": "schemas/4000-learning/learning/learning-goal.schema.json",
       "authoritativePath": "schemas/4000-learning/learning/learning-goal.schema.json",
       "canonical": true,
-      "extends": "goal",
+      "extends": null,
       "ontologyType": "canonical",
       "canonicalReferences": [],
       "tags": [
@@ -15530,7 +15530,7 @@
         "learning"
       ],
       "relationships": [],
-      "lifecycle": null,
+      "lifecycle": "note-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
@@ -15673,7 +15673,7 @@
       "path": "schemas/5000-career-profession/5100-employment/employment-documents/employment-contract.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19800-hr/hr/employment-contract.schema.json",
       "canonical": false,
-      "extends": "employment-contract",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -15829,7 +15829,7 @@
       "path": "schemas/5000-career-profession/5100-employment/work/payroll.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19800-hr/hr/payroll.schema.json",
       "canonical": false,
-      "extends": "payroll",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -15907,7 +15907,7 @@
       "path": "schemas/5000-career-profession/5200-career-development/career-goal.schema.json",
       "authoritativePath": "schemas/5000-career-profession/5200-career-development/career-goal.schema.json",
       "canonical": true,
-      "extends": "goal",
+      "extends": null,
       "ontologyType": "canonical",
       "canonicalReferences": [],
       "tags": [
@@ -16037,7 +16037,7 @@
       "path": "schemas/5000-career-profession/5300-job-search/interview.schema.json",
       "authoritativePath": "schemas/19000-enterprise-ventures/19800-hr/hr/interview.schema.json",
       "canonical": false,
-      "extends": "interview",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -16192,7 +16192,7 @@
       "parent": "5400-consulting",
       "path": "schemas/5000-career-profession/5400-consulting/consulting-engagement.schema.json",
       "authoritativePath": "schemas/5000-career-profession/5400-consulting/consulting-engagement.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": "project",
       "ontologyType": "extension",
       "canonicalReferences": [],
@@ -16271,7 +16271,7 @@
       "path": "schemas/5000-career-profession/5500-professional-network/referral.schema.json",
       "authoritativePath": "schemas/2000-relationships/2400-networks/referral.schema.json",
       "canonical": false,
-      "extends": "referral",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -16322,7 +16322,7 @@
       "parent": "mentorship",
       "path": "schemas/5000-career-profession/5600-mentorship/mentorship/mentor.schema.json",
       "authoritativePath": "schemas/5000-career-profession/5600-mentorship/mentorship/mentor.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
@@ -16713,7 +16713,7 @@
       "path": "schemas/6000-wealth/commerce/money.schema.json",
       "authoritativePath": "schemas/0000-platform/shared/money.schema.json",
       "canonical": false,
-      "extends": "money",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -16765,7 +16765,7 @@
       "path": "schemas/6000-wealth/commerce/payment.schema.json",
       "authoritativePath": "schemas/0000-platform/core/payment.schema.json",
       "canonical": false,
-      "extends": "payment",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -16787,7 +16787,7 @@
           "required": true
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "payment-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
@@ -16913,7 +16913,7 @@
       "path": "schemas/6000-wealth/commerce/tax.schema.json",
       "authoritativePath": "schemas/6000-wealth/finance/tax.schema.json",
       "canonical": false,
-      "extends": "tax",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -17615,7 +17615,7 @@
       "path": "schemas/6000-wealth/insurance/insurance-policy.schema.json",
       "authoritativePath": "schemas/6000-wealth/finance/insurance-policy.schema.json",
       "canonical": false,
-      "extends": "insurance-policy",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -17927,7 +17927,7 @@
       "path": "schemas/6000-wealth/investments/watchlist.schema.json",
       "authoritativePath": "schemas/10000-culture/film/watchlist.schema.json",
       "canonical": false,
-      "extends": "watchlist",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -18028,7 +18028,7 @@
       "path": "schemas/6000-wealth/wealth/financial-goals.schema.json",
       "authoritativePath": "schemas/6000-wealth/wealth/financial-goals.schema.json",
       "canonical": true,
-      "extends": "goal",
+      "extends": null,
       "ontologyType": "canonical",
       "canonicalReferences": [],
       "tags": [
@@ -18227,7 +18227,7 @@
       "parent": "wealth",
       "path": "schemas/6000-wealth/wealth/wealth-dashboard.schema.json",
       "authoritativePath": "schemas/6000-wealth/wealth/wealth-dashboard.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": null,
       "ontologyType": "view",
       "canonicalReferences": [],
@@ -18646,7 +18646,7 @@
       "parent": "property-construction",
       "path": "schemas/7000-property/property-construction/contractor.schema.json",
       "authoritativePath": "schemas/7000-property/property-construction/contractor.schema.json",
-      "canonical": true,
+      "canonical": false,
       "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
@@ -18777,7 +18777,7 @@
       "path": "schemas/7000-property/property-construction/property.schema.json",
       "authoritativePath": "schemas/7000-property/housing/property.schema.json",
       "canonical": false,
-      "extends": "property",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -19063,7 +19063,7 @@
       "path": "schemas/8000-mobility/8100-travel/travel/emergency-contact.schema.json",
       "authoritativePath": "schemas/3000-health/emergency/emergency-contact.schema.json",
       "canonical": false,
-      "extends": "emergency-contact",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -19245,7 +19245,7 @@
       "path": "schemas/8000-mobility/8100-travel/travel/travel-insurance.schema.json",
       "authoritativePath": "schemas/6000-wealth/insurance/travel-insurance.schema.json",
       "canonical": false,
-      "extends": "travel-insurance",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -19708,7 +19708,7 @@
       "path": "schemas/9000-digital-life/digital-life/subscription.schema.json",
       "authoritativePath": "schemas/6000-wealth/commerce/subscription.schema.json",
       "canonical": false,
-      "extends": "subscription",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -19863,7 +19863,7 @@
       "path": "schemas/9000-digital-life/personal-digital/album.schema.json",
       "authoritativePath": "schemas/10000-culture/music/album.schema.json",
       "canonical": false,
-      "extends": "album",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -20149,7 +20149,7 @@
       "path": "schemas/9000-digital-life/personal-digital/folder.schema.json",
       "authoritativePath": "schemas/0000-platform/folders/folder.schema.json",
       "canonical": false,
-      "extends": "folder",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -20253,7 +20253,7 @@
       "path": "schemas/9000-digital-life/personal-digital/reminder.schema.json",
       "authoritativePath": "schemas/0000-platform/automation/reminder.schema.json",
       "canonical": false,
-      "extends": "reminder",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -20383,7 +20383,7 @@
       "path": "schemas/9000-digital-life/privacy/consent.schema.json",
       "authoritativePath": "schemas/1000-person/people/consent.schema.json",
       "canonical": false,
-      "extends": "consent",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -20773,7 +20773,7 @@
       "path": "schemas/9500-public-presence/social-media/campaign.schema.json",
       "authoritativePath": "schemas/12000-community-impact/civic/campaign.schema.json",
       "canonical": false,
-      "extends": "campaign",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [
@@ -21319,7 +21319,7 @@
       "path": "schemas/9500-public-presence/social-media/sponsorship.schema.json",
       "authoritativePath": "schemas/12000-community-impact/charity/sponsorship.schema.json",
       "canonical": false,
-      "extends": "sponsorship",
+      "extends": null,
       "ontologyType": "specialisation",
       "canonicalReferences": [],
       "tags": [

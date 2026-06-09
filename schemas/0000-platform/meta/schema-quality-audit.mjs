@@ -367,6 +367,35 @@ if (totalIssues === 0) {
 
 // Detailed issue reporting (only if issues exist)
 if (totalIssues > 0) {
+  if (issues.missingLifecycle.length > 0) {
+    console.log('\n🟠 MISSING LIFECYCLE DEFINITIONS (CANONICAL CORE SCHEMAS)');
+    console.log('────────────────────────────────────────────────────────────────');
+    for (const issue of issues.missingLifecycle) {
+      console.log(`  ${issue.schema}`);
+      console.log(`    → ${issue.path}`);
+    }
+  }
+
+  if (issues.canonicalVsExtension.length > 0) {
+    console.log('\n🟠 CANONICAL FLAG MISMATCHES');
+    console.log('────────────────────────────────────────────────────────────────');
+    for (const issue of issues.canonicalVsExtension.slice(0, 10)) {
+      console.log(`  ${issue.schema}: canonical=${issue.canonical} but ontologyType="${issue.ontologyType}"`);
+    }
+    if (issues.canonicalVsExtension.length > 10) {
+      console.log(`  ... and ${issues.canonicalVsExtension.length - 10} more`);
+    }
+  }
+
+  if (issues.orphanedSchemas.length > 0) {
+    console.log('\n🔴 ORPHANED SCHEMAS (EXTEND NON-EXISTENT PARENTS)');
+    console.log('────────────────────────────────────────────────────────────────');
+    for (const issue of issues.orphanedSchemas) {
+      console.log(`  ${issue.schema} extends "${issue.extends}"`);
+      console.log(`    → ${issue.path}`);
+    }
+  }
+
   if (issues.uncuratedCritical.length > 0) {
     console.log('\n🔴 UNCURATED CRITICAL SCHEMAS');
     console.log('────────────────────────────────────────────────────────────────');

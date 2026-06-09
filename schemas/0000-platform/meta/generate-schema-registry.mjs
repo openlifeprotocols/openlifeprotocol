@@ -143,14 +143,28 @@ const entries = rows.map((row) => {
   ])).filter(Boolean);
 
   const curated = curatedBySchema.get(row.schema) || {};
+  
+  // Enforce: canonical should match ontologyType
+  // Only truly canonical schemas have canonical=true
+  const shouldBeCanonical = ontologyType === 'canonical' && canonical;
+  
+  // Enforce: canonical schemas should never extend themselves or anything else
+  let finalExtends = previous.extends ?? extendsSchema;
+  if (shouldBeCanonical) {
+    finalExtends = null;
+  } else if (finalExtends === row.schema) {
+    // Prevent self-referential extends
+    finalExtends = null;
+  }
+  
   return {
     schema: row.schema,
     account: row.account,
     parent: row.parent,
     path: row.path,
     authoritativePath,
-    canonical: previous.canonical ?? canonical,
-    extends: previous.extends ?? extendsSchema,
+    canonical: shouldBeCanonical,
+    extends: finalExtends,
     ontologyType: previous.ontologyType ?? ontologyType,
     canonicalReferences: Array.isArray(previous.canonicalReferences) ? previous.canonicalReferences : [],
     tags: Array.isArray(previous.tags) ? previous.tags : tags,

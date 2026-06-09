@@ -284,7 +284,7 @@
           "required": false
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "asset-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
@@ -414,7 +414,7 @@
           "required": false
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "milestone-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
@@ -434,7 +434,7 @@
           "required": false
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "certification-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "medium",
       "retention": "permanent",
@@ -624,7 +624,7 @@
           "required": false
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "note-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
@@ -633,6 +633,32 @@
       "semanticDescription": "A brief written record of ideas or observations.",
       "graphImportance": "supporting",
       "lifeDomains": ["learning", "planning"]
+    },
+    {
+      "schema": "actor",
+      "relationships": [
+        {
+          "target": "relationship",
+          "type": "participates-in",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "decision",
+          "type": "makes",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": "actor-lifecycle",
+      "expectedAuthority": "user",
+      "sensitivity": "high",
+      "retention": "permanent",
+      "channels": ["personal", "business"],
+      "roles": [],
+      "semanticDescription": "An entity that participates in life events.",
+      "graphImportance": "core",
+      "lifeDomains": ["relationships"]
     }
   ]
 }
