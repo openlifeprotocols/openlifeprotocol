@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Recurring Schedule",
+  "description": "A named, repeating schedule pattern such as a weekly routine or term-time timetable.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^schedule_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "type": { "type": "string", "enum": ["daily-routine", "weekly-template", "term-timetable", "shift-pattern", "seasonal", "custom"] },
+    "timezone": { "type": "string" },
+    "valid_from": { "type": "string", "format": "date" },
+    "valid_until": { "type": "string", "format": "date" },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "day": { "type": "string", "enum": ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"] },
+          "start_time": { "type": "string" },
+          "end_time": { "type": "string" },
+          "label": { "type": "string" },
+          "purpose": { "type": "string" }
+        }
+      }
+    },
+    "is_active": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "name", "type", "timezone"]
+}

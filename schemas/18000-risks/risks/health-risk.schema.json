@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Health Risk",
+  "description": "A personal health risk factor — genetic, lifestyle, environmental or chronic.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^health_risk_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "category": { "type": "string", "enum": ["genetic", "lifestyle", "environmental", "chronic-condition", "mental-health", "nutritional", "occupational", "age-related", "infectious"] },
+    "likelihood": { "type": "string", "enum": ["rare", "unlikely", "possible", "likely", "almost-certain"] },
+    "impact": { "type": "string", "enum": ["minor", "moderate", "significant", "severe", "critical"] },
+    "is_monitored": { "type": "boolean" },
+    "mitigation_actions": { "type": "array", "items": { "type": "string" } },
+    "linked_condition_ids": { "type": "array", "items": { "type": "string" } },
+    "review_date": { "type": "string", "format": "date" },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "category", "likelihood", "impact"]
+}

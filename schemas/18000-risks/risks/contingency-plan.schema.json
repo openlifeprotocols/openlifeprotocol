@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contingency Plan",
+  "description": "A pre-defined response to a specific identified risk materialising.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^contingency_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "linked_risk_id": { "type": "string" },
+    "risk_type": { "type": "string", "enum": ["health", "financial", "legal", "cyber", "dependency", "relationship", "career", "custom"] },
+    "trigger": { "type": "string", "description": "The condition that activates this plan" },
+    "response_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step": { "type": "integer" },
+          "action": { "type": "string" },
+          "owner": { "type": "string" },
+          "timeline": { "type": "string" }
+        },
+        "required": ["step", "action"]
+      }
+    },
+    "required_resources": { "type": "array", "items": { "type": "string" } },
+    "decision_maker_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["draft", "ready", "activated", "resolved", "archived"] },
+    "last_reviewed": { "type": "string", "format": "date" },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "trigger", "status"]
+}

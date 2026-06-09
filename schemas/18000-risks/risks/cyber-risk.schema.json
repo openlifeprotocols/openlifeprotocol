@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cyber Risk",
+  "description": "A personal cybersecurity risk including account compromise, data breach or identity theft.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^cyber_risk_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "category": { "type": "string", "enum": ["account-compromise", "data-breach", "identity-theft", "phishing", "ransomware", "social-engineering", "device-loss", "weak-credentials", "third-party-exposure"] },
+    "likelihood": { "type": "string", "enum": ["rare", "unlikely", "possible", "likely", "almost-certain"] },
+    "impact": { "type": "string", "enum": ["minor", "moderate", "significant", "severe", "critical"] },
+    "affected_accounts": { "type": "array", "items": { "type": "string" } },
+    "mitigations": { "type": "array", "items": { "type": "string" } },
+    "mfa_enabled": { "type": "boolean" },
+    "last_password_rotation": { "type": "string", "format": "date" },
+    "review_date": { "type": "string", "format": "date" },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "category", "likelihood", "impact"]
+}

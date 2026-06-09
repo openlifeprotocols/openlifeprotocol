@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Application",
+  "description": "A formal application made by a person — for a job, grant, programme, membership or award.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^application_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "type": { "type": "string", "enum": ["job", "grant", "programme", "membership", "award", "funding", "visa", "rental", "loan", "other"] },
+    "target_organisation": { "type": "string" },
+    "target_role_or_programme": { "type": "string" },
+    "status": { "type": "string", "enum": ["drafting", "submitted", "under-review", "interview", "offered", "accepted", "rejected", "withdrawn"] },
+    "submitted_date": { "type": "string", "format": "date" },
+    "deadline": { "type": "string", "format": "date" },
+    "decision_date": { "type": "string", "format": "date" },
+    "outcome": { "type": "string" },
+    "feedback": { "type": "string" },
+    "linked_opportunity_id": { "type": "string" },
+    "documents": { "type": "array", "items": { "type": "string" }, "description": "Document IDs (CV, cover letter, etc.)" },
+    "notes": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "type", "status"]
+}

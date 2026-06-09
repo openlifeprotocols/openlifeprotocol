@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Legal Risk",
+  "description": "A personal legal exposure such as a dispute, contractual liability or regulatory obligation.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^legal_risk_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "category": { "type": "string", "enum": ["contract", "dispute", "regulatory", "tax", "intellectual-property", "employment", "family-law", "property", "criminal", "data-privacy"] },
+    "status": { "type": "string", "enum": ["potential", "active", "mitigated", "resolved", "escalated"] },
+    "likelihood": { "type": "string", "enum": ["rare", "unlikely", "possible", "likely", "almost-certain"] },
+    "impact": { "type": "string", "enum": ["minor", "moderate", "significant", "severe", "critical"] },
+    "jurisdiction": { "type": "string" },
+    "legal_adviser_id": { "type": "string" },
+    "mitigations": { "type": "array", "items": { "type": "string" } },
+    "review_date": { "type": "string", "format": "date" },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "category", "status", "likelihood", "impact"]
+}

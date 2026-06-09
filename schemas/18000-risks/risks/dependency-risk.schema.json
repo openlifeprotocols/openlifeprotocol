@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dependency Risk",
+  "description": "A risk arising from dependence on a single person, employer, platform, service or income source.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^dep_risk_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "dependency_type": { "type": "string", "enum": ["single-employer", "single-client", "single-income-source", "platform", "person", "technology", "supplier", "geography"] },
+    "dependency_name": { "type": "string" },
+    "concentration_percentage": { "type": "number", "minimum": 0, "maximum": 100, "description": "What % of income/time/wellbeing depends on this" },
+    "likelihood": { "type": "string", "enum": ["rare", "unlikely", "possible", "likely", "almost-certain"] },
+    "impact": { "type": "string", "enum": ["minor", "moderate", "significant", "severe", "critical"] },
+    "diversification_plan": { "type": "string" },
+    "review_date": { "type": "string", "format": "date" },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "dependency_type", "likelihood", "impact"]
+}

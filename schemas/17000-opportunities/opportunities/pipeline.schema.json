@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Personal Pipeline",
+  "description": "An aggregated view of opportunities, prospects and applications at different stages.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^pipeline_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "name": { "type": "string", "description": "e.g. Job Search 2026, Angel Investments, Partnerships" },
+    "type": { "type": "string", "enum": ["job-search", "investment", "business-development", "collaboration", "learning", "custom"] },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stage_name": { "type": "string" },
+          "order": { "type": "integer" },
+          "entry_criteria": { "type": "string" }
+        },
+        "required": ["stage_name", "order"]
+      }
+    },
+    "opportunity_ids": { "type": "array", "items": { "type": "string" } },
+    "prospect_ids": { "type": "array", "items": { "type": "string" } },
+    "application_ids": { "type": "array", "items": { "type": "string" } },
+    "is_active": { "type": "boolean" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "name", "type"]
+}

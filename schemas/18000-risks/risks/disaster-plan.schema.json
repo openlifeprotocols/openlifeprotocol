@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Disaster Plan",
+  "description": "A documented personal or household plan for responding to a specific disaster scenario.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^disaster_plan_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "scenario": { "type": "string", "enum": ["fire", "flood", "earthquake", "pandemic", "job-loss", "medical-emergency", "death-of-partner", "cyber-attack", "economic-collapse", "displacement", "custom"] },
+    "description": { "type": "string" },
+    "trigger_conditions": { "type": "array", "items": { "type": "string" } },
+    "immediate_actions": { "type": "array", "items": { "type": "string" } },
+    "short_term_actions": { "type": "array", "items": { "type": "string" } },
+    "long_term_actions": { "type": "array", "items": { "type": "string" } },
+    "key_contacts": { "type": "array", "items": { "type": "string" } },
+    "critical_documents": { "type": "array", "items": { "type": "string" } },
+    "financial_runway_months": { "type": "number" },
+    "last_rehearsed": { "type": "string", "format": "date" },
+    "review_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "scenario"]
+}

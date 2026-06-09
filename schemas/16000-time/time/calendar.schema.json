@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Calendar",
+  "description": "A personal calendar grouping events, commitments and time blocks.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^calendar_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "name": { "type": "string" },
+    "color": { "type": "string" },
+    "type": { "type": "string", "enum": ["personal", "work", "family", "health", "finance", "social", "project"] },
+    "timezone": { "type": "string", "description": "IANA timezone identifier, e.g. Europe/London" },
+    "is_primary": { "type": "boolean" },
+    "visibility": { "type": "string", "enum": ["private", "shared", "public"] },
+    "sync_sources": { "type": "array", "items": { "type": "string" }, "description": "External calendar IDs synced into this calendar" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "name", "type", "timezone"]
+}

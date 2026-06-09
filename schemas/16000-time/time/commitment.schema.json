@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Commitment",
+  "description": "An obligation or promise that claims a portion of time, attention or energy.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^commitment_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "domain": { "type": "string", "enum": ["work", "family", "health", "finance", "community", "learning", "relationships", "personal"] },
+    "type": { "type": "string", "enum": ["recurring", "one-off", "open-ended", "conditional"] },
+    "priority": { "type": "string", "enum": ["critical", "high", "medium", "low"] },
+    "time_cost_hours_per_week": { "type": "number", "minimum": 0 },
+    "energy_cost": { "type": "string", "enum": ["draining", "neutral", "energising"] },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "review_date": { "type": "string", "format": "date" },
+    "can_delegate": { "type": "boolean" },
+    "can_drop": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["active", "paused", "completed", "dropped"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "domain", "type", "priority", "status"]
+}
