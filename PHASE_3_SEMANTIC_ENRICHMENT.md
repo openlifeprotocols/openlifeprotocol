@@ -251,11 +251,11 @@ schema-name → {schema_name}-lifecycle.schema.json
 ```json
 {
   "schema": "goal",
-  
+
   "semanticDescription": "A desired future outcome pursued by an actor and measured through progress over time. Goals provide direction for activities and enable outcome-based reasoning.",
-  
+
   "lifecycle": "goal-lifecycle",
-  
+
   "relationships": [
     {
       "target": "actor",
@@ -283,11 +283,11 @@ schema-name → {schema_name}-lifecycle.schema.json
       "reasoning": "Decisions shape which goals are pursued and how they're achieved"
     }
   ],
-  
+
   "lifeDomains": ["life-story", "planning"],
-  
+
   "graphImportance": "core",
-  
+
   "semanticNotes": "Enable inference chains: actor pursuing goal → project fulfills goal → milestones advance goal → decisions enable achievement. Temporal reasoning: goals have start/end dates, can track progress percentage."
 }
 ```
@@ -313,12 +313,12 @@ A: Cannot execute. No relationship definitions.
 
 ```
 Q: What is a goal?
-A: A desired outcome pursued by an actor and measured through progress. 
+A: A desired outcome pursued by an actor and measured through progress.
    Part of: life-story, planning domains.
    Connected to: projects (fulfills), milestones (advances), decisions (enable)
 
 Q: How do goals relate to my career?
-A: Career goals (domain: career) are pursued through career projects and 
+A: Career goals (domain: career) are pursued through career projects and
    measured via professional milestones.
 
 Q: Can you find goals blocked by risks?

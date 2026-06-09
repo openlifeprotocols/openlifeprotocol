@@ -1,0 +1,323 @@
+{
+  "version": "1.0.0",
+  "description": "Temporal metadata model for causality and timeline reasoning. Enables time-aware graph traversal and consequence chain detection.",
+  "generatedAt": "2026-06-09T22:00:00Z",
+
+  "relationshipTemporalExtensions": {
+    "description": "Optional temporal fields to add to relationships in schema-curation.json",
+
+    "startDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when this relationship became active or was observed",
+      "example": "2026-01-15T10:30:00Z"
+    },
+
+    "endDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when this relationship ended. null = ongoing/undefined",
+      "example": "2026-12-31T23:59:59Z"
+    },
+
+    "observedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this relationship was discovered/confirmed (may differ from startDate)",
+      "example": "2026-02-01T14:20:00Z"
+    },
+
+    "confidence": {
+      "type": "number",
+      "minimum": 0.1,
+      "maximum": 1.0,
+      "description": "Temporal confidence: how certain is the timing? 0.1=guessed, 1.0=exact timestamp",
+      "example": 0.95
+    },
+
+    "lag": {
+      "type": "string",
+      "pattern": "^P\\d+[YMWDH]$",
+      "description": "ISO 8601 duration representing delay between cause and effect. e.g., P7D = 7 days, PT2H = 2 hours",
+      "example": "P5D"
+    },
+
+    "causedBy": {
+      "type": "array",
+      "description": "Events or decisions that triggered this relationship. References: schema:id format",
+      "items": { "type": "string" },
+      "example": ["decision:2026-01-10", "event:payment-approved:2026-01-12"]
+    },
+
+    "causesEvents": {
+      "type": "array",
+      "description": "Events or outcomes this relationship triggered. Downstream consequences.",
+      "items": { "type": "string" },
+      "example": ["milestone:2026-06-30", "event:project-launched:2026-02-01"]
+    },
+
+    "sequenceNumber": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Position in a causal chain (0=root, 1=first consequence, etc.)",
+      "example": 2
+    }
+  },
+
+  "entityTimestampFields": {
+    "description": "Temporal metadata on entities themselves",
+
+    "created": {
+      "type": "date-time",
+      "description": "Entity creation timestamp"
+    },
+
+    "modified": {
+      "type": "date-time",
+      "description": "Last modification timestamp"
+    },
+
+    "commenced": {
+      "type": "date-time",
+      "description": "For activities (projects, events): when they started"
+    },
+
+    "completed": {
+      "type": "date-time",
+      "description": "For activities: when they finished"
+    },
+
+    "archived": {
+      "type": "date-time",
+      "description": "When entity was archived/inactive"
+    },
+
+    "effectiveFrom": {
+      "type": "date-time",
+      "description": "For decisions, goals: when they became active"
+    },
+
+    "validUntil": {
+      "type": "date-time",
+      "description": "For time-limited entities (contracts, permissions): expiration date"
+    }
+  },
+
+  "temporalReasoningPatterns": [
+    {
+      "name": "Decision → Outcome Tracing",
+      "description": "Track decision to outcome with full timeline",
+      "query": "What outcomes resulted from this decision?",
+      "traversal": [
+        "Decision --initiates--> Project",
+        "Project --produces--> Milestone",
+        "Milestone --enables--> Outcome"
+      ],
+      "temporalOrdering": "decision.created < project.commenced < milestone.completed < outcome.created",
+      "lagAnalysis": "total_lag = outcome.created - decision.created",
+      "exampleOutput": {
+        "decision": "Career change",
+        "decisionDate": "2026-01-10",
+        "project": "Job search",
+        "projectStart": "2026-01-15",
+        "milestone": "Offer received",
+        "milestoneDate": "2026-06-30",
+        "outcome": "Salary increase",
+        "outcomeDate": "2026-12-31",
+        "totalLag": "P355D"
+      }
+    },
+    {
+      "name": "Impact Timeline",
+      "description": "When did an event cascade through the system?",
+      "query": "What entities were affected by this event, and when?",
+      "traversal": [
+        "Event --causes--> Effect1 (within P5D)",
+        "Effect1 --impacts--> Entity2 (within P10D)",
+        "Entity2 --blocks--> Entity3 (within P7D)"
+      ],
+      "temporalOrdering": "All relationships ordered by startDate",
+      "exampleOutput": {
+        "rootEvent": "Payment failed",
+        "eventDate": "2026-01-15",
+        "chain": [
+          {
+            "step": 1,
+            "event": "Subscription inactive",
+            "date": "2026-01-15",
+            "lag": "PT0H"
+          },
+          {
+            "step": 2,
+            "entity": "Project",
+            "impacted": true,
+            "date": "2026-01-20",
+            "lag": "P5D"
+          },
+          {
+            "step": 3,
+            "entity": "Goal",
+            "blocked": true,
+            "date": "2026-02-01",
+            "lag": "P17D"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Root Cause Analysis",
+      "description": "What caused this failure? Trace backwards through chain.",
+      "query": "What is the root cause of this outcome?",
+      "traversal": [
+        "Failure --caused-by--> PriorFailure",
+        "PriorFailure --caused-by--> EarlierEvent",
+        "EarlierEvent --caused-by--> RootCause"
+      ],
+      "temporalOrdering": "Reverse chronological: failure.date > priorFailure.date > earlierEvent.date > rootCause.date",
+      "exampleOutput": {
+        "failure": "Goal missed",
+        "failureDate": "2026-12-31",
+        "rootCause": "Budget constraint",
+        "rootCauseDate": "2026-03-15",
+        "chainDepth": 3,
+        "totalDuration": "P291D"
+      }
+    },
+    {
+      "name": "Predictive Impact",
+      "description": "If we make this decision, what might happen?",
+      "query": "What entities might be affected if we proceed with this decision?",
+      "traversal": [
+        "Decision --initiates--> Project",
+        "Project --affects--> Entity1",
+        "Entity1 --impacts--> Entity2",
+        "Entity2 --blocks--> FinalGoal"
+      ],
+      "temporalOrdering": "Future projection from decision date forward",
+      "constraints": "Only use positive-outcome and conditional relationships",
+      "exampleOutput": {
+        "decision": "Start startup",
+        "projectedOutcomes": [
+          {
+            "entity": "Personal time",
+            "impact": "negative",
+            "confidence": 0.9,
+            "timeline": "immediate"
+          },
+          {
+            "entity": "Family relationships",
+            "impact": "negative",
+            "confidence": 0.7,
+            "timeline": "P30D"
+          },
+          {
+            "entity": "Financial security",
+            "impact": "unknown",
+            "confidence": 0.4,
+            "timeline": "P365D"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Milestone Sequencing",
+      "description": "What is the optimal sequence of milestones?",
+      "query": "In what order should milestones be completed?",
+      "traversal": [
+        "Project --has-milestone--> M1",
+        "M1 --precedes--> M2",
+        "M2 --precedes--> M3",
+        "M3 --enables--> Outcome"
+      ],
+      "temporalOrdering": "Topological sort: earliest-dependencies-first",
+      "exampleOutput": {
+        "project": "Product launch",
+        "milestoneSequence": [
+          { "milestone": "Design", "plannedDate": "2026-02-01", "duration": "P30D" },
+          { "milestone": "Development", "plannedDate": "2026-03-03", "duration": "P60D" },
+          { "milestone": "Testing", "plannedDate": "2026-05-02", "duration": "P14D" },
+          { "milestone": "Launch", "plannedDate": "2026-05-16", "duration": "P1D" }
+        ],
+        "criticalPath": "Design → Development → Testing → Launch"
+      }
+    }
+  ],
+
+  "temporalQueryLanguage": {
+    "description": "Example queries over temporal graph",
+
+    "queries": [
+      {
+        "name": "What led to this outcome?",
+        "sql": "TRACE BACKWARDS FROM Outcome ALONG causes UNTIL maxHops=5 WHERE confidence > 0.7",
+        "returns": ["chain of causes", "timestamps", "confidence scores"]
+      },
+      {
+        "name": "What events were caused by this decision?",
+        "sql": "TRACE FORWARDS FROM Decision ALONG causesEvents UNTIL confidence < 0.5",
+        "returns": ["consequent events", "timing", "impact magnitude"]
+      },
+      {
+        "name": "Timeline of Event between dates?",
+        "sql": "FIND ALL relationships WHERE startDate >= '2026-01-01' AND endDate <= '2026-12-31'",
+        "returns": ["temporal edges with timestamps"]
+      },
+      {
+        "name": "Which decisions led to this outcome within 6 months?",
+        "sql": "TRACE Decision → Outcome WHERE lag < P180D",
+        "returns": ["decision-outcome pairs", "lag analysis"]
+      }
+    ]
+  },
+
+  "temporalValidation": {
+    "description": "Constraints for valid temporal relationships",
+
+    "rules": [
+      {
+        "name": "Non-negative duration",
+        "constraint": "If exists(startDate) AND exists(endDate), then endDate >= startDate"
+      },
+      {
+        "name": "Causal ordering",
+        "constraint": "If A causes B, then A.date < B.date (or equal if simultaneous)"
+      },
+      {
+        "name": "No future causality",
+        "constraint": "Causes must predate effects. If causedBy=[event], then event.date < relationship.startDate"
+      },
+      {
+        "name": "Consistent lags",
+        "constraint": "If lag='P5D' and startDate and causedBy[0].date exist, verify startDate ≈ causedBy.date + 5 days"
+      }
+    ]
+  },
+
+  "temporalAggregationFunctions": {
+    "description": "Functions for combining temporal data in chains",
+
+    "lag": {
+      "description": "Total duration from root cause to final outcome",
+      "formula": "final.date - root.date",
+      "example": "Payment failure (Jan 15) to Goal blocked (Feb 01) = P17D"
+    },
+
+    "confidence_decay": {
+      "description": "Confidence drops as we move further from root cause",
+      "formula": "base_confidence * (0.9 ^ num_hops)",
+      "example": "0.95 confidence at hop 0, 0.86 at hop 1, 0.77 at hop 2"
+    },
+
+    "strength_decay": {
+      "description": "Relationship strength fades through long chains",
+      "formula": "base_strength * (0.95 ^ num_hops)",
+      "example": "0.9 strength at hop 0, 0.86 at hop 1, 0.81 at hop 2"
+    },
+
+    "impact_magnitude": {
+      "description": "Total impact of root cause across chain",
+      "formula": "strength1 * strength2 * ... * strengthN",
+      "example": "0.9 * 0.85 * 0.8 = 0.612 = 61.2% impact"
+    }
+  }
+}

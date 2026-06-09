@@ -1,5 +1,5 @@
-import fs from 'node:fs';
 import { execSync } from 'node:child_process';
+import fs from 'node:fs';
 
 const registryPath = 'schemas/0000-platform/meta/schema-registry.json';
 const accountsPath = 'schemas/0000-platform/meta/accounts.json';
@@ -143,11 +143,11 @@ const entries = rows.map((row) => {
   ])).filter(Boolean);
 
   const curated = curatedBySchema.get(row.schema) || {};
-  
+
   // Enforce: canonical should match ontologyType
   // Only truly canonical schemas have canonical=true
   const shouldBeCanonical = ontologyType === 'canonical' && canonical;
-  
+
   // Enforce: canonical schemas should never extend themselves or anything else
   let finalExtends = previous.extends ?? extendsSchema;
   if (shouldBeCanonical) {
@@ -156,7 +156,7 @@ const entries = rows.map((row) => {
     // Prevent self-referential extends
     finalExtends = null;
   }
-  
+
   return {
     schema: row.schema,
     account: row.account,

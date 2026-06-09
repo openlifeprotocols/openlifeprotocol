@@ -1,8 +1,8 @@
 {
   "version": 3,
   "description": "Ontology registry for schema-to-account mapping, canonical lineage, and graph references (generated index).",
-  "generatedAt": "2026-06-09T21:50:42.196Z",
-  "entryCount": 811,
+  "generatedAt": "2026-06-09T22:05:20.347Z",
+  "entryCount": 813,
   "fields": {
     "required": [
       "schema",
@@ -440,7 +440,10 @@
           "target": "calendar-event",
           "type": "references",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "reminder-lifecycle",
@@ -605,13 +608,19 @@
           "target": "relationship",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "decision",
           "type": "makes",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "actor-lifecycle",
@@ -649,7 +658,10 @@
           "target": "actor",
           "type": "owns",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "asset-lifecycle",
@@ -789,25 +801,37 @@
           "target": "goal",
           "type": "advances",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.8,
+          "necessity": "should"
         },
         {
           "target": "risk",
           "type": "acknowledges",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "may"
         },
         {
           "target": "opportunity",
           "type": "commits-to",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.9,
+          "confidence": 0.85,
+          "necessity": "must"
         },
         {
           "target": "project",
           "type": "initiates",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "decision-lifecycle",
@@ -845,7 +869,10 @@
           "target": "actor",
           "type": "references",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "document-lifecycle",
@@ -883,13 +910,19 @@
           "target": "actor",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "location",
           "type": "references",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "event-lifecycle",
@@ -925,7 +958,10 @@
           "target": "*",
           "type": "supports",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         }
       ],
       "lifecycle": "evidence-lifecycle",
@@ -965,19 +1001,28 @@
           "target": "project",
           "type": "enabled-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.8,
+          "necessity": "should"
         },
         {
           "target": "risk",
           "type": "blocked-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.8,
+          "necessity": "should"
         },
         {
           "target": "opportunity",
           "type": "pursued-via",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "goal-lifecycle",
@@ -1071,7 +1116,10 @@
           "target": "actor",
           "type": "employs",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         }
       ],
       "lifecycle": "organisation-lifecycle",
@@ -1136,13 +1184,19 @@
           "target": "project",
           "type": "funds",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.9,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "flows-to",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "payment-lifecycle",
@@ -1184,19 +1238,28 @@
           "target": "goal",
           "type": "fulfills",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "should"
         },
         {
           "target": "risk",
           "type": "mitigates",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "opportunity",
           "type": "explores",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.7,
+          "necessity": "may"
         }
       ],
       "lifecycle": "project-lifecycle",
@@ -1241,13 +1304,19 @@
           "target": "project",
           "type": "supports",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         },
         {
           "target": "goal",
           "type": "fulfills",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "task-lifecycle",
@@ -1282,13 +1351,19 @@
           "target": "project",
           "type": "supports",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         },
         {
           "target": "deliverable",
           "type": "produces",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "workflow-lifecycle",
@@ -1558,7 +1633,10 @@
           "target": "*",
           "type": "contains",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "collection-lifecycle",
@@ -1801,7 +1879,10 @@
           "target": "actor",
           "type": "connects",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         }
       ],
       "lifecycle": "relationship-lifecycle",
@@ -2054,6 +2135,32 @@
       "lifeDomains": []
     },
     {
+      "schema": "inference-rule-types",
+      "account": "0000",
+      "parent": "meta",
+      "path": "schemas/0000-platform/meta/inference-rule-types.schema.json",
+      "authoritativePath": "schemas/0000-platform/meta/inference-rule-types.schema.json",
+      "canonical": true,
+      "extends": null,
+      "ontologyType": "canonical",
+      "canonicalReferences": [],
+      "tags": [
+        "0000",
+        "platform",
+        "meta"
+      ],
+      "relationships": [],
+      "lifecycle": null,
+      "expectedAuthority": null,
+      "sensitivity": "low",
+      "retention": null,
+      "channels": [],
+      "roles": [],
+      "semanticDescription": null,
+      "graphImportance": "supporting",
+      "lifeDomains": []
+    },
+    {
       "schema": "life-area-map",
       "account": "0000",
       "parent": "meta",
@@ -2137,6 +2244,32 @@
       "parent": "meta",
       "path": "schemas/0000-platform/meta/ontology.schema.json",
       "authoritativePath": "schemas/0000-platform/meta/ontology.schema.json",
+      "canonical": true,
+      "extends": null,
+      "ontologyType": "canonical",
+      "canonicalReferences": [],
+      "tags": [
+        "0000",
+        "platform",
+        "meta"
+      ],
+      "relationships": [],
+      "lifecycle": null,
+      "expectedAuthority": null,
+      "sensitivity": "low",
+      "retention": null,
+      "channels": [],
+      "roles": [],
+      "semanticDescription": null,
+      "graphImportance": "supporting",
+      "lifeDomains": []
+    },
+    {
+      "schema": "reasoning-rule",
+      "account": "0000",
+      "parent": "meta",
+      "path": "schemas/0000-platform/meta/reasoning-rule.schema.json",
+      "authoritativePath": "schemas/0000-platform/meta/reasoning-rule.schema.json",
       "canonical": true,
       "extends": null,
       "ontologyType": "canonical",
@@ -2307,7 +2440,10 @@
           "target": "actor",
           "type": "references",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "notification-lifecycle",
@@ -2447,7 +2583,10 @@
           "target": "insurance-policy",
           "type": "references",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "claim-lifecycle",
@@ -2560,7 +2699,10 @@
           "target": "employment",
           "type": "documents",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "review-lifecycle",
@@ -2647,7 +2789,10 @@
           "target": "actor",
           "type": "owns",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "asset-lifecycle",
@@ -3203,7 +3348,10 @@
           "target": "reference",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "search-result-lifecycle",
@@ -3317,7 +3465,10 @@
           "target": "*",
           "type": "identifies",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "identifier-lifecycle",
@@ -3431,7 +3582,10 @@
           "target": "*",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "provenance-lifecycle",
@@ -3649,7 +3803,10 @@
           "target": "*",
           "type": "classifies",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "classification-lifecycle",
@@ -3711,7 +3868,10 @@
           "target": "*",
           "type": "classifies",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "tag-lifecycle",
@@ -4293,7 +4453,10 @@
           "target": "goal",
           "type": "supports",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         }
       ],
       "lifecycle": "habit-lifecycle",
@@ -4849,13 +5012,19 @@
           "target": "actor",
           "type": "participates-in",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "location",
           "type": "located-at",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "household-lifecycle",
@@ -5177,7 +5346,10 @@
           "target": "*",
           "type": "contains",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "collection-lifecycle",
@@ -5467,7 +5639,10 @@
           "target": "employment",
           "type": "documents",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "review-lifecycle",
@@ -5606,7 +5781,10 @@
           "target": "goal",
           "type": "fulfills",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "achievement-lifecycle",
@@ -5876,7 +6054,10 @@
           "target": "*",
           "type": "contains",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "collection-lifecycle",
@@ -5911,13 +6092,19 @@
           "target": "goal",
           "type": "fulfills",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "should"
         },
         {
           "target": "actor",
           "type": "created-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "project-lifecycle",
@@ -6421,13 +6608,19 @@
           "target": "learning-record",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         },
         {
           "target": "certification",
           "type": "produces",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "course-lifecycle",
@@ -6463,13 +6656,19 @@
           "target": "goal",
           "type": "fulfills",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "should"
         },
         {
           "target": "actor",
           "type": "created-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "project-lifecycle",
@@ -6973,7 +7172,10 @@
           "target": "organisation",
           "type": "contributes-to",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "donation-lifecycle",
@@ -7814,7 +8016,10 @@
           "target": "goal",
           "type": "fulfills",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "achievement-lifecycle",
@@ -8006,7 +8211,10 @@
           "target": "event",
           "type": "documents",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "memory-lifecycle",
@@ -8349,7 +8557,10 @@
           "target": "employment",
           "type": "documents",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "review-lifecycle",
@@ -8384,13 +8595,19 @@
           "target": "project",
           "type": "fulfills",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "should"
         },
         {
           "target": "workflow",
           "type": "comes-from",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "deliverable-lifecycle",
@@ -8452,13 +8669,19 @@
           "target": "project",
           "type": "marks",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.95,
+          "necessity": "may"
         },
         {
           "target": "deliverable",
           "type": "gates",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "milestone-lifecycle",
@@ -8520,13 +8743,19 @@
           "target": "project",
           "type": "supports",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         },
         {
           "target": "actor",
           "type": "assigns",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "resource-allocation-lifecycle",
@@ -9057,7 +9286,10 @@
           "target": "actor",
           "type": "authorizes",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "permit-lifecycle",
@@ -9144,19 +9376,28 @@
           "target": "actor",
           "type": "binds",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         },
         {
           "target": "organisation",
           "type": "references",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         },
         {
           "target": "document",
           "type": "documents",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "contract-lifecycle",
@@ -9453,7 +9694,10 @@
           "target": "insurance-policy",
           "type": "references",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "claim-lifecycle",
@@ -10441,13 +10685,19 @@
           "target": "project",
           "type": "informs",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "should"
         },
         {
           "target": "goal",
           "type": "informs",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "idea-lifecycle",
@@ -10511,13 +10761,19 @@
           "target": "goal",
           "type": "enables",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.8,
+          "necessity": "should"
         },
         {
           "target": "decision",
           "type": "requires",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "must"
         }
       ],
       "lifecycle": "opportunity-lifecycle",
@@ -10888,7 +11144,10 @@
           "target": "*",
           "type": "located-at",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "location-lifecycle",
@@ -10924,7 +11183,10 @@
           "target": "actor",
           "type": "employs",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         }
       ],
       "lifecycle": "organisation-lifecycle",
@@ -11249,13 +11511,19 @@
           "target": "actor",
           "type": "founded-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.95,
+          "necessity": "must"
         },
         {
           "target": "payment",
           "type": "raises",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "startup-lifecycle",
@@ -11291,13 +11559,19 @@
           "target": "actor",
           "type": "owned-by",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "managed-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "account-lifecycle",
@@ -11332,7 +11606,10 @@
           "target": "person",
           "type": "references",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "contact-lifecycle",
@@ -11419,7 +11696,10 @@
           "target": "payment",
           "type": "makes",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "customer-lifecycle",
@@ -11663,13 +11943,19 @@
           "target": "goal",
           "type": "enables",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.8,
+          "necessity": "should"
         },
         {
           "target": "decision",
           "type": "requires",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "must"
         }
       ],
       "lifecycle": "opportunity-lifecycle",
@@ -12386,13 +12672,19 @@
           "target": "workflow-definition",
           "type": "defined-by",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "team",
           "type": "executed-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "process-lifecycle",
@@ -12947,7 +13239,10 @@
           "target": "actor",
           "type": "owns",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "property-lifecycle",
@@ -12983,7 +13278,10 @@
           "target": "actor",
           "type": "owns",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "vehicle-lifecycle",
@@ -13019,7 +13317,10 @@
           "target": "goal",
           "type": "supports",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         }
       ],
       "lifecycle": "budget-lifecycle",
@@ -13107,7 +13408,10 @@
           "target": "financial-account",
           "type": "tracked-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "expense-lifecycle",
@@ -13195,13 +13499,19 @@
           "target": "project",
           "type": "funds",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.9,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "flows-to",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "payment-lifecycle",
@@ -13291,13 +13601,19 @@
           "target": "financial-account",
           "type": "tracks",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "references",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "subscription-lifecycle",
@@ -13619,13 +13935,19 @@
           "target": "contract",
           "type": "bound-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.9,
+          "necessity": "must"
         },
         {
           "target": "project",
           "type": "contributes-to",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "contractor-lifecycle",
@@ -13687,13 +14009,19 @@
           "target": "organisation",
           "type": "works-for",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         },
         {
           "target": "project",
           "type": "contributes-to",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "employee-lifecycle",
@@ -13807,13 +14135,19 @@
           "target": "actor",
           "type": "member-of",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.9,
+          "necessity": "must"
         },
         {
           "target": "project",
           "type": "works-on",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "team-lifecycle",
@@ -14031,7 +14365,10 @@
           "target": "organisation",
           "type": "issued-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.85,
+          "confidence": 0.95,
+          "necessity": "should"
         }
       ],
       "lifecycle": "policy-lifecycle",
@@ -14066,19 +14403,28 @@
           "target": "goal",
           "type": "blocks",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.8,
+          "necessity": "should"
         },
         {
           "target": "project",
           "type": "threatens",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.7,
+          "necessity": "should"
         },
         {
           "target": "decision",
           "type": "informs",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "risk-lifecycle",
@@ -14480,13 +14826,19 @@
           "target": "actor",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "location",
           "type": "located-at",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "community-group-lifecycle",
@@ -15352,7 +15704,10 @@
           "target": "actor",
           "type": "connects",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         }
       ],
       "lifecycle": "relationship-lifecycle",
@@ -15650,7 +16005,10 @@
           "target": "health-record",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "medication-lifecycle",
@@ -15841,19 +16199,28 @@
           "target": "actor",
           "type": "held-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         },
         {
           "target": "organisation",
           "type": "issued-by",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.95,
+          "necessity": "should"
         },
         {
           "target": "document",
           "type": "references",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "certification-lifecycle",
@@ -15968,7 +16335,10 @@
           "target": "credential",
           "type": "documents",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "certificate-lifecycle",
@@ -16106,13 +16476,19 @@
           "target": "learning-record",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         },
         {
           "target": "certification",
           "type": "produces",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "course-lifecycle",
@@ -16197,13 +16573,19 @@
           "target": "certification",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         },
         {
           "target": "goal",
           "type": "supports",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         }
       ],
       "lifecycle": "learning-record-lifecycle",
@@ -16238,7 +16620,10 @@
           "target": "document",
           "type": "references",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "note-lifecycle",
@@ -16452,7 +16837,10 @@
           "target": "*",
           "type": "references",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "reference-lifecycle",
@@ -16540,13 +16928,19 @@
           "target": "organisation",
           "type": "works-for",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         },
         {
           "target": "project",
           "type": "contributes-to",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "employment-lifecycle",
@@ -16764,7 +17158,10 @@
           "target": "employment",
           "type": "updates",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "promotion-lifecycle",
@@ -17085,7 +17482,10 @@
           "target": "actor",
           "type": "advises",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "mentor-lifecycle",
@@ -17381,13 +17781,19 @@
           "target": "actor",
           "type": "owned-by",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "managed-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "account-lifecycle",
@@ -17422,7 +17828,10 @@
           "target": "goal",
           "type": "supports",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         }
       ],
       "lifecycle": "budget-lifecycle",
@@ -17484,13 +17893,19 @@
           "target": "payment",
           "type": "requests",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         },
         {
           "target": "project",
           "type": "documents",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "invoice-lifecycle",
@@ -17578,13 +17993,19 @@
           "target": "project",
           "type": "funds",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.9,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "flows-to",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "payment-lifecycle",
@@ -17700,13 +18121,19 @@
           "target": "financial-account",
           "type": "tracks",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "references",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "subscription-lifecycle",
@@ -17768,13 +18195,19 @@
           "target": "financial-account",
           "type": "tracked-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "expense",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "transaction-lifecycle",
@@ -18200,13 +18633,19 @@
           "target": "actor",
           "type": "covers",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "issued-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.85,
+          "confidence": 0.95,
+          "necessity": "should"
         }
       ],
       "lifecycle": "insurance-policy-lifecycle",
@@ -18476,13 +18915,19 @@
           "target": "actor",
           "type": "covers",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "issued-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.85,
+          "confidence": 0.95,
+          "necessity": "should"
         }
       ],
       "lifecycle": "insurance-policy-lifecycle",
@@ -19316,7 +19761,10 @@
           "target": "actor",
           "type": "owns",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "property-lifecycle",
@@ -19534,13 +19982,19 @@
           "target": "contract",
           "type": "bound-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.9,
+          "necessity": "must"
         },
         {
           "target": "project",
           "type": "contributes-to",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "contractor-lifecycle",
@@ -19680,7 +20134,10 @@
           "target": "actor",
           "type": "owns",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "property-lifecycle",
@@ -19846,7 +20303,10 @@
           "target": "actor",
           "type": "owns",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "vehicle-lifecycle",
@@ -20038,7 +20498,10 @@
           "target": "calendar-event",
           "type": "contains",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "itinerary-lifecycle",
@@ -20333,7 +20796,10 @@
           "target": "actor",
           "type": "participates-in",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "agreement-lifecycle",
@@ -20420,13 +20886,19 @@
           "target": "message",
           "type": "contains",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "person",
           "type": "participates-in",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "conversation-lifecycle",
@@ -20487,13 +20959,19 @@
           "target": "team",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "project",
           "type": "discusses",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "meeting-lifecycle",
@@ -20578,7 +21056,10 @@
           "target": "actor",
           "type": "owns",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "device-lifecycle",
@@ -20687,13 +21168,19 @@
           "target": "financial-account",
           "type": "tracks",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "references",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "subscription-lifecycle",
@@ -20885,13 +21372,19 @@
           "target": "actor",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "location",
           "type": "located-at",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "event-lifecycle",
@@ -20953,7 +21446,10 @@
           "target": "person",
           "type": "references",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "contact-lifecycle",
@@ -21274,7 +21770,10 @@
           "target": "calendar-event",
           "type": "references",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "reminder-lifecycle",
@@ -21361,13 +21860,19 @@
           "target": "actor",
           "type": "grants-to",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "resource",
           "type": "controls",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "access-control-lifecycle",
@@ -21689,13 +22194,19 @@
           "target": "actor",
           "type": "represents",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "digital-account",
           "type": "linked-to",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "public-profile-lifecycle",
@@ -22172,7 +22683,10 @@
           "target": "actor",
           "type": "references",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "message-lifecycle",

@@ -1,5 +1,5 @@
-import fs from 'node:fs';
 import { execSync } from 'node:child_process';
+import fs from 'node:fs';
 
 const registryPath = 'schemas/0000-platform/meta/schema-registry.json';
 const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));

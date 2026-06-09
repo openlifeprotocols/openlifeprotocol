@@ -255,16 +255,16 @@ const summary = {
   totalSchemas: entries.length,
   curatedSchemas: curatedSchemas.size,
   curationCoverage: ((curatedSchemas.size / entries.length) * 100).toFixed(1) + '%',
-  
+
   relationshipsPopulated: entries.filter(e => Array.isArray(e.relationships) && e.relationships.length > 0).length,
   lifecycleLinked: entries.filter(e => e.lifecycle !== null && e.lifecycle !== undefined).length,
   semanticsDocumented: entries.filter(e => e.semanticDescription !== null && e.semanticDescription !== undefined).length,
   lifeDomainsMapped: entries.filter(e => Array.isArray(e.lifeDomains) && e.lifeDomains.length > 0).length,
-  
+
   coreSchemas: entries.filter(e => e.graphImportance === 'core').length,
   supportingSchemas: entries.filter(e => e.graphImportance === 'supporting').length,
   utilitySchemas: entries.filter(e => e.graphImportance === 'utility').length,
-  
+
   canonicalSchemas: entries.filter(e => e.canonical).length,
   extensionSchemas: entries.filter(e => e.ontologyType === 'extension').length,
   viewSchemas: entries.filter(e => e.ontologyType === 'view').length,
@@ -447,8 +447,8 @@ if (totalIssues > 0) {
 console.log('\n═══════════════════════════════════════════════════════════════\n');
 
 // Exit with appropriate code
-if (issues.uncuratedCritical.length > 0 || 
-    issues.invalidPredicates.length > 0 || 
+if (issues.uncuratedCritical.length > 0 ||
+    issues.invalidPredicates.length > 0 ||
     issues.orphanedSchemas.length > 0 ||
     issues.duplicateNames.length > 0) {
   console.log('❌ GOVERNANCE CHECK FAILED');

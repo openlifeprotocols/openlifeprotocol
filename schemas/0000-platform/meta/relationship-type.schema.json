@@ -74,7 +74,31 @@
         "verified-by",
         "conflicts-with",
         "replaces",
-        "extends"
+        "extends",
+        "identifies",
+        "orders",
+        "tracks",
+        "created-by",
+        "represents",
+        "linked-to",
+        "runs-on",
+        "works-on",
+        "discusses",
+        "builds",
+        "covers",
+        "awarded-to",
+        "authorizes",
+        "completes",
+        "owned-by",
+        "managed-by",
+        "defines",
+        "used-by",
+        "defined-by",
+        "executed-by",
+        "grants-to",
+        "controls",
+        "classifies",
+        "issued-by"
       ],
       "description": "Governed predicate name used in schema relationships arrays"
     },
@@ -122,9 +146,20 @@
     },
     "relationship_strength_default": {
       "type": "number",
-      "minimum": 0,
+      "minimum": 0.1,
       "maximum": 1,
-      "description": "Default strength/weight for reasoning (0=weak, 1=strong). Can be overridden at instance level."
+      "description": "Default strength/weight for reasoning (0.1=weak, 1.0=strong). Importance of this relationship for entity definition. Can be overridden at instance level."
+    },
+    "relationship_confidence_default": {
+      "type": "number",
+      "minimum": 0.1,
+      "maximum": 1,
+      "description": "Default confidence/certainty for this relationship type (0.1=speculative, 1.0=certain). Can be overridden at instance level."
+    },
+    "relationship_necessity_default": {
+      "type": "string",
+      "enum": ["must", "should", "may"],
+      "description": "Default necessity level: must=required to exist, should=recommended, may=optional"
     },
     "supports_reasoning": {
       "type": "boolean",

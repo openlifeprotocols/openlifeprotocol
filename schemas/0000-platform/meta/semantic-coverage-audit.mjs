@@ -2,21 +2,20 @@
 
 /**
  * SEMANTIC COVERAGE AUDIT
- * 
+ *
  * Tracks knowledge density across the ontology:
  * - Semantic descriptions (AI understanding)
  * - Lifecycle links (temporal reasoning)
  * - Relationship definitions (graph connectivity)
  * - Life domain mappings (cross-domain inference)
- * 
+ *
  * Governance metrics were Phase 2.
  * Semantic metrics are Phase 3.
- * 
+ *
  * These answers: "Can AI reason over this ontology?"
  */
 
 import fs from 'fs';
-import path from 'path';
 
 const registryPath = './schemas/0000-platform/meta/schema-registry.json';
 
@@ -29,7 +28,7 @@ function analyzeSemanticCoverage(registry) {
   // Registry is { version, description, generatedAt, entryCount, fields, entries }
   const entries = registry.entries || registry;
   const total = entries.length;
-  
+
   const stats = {
     total: total,
     semanticDescriptions: {
@@ -101,7 +100,7 @@ function analyzeSemanticCoverage(registry) {
       entry.lifecycle &&
       (entry.relationships && entry.relationships.length > 0) &&
       (entry.lifeDomains && entry.lifeDomains.length > 0);
-    
+
     if (isFullyEnriched) {
       stats.fullyEnriched.count++;
       stats.fullyEnriched.schemas.push(entry.schema);
@@ -124,7 +123,7 @@ function calculatePercentage(count, total) {
 function enrichmentPriority(registry) {
   // Registry is { version, description, generatedAt, entryCount, fields, entries }
   const entries = registry.entries || registry;
-  
+
   // Priority tiers for semantic enrichment
   const criticalSchemas = [
     'document', 'project', 'goal', 'risk', 'opportunity', 'decision',
@@ -156,7 +155,7 @@ function printReport(stats, registry) {
   // Overall scores
   console.log('🧠 SEMANTIC RICHNESS SCORE');
   console.log('────────────────────────────────────────────────────────────────');
-  
+
   const semanticScore = (
     (stats.semanticDescriptions.count / stats.total) * 0.25 +
     (stats.lifecycleLinks.count / stats.total) * 0.25 +
@@ -196,7 +195,7 @@ function printReport(stats, registry) {
   const priority = enrichmentPriority(registry);
   console.log('🎯 ENRICHMENT PRIORITY (Tier 1: Critical Concepts)');
   console.log('────────────────────────────────────────────────────────────────');
-  
+
   const tier1Enrichment = priority.tier1.map(s => {
     const dims = [
       !!s.semanticDescription ? '📖' : '✗',
@@ -215,20 +214,20 @@ function printReport(stats, registry) {
   console.log('────────────────────────────────────────────────────────────────');
   console.log(`  Milestone A: 100 semantic descriptions (12% coverage)`);
   console.log(`    Progress: ${stats.semanticDescriptions.count}/100 (${calculatePercentage(stats.semanticDescriptions.count, 100)}%)\n`);
-  
+
   console.log(`  Milestone B: 100 lifecycle links (12% coverage)`);
   console.log(`    Progress: ${stats.lifecycleLinks.count}/100 (${calculatePercentage(stats.lifecycleLinks.count, 100)}%)\n`);
-  
+
   console.log(`  Milestone C: 100 relationship definitions (12% coverage)`);
   console.log(`    Progress: ${stats.relationshipsDefined.count}/100 (${calculatePercentage(stats.relationshipsDefined.count, 100)}%)\n`);
-  
+
   console.log(`  Milestone D: 100 life domain mappings (12% coverage)`);
   console.log(`    Progress: ${stats.lifeDomainsMapped.count}/100 (${calculatePercentage(stats.lifeDomainsMapped.count, 100)}%)\n`);
 
   // Gap analysis
   console.log('⚠️  SEMANTIC GAPS (High Priority)');
   console.log('────────────────────────────────────────────────────────────────');
-  
+
   const allGaps = new Set([
     ...priority.tier1.filter(s => !s.semanticDescription).map(s => s.schema),
     ...priority.tier2.filter(s => !s.semanticDescription).map(s => s.schema),

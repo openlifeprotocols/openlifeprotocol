@@ -1,0 +1,378 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "reasoning-rule.schema.json",
+  "title": "Reasoning Rule",
+  "description": "Instance-level rule definition for graph reasoning. Rules transform matched relationship patterns into inferred relationships.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^reasoning_rule_[a-z0-9_-]+$",
+      "description": "Stable identifier for this rule record"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Stable UUID for API/external references"
+    },
+    "rule": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_\-]*$",
+      "description": "Machine-readable rule name (e.g., goal_blocked_by_risk)"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of this rule definition (e.g., 1.0.0)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable rule name"
+    },
+    "description": {
+      "type": "string",
+      "description": "What this rule infers and why"
+    },
+    "ruleType": {
+      "type": "string",
+      "enum": [
+        "transitive",
+        "inverse",
+        "aggregation",
+        "causal",
+        "temporal",
+        "negation",
+        "probabilistic"
+      ],
+      "description": "Reasoning pattern category"
+    },
+    "outputType": {
+      "type": "string",
+      "enum": [
+        "relationship",
+        "alert",
+        "score",
+        "recommendation"
+      ],
+      "description": "Primary output produced by this rule"
+    },
+    "riskLevel": {
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "description": "Impact/risk level of applying this rule"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Owning team or domain for this rule"
+    },
+    "maintainer": {
+      "type": "string",
+      "description": "Primary maintainer responsible for updates"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this rule was first created"
+    },
+    "updatedDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this rule was last updated"
+    },
+    "conditions": {
+      "type": "array",
+      "description": "Pattern clauses that must match existing relationships",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Source variable or entity type"
+          },
+          "predicate": {
+            "type": "string",
+            "description": "Relationship predicate to match (e.g., blocks)"
+          },
+          "target": {
+            "type": "string",
+            "description": "Target variable or entity type"
+          },
+          "optional": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true, this clause may be absent"
+          }
+        },
+        "required": [
+          "predicate"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "inferences": {
+      "type": "array",
+      "description": "Inferred relationship(s) to produce when conditions match",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Inferred source variable or entity type"
+          },
+          "predicate": {
+            "type": "string",
+            "description": "Inferred relationship predicate (e.g., at-risk)"
+          },
+          "target": {
+            "type": "string",
+            "description": "Inferred target variable or entity type"
+          },
+          "strength": {
+            "type": "number",
+            "minimum": 0.1,
+            "maximum": 1,
+            "description": "Importance of the inferred relationship"
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0.1,
+            "maximum": 1,
+            "description": "Confidence score for this specific inferred relationship"
+          },
+          "necessity": {
+            "type": "string",
+            "enum": [
+              "must",
+              "should",
+              "may"
+            ],
+            "description": "Requirement level of inferred relationship"
+          }
+        },
+        "required": [
+          "predicate"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0.1,
+      "maximum": 1,
+      "description": "Confidence score for rule execution/output"
+    },
+    "calculationMethod": {
+      "type": "object",
+      "description": "How composed strength/confidence should be calculated across matched conditions",
+      "properties": {
+        "strength": {
+          "type": "string",
+          "enum": [
+            "multiply",
+            "min",
+            "max",
+            "average",
+            "weighted-average",
+            "custom"
+          ],
+          "description": "Composition method for inferred strength"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "multiply",
+            "min",
+            "max",
+            "average",
+            "weighted-average",
+            "custom"
+          ],
+          "description": "Composition method for inferred confidence"
+        },
+        "customFormula": {
+          "type": "string",
+          "description": "Optional formula when custom method is selected"
+        }
+      },
+      "additionalProperties": false
+    },
+    "explanationTemplate": {
+      "type": "string",
+      "description": "Human-readable explanation pattern for why this inference was made."
+    },
+    "validationStatus": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "tested",
+        "approved",
+        "deprecated"
+      ],
+      "description": "Lifecycle stage of this reasoning rule"
+    },
+    "deprecationReason": {
+      "type": "string",
+      "description": "Reason this rule was deprecated; required when validationStatus is deprecated"
+    },
+    "testCases": {
+      "type": "array",
+      "description": "Inline tests used to validate rule behavior",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "input": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": { "type": "string" },
+                "predicate": { "type": "string" },
+                "target": { "type": "string" }
+              },
+              "required": [
+                "predicate"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "expected": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "source": { "type": "string" },
+                "predicate": { "type": "string" },
+                "target": { "type": "string" }
+              },
+              "required": [
+                "predicate"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "testCaseReference": {
+      "type": "string",
+      "description": "Reference URI/path to external test cases"
+    },
+    "maxDepth": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10,
+      "description": "Maximum traversal depth allowed when applying this rule"
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100,
+      "description": "Rule application priority"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether the rule is active"
+    },
+    "provenancePolicy": {
+      "type": "object",
+      "description": "Evidence/provenance requirements for applying this rule",
+      "properties": {
+        "evidenceRequired": {
+          "type": "boolean",
+          "description": "Whether source evidence is required before inference"
+        },
+        "minEvidenceCount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Minimum number of evidence items required"
+        },
+        "allowedSources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Allowed provenance source classes"
+        }
+      },
+      "required": [
+        "evidenceRequired"
+      ],
+      "additionalProperties": false
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Extensible metadata"
+    }
+  },
+  "required": [
+    "id",
+    "uuid",
+    "rule",
+    "version",
+    "name",
+    "outputType",
+    "riskLevel",
+    "owner",
+    "createdDate",
+    "updatedDate",
+    "ruleType",
+    "conditions",
+    "inferences",
+    "confidence",
+    "calculationMethod",
+    "explanationTemplate",
+    "validationStatus",
+    "maxDepth",
+    "provenancePolicy",
+    "priority",
+    "active"
+  ],
+  "anyOf": [
+    {
+      "required": [
+        "testCases"
+      ]
+    },
+    {
+      "required": [
+        "testCaseReference"
+      ]
+    }
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "validationStatus": {
+            "const": "deprecated"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "deprecationReason"
+        ]
+      }
+    }
+  ],
+  "additionalProperties": false
+}

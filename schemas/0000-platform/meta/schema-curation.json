@@ -9,18 +9,26 @@
           "target": "actor",
           "type": "references",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "document-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A record or artifact relevant to personal life.",
       "graphImportance": "core",
-      "lifeDomains": ["planning"]
+      "lifeDomains": [
+        "planning"
+      ]
     },
     {
       "schema": "project",
@@ -29,30 +37,51 @@
           "target": "goal",
           "type": "fulfills",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "should"
         },
         {
           "target": "risk",
           "type": "mitigates",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "opportunity",
           "type": "explores",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.7,
+          "necessity": "may"
         }
       ],
       "lifecycle": "project-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "7-years",
-      "channels": ["personal", "business", "employment"],
-      "roles": ["operator", "founder", "employee"],
+      "channels": [
+        "personal",
+        "business",
+        "employment"
+      ],
+      "roles": [
+        "operator",
+        "founder",
+        "employee"
+      ],
       "semanticDescription": "An organized effort with defined scope and timeline.",
       "graphImportance": "core",
-      "lifeDomains": ["planning", "career", "enterprise"]
+      "lifeDomains": [
+        "planning",
+        "career",
+        "enterprise"
+      ]
     },
     {
       "schema": "goal",
@@ -61,30 +90,48 @@
           "target": "project",
           "type": "enabled-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.8,
+          "necessity": "should"
         },
         {
           "target": "risk",
           "type": "blocked-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.8,
+          "necessity": "should"
         },
         {
           "target": "opportunity",
           "type": "pursued-via",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "goal-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business", "employment"],
+      "channels": [
+        "personal",
+        "business",
+        "employment"
+      ],
       "roles": [],
       "semanticDescription": "A desired future outcome pursued by an actor.",
       "graphImportance": "core",
-      "lifeDomains": ["planning", "learning", "career", "wealth"]
+      "lifeDomains": [
+        "planning",
+        "learning",
+        "career",
+        "wealth"
+      ]
     },
     {
       "schema": "risk",
@@ -93,30 +140,44 @@
           "target": "goal",
           "type": "blocks",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.8,
+          "necessity": "should"
         },
         {
           "target": "project",
           "type": "threatens",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.7,
+          "necessity": "should"
         },
         {
           "target": "decision",
           "type": "informs",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "risk-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A potential future event with negative impact.",
       "graphImportance": "core",
-      "lifeDomains": ["planning"]
+      "lifeDomains": [
+        "planning"
+      ]
     },
     {
       "schema": "opportunity",
@@ -125,24 +186,38 @@
           "target": "goal",
           "type": "enables",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.8,
+          "necessity": "should"
         },
         {
           "target": "decision",
           "type": "requires",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "must"
         }
       ],
       "lifecycle": "opportunity-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A potential future value creation or benefit.",
       "graphImportance": "core",
-      "lifeDomains": ["planning", "learning", "career", "wealth"]
+      "lifeDomains": [
+        "planning",
+        "learning",
+        "career",
+        "wealth"
+      ]
     },
     {
       "schema": "decision",
@@ -151,36 +226,53 @@
           "target": "goal",
           "type": "advances",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.8,
+          "necessity": "should"
         },
         {
           "target": "risk",
           "type": "acknowledges",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "may"
         },
         {
           "target": "opportunity",
           "type": "commits-to",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.9,
+          "confidence": 0.85,
+          "necessity": "must"
         },
         {
           "target": "project",
           "type": "initiates",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "decision-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A chosen commitment with consequences.",
       "graphImportance": "core",
-      "lifeDomains": ["planning"]
+      "lifeDomains": [
+        "planning"
+      ]
     },
     {
       "schema": "relationship",
@@ -189,18 +281,26 @@
           "target": "actor",
           "type": "connects",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         }
       ],
       "lifecycle": "relationship-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A connection between actors.",
       "graphImportance": "core",
-      "lifeDomains": ["relationships"]
+      "lifeDomains": [
+        "relationships"
+      ]
     },
     {
       "schema": "actor",
@@ -209,24 +309,35 @@
           "target": "relationship",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "decision",
           "type": "makes",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "actor-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "An entity that participates in life events.",
       "graphImportance": "core",
-      "lifeDomains": ["relationships"]
+      "lifeDomains": [
+        "relationships"
+      ]
     },
     {
       "schema": "payment",
@@ -235,24 +346,35 @@
           "target": "project",
           "type": "funds",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.9,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "flows-to",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "payment-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A transfer of value.",
       "graphImportance": "supporting",
-      "lifeDomains": ["wealth"]
+      "lifeDomains": [
+        "wealth"
+      ]
     },
     {
       "schema": "organisation",
@@ -261,18 +383,27 @@
           "target": "actor",
           "type": "employs",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         }
       ],
       "lifecycle": "organisation-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["business", "employment"],
+      "channels": [
+        "business",
+        "employment"
+      ],
       "roles": [],
       "semanticDescription": "A legal or social entity.",
       "graphImportance": "supporting",
-      "lifeDomains": ["enterprise", "career"]
+      "lifeDomains": [
+        "enterprise",
+        "career"
+      ]
     },
     {
       "schema": "asset",
@@ -281,18 +412,27 @@
           "target": "actor",
           "type": "owns",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "asset-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A resource or possession with value.",
       "graphImportance": "core",
-      "lifeDomains": ["wealth", "property"]
+      "lifeDomains": [
+        "wealth",
+        "property"
+      ]
     },
     {
       "schema": "event",
@@ -301,24 +441,37 @@
           "target": "actor",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "location",
           "type": "references",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "event-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business", "public"],
+      "channels": [
+        "personal",
+        "business",
+        "public"
+      ],
       "roles": [],
       "semanticDescription": "A point-in-time occurrence with participants.",
       "graphImportance": "core",
-      "lifeDomains": ["life-story", "community"]
+      "lifeDomains": [
+        "life-story",
+        "community"
+      ]
     },
     {
       "schema": "workflow",
@@ -327,24 +480,38 @@
           "target": "project",
           "type": "supports",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         },
         {
           "target": "deliverable",
           "type": "produces",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "workflow-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["business", "employment"],
-      "roles": ["operator"],
+      "channels": [
+        "business",
+        "employment"
+      ],
+      "roles": [
+        "operator"
+      ],
       "semanticDescription": "A repeatable sequence of steps with defined inputs/outputs.",
       "graphImportance": "supporting",
-      "lifeDomains": ["career", "enterprise"]
+      "lifeDomains": [
+        "career",
+        "enterprise"
+      ]
     },
     {
       "schema": "deliverable",
@@ -353,24 +520,38 @@
           "target": "project",
           "type": "fulfills",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "should"
         },
         {
           "target": "workflow",
           "type": "comes-from",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "deliverable-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "7-years",
-      "channels": ["business", "employment"],
-      "roles": ["operator"],
+      "channels": [
+        "business",
+        "employment"
+      ],
+      "roles": [
+        "operator"
+      ],
       "semanticDescription": "A tangible output or work product.",
       "graphImportance": "supporting",
-      "lifeDomains": ["career", "enterprise"]
+      "lifeDomains": [
+        "career",
+        "enterprise"
+      ]
     },
     {
       "schema": "resource-allocation",
@@ -379,24 +560,40 @@
           "target": "project",
           "type": "supports",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         },
         {
           "target": "actor",
           "type": "assigns",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "resource-allocation-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "7-years",
-      "channels": ["business", "employment"],
-      "roles": ["operator", "manager"],
+      "channels": [
+        "business",
+        "employment"
+      ],
+      "roles": [
+        "operator",
+        "manager"
+      ],
       "semanticDescription": "Assignment of people or resources to work.",
       "graphImportance": "supporting",
-      "lifeDomains": ["career", "enterprise", "planning"]
+      "lifeDomains": [
+        "career",
+        "enterprise",
+        "planning"
+      ]
     },
     {
       "schema": "milestone",
@@ -405,24 +602,37 @@
           "target": "project",
           "type": "marks",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.95,
+          "necessity": "may"
         },
         {
           "target": "deliverable",
           "type": "gates",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "milestone-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business", "employment"],
+      "channels": [
+        "personal",
+        "business",
+        "employment"
+      ],
       "roles": [],
       "semanticDescription": "A key point in time with defined criteria.",
       "graphImportance": "supporting",
-      "lifeDomains": ["planning", "life-story"]
+      "lifeDomains": [
+        "planning",
+        "life-story"
+      ]
     },
     {
       "schema": "certification",
@@ -431,30 +641,46 @@
           "target": "actor",
           "type": "held-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         },
         {
           "target": "organisation",
           "type": "issued-by",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.95,
+          "necessity": "should"
         },
         {
           "target": "document",
           "type": "references",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "certification-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["business", "employment"],
+      "channels": [
+        "business",
+        "employment"
+      ],
       "roles": [],
       "semanticDescription": "Professional or educational credential.",
       "graphImportance": "supporting",
-      "lifeDomains": ["career", "learning", "education"]
+      "lifeDomains": [
+        "career",
+        "learning",
+        "education"
+      ]
     },
     {
       "schema": "contract",
@@ -463,30 +689,45 @@
           "target": "actor",
           "type": "binds",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         },
         {
           "target": "organisation",
           "type": "references",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         },
         {
           "target": "document",
           "type": "documents",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "contract-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["business"],
+      "channels": [
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A binding legal agreement.",
       "graphImportance": "core",
-      "lifeDomains": ["wealth", "enterprise", "legal"]
+      "lifeDomains": [
+        "wealth",
+        "enterprise",
+        "legal"
+      ]
     },
     {
       "schema": "invoice",
@@ -495,24 +736,35 @@
           "target": "payment",
           "type": "requests",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         },
         {
           "target": "project",
           "type": "documents",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "invoice-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["business"],
+      "channels": [
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A request for payment for goods or services.",
       "graphImportance": "supporting",
-      "lifeDomains": ["wealth", "enterprise"]
+      "lifeDomains": [
+        "wealth",
+        "enterprise"
+      ]
     },
     {
       "schema": "customer",
@@ -521,18 +773,28 @@
           "target": "payment",
           "type": "makes",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "customer-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["business"],
-      "roles": ["customer"],
+      "channels": [
+        "business"
+      ],
+      "roles": [
+        "customer"
+      ],
       "semanticDescription": "An actor in the customer role within a transaction.",
       "graphImportance": "supporting",
-      "lifeDomains": ["wealth", "enterprise"]
+      "lifeDomains": [
+        "wealth",
+        "enterprise"
+      ]
     },
     {
       "schema": "employee",
@@ -541,24 +803,37 @@
           "target": "organisation",
           "type": "works-for",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         },
         {
           "target": "project",
           "type": "contributes-to",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "employee-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["employment"],
-      "roles": ["employee"],
+      "channels": [
+        "employment"
+      ],
+      "roles": [
+        "employee"
+      ],
       "semanticDescription": "An actor in the employee role within an organisation.",
       "graphImportance": "supporting",
-      "lifeDomains": ["career", "enterprise"]
+      "lifeDomains": [
+        "career",
+        "enterprise"
+      ]
     },
     {
       "schema": "mentor",
@@ -567,18 +842,29 @@
           "target": "actor",
           "type": "advises",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "mentor-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
-      "roles": ["mentor"],
+      "channels": [
+        "personal",
+        "business"
+      ],
+      "roles": [
+        "mentor"
+      ],
       "semanticDescription": "An actor in the mentor role guiding another's growth.",
       "graphImportance": "supporting",
-      "lifeDomains": ["learning", "relationships"]
+      "lifeDomains": [
+        "learning",
+        "relationships"
+      ]
     },
     {
       "schema": "contractor",
@@ -587,24 +873,37 @@
           "target": "contract",
           "type": "bound-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.9,
+          "necessity": "must"
         },
         {
           "target": "project",
           "type": "contributes-to",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "contractor-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["business"],
-      "roles": ["contractor"],
+      "channels": [
+        "business"
+      ],
+      "roles": [
+        "contractor"
+      ],
       "semanticDescription": "An actor in the contractor role providing services.",
       "graphImportance": "supporting",
-      "lifeDomains": ["career", "enterprise"]
+      "lifeDomains": [
+        "career",
+        "enterprise"
+      ]
     },
     {
       "schema": "startup",
@@ -613,24 +912,37 @@
           "target": "actor",
           "type": "founded-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.95,
+          "necessity": "must"
         },
         {
           "target": "payment",
           "type": "raises",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "startup-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["business"],
-      "roles": ["founder"],
+      "channels": [
+        "business"
+      ],
+      "roles": [
+        "founder"
+      ],
       "semanticDescription": "An early-stage organisation with growth potential.",
       "graphImportance": "supporting",
-      "lifeDomains": ["enterprise", "career"]
+      "lifeDomains": [
+        "enterprise",
+        "career"
+      ]
     },
     {
       "schema": "note",
@@ -639,18 +951,27 @@
           "target": "document",
           "type": "references",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "note-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A brief written record of ideas or observations.",
       "graphImportance": "supporting",
-      "lifeDomains": ["learning", "planning"]
+      "lifeDomains": [
+        "learning",
+        "planning"
+      ]
     },
     {
       "schema": "actor",
@@ -659,24 +980,35 @@
           "target": "relationship",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "decision",
           "type": "makes",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "actor-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "An entity that participates in life events.",
       "graphImportance": "core",
-      "lifeDomains": ["relationships"]
+      "lifeDomains": [
+        "relationships"
+      ]
     },
     {
       "schema": "tag",
@@ -685,18 +1017,27 @@
           "target": "*",
           "type": "classifies",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "tag-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A label or keyword used to organize and retrieve entities.",
       "graphImportance": "utility",
-      "lifeDomains": ["search", "knowledge"]
+      "lifeDomains": [
+        "search",
+        "knowledge"
+      ]
     },
     {
       "schema": "classification",
@@ -705,18 +1046,27 @@
           "target": "*",
           "type": "classifies",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "classification-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A structured category system for organizing entities.",
       "graphImportance": "utility",
-      "lifeDomains": ["taxonomy", "knowledge"]
+      "lifeDomains": [
+        "taxonomy",
+        "knowledge"
+      ]
     },
     {
       "schema": "status",
@@ -725,18 +1075,27 @@
           "target": "*",
           "type": "marks",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.95,
+          "necessity": "may"
         }
       ],
       "lifecycle": "status-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A state indicator for the current condition of an entity.",
       "graphImportance": "utility",
-      "lifeDomains": ["planning", "project-management"]
+      "lifeDomains": [
+        "planning",
+        "project-management"
+      ]
     },
     {
       "schema": "reference",
@@ -745,18 +1104,27 @@
           "target": "*",
           "type": "references",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "reference-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A pointer or link to another entity or external source.",
       "graphImportance": "utility",
-      "lifeDomains": ["learning", "knowledge"]
+      "lifeDomains": [
+        "learning",
+        "knowledge"
+      ]
     },
     {
       "schema": "identifier",
@@ -765,18 +1133,27 @@
           "target": "*",
           "type": "identifies",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "identifier-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A unique code or number that distinguishes an entity.",
       "graphImportance": "utility",
-      "lifeDomains": ["administration", "identity"]
+      "lifeDomains": [
+        "administration",
+        "identity"
+      ]
     },
     {
       "schema": "evidence",
@@ -785,18 +1162,27 @@
           "target": "*",
           "type": "supports",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         }
       ],
       "lifecycle": "evidence-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A fact or document that provides proof or basis for a claim.",
       "graphImportance": "utility",
-      "lifeDomains": ["legal", "evidence"]
+      "lifeDomains": [
+        "legal",
+        "evidence"
+      ]
     },
     {
       "schema": "provenance",
@@ -805,18 +1191,27 @@
           "target": "*",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "provenance-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "The origin, history, and authorship information for an entity.",
       "graphImportance": "utility",
-      "lifeDomains": ["audit", "administration"]
+      "lifeDomains": [
+        "audit",
+        "administration"
+      ]
     },
     {
       "schema": "timeline",
@@ -825,18 +1220,26 @@
           "target": "*",
           "type": "orders",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "timeline-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A chronological sequence of events or points in time.",
       "graphImportance": "utility",
-      "lifeDomains": ["time"]
+      "lifeDomains": [
+        "time"
+      ]
     },
     {
       "schema": "location",
@@ -845,18 +1248,27 @@
           "target": "*",
           "type": "located-at",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "location-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A geographic place or coordinate where an entity exists.",
       "graphImportance": "supporting",
-      "lifeDomains": ["locations", "travel"]
+      "lifeDomains": [
+        "locations",
+        "travel"
+      ]
     },
     {
       "schema": "person",
@@ -865,24 +1277,35 @@
           "target": "relationship",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "organisation",
           "type": "works-for",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         }
       ],
       "lifecycle": "person-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "An individual human being with identity and biographical information.",
       "graphImportance": "core",
-      "lifeDomains": ["person", "relationships"]
+      "lifeDomains": [
+        "person",
+        "relationships"
+      ]
     },
     {
       "schema": "health-record",
@@ -891,18 +1314,25 @@
           "target": "event",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "health-record-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "Medical information and health events for an individual.",
       "graphImportance": "supporting",
-      "lifeDomains": ["health"]
+      "lifeDomains": [
+        "health"
+      ]
     },
     {
       "schema": "learning-record",
@@ -911,24 +1341,36 @@
           "target": "certification",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         },
         {
           "target": "goal",
           "type": "supports",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         }
       ],
       "lifecycle": "learning-record-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A record of educational activities, skills, and knowledge acquired.",
       "graphImportance": "supporting",
-      "lifeDomains": ["learning", "education"]
+      "lifeDomains": [
+        "learning",
+        "education"
+      ]
     },
     {
       "schema": "employment",
@@ -937,24 +1379,37 @@
           "target": "organisation",
           "type": "works-for",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         },
         {
           "target": "project",
           "type": "contributes-to",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "employment-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["employment"],
-      "roles": ["employee"],
+      "channels": [
+        "employment"
+      ],
+      "roles": [
+        "employee"
+      ],
       "semanticDescription": "A job or employment relationship with compensation and responsibilities.",
       "graphImportance": "supporting",
-      "lifeDomains": ["career", "employment"]
+      "lifeDomains": [
+        "career",
+        "employment"
+      ]
     },
     {
       "schema": "financial-account",
@@ -963,24 +1418,36 @@
           "target": "payment",
           "type": "tracks",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "held-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         }
       ],
       "lifecycle": "financial-account-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A bank account, investment account, or financial holding.",
       "graphImportance": "supporting",
-      "lifeDomains": ["wealth", "finance"]
+      "lifeDomains": [
+        "wealth",
+        "finance"
+      ]
     },
     {
       "schema": "property",
@@ -989,18 +1456,27 @@
           "target": "actor",
           "type": "owns",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "property-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "Real estate or physical property with location and value.",
       "graphImportance": "supporting",
-      "lifeDomains": ["property", "wealth"]
+      "lifeDomains": [
+        "property",
+        "wealth"
+      ]
     },
     {
       "schema": "vehicle",
@@ -1009,18 +1485,27 @@
           "target": "actor",
           "type": "owns",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "vehicle-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A car, motorcycle, or other transportation asset.",
       "graphImportance": "supporting",
-      "lifeDomains": ["mobility", "property"]
+      "lifeDomains": [
+        "mobility",
+        "property"
+      ]
     },
     {
       "schema": "digital-account",
@@ -1029,18 +1514,26 @@
           "target": "actor",
           "type": "owns",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "digital-account-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "An online account or digital identity (email, social, etc).",
       "graphImportance": "supporting",
-      "lifeDomains": ["digital-life"]
+      "lifeDomains": [
+        "digital-life"
+      ]
     },
     {
       "schema": "creative-project",
@@ -1049,24 +1542,35 @@
           "target": "goal",
           "type": "fulfills",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "should"
         },
         {
           "target": "actor",
           "type": "created-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "project-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A personal creative work (art, music, writing, etc).",
       "graphImportance": "supporting",
-      "lifeDomains": ["creativity", "culture"]
+      "lifeDomains": [
+        "creativity",
+        "culture"
+      ]
     },
     {
       "schema": "community-group",
@@ -1075,24 +1579,35 @@
           "target": "actor",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "location",
           "type": "located-at",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "community-group-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "community"],
+      "channels": [
+        "personal",
+        "community"
+      ],
       "roles": [],
       "semanticDescription": "A group of people organized around shared interests or location.",
       "graphImportance": "supporting",
-      "lifeDomains": ["community"]
+      "lifeDomains": [
+        "community"
+      ]
     },
     {
       "schema": "household",
@@ -1101,24 +1616,35 @@
           "target": "actor",
           "type": "participates-in",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "location",
           "type": "located-at",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "household-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A group of people living together and managing shared resources.",
       "graphImportance": "supporting",
-      "lifeDomains": ["housing", "family"]
+      "lifeDomains": [
+        "housing",
+        "family"
+      ]
     },
     {
       "schema": "public-profile",
@@ -1127,24 +1653,34 @@
           "target": "actor",
           "type": "represents",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "digital-account",
           "type": "linked-to",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "public-profile-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["public"],
+      "channels": [
+        "public"
+      ],
       "roles": [],
       "semanticDescription": "A public-facing profile or presence online.",
       "graphImportance": "supporting",
-      "lifeDomains": ["public-presence"]
+      "lifeDomains": [
+        "public-presence"
+      ]
     },
     {
       "schema": "calendar-event",
@@ -1153,24 +1689,36 @@
           "target": "actor",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "location",
           "type": "located-at",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "event-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A scheduled time block or appointment.",
       "graphImportance": "supporting",
-      "lifeDomains": ["time", "planning"]
+      "lifeDomains": [
+        "time",
+        "planning"
+      ]
     },
     {
       "schema": "credential",
@@ -1179,24 +1727,36 @@
           "target": "actor",
           "type": "held-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         },
         {
           "target": "organisation",
           "type": "issued-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.85,
+          "confidence": 0.95,
+          "necessity": "should"
         }
       ],
       "lifecycle": "credential-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["business", "employment"],
+      "channels": [
+        "business",
+        "employment"
+      ],
       "roles": [],
       "semanticDescription": "A license, certificate, or proof of qualification.",
       "graphImportance": "supporting",
-      "lifeDomains": ["career", "learning"]
+      "lifeDomains": [
+        "career",
+        "learning"
+      ]
     },
     {
       "schema": "cultural-item",
@@ -1205,18 +1765,26 @@
           "target": "actor",
           "type": "created-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "cultural-item-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A book, film, music, art, or cultural work.",
       "graphImportance": "supporting",
-      "lifeDomains": ["culture", "creativity"]
+      "lifeDomains": [
+        "culture",
+        "creativity"
+      ]
     },
     {
       "schema": "food-record",
@@ -1225,18 +1793,26 @@
           "target": "health-record",
           "type": "supports",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         }
       ],
       "lifecycle": "food-record-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A meal, recipe, or food-related event.",
       "graphImportance": "supporting",
-      "lifeDomains": ["food", "health"]
+      "lifeDomains": [
+        "food",
+        "health"
+      ]
     },
     {
       "schema": "volunteer-record",
@@ -1245,24 +1821,36 @@
           "target": "community-group",
           "type": "contributes-to",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.8,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "works-for",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         }
       ],
       "lifecycle": "volunteer-record-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "community"],
+      "channels": [
+        "personal",
+        "community"
+      ],
       "roles": [],
       "semanticDescription": "Service or volunteer work for a cause or organization.",
       "graphImportance": "supporting",
-      "lifeDomains": ["community", "social-impact"]
+      "lifeDomains": [
+        "community",
+        "social-impact"
+      ]
     },
     {
       "schema": "medical-visit",
@@ -1271,24 +1859,34 @@
           "target": "health-record",
           "type": "documents",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         },
         {
           "target": "location",
           "type": "located-at",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "medical-visit-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A doctor appointment or hospital visit with clinical notes.",
       "graphImportance": "supporting",
-      "lifeDomains": ["health"]
+      "lifeDomains": [
+        "health"
+      ]
     },
     {
       "schema": "medication",
@@ -1297,18 +1895,25 @@
           "target": "health-record",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "medication-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A prescription medication or supplement with dosage information.",
       "graphImportance": "supporting",
-      "lifeDomains": ["health"]
+      "lifeDomains": [
+        "health"
+      ]
     },
     {
       "schema": "expense",
@@ -1317,18 +1922,27 @@
           "target": "financial-account",
           "type": "tracked-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "expense-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "7-years",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A money outflow for goods or services.",
       "graphImportance": "supporting",
-      "lifeDomains": ["wealth", "finance"]
+      "lifeDomains": [
+        "wealth",
+        "finance"
+      ]
     },
     {
       "schema": "budget",
@@ -1337,18 +1951,27 @@
           "target": "goal",
           "type": "supports",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         }
       ],
       "lifecycle": "budget-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A spending plan with allocation across categories.",
       "graphImportance": "supporting",
-      "lifeDomains": ["wealth", "planning"]
+      "lifeDomains": [
+        "wealth",
+        "planning"
+      ]
     },
     {
       "schema": "investment",
@@ -1357,18 +1980,27 @@
           "target": "financial-account",
           "type": "held-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.9,
+          "confidence": 0.95,
+          "necessity": "must"
         }
       ],
       "lifecycle": "investment-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A financial asset held for growth or income.",
       "graphImportance": "supporting",
-      "lifeDomains": ["wealth", "finance"]
+      "lifeDomains": [
+        "wealth",
+        "finance"
+      ]
     },
     {
       "schema": "friend",
@@ -1377,18 +2009,25 @@
           "target": "person",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "friend-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A personal friendship relationship.",
       "graphImportance": "supporting",
-      "lifeDomains": ["relationships"]
+      "lifeDomains": [
+        "relationships"
+      ]
     },
     {
       "schema": "family-member",
@@ -1397,18 +2036,26 @@
           "target": "person",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "family-member-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A family relationship (sibling, parent, child, etc).",
       "graphImportance": "supporting",
-      "lifeDomains": ["relationships", "family"]
+      "lifeDomains": [
+        "relationships",
+        "family"
+      ]
     },
     {
       "schema": "colleague",
@@ -1417,18 +2064,26 @@
           "target": "employment",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "colleague-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["business", "employment"],
+      "channels": [
+        "business",
+        "employment"
+      ],
       "roles": [],
       "semanticDescription": "A work colleague or team member.",
       "graphImportance": "supporting",
-      "lifeDomains": ["career"]
+      "lifeDomains": [
+        "career"
+      ]
     },
     {
       "schema": "task",
@@ -1437,24 +2092,35 @@
           "target": "project",
           "type": "supports",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         },
         {
           "target": "goal",
           "type": "fulfills",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "task-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "An action item with due date and completion status.",
       "graphImportance": "supporting",
-      "lifeDomains": ["planning"]
+      "lifeDomains": [
+        "planning"
+      ]
     },
     {
       "schema": "schedule",
@@ -1463,18 +2129,27 @@
           "target": "calendar-event",
           "type": "contains",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "schedule-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A timetable or repeating schedule pattern.",
       "graphImportance": "supporting",
-      "lifeDomains": ["time", "planning"]
+      "lifeDomains": [
+        "time",
+        "planning"
+      ]
     },
     {
       "schema": "reminder",
@@ -1483,18 +2158,25 @@
           "target": "calendar-event",
           "type": "references",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "reminder-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "An alert or notification for an upcoming event.",
       "graphImportance": "utility",
-      "lifeDomains": ["time"]
+      "lifeDomains": [
+        "time"
+      ]
     },
     {
       "schema": "habit",
@@ -1503,18 +2185,26 @@
           "target": "goal",
           "type": "supports",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         }
       ],
       "lifecycle": "habit-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A recurring behavior or practice tracked over time.",
       "graphImportance": "supporting",
-      "lifeDomains": ["planning", "health"]
+      "lifeDomains": [
+        "planning",
+        "health"
+      ]
     },
     {
       "schema": "achievement",
@@ -1523,18 +2213,26 @@
           "target": "goal",
           "type": "fulfills",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.85,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "achievement-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A milestone or accomplishment that completes a goal.",
       "graphImportance": "supporting",
-      "lifeDomains": ["planning", "life-story"]
+      "lifeDomains": [
+        "planning",
+        "life-story"
+      ]
     },
     {
       "schema": "message",
@@ -1543,18 +2241,25 @@
           "target": "actor",
           "type": "references",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "message-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A text or written communication with recipients.",
       "graphImportance": "supporting",
-      "lifeDomains": ["communication"]
+      "lifeDomains": [
+        "communication"
+      ]
     },
     {
       "schema": "notification",
@@ -1563,18 +2268,27 @@
           "target": "actor",
           "type": "references",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "notification-lifecycle",
       "expectedAuthority": "system",
       "sensitivity": "low",
       "retention": "7-days",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "An automated alert or system message.",
       "graphImportance": "utility",
-      "lifeDomains": ["notifications", "administration"]
+      "lifeDomains": [
+        "notifications",
+        "administration"
+      ]
     },
     {
       "schema": "course",
@@ -1583,24 +2297,36 @@
           "target": "learning-record",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         },
         {
           "target": "certification",
           "type": "produces",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "course-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A structured educational program or training.",
       "graphImportance": "supporting",
-      "lifeDomains": ["learning", "education"]
+      "lifeDomains": [
+        "learning",
+        "education"
+      ]
     },
     {
       "schema": "lesson",
@@ -1609,18 +2335,26 @@
           "target": "course",
           "type": "participates-in",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "lesson-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A single class or instructional session.",
       "graphImportance": "supporting",
-      "lifeDomains": ["learning"]
+      "lifeDomains": [
+        "learning"
+      ]
     },
     {
       "schema": "device",
@@ -1629,18 +2363,26 @@
           "target": "actor",
           "type": "owns",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.95,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "device-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A computer, phone, or electronic device.",
       "graphImportance": "supporting",
-      "lifeDomains": ["digital-life"]
+      "lifeDomains": [
+        "digital-life"
+      ]
     },
     {
       "schema": "software",
@@ -1649,18 +2391,26 @@
           "target": "device",
           "type": "runs-on",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "software-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "An application or program installed on a device.",
       "graphImportance": "supporting",
-      "lifeDomains": ["digital-life"]
+      "lifeDomains": [
+        "digital-life"
+      ]
     },
     {
       "schema": "subscription",
@@ -1669,24 +2419,36 @@
           "target": "financial-account",
           "type": "tracks",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "references",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "subscription-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A recurring service or product subscription.",
       "graphImportance": "supporting",
-      "lifeDomains": ["digital-life", "wealth"]
+      "lifeDomains": [
+        "digital-life",
+        "wealth"
+      ]
     },
     {
       "schema": "article",
@@ -1695,18 +2457,26 @@
           "target": "reference",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "article-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A written piece on a topic for learning or reference.",
       "graphImportance": "supporting",
-      "lifeDomains": ["learning", "knowledge"]
+      "lifeDomains": [
+        "learning",
+        "knowledge"
+      ]
     },
     {
       "schema": "resource",
@@ -1715,18 +2485,27 @@
           "target": "goal",
           "type": "supports",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "may"
         }
       ],
       "lifecycle": "resource-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A tool, document, or material used to accomplish goals.",
       "graphImportance": "supporting",
-      "lifeDomains": ["learning", "resources"]
+      "lifeDomains": [
+        "learning",
+        "resources"
+      ]
     },
     {
       "schema": "contact",
@@ -1735,18 +2514,26 @@
           "target": "person",
           "type": "references",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "contact-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "Contact information for a person or organisation.",
       "graphImportance": "supporting",
-      "lifeDomains": ["relationships"]
+      "lifeDomains": [
+        "relationships"
+      ]
     },
     {
       "schema": "conversation",
@@ -1755,24 +2542,34 @@
           "target": "message",
           "type": "contains",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "person",
           "type": "participates-in",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "conversation-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "An exchange of messages between people.",
       "graphImportance": "supporting",
-      "lifeDomains": ["relationships"]
+      "lifeDomains": [
+        "relationships"
+      ]
     },
     {
       "schema": "policy",
@@ -1781,18 +2578,25 @@
           "target": "organisation",
           "type": "issued-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.85,
+          "confidence": 0.95,
+          "necessity": "should"
         }
       ],
       "lifecycle": "policy-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["business"],
+      "channels": [
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A rule or procedure set by an organisation.",
       "graphImportance": "supporting",
-      "lifeDomains": ["enterprise"]
+      "lifeDomains": [
+        "enterprise"
+      ]
     },
     {
       "schema": "agreement",
@@ -1801,18 +2605,25 @@
           "target": "actor",
           "type": "participates-in",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "agreement-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["business"],
+      "channels": [
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A mutual understanding or commitment between parties.",
       "graphImportance": "supporting",
-      "lifeDomains": ["wealth"]
+      "lifeDomains": [
+        "wealth"
+      ]
     },
     {
       "schema": "form",
@@ -1821,18 +2632,26 @@
           "target": "document",
           "type": "produces",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.85,
+          "necessity": "should"
         }
       ],
       "lifecycle": "form-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A structured document with fields to fill in.",
       "graphImportance": "supporting",
-      "lifeDomains": ["administration"]
+      "lifeDomains": [
+        "administration"
+      ]
     },
     {
       "schema": "feedback",
@@ -1841,18 +2660,26 @@
           "target": "project",
           "type": "references",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "feedback-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "Comments or input on a work or idea.",
       "graphImportance": "supporting",
-      "lifeDomains": ["planning"]
+      "lifeDomains": [
+        "planning"
+      ]
     },
     {
       "schema": "review",
@@ -1861,18 +2688,25 @@
           "target": "employment",
           "type": "documents",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "review-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["employment"],
+      "channels": [
+        "employment"
+      ],
       "roles": [],
       "semanticDescription": "A formal evaluation or assessment of performance.",
       "graphImportance": "supporting",
-      "lifeDomains": ["career"]
+      "lifeDomains": [
+        "career"
+      ]
     },
     {
       "schema": "promotion",
@@ -1881,18 +2715,25 @@
           "target": "employment",
           "type": "updates",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "promotion-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["employment"],
+      "channels": [
+        "employment"
+      ],
       "roles": [],
       "semanticDescription": "A career advancement or role change.",
       "graphImportance": "supporting",
-      "lifeDomains": ["career"]
+      "lifeDomains": [
+        "career"
+      ]
     },
     {
       "schema": "team",
@@ -1901,24 +2742,36 @@
           "target": "actor",
           "type": "member-of",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.9,
+          "necessity": "must"
         },
         {
           "target": "project",
           "type": "works-on",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "team-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["business", "employment"],
+      "channels": [
+        "business",
+        "employment"
+      ],
       "roles": [],
       "semanticDescription": "A group of people working together on shared goals.",
       "graphImportance": "supporting",
-      "lifeDomains": ["career", "enterprise"]
+      "lifeDomains": [
+        "career",
+        "enterprise"
+      ]
     },
     {
       "schema": "meeting",
@@ -1927,24 +2780,35 @@
           "target": "team",
           "type": "participates-in",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "project",
           "type": "discusses",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "meeting-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["business", "employment"],
+      "channels": [
+        "business",
+        "employment"
+      ],
       "roles": [],
       "semanticDescription": "A scheduled gathering of people for discussion.",
       "graphImportance": "supporting",
-      "lifeDomains": ["enterprise"]
+      "lifeDomains": [
+        "enterprise"
+      ]
     },
     {
       "schema": "presentation",
@@ -1953,24 +2817,34 @@
           "target": "meeting",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         },
         {
           "target": "project",
           "type": "documents",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "presentation-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["business"],
+      "channels": [
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A formal talk or demonstration of information.",
       "graphImportance": "supporting",
-      "lifeDomains": ["enterprise"]
+      "lifeDomains": [
+        "enterprise"
+      ]
     },
     {
       "schema": "report",
@@ -1979,18 +2853,25 @@
           "target": "project",
           "type": "documents",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "report-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["business"],
+      "channels": [
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A detailed analysis or summary of information.",
       "graphImportance": "supporting",
-      "lifeDomains": ["enterprise"]
+      "lifeDomains": [
+        "enterprise"
+      ]
     },
     {
       "schema": "issue",
@@ -1999,24 +2880,34 @@
           "target": "project",
           "type": "participates-in",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.85,
+          "necessity": "may"
         },
         {
           "target": "actor",
           "type": "assigned-to",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.8,
+          "confidence": 0.9,
+          "necessity": "must"
         }
       ],
       "lifecycle": "issue-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["business"],
+      "channels": [
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A problem or bug to be tracked and resolved.",
       "graphImportance": "supporting",
-      "lifeDomains": ["enterprise"]
+      "lifeDomains": [
+        "enterprise"
+      ]
     },
     {
       "schema": "source-code",
@@ -2025,18 +2916,25 @@
           "target": "project",
           "type": "builds",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "source-code-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["business"],
+      "channels": [
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "Computer code written to build software.",
       "graphImportance": "supporting",
-      "lifeDomains": ["enterprise"]
+      "lifeDomains": [
+        "enterprise"
+      ]
     },
     {
       "schema": "knowledge-item",
@@ -2045,18 +2943,26 @@
           "target": "reference",
           "type": "references",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "knowledge-item-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A fact or insight stored for future reference.",
       "graphImportance": "supporting",
-      "lifeDomains": ["learning"]
+      "lifeDomains": [
+        "learning"
+      ]
     },
     {
       "schema": "idea",
@@ -2065,24 +2971,36 @@
           "target": "project",
           "type": "informs",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "should"
         },
         {
           "target": "goal",
           "type": "informs",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "idea-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A concept or suggestion for future action.",
       "graphImportance": "supporting",
-      "lifeDomains": ["creativity", "planning"]
+      "lifeDomains": [
+        "creativity",
+        "planning"
+      ]
     },
     {
       "schema": "bookmark",
@@ -2091,18 +3009,26 @@
           "target": "reference",
           "type": "references",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "bookmark-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A saved link or reference to content.",
       "graphImportance": "utility",
-      "lifeDomains": ["search", "knowledge"]
+      "lifeDomains": [
+        "search",
+        "knowledge"
+      ]
     },
     {
       "schema": "search-result",
@@ -2111,18 +3037,26 @@
           "target": "reference",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "search-result-lifecycle",
       "expectedAuthority": "system",
       "sensitivity": "low",
       "retention": "7-days",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A result from a search query.",
       "graphImportance": "utility",
-      "lifeDomains": ["search", "knowledge"]
+      "lifeDomains": [
+        "search",
+        "knowledge"
+      ]
     },
     {
       "schema": "collection",
@@ -2131,18 +3065,25 @@
           "target": "*",
           "type": "contains",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "collection-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A grouped set of related items.",
       "graphImportance": "supporting",
-      "lifeDomains": ["collections"]
+      "lifeDomains": [
+        "collections"
+      ]
     },
     {
       "schema": "wish",
@@ -2151,18 +3092,25 @@
           "target": "goal",
           "type": "informs",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "wish-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A desired future state or possession.",
       "graphImportance": "supporting",
-      "lifeDomains": ["planning"]
+      "lifeDomains": [
+        "planning"
+      ]
     },
     {
       "schema": "transaction",
@@ -2171,24 +3119,36 @@
           "target": "financial-account",
           "type": "tracked-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "expense",
           "type": "documents",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "transaction-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A financial transfer in or out of an account.",
       "graphImportance": "supporting",
-      "lifeDomains": ["wealth", "finance"]
+      "lifeDomains": [
+        "wealth",
+        "finance"
+      ]
     },
     {
       "schema": "insurance-policy",
@@ -2197,24 +3157,35 @@
           "target": "actor",
           "type": "covers",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "issued-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.85,
+          "confidence": 0.95,
+          "necessity": "should"
         }
       ],
       "lifecycle": "insurance-policy-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "Insurance coverage for health, property, or liability.",
       "graphImportance": "supporting",
-      "lifeDomains": ["wealth", "insurance"]
+      "lifeDomains": [
+        "wealth",
+        "insurance"
+      ]
     },
     {
       "schema": "claim",
@@ -2223,18 +3194,25 @@
           "target": "insurance-policy",
           "type": "references",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "claim-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A request for reimbursement from insurance.",
       "graphImportance": "supporting",
-      "lifeDomains": ["wealth"]
+      "lifeDomains": [
+        "wealth"
+      ]
     },
     {
       "schema": "donation",
@@ -2243,18 +3221,25 @@
           "target": "organisation",
           "type": "contributes-to",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.8,
+          "necessity": "should"
         }
       ],
       "lifecycle": "donation-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A charitable contribution of money or goods.",
       "graphImportance": "supporting",
-      "lifeDomains": ["social-impact"]
+      "lifeDomains": [
+        "social-impact"
+      ]
     },
     {
       "schema": "testimonial",
@@ -2263,18 +3248,26 @@
           "target": "actor",
           "type": "references",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.6,
+          "confidence": 0.9,
+          "necessity": "may"
         }
       ],
       "lifecycle": "testimonial-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "public"],
+      "channels": [
+        "personal",
+        "public"
+      ],
       "roles": [],
       "semanticDescription": "A statement of personal experience or recommendation.",
       "graphImportance": "supporting",
-      "lifeDomains": ["public-presence"]
+      "lifeDomains": [
+        "public-presence"
+      ]
     },
     {
       "schema": "award-record",
@@ -2283,18 +3276,26 @@
           "target": "actor",
           "type": "awarded-to",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "award-record-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "public"],
+      "channels": [
+        "personal",
+        "public"
+      ],
       "roles": [],
       "semanticDescription": "A prize, honor, or recognition received.",
       "graphImportance": "supporting",
-      "lifeDomains": ["public-presence"]
+      "lifeDomains": [
+        "public-presence"
+      ]
     },
     {
       "schema": "certificate",
@@ -2303,18 +3304,26 @@
           "target": "credential",
           "type": "documents",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "certificate-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["business"],
+      "channels": [
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A document proving completion or qualification.",
       "graphImportance": "supporting",
-      "lifeDomains": ["learning", "career"]
+      "lifeDomains": [
+        "learning",
+        "career"
+      ]
     },
     {
       "schema": "permit",
@@ -2323,18 +3332,25 @@
           "target": "actor",
           "type": "authorizes",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "permit-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "Official authorization or license to do something.",
       "graphImportance": "supporting",
-      "lifeDomains": ["administration"]
+      "lifeDomains": [
+        "administration"
+      ]
     },
     {
       "schema": "itinerary",
@@ -2343,18 +3359,25 @@
           "target": "calendar-event",
           "type": "contains",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "itinerary-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A planned route or schedule for travel.",
       "graphImportance": "supporting",
-      "lifeDomains": ["travel"]
+      "lifeDomains": [
+        "travel"
+      ]
     },
     {
       "schema": "place",
@@ -2363,18 +3386,27 @@
           "target": "location",
           "type": "located-at",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.85,
+          "necessity": "may"
         }
       ],
       "lifecycle": "place-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal", "public"],
+      "channels": [
+        "personal",
+        "public"
+      ],
       "roles": [],
       "semanticDescription": "A landmark, venue, or location of interest.",
       "graphImportance": "supporting",
-      "lifeDomains": ["locations", "travel"]
+      "lifeDomains": [
+        "locations",
+        "travel"
+      ]
     },
     {
       "schema": "memory",
@@ -2383,18 +3415,25 @@
           "target": "event",
           "type": "documents",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.75,
+          "confidence": 0.9,
+          "necessity": "should"
         }
       ],
       "lifecycle": "memory-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "A personal recollection or story from the past.",
       "graphImportance": "supporting",
-      "lifeDomains": ["life-story"]
+      "lifeDomains": [
+        "life-story"
+      ]
     },
     {
       "schema": "milestone-achievement",
@@ -2403,18 +3442,25 @@
           "target": "milestone",
           "type": "completes",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "milestone-achievement-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["personal"],
+      "channels": [
+        "personal"
+      ],
       "roles": [],
       "semanticDescription": "Completion of a significant life milestone.",
       "graphImportance": "supporting",
-      "lifeDomains": ["life-story"]
+      "lifeDomains": [
+        "life-story"
+      ]
     },
     {
       "schema": "account",
@@ -2423,24 +3469,35 @@
           "target": "actor",
           "type": "owned-by",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "organisation",
           "type": "managed-by",
           "cardinality": "one",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "account-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["personal", "business"],
+      "channels": [
+        "personal",
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A user account or profile with access rights.",
       "graphImportance": "supporting",
-      "lifeDomains": ["digital-life"]
+      "lifeDomains": [
+        "digital-life"
+      ]
     },
     {
       "schema": "workflow-definition",
@@ -2449,24 +3506,36 @@
           "target": "process",
           "type": "defines",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "team",
           "type": "used-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "workflow-definition-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["business"],
-      "roles": ["operator"],
+      "channels": [
+        "business"
+      ],
+      "roles": [
+        "operator"
+      ],
       "semanticDescription": "A template or definition for a repeatable workflow.",
       "graphImportance": "supporting",
-      "lifeDomains": ["enterprise"]
+      "lifeDomains": [
+        "enterprise"
+      ]
     },
     {
       "schema": "process",
@@ -2475,24 +3544,36 @@
           "target": "workflow-definition",
           "type": "defined-by",
           "cardinality": "one",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "team",
           "type": "executed-by",
           "cardinality": "many",
-          "required": false
+          "required": false,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "process-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
-      "channels": ["business"],
-      "roles": ["operator"],
+      "channels": [
+        "business"
+      ],
+      "roles": [
+        "operator"
+      ],
       "semanticDescription": "An instance of a workflow executing a defined process.",
       "graphImportance": "supporting",
-      "lifeDomains": ["enterprise"]
+      "lifeDomains": [
+        "enterprise"
+      ]
     },
     {
       "schema": "access-control",
@@ -2501,24 +3582,35 @@
           "target": "actor",
           "type": "grants-to",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         },
         {
           "target": "resource",
           "type": "controls",
           "cardinality": "many",
-          "required": true
+          "required": true,
+          "strength": 0.7,
+          "confidence": 0.75,
+          "necessity": "should"
         }
       ],
       "lifecycle": "access-control-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
-      "channels": ["business"],
+      "channels": [
+        "business"
+      ],
       "roles": [],
       "semanticDescription": "A permission or authorization rule for accessing resources.",
       "graphImportance": "utility",
-      "lifeDomains": ["security", "administration"]
+      "lifeDomains": [
+        "security",
+        "administration"
+      ]
     }
   ]
 }

@@ -1,0 +1,509 @@
+{
+  "version": "1.0.0",
+  "description": "Governed inference rules for semantic reasoning over the life graph. Enables multi-hop traversal, consequence detection, and temporal analysis.",
+  "generatedAt": "2026-06-09T22:00:00Z",
+  "ruleCount": 23,
+
+  "rules": [
+    {
+      "id": "inverse-owns",
+      "name": "Inverse: Ownership",
+      "type": "inverse",
+      "category": "structural",
+      "description": "If A owns B, then B is owned-by A. Bidirectional property registration.",
+      "pattern": [
+        { "source": "A", "relation": "owns", "target": "B" }
+      ],
+      "inference": {
+        "source": "B",
+        "relation": "owned-by",
+        "target": "A",
+        "strength": 0.95,
+        "confidence": 0.95,
+        "necessity": "must"
+      },
+      "priority": 100,
+      "examples": [
+        {
+          "pattern": "Person owns Asset",
+          "inference": "Asset is owned-by Person",
+          "entities": "Alice owns Car → Car owned-by Alice"
+        }
+      ]
+    },
+    {
+      "id": "inverse-manages",
+      "name": "Inverse: Management",
+      "type": "inverse",
+      "category": "structural",
+      "description": "If A manages B, then B is managed-by A",
+      "pattern": [
+        { "source": "A", "relation": "manages", "target": "B" }
+      ],
+      "inference": {
+        "source": "B",
+        "relation": "managed-by",
+        "target": "A",
+        "strength": 0.95,
+        "confidence": 0.95,
+        "necessity": "must"
+      },
+      "priority": 100
+    },
+    {
+      "id": "inverse-employs",
+      "name": "Inverse: Employment",
+      "type": "inverse",
+      "category": "structural",
+      "description": "If A employs B, then B is employed-by A",
+      "pattern": [
+        { "source": "A", "relation": "employs", "target": "B" }
+      ],
+      "inference": {
+        "source": "B",
+        "relation": "works-for",
+        "target": "A",
+        "strength": 0.95,
+        "confidence": 0.95,
+        "necessity": "must"
+      },
+      "priority": 100
+    },
+    {
+      "id": "transitive-goal-fulfillment",
+      "name": "Transitive Goal Fulfillment",
+      "type": "transitive",
+      "category": "causal",
+      "description": "If Project fulfills Goal, and Goal advances toward Objective, then Project contributes to Objective",
+      "pattern": [
+        { "source": "Project", "relation": "fulfills", "target": "Goal" },
+        { "source": "Goal", "relation": "advances", "target": "Objective" }
+      ],
+      "inference": {
+        "source": "Project",
+        "relation": "contributes-to",
+        "target": "Objective",
+        "strength": "multiply(0.85, 0.8)",
+        "confidence": "multiply(0.85, 0.8)",
+        "necessity": "may"
+      },
+      "priority": 70,
+      "constraints": { "maxHops": 2 },
+      "quality": {
+        "precision": 0.85,
+        "recall": 0.75,
+        "expectedMatches": 45
+      },
+      "examples": [
+        {
+          "pattern": "Project fulfills Goal, Goal advances Objective",
+          "inference": "Project contributes-to Objective",
+          "entities": "HealthApp project fulfills Fitness goal, Goal advances Longevity objective"
+        }
+      ]
+    },
+    {
+      "id": "indirect-support-via-mitigation",
+      "name": "Indirect Support via Risk Mitigation",
+      "type": "transitive",
+      "category": "causal",
+      "description": "If Goal is blocked-by Risk, and Risk is mitigated-by Project, then Project indirectly supports Goal",
+      "pattern": [
+        { "source": "Goal", "relation": "blocked-by", "target": "Risk" },
+        { "source": "Risk", "relation": "mitigated-by", "target": "Project" }
+      ],
+      "inference": {
+        "source": "Project",
+        "relation": "indirectly-supports",
+        "target": "Goal",
+        "strength": "multiply(0.85, 0.8)",
+        "confidence": "min(0.8, 0.75)",
+        "necessity": "may"
+      },
+      "priority": 70,
+      "constraints": { "maxHops": 2, "minConfidence": 0.7 },
+      "quality": {
+        "precision": 0.8,
+        "recall": 0.7,
+        "expectedMatches": 38
+      }
+    },
+    {
+      "id": "consequence-chain",
+      "name": "Temporal Consequence Chain",
+      "type": "causal",
+      "category": "temporal",
+      "description": "Event A causes Event B, which impacts Project C (multi-hop consequence propagation)",
+      "pattern": [
+        { "source": "EventA", "relation": "causes", "target": "EventB" },
+        { "source": "EventB", "relation": "impacts", "target": "ProjectC" }
+      ],
+      "inference": {
+        "source": "EventA",
+        "relation": "indirectly-impacts",
+        "target": "ProjectC",
+        "strength": "multiply(0.75, 0.8)",
+        "confidence": "min(0.7, 0.75)",
+        "necessity": "may"
+      },
+      "priority": 65,
+      "constraints": { "maxHops": 3, "requiresTimeOrder": true },
+      "examples": [
+        {
+          "pattern": "Payment fails → Subscription inactive → Project halted",
+          "inference": "Payment failure indirectly-impacts Project",
+          "entities": "Credit card declined → Monthly subscription inactive → SaaS project halted"
+        }
+      ]
+    },
+    {
+      "id": "decision-outcome-link",
+      "name": "Decision Leads to Outcome",
+      "type": "temporal",
+      "category": "temporal",
+      "description": "Decision initiates Project, Project produces Outcome (decision tracing)",
+      "pattern": [
+        { "source": "Decision", "relation": "initiates", "target": "Project" },
+        { "source": "Project", "relation": "produces", "target": "Outcome" }
+      ],
+      "inference": {
+        "source": "Decision",
+        "relation": "leads-to-outcome",
+        "target": "Outcome",
+        "strength": "multiply(0.8, 0.85)",
+        "confidence": "min(0.8, 0.85)",
+        "necessity": "may"
+      },
+      "priority": 65,
+      "constraints": { "maxHops": 2, "requiresTimeOrder": true },
+      "examples": [
+        {
+          "pattern": "Decision → Project → Outcome",
+          "inference": "Decision → Outcome (direct link)",
+          "entities": "Career change decision → New job project → Salary increase outcome"
+        }
+      ]
+    },
+    {
+      "id": "transitive-blocks",
+      "name": "Transitive Blocking",
+      "type": "transitive",
+      "category": "causal",
+      "description": "If Risk1 blocks Goal, and Risk1 depends-on Risk2, then Risk2 indirectly blocks Goal",
+      "pattern": [
+        { "source": "Risk1", "relation": "blocks", "target": "Goal" },
+        { "source": "Risk1", "relation": "depends-on", "target": "Risk2" }
+      ],
+      "inference": {
+        "source": "Risk2",
+        "relation": "indirectly-blocks",
+        "target": "Goal",
+        "strength": "multiply(0.85, 0.75)",
+        "confidence": "min(0.8, 0.7)",
+        "necessity": "may"
+      },
+      "priority": 60,
+      "constraints": { "maxHops": 2 }
+    },
+    {
+      "id": "actor-participates-in-event",
+      "name": "Actor in Event Participation",
+      "type": "aggregation",
+      "category": "organizational",
+      "description": "If Actor works-on Project, and Project participates-in Initiative, then Actor indirectly participates-in Initiative",
+      "pattern": [
+        { "source": "Actor", "relation": "works-on", "target": "Project" },
+        { "source": "Project", "relation": "participates-in", "target": "Initiative" }
+      ],
+      "inference": {
+        "source": "Actor",
+        "relation": "participates-in",
+        "target": "Initiative",
+        "strength": "multiply(0.75, 0.8)",
+        "confidence": "multiply(0.85, 0.8)",
+        "necessity": "may"
+      },
+      "priority": 50
+    },
+    {
+      "id": "transitive-financial-impact",
+      "name": "Transitive Financial Impact",
+      "type": "causal",
+      "category": "financial",
+      "description": "If Payment funds Project, and Project impacts Budget, then Payment indirectly impacts Budget",
+      "pattern": [
+        { "source": "Payment", "relation": "funds", "target": "Project" },
+        { "source": "Project", "relation": "impacts", "target": "Budget" }
+      ],
+      "inference": {
+        "source": "Payment",
+        "relation": "affects-budget",
+        "target": "Budget",
+        "strength": "multiply(0.85, 0.8)",
+        "confidence": "min(0.9, 0.8)",
+        "necessity": "should"
+      },
+      "priority": 70,
+      "constraints": { "maxHops": 2 }
+    },
+    {
+      "id": "risk-propagation",
+      "name": "Risk Propagation Chain",
+      "type": "causal",
+      "category": "causal",
+      "description": "If Risk threatens Project, and Project blocks Goal, then Risk indirectly threatens Goal",
+      "pattern": [
+        { "source": "Risk", "relation": "threatens", "target": "Project" },
+        { "source": "Project", "relation": "blocks", "target": "Goal" }
+      ],
+      "inference": {
+        "source": "Risk",
+        "relation": "threatens-goal",
+        "target": "Goal",
+        "strength": "multiply(0.8, 0.85)",
+        "confidence": "min(0.75, 0.8)",
+        "necessity": "may"
+      },
+      "priority": 65,
+      "constraints": { "maxHops": 3 }
+    },
+    {
+      "id": "knowledge-inheritance",
+      "name": "Knowledge Inheritance",
+      "type": "transitive",
+      "category": "knowledge",
+      "description": "If Document references Topic, and Topic relates-to Subject, then Document indirectly documents Subject",
+      "pattern": [
+        { "source": "Document", "relation": "references", "target": "Topic" },
+        { "source": "Topic", "relation": "relates-to", "target": "Subject" }
+      ],
+      "inference": {
+        "source": "Document",
+        "relation": "documents",
+        "target": "Subject",
+        "strength": "multiply(0.6, 0.65)",
+        "confidence": "min(0.9, 0.75)",
+        "necessity": "may"
+      },
+      "priority": 40
+    },
+    {
+      "id": "enable-chain",
+      "name": "Enabling Chain",
+      "type": "transitive",
+      "category": "causal",
+      "description": "If Project1 enables Project2, and Project2 enables Project3, then Project1 enables Project3",
+      "pattern": [
+        { "source": "Project1", "relation": "enables", "target": "Project2" },
+        { "source": "Project2", "relation": "enables", "target": "Project3" }
+      ],
+      "inference": {
+        "source": "Project1",
+        "relation": "enables",
+        "target": "Project3",
+        "strength": "multiply(0.85, 0.8)",
+        "confidence": "multiply(0.85, 0.8)",
+        "necessity": "may"
+      },
+      "priority": 60,
+      "constraints": { "maxHops": 3 }
+    },
+    {
+      "id": "outcome-attribution",
+      "name": "Outcome Attribution to Root Cause",
+      "type": "temporal",
+      "category": "temporal",
+      "description": "If Event1 causes Event2, and Event2 produces Outcome, attribute Outcome to Event1",
+      "pattern": [
+        { "source": "Event1", "relation": "causes", "target": "Event2" },
+        { "source": "Event2", "relation": "produces", "target": "Outcome" }
+      ],
+      "inference": {
+        "source": "Event1",
+        "relation": "produces-outcome",
+        "target": "Outcome",
+        "strength": "multiply(0.75, 0.8)",
+        "confidence": "min(0.7, 0.75)",
+        "necessity": "may"
+      },
+      "priority": 55,
+      "constraints": { "maxHops": 2, "requiresTimeOrder": true }
+    },
+    {
+      "id": "inverse-created-by",
+      "name": "Inverse: Created By",
+      "type": "inverse",
+      "category": "structural",
+      "description": "If A creates B, then B is created-by A",
+      "pattern": [
+        { "source": "A", "relation": "creates", "target": "B" }
+      ],
+      "inference": {
+        "source": "B",
+        "relation": "created-by",
+        "target": "A",
+        "strength": 0.95,
+        "confidence": 0.95,
+        "necessity": "must"
+      },
+      "priority": 100
+    },
+    {
+      "id": "inverse-member-of",
+      "name": "Inverse: Member Of",
+      "type": "inverse",
+      "category": "structural",
+      "description": "If A is member-of B, then B has-member A",
+      "pattern": [
+        { "source": "A", "relation": "member-of", "target": "B" }
+      ],
+      "inference": {
+        "source": "B",
+        "relation": "has-member",
+        "target": "A",
+        "strength": 0.95,
+        "confidence": 0.95,
+        "necessity": "must"
+      },
+      "priority": 100
+    },
+    {
+      "id": "milestone-achievement-chain",
+      "name": "Milestone Achievement Chain",
+      "type": "temporal",
+      "category": "temporal",
+      "description": "If Milestone1 precedes Milestone2, and Milestone2 enables Goal, then Milestone1 indirectly enables Goal",
+      "pattern": [
+        { "source": "Milestone1", "relation": "precedes", "target": "Milestone2" },
+        { "source": "Milestone2", "relation": "enables", "target": "Goal" }
+      ],
+      "inference": {
+        "source": "Milestone1",
+        "relation": "enables",
+        "target": "Goal",
+        "strength": "multiply(0.8, 0.85)",
+        "confidence": "min(0.75, 0.8)",
+        "necessity": "may"
+      },
+      "priority": 55,
+      "constraints": { "maxHops": 2, "requiresTimeOrder": true }
+    },
+    {
+      "id": "relationship-commutativity",
+      "name": "Bidirectional Relationship",
+      "type": "aggregation",
+      "category": "structural",
+      "description": "If A relates-to B, then B relates-to A (symmetric relationships)",
+      "pattern": [
+        { "source": "A", "relation": "relates-to", "target": "B" }
+      ],
+      "inference": {
+        "source": "B",
+        "relation": "relates-to",
+        "target": "A",
+        "strength": 0.95,
+        "confidence": 0.95,
+        "necessity": "must"
+      },
+      "priority": 95
+    },
+    {
+      "id": "shared-goal-alignment",
+      "name": "Shared Goal Alignment",
+      "type": "aggregation",
+      "category": "social",
+      "description": "If Actor1 pursues Goal, and Actor2 pursues Goal, then Actor1 aligns-with Actor2",
+      "pattern": [
+        { "source": "Actor1", "relation": "pursues", "target": "Goal" },
+        { "source": "Actor2", "relation": "pursues", "target": "Goal" }
+      ],
+      "inference": {
+        "source": "Actor1",
+        "relation": "aligns-with",
+        "target": "Actor2",
+        "strength": "multiply(0.75, 0.8)",
+        "confidence": "min(0.8, 0.75)",
+        "necessity": "may"
+      },
+      "priority": 45,
+      "constraints": { "sourceEntityTypes": ["actor"] }
+    },
+    {
+      "id": "dependency-chain",
+      "name": "Dependency Chain",
+      "type": "transitive",
+      "category": "structural",
+      "description": "If A depends-on B, and B depends-on C, then A indirectly depends-on C",
+      "pattern": [
+        { "source": "A", "relation": "depends-on", "target": "B" },
+        { "source": "B", "relation": "depends-on", "target": "C" }
+      ],
+      "inference": {
+        "source": "A",
+        "relation": "depends-on",
+        "target": "C",
+        "strength": "multiply(0.8, 0.8)",
+        "confidence": "min(0.8, 0.8)",
+        "necessity": "may"
+      },
+      "priority": 60,
+      "constraints": { "maxHops": 4 }
+    },
+    {
+      "id": "temporal-causality",
+      "name": "Temporal Causality Sequence",
+      "type": "temporal",
+      "category": "temporal",
+      "description": "If EventA precedes EventB by < 30 days AND EventB impacts Entity, infer causality",
+      "pattern": [
+        { "source": "EventA", "relation": "precedes", "target": "EventB" },
+        { "source": "EventB", "relation": "impacts", "target": "Entity" }
+      ],
+      "inference": {
+        "source": "EventA",
+        "relation": "may-cause",
+        "target": "Entity",
+        "strength": 0.65,
+        "confidence": "multiply(0.7, 0.75)",
+        "necessity": "may"
+      },
+      "priority": 35,
+      "constraints": {
+        "maxHops": 2,
+        "requiresTimeOrder": true,
+        "timeWindow": "P30D"
+      }
+    }
+  ],
+
+  "statistics": {
+    "totalRules": 23,
+    "byType": {
+      "inverse": 5,
+      "transitive": 7,
+      "causal": 4,
+      "temporal": 5,
+      "aggregation": 2
+    },
+    "byCategory": {
+      "structural": 7,
+      "causal": 6,
+      "temporal": 5,
+      "organizational": 1,
+      "knowledge": 1,
+      "financial": 1,
+      "social": 2
+    },
+    "averageExpectedMatches": 42,
+    "estimatedTotalInferences": 966
+  },
+
+  "qualityGates": {
+    "description": "Rules must meet these quality standards",
+    "minAveragePrecision": 0.75,
+    "minAverageRecall": 0.65,
+    "maxHopsForTransitive": 4,
+    "circularDependencyCheck": "none detected",
+    "status": "validated"
+  }
+}

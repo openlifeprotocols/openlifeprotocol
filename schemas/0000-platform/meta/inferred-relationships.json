@@ -1,0 +1,4528 @@
+{
+  "version": "1.0.0",
+  "description": "Inferred relationships from Phase 4.1 transitive inference",
+  "generatedAt": "2026-06-09T21:59:28.665Z",
+  "baseRelationships": 154,
+  "inferredRelationships": 190,
+  "chainPatternsFound": 148,
+  "statistics": {
+    "totalChains": 302,
+    "uniqueChainPatterns": 148,
+    "inferencesGenerated": 302,
+    "byRule": {}
+  },
+  "inferences": [
+    {
+      "source": "reminder",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.44999999999999996,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "references-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "reminder",
+          "relation": "references",
+          "target": "calendar-event"
+        },
+        {
+          "source": "calendar-event",
+          "relation": "participates-in",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "reminder",
+      "target": "location",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.42,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "references-->located-at",
+      "derivedFrom": [
+        {
+          "source": "reminder",
+          "relation": "references",
+          "target": "calendar-event"
+        },
+        {
+          "source": "calendar-event",
+          "relation": "located-at",
+          "target": "location"
+        }
+      ]
+    },
+    {
+      "source": "actor",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6400000000000001,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "makes-->advances",
+      "derivedFrom": [
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        },
+        {
+          "source": "decision",
+          "relation": "advances",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "actor",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "makes-->acknowledges",
+      "derivedFrom": [
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        },
+        {
+          "source": "decision",
+          "relation": "acknowledges",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "actor",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7200000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "makes-->commits-to",
+      "derivedFrom": [
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        },
+        {
+          "source": "decision",
+          "relation": "commits-to",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "actor",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "makes-->initiates",
+      "derivedFrom": [
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        },
+        {
+          "source": "decision",
+          "relation": "initiates",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "asset",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7124999999999999,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "owns-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "asset",
+          "relation": "owns",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "asset",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.76,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "owns-->makes",
+      "derivedFrom": [
+        {
+          "source": "asset",
+          "relation": "owns",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "decision",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "advances-->enabled-by",
+      "derivedFrom": [
+        {
+          "source": "decision",
+          "relation": "advances",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "enabled-by",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "decision",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "advances-->blocked-by",
+      "derivedFrom": [
+        {
+          "source": "decision",
+          "relation": "advances",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "blocked-by",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "decision",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6400000000000001,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "advances-->pursued-via",
+      "derivedFrom": [
+        {
+          "source": "decision",
+          "relation": "advances",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "pursued-via",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "decision",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "acknowledges-->blocks",
+      "derivedFrom": [
+        {
+          "source": "decision",
+          "relation": "acknowledges",
+          "target": "risk"
+        },
+        {
+          "source": "risk",
+          "relation": "blocks",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "document",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.44999999999999996,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "references-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "document",
+          "relation": "references",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "document",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "references-->makes",
+      "derivedFrom": [
+        {
+          "source": "document",
+          "relation": "references",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "event",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5625,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "participates-in-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "event",
+          "relation": "participates-in",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "event",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "participates-in-->makes",
+      "derivedFrom": [
+        {
+          "source": "event",
+          "relation": "participates-in",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "event",
+      "target": "*",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.42,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "references-->located-at",
+      "derivedFrom": [
+        {
+          "source": "event",
+          "relation": "references",
+          "target": "location"
+        },
+        {
+          "source": "location",
+          "relation": "located-at",
+          "target": "*"
+        }
+      ]
+    },
+    {
+      "source": "goal",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "enabled-by-->mitigates",
+      "derivedFrom": [
+        {
+          "source": "goal",
+          "relation": "enabled-by",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "goal",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "enabled-by-->explores",
+      "derivedFrom": [
+        {
+          "source": "goal",
+          "relation": "enabled-by",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "explores",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "goal",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "blocked-by-->threatens",
+      "derivedFrom": [
+        {
+          "source": "goal",
+          "relation": "blocked-by",
+          "target": "risk"
+        },
+        {
+          "source": "risk",
+          "relation": "threatens",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "goal",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "blocked-by-->informs",
+      "derivedFrom": [
+        {
+          "source": "goal",
+          "relation": "blocked-by",
+          "target": "risk"
+        },
+        {
+          "source": "risk",
+          "relation": "informs",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "organisation",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.675,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "employs-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "organisation",
+          "relation": "employs",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "organisation",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7200000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "employs-->makes",
+      "derivedFrom": [
+        {
+          "source": "organisation",
+          "relation": "employs",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "payment",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7224999999999999,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "funds-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "payment",
+          "relation": "funds",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "payment",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "funds-->mitigates",
+      "derivedFrom": [
+        {
+          "source": "payment",
+          "relation": "funds",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "payment",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "funds-->explores",
+      "derivedFrom": [
+        {
+          "source": "payment",
+          "relation": "funds",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "explores",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "payment",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.675,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "flows-to-->employs",
+      "derivedFrom": [
+        {
+          "source": "payment",
+          "relation": "flows-to",
+          "target": "organisation"
+        },
+        {
+          "source": "organisation",
+          "relation": "employs",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "project",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7224999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "fulfills-->blocked-by",
+      "derivedFrom": [
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "blocked-by",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "project",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "fulfills-->pursued-via",
+      "derivedFrom": [
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "pursued-via",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "project",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "mitigates-->blocks",
+      "derivedFrom": [
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        },
+        {
+          "source": "risk",
+          "relation": "blocks",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "project",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "mitigates-->informs",
+      "derivedFrom": [
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        },
+        {
+          "source": "risk",
+          "relation": "informs",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "task",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "task",
+          "relation": "supports",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "task",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->mitigates",
+      "derivedFrom": [
+        {
+          "source": "task",
+          "relation": "supports",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "task",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48999999999999994,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->explores",
+      "derivedFrom": [
+        {
+          "source": "task",
+          "relation": "supports",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "explores",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "task",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7224999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "fulfills-->enabled-by",
+      "derivedFrom": [
+        {
+          "source": "task",
+          "relation": "fulfills",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "enabled-by",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "workflow",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "workflow",
+          "relation": "supports",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "workflow",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->mitigates",
+      "derivedFrom": [
+        {
+          "source": "workflow",
+          "relation": "supports",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "workflow",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48999999999999994,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->explores",
+      "derivedFrom": [
+        {
+          "source": "workflow",
+          "relation": "supports",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "explores",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "workflow",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "produces-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "workflow",
+          "relation": "produces",
+          "target": "deliverable"
+        },
+        {
+          "source": "deliverable",
+          "relation": "fulfills",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "relationship",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "connects-->makes",
+      "derivedFrom": [
+        {
+          "source": "relationship",
+          "relation": "connects",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "notification",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.44999999999999996,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "references-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "notification",
+          "relation": "references",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "notification",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "references-->makes",
+      "derivedFrom": [
+        {
+          "source": "notification",
+          "relation": "references",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "claim",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.42,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "references-->covers",
+      "derivedFrom": [
+        {
+          "source": "claim",
+          "relation": "references",
+          "target": "insurance-policy"
+        },
+        {
+          "source": "insurance-policy",
+          "relation": "covers",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "claim",
+      "target": "organisation",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.51,
+      "confidence": 0.9,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "references-->issued-by",
+      "derivedFrom": [
+        {
+          "source": "claim",
+          "relation": "references",
+          "target": "insurance-policy"
+        },
+        {
+          "source": "insurance-policy",
+          "relation": "issued-by",
+          "target": "organisation"
+        }
+      ]
+    },
+    {
+      "source": "review",
+      "target": "organisation",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.675,
+      "confidence": 0.9,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "documents-->works-for",
+      "derivedFrom": [
+        {
+          "source": "review",
+          "relation": "documents",
+          "target": "employment"
+        },
+        {
+          "source": "employment",
+          "relation": "works-for",
+          "target": "organisation"
+        }
+      ]
+    },
+    {
+      "source": "review",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5625,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "documents-->contributes-to",
+      "derivedFrom": [
+        {
+          "source": "review",
+          "relation": "documents",
+          "target": "employment"
+        },
+        {
+          "source": "employment",
+          "relation": "contributes-to",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "search-result",
+      "target": "*",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.44999999999999996,
+      "confidence": 0.9,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "documents-->references",
+      "derivedFrom": [
+        {
+          "source": "search-result",
+          "relation": "documents",
+          "target": "reference"
+        },
+        {
+          "source": "reference",
+          "relation": "references",
+          "target": "*"
+        }
+      ]
+    },
+    {
+      "source": "habit",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->enabled-by",
+      "derivedFrom": [
+        {
+          "source": "habit",
+          "relation": "supports",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "enabled-by",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "habit",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->blocked-by",
+      "derivedFrom": [
+        {
+          "source": "habit",
+          "relation": "supports",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "blocked-by",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "habit",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->pursued-via",
+      "derivedFrom": [
+        {
+          "source": "habit",
+          "relation": "supports",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "pursued-via",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "household",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5625,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "participates-in-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "household",
+          "relation": "participates-in",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "household",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "participates-in-->makes",
+      "derivedFrom": [
+        {
+          "source": "household",
+          "relation": "participates-in",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "household",
+      "target": "*",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48999999999999994,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "located-at-->located-at",
+      "derivedFrom": [
+        {
+          "source": "household",
+          "relation": "located-at",
+          "target": "location"
+        },
+        {
+          "source": "location",
+          "relation": "located-at",
+          "target": "*"
+        }
+      ]
+    },
+    {
+      "source": "achievement",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7224999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "fulfills-->enabled-by",
+      "derivedFrom": [
+        {
+          "source": "achievement",
+          "relation": "fulfills",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "enabled-by",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "achievement",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7224999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "fulfills-->blocked-by",
+      "derivedFrom": [
+        {
+          "source": "achievement",
+          "relation": "fulfills",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "blocked-by",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "achievement",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "fulfills-->pursued-via",
+      "derivedFrom": [
+        {
+          "source": "achievement",
+          "relation": "fulfills",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "pursued-via",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "creative-project",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7224999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "fulfills-->enabled-by",
+      "derivedFrom": [
+        {
+          "source": "creative-project",
+          "relation": "fulfills",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "enabled-by",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "creative-project",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7224999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "fulfills-->blocked-by",
+      "derivedFrom": [
+        {
+          "source": "creative-project",
+          "relation": "fulfills",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "blocked-by",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "creative-project",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "fulfills-->pursued-via",
+      "derivedFrom": [
+        {
+          "source": "creative-project",
+          "relation": "fulfills",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "pursued-via",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "creative-project",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "created-by-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "creative-project",
+          "relation": "created-by",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "creative-project",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "created-by-->makes",
+      "derivedFrom": [
+        {
+          "source": "creative-project",
+          "relation": "created-by",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "course",
+      "target": "certification",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5625,
+      "confidence": 0.9,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "documents-->documents",
+      "derivedFrom": [
+        {
+          "source": "course",
+          "relation": "documents",
+          "target": "learning-record"
+        },
+        {
+          "source": "learning-record",
+          "relation": "documents",
+          "target": "certification"
+        }
+      ]
+    },
+    {
+      "source": "course",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "documents-->supports",
+      "derivedFrom": [
+        {
+          "source": "course",
+          "relation": "documents",
+          "target": "learning-record"
+        },
+        {
+          "source": "learning-record",
+          "relation": "supports",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "course",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7200000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "produces-->held-by",
+      "derivedFrom": [
+        {
+          "source": "course",
+          "relation": "produces",
+          "target": "certification"
+        },
+        {
+          "source": "certification",
+          "relation": "held-by",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "course",
+      "target": "organisation",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "produces-->issued-by",
+      "derivedFrom": [
+        {
+          "source": "course",
+          "relation": "produces",
+          "target": "certification"
+        },
+        {
+          "source": "certification",
+          "relation": "issued-by",
+          "target": "organisation"
+        }
+      ]
+    },
+    {
+      "source": "course",
+      "target": "document",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "produces-->references",
+      "derivedFrom": [
+        {
+          "source": "course",
+          "relation": "produces",
+          "target": "certification"
+        },
+        {
+          "source": "certification",
+          "relation": "references",
+          "target": "document"
+        }
+      ]
+    },
+    {
+      "source": "donation",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.675,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "contributes-to-->employs",
+      "derivedFrom": [
+        {
+          "source": "donation",
+          "relation": "contributes-to",
+          "target": "organisation"
+        },
+        {
+          "source": "organisation",
+          "relation": "employs",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "memory",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5625,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "documents-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "memory",
+          "relation": "documents",
+          "target": "event"
+        },
+        {
+          "source": "event",
+          "relation": "participates-in",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "memory",
+      "target": "location",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.44999999999999996,
+      "confidence": 0.9,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "documents-->references",
+      "derivedFrom": [
+        {
+          "source": "memory",
+          "relation": "documents",
+          "target": "event"
+        },
+        {
+          "source": "event",
+          "relation": "references",
+          "target": "location"
+        }
+      ]
+    },
+    {
+      "source": "deliverable",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7224999999999999,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "fulfills-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "deliverable",
+          "relation": "fulfills",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "deliverable",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "fulfills-->mitigates",
+      "derivedFrom": [
+        {
+          "source": "deliverable",
+          "relation": "fulfills",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "deliverable",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "fulfills-->explores",
+      "derivedFrom": [
+        {
+          "source": "deliverable",
+          "relation": "fulfills",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "explores",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "deliverable",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "comes-from-->supports",
+      "derivedFrom": [
+        {
+          "source": "deliverable",
+          "relation": "comes-from",
+          "target": "workflow"
+        },
+        {
+          "source": "workflow",
+          "relation": "supports",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "milestone",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.51,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "marks-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "milestone",
+          "relation": "marks",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "milestone",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "marks-->mitigates",
+      "derivedFrom": [
+        {
+          "source": "milestone",
+          "relation": "marks",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "milestone",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.42,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "marks-->explores",
+      "derivedFrom": [
+        {
+          "source": "milestone",
+          "relation": "marks",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "explores",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "milestone",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7224999999999999,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "gates-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "milestone",
+          "relation": "gates",
+          "target": "deliverable"
+        },
+        {
+          "source": "deliverable",
+          "relation": "fulfills",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "milestone",
+      "target": "workflow",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "gates-->comes-from",
+      "derivedFrom": [
+        {
+          "source": "milestone",
+          "relation": "gates",
+          "target": "deliverable"
+        },
+        {
+          "source": "deliverable",
+          "relation": "comes-from",
+          "target": "workflow"
+        }
+      ]
+    },
+    {
+      "source": "resource-allocation",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "resource-allocation",
+          "relation": "supports",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "resource-allocation",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->mitigates",
+      "derivedFrom": [
+        {
+          "source": "resource-allocation",
+          "relation": "supports",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "resource-allocation",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48999999999999994,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->explores",
+      "derivedFrom": [
+        {
+          "source": "resource-allocation",
+          "relation": "supports",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "explores",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "resource-allocation",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "assigns-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "resource-allocation",
+          "relation": "assigns",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "resource-allocation",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6400000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "assigns-->makes",
+      "derivedFrom": [
+        {
+          "source": "resource-allocation",
+          "relation": "assigns",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "permit",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "authorizes-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "permit",
+          "relation": "authorizes",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "permit",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "authorizes-->makes",
+      "derivedFrom": [
+        {
+          "source": "permit",
+          "relation": "authorizes",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "contract",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.675,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "binds-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "contract",
+          "relation": "binds",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "contract",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7200000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "binds-->makes",
+      "derivedFrom": [
+        {
+          "source": "contract",
+          "relation": "binds",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "contract",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.54,
+      "confidence": 0.9,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "references-->employs",
+      "derivedFrom": [
+        {
+          "source": "contract",
+          "relation": "references",
+          "target": "organisation"
+        },
+        {
+          "source": "organisation",
+          "relation": "employs",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "idea",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "informs-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "idea",
+          "relation": "informs",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "idea",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "informs-->mitigates",
+      "derivedFrom": [
+        {
+          "source": "idea",
+          "relation": "informs",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "idea",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48999999999999994,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "informs-->explores",
+      "derivedFrom": [
+        {
+          "source": "idea",
+          "relation": "informs",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "explores",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "idea",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "informs-->enabled-by",
+      "derivedFrom": [
+        {
+          "source": "idea",
+          "relation": "informs",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "enabled-by",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "opportunity",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7224999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "enables-->enabled-by",
+      "derivedFrom": [
+        {
+          "source": "opportunity",
+          "relation": "enables",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "enabled-by",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "opportunity",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7224999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "enables-->blocked-by",
+      "derivedFrom": [
+        {
+          "source": "opportunity",
+          "relation": "enables",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "blocked-by",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "opportunity",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "requires-->advances",
+      "derivedFrom": [
+        {
+          "source": "opportunity",
+          "relation": "requires",
+          "target": "decision"
+        },
+        {
+          "source": "decision",
+          "relation": "advances",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "startup",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7124999999999999,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "founded-by-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "startup",
+          "relation": "founded-by",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "startup",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.76,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "founded-by-->makes",
+      "derivedFrom": [
+        {
+          "source": "startup",
+          "relation": "founded-by",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "startup",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "raises-->funds",
+      "derivedFrom": [
+        {
+          "source": "startup",
+          "relation": "raises",
+          "target": "payment"
+        },
+        {
+          "source": "payment",
+          "relation": "funds",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "startup",
+      "target": "organisation",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "raises-->flows-to",
+      "derivedFrom": [
+        {
+          "source": "startup",
+          "relation": "raises",
+          "target": "payment"
+        },
+        {
+          "source": "payment",
+          "relation": "flows-to",
+          "target": "organisation"
+        }
+      ]
+    },
+    {
+      "source": "account",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "owned-by-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "account",
+          "relation": "owned-by",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "account",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "owned-by-->makes",
+      "derivedFrom": [
+        {
+          "source": "account",
+          "relation": "owned-by",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "account",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.63,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "managed-by-->employs",
+      "derivedFrom": [
+        {
+          "source": "account",
+          "relation": "managed-by",
+          "target": "organisation"
+        },
+        {
+          "source": "organisation",
+          "relation": "employs",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "customer",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "makes-->funds",
+      "derivedFrom": [
+        {
+          "source": "customer",
+          "relation": "makes",
+          "target": "payment"
+        },
+        {
+          "source": "payment",
+          "relation": "funds",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "customer",
+      "target": "organisation",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "makes-->flows-to",
+      "derivedFrom": [
+        {
+          "source": "customer",
+          "relation": "makes",
+          "target": "payment"
+        },
+        {
+          "source": "payment",
+          "relation": "flows-to",
+          "target": "organisation"
+        }
+      ]
+    },
+    {
+      "source": "process",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "executed-by-->member-of",
+      "derivedFrom": [
+        {
+          "source": "process",
+          "relation": "executed-by",
+          "target": "team"
+        },
+        {
+          "source": "team",
+          "relation": "member-of",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "process",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48999999999999994,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "executed-by-->works-on",
+      "derivedFrom": [
+        {
+          "source": "process",
+          "relation": "executed-by",
+          "target": "team"
+        },
+        {
+          "source": "team",
+          "relation": "works-on",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "property",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7124999999999999,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "owns-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "property",
+          "relation": "owns",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "property",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.76,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "owns-->makes",
+      "derivedFrom": [
+        {
+          "source": "property",
+          "relation": "owns",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "vehicle",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7124999999999999,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "owns-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "vehicle",
+          "relation": "owns",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "vehicle",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.76,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "owns-->makes",
+      "derivedFrom": [
+        {
+          "source": "vehicle",
+          "relation": "owns",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "budget",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->enabled-by",
+      "derivedFrom": [
+        {
+          "source": "budget",
+          "relation": "supports",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "enabled-by",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "budget",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->blocked-by",
+      "derivedFrom": [
+        {
+          "source": "budget",
+          "relation": "supports",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "blocked-by",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "budget",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->pursued-via",
+      "derivedFrom": [
+        {
+          "source": "budget",
+          "relation": "supports",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "pursued-via",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "subscription",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.54,
+      "confidence": 0.9,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "references-->employs",
+      "derivedFrom": [
+        {
+          "source": "subscription",
+          "relation": "references",
+          "target": "organisation"
+        },
+        {
+          "source": "organisation",
+          "relation": "employs",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "contractor",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.765,
+      "confidence": 0.9,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "bound-by-->binds",
+      "derivedFrom": [
+        {
+          "source": "contractor",
+          "relation": "bound-by",
+          "target": "contract"
+        },
+        {
+          "source": "contract",
+          "relation": "binds",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "contractor",
+      "target": "organisation",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.51,
+      "confidence": 0.9,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "bound-by-->references",
+      "derivedFrom": [
+        {
+          "source": "contractor",
+          "relation": "bound-by",
+          "target": "contract"
+        },
+        {
+          "source": "contract",
+          "relation": "references",
+          "target": "organisation"
+        }
+      ]
+    },
+    {
+      "source": "contractor",
+      "target": "document",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6375,
+      "confidence": 0.9,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "bound-by-->documents",
+      "derivedFrom": [
+        {
+          "source": "contractor",
+          "relation": "bound-by",
+          "target": "contract"
+        },
+        {
+          "source": "contract",
+          "relation": "documents",
+          "target": "document"
+        }
+      ]
+    },
+    {
+      "source": "contractor",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6375,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "contributes-to-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "contractor",
+          "relation": "contributes-to",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "contractor",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "contributes-to-->mitigates",
+      "derivedFrom": [
+        {
+          "source": "contractor",
+          "relation": "contributes-to",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "contractor",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "contributes-to-->explores",
+      "derivedFrom": [
+        {
+          "source": "contractor",
+          "relation": "contributes-to",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "explores",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "employee",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.81,
+      "confidence": 0.95,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "works-for-->employs",
+      "derivedFrom": [
+        {
+          "source": "employee",
+          "relation": "works-for",
+          "target": "organisation"
+        },
+        {
+          "source": "organisation",
+          "relation": "employs",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "employee",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6375,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "contributes-to-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "employee",
+          "relation": "contributes-to",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "employee",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "contributes-to-->mitigates",
+      "derivedFrom": [
+        {
+          "source": "employee",
+          "relation": "contributes-to",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "employee",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "contributes-to-->explores",
+      "derivedFrom": [
+        {
+          "source": "employee",
+          "relation": "contributes-to",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "explores",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "team",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "member-of-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "team",
+          "relation": "member-of",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "team",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6400000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "member-of-->makes",
+      "derivedFrom": [
+        {
+          "source": "team",
+          "relation": "member-of",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "team",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "works-on-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "team",
+          "relation": "works-on",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "team",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "works-on-->mitigates",
+      "derivedFrom": [
+        {
+          "source": "team",
+          "relation": "works-on",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "team",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48999999999999994,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "works-on-->explores",
+      "derivedFrom": [
+        {
+          "source": "team",
+          "relation": "works-on",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "explores",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "policy",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.765,
+      "confidence": 0.95,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "issued-by-->employs",
+      "derivedFrom": [
+        {
+          "source": "policy",
+          "relation": "issued-by",
+          "target": "organisation"
+        },
+        {
+          "source": "organisation",
+          "relation": "employs",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "risk",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7224999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "blocks-->enabled-by",
+      "derivedFrom": [
+        {
+          "source": "risk",
+          "relation": "blocks",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "enabled-by",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "risk",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "blocks-->pursued-via",
+      "derivedFrom": [
+        {
+          "source": "risk",
+          "relation": "blocks",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "pursued-via",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "risk",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.68,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "threatens-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "risk",
+          "relation": "threatens",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "community-group",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5625,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "participates-in-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "community-group",
+          "relation": "participates-in",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "community-group",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "participates-in-->makes",
+      "derivedFrom": [
+        {
+          "source": "community-group",
+          "relation": "participates-in",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "community-group",
+      "target": "*",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48999999999999994,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "located-at-->located-at",
+      "derivedFrom": [
+        {
+          "source": "community-group",
+          "relation": "located-at",
+          "target": "location"
+        },
+        {
+          "source": "location",
+          "relation": "located-at",
+          "target": "*"
+        }
+      ]
+    },
+    {
+      "source": "certification",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.675,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "held-by-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "certification",
+          "relation": "held-by",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "certification",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7200000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "held-by-->makes",
+      "derivedFrom": [
+        {
+          "source": "certification",
+          "relation": "held-by",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "certification",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.765,
+      "confidence": 0.95,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "issued-by-->employs",
+      "derivedFrom": [
+        {
+          "source": "certification",
+          "relation": "issued-by",
+          "target": "organisation"
+        },
+        {
+          "source": "organisation",
+          "relation": "employs",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "learning-record",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.675,
+      "confidence": 0.9,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "documents-->held-by",
+      "derivedFrom": [
+        {
+          "source": "learning-record",
+          "relation": "documents",
+          "target": "certification"
+        },
+        {
+          "source": "certification",
+          "relation": "held-by",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "learning-record",
+      "target": "organisation",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6375,
+      "confidence": 0.9,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "documents-->issued-by",
+      "derivedFrom": [
+        {
+          "source": "learning-record",
+          "relation": "documents",
+          "target": "certification"
+        },
+        {
+          "source": "certification",
+          "relation": "issued-by",
+          "target": "organisation"
+        }
+      ]
+    },
+    {
+      "source": "learning-record",
+      "target": "document",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.44999999999999996,
+      "confidence": 0.9,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "documents-->references",
+      "derivedFrom": [
+        {
+          "source": "learning-record",
+          "relation": "documents",
+          "target": "certification"
+        },
+        {
+          "source": "certification",
+          "relation": "references",
+          "target": "document"
+        }
+      ]
+    },
+    {
+      "source": "learning-record",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->enabled-by",
+      "derivedFrom": [
+        {
+          "source": "learning-record",
+          "relation": "supports",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "enabled-by",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "learning-record",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->blocked-by",
+      "derivedFrom": [
+        {
+          "source": "learning-record",
+          "relation": "supports",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "blocked-by",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "learning-record",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "supports-->pursued-via",
+      "derivedFrom": [
+        {
+          "source": "learning-record",
+          "relation": "supports",
+          "target": "goal"
+        },
+        {
+          "source": "goal",
+          "relation": "pursued-via",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "note",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.36,
+      "confidence": 0.9,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "references-->references",
+      "derivedFrom": [
+        {
+          "source": "note",
+          "relation": "references",
+          "target": "document"
+        },
+        {
+          "source": "document",
+          "relation": "references",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "employment",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.81,
+      "confidence": 0.95,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "works-for-->employs",
+      "derivedFrom": [
+        {
+          "source": "employment",
+          "relation": "works-for",
+          "target": "organisation"
+        },
+        {
+          "source": "organisation",
+          "relation": "employs",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "employment",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6375,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "contributes-to-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "employment",
+          "relation": "contributes-to",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "employment",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "contributes-to-->mitigates",
+      "derivedFrom": [
+        {
+          "source": "employment",
+          "relation": "contributes-to",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "employment",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "contributes-to-->explores",
+      "derivedFrom": [
+        {
+          "source": "employment",
+          "relation": "contributes-to",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "explores",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "promotion",
+      "target": "organisation",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.63,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "updates-->works-for",
+      "derivedFrom": [
+        {
+          "source": "promotion",
+          "relation": "updates",
+          "target": "employment"
+        },
+        {
+          "source": "employment",
+          "relation": "works-for",
+          "target": "organisation"
+        }
+      ]
+    },
+    {
+      "source": "promotion",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "updates-->contributes-to",
+      "derivedFrom": [
+        {
+          "source": "promotion",
+          "relation": "updates",
+          "target": "employment"
+        },
+        {
+          "source": "employment",
+          "relation": "contributes-to",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "mentor",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "advises-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "mentor",
+          "relation": "advises",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "mentor",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6400000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "advises-->makes",
+      "derivedFrom": [
+        {
+          "source": "mentor",
+          "relation": "advises",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "invoice",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "requests-->funds",
+      "derivedFrom": [
+        {
+          "source": "invoice",
+          "relation": "requests",
+          "target": "payment"
+        },
+        {
+          "source": "payment",
+          "relation": "funds",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "invoice",
+      "target": "organisation",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.8,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "requests-->flows-to",
+      "derivedFrom": [
+        {
+          "source": "invoice",
+          "relation": "requests",
+          "target": "payment"
+        },
+        {
+          "source": "payment",
+          "relation": "flows-to",
+          "target": "organisation"
+        }
+      ]
+    },
+    {
+      "source": "invoice",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6375,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "documents-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "invoice",
+          "relation": "documents",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "invoice",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "documents-->mitigates",
+      "derivedFrom": [
+        {
+          "source": "invoice",
+          "relation": "documents",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "invoice",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "documents-->explores",
+      "derivedFrom": [
+        {
+          "source": "invoice",
+          "relation": "documents",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "explores",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "transaction",
+      "target": "financial-account",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "documents-->tracked-by",
+      "derivedFrom": [
+        {
+          "source": "transaction",
+          "relation": "documents",
+          "target": "expense"
+        },
+        {
+          "source": "expense",
+          "relation": "tracked-by",
+          "target": "financial-account"
+        }
+      ]
+    },
+    {
+      "source": "insurance-policy",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "covers-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "insurance-policy",
+          "relation": "covers",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "insurance-policy",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "covers-->makes",
+      "derivedFrom": [
+        {
+          "source": "insurance-policy",
+          "relation": "covers",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "insurance-policy",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.765,
+      "confidence": 0.95,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "issued-by-->employs",
+      "derivedFrom": [
+        {
+          "source": "insurance-policy",
+          "relation": "issued-by",
+          "target": "organisation"
+        },
+        {
+          "source": "organisation",
+          "relation": "employs",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "itinerary",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "contains-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "itinerary",
+          "relation": "contains",
+          "target": "calendar-event"
+        },
+        {
+          "source": "calendar-event",
+          "relation": "participates-in",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "itinerary",
+      "target": "location",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48999999999999994,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "contains-->located-at",
+      "derivedFrom": [
+        {
+          "source": "itinerary",
+          "relation": "contains",
+          "target": "calendar-event"
+        },
+        {
+          "source": "calendar-event",
+          "relation": "located-at",
+          "target": "location"
+        }
+      ]
+    },
+    {
+      "source": "agreement",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5625,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "participates-in-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "agreement",
+          "relation": "participates-in",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "agreement",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "participates-in-->makes",
+      "derivedFrom": [
+        {
+          "source": "agreement",
+          "relation": "participates-in",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "conversation",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.42,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "contains-->references",
+      "derivedFrom": [
+        {
+          "source": "conversation",
+          "relation": "contains",
+          "target": "message"
+        },
+        {
+          "source": "message",
+          "relation": "references",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "meeting",
+      "target": "actor",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "participates-in-->member-of",
+      "derivedFrom": [
+        {
+          "source": "meeting",
+          "relation": "participates-in",
+          "target": "team"
+        },
+        {
+          "source": "team",
+          "relation": "member-of",
+          "target": "actor"
+        }
+      ]
+    },
+    {
+      "source": "meeting",
+      "target": "project",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "participates-in-->works-on",
+      "derivedFrom": [
+        {
+          "source": "meeting",
+          "relation": "participates-in",
+          "target": "team"
+        },
+        {
+          "source": "team",
+          "relation": "works-on",
+          "target": "project"
+        }
+      ]
+    },
+    {
+      "source": "meeting",
+      "target": "goal",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.595,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "discusses-->fulfills",
+      "derivedFrom": [
+        {
+          "source": "meeting",
+          "relation": "discusses",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "fulfills",
+          "target": "goal"
+        }
+      ]
+    },
+    {
+      "source": "meeting",
+      "target": "risk",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "discusses-->mitigates",
+      "derivedFrom": [
+        {
+          "source": "meeting",
+          "relation": "discusses",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "mitigates",
+          "target": "risk"
+        }
+      ]
+    },
+    {
+      "source": "meeting",
+      "target": "opportunity",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48999999999999994,
+      "confidence": 0.7,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "discusses-->explores",
+      "derivedFrom": [
+        {
+          "source": "meeting",
+          "relation": "discusses",
+          "target": "project"
+        },
+        {
+          "source": "project",
+          "relation": "explores",
+          "target": "opportunity"
+        }
+      ]
+    },
+    {
+      "source": "device",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.7124999999999999,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "owns-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "device",
+          "relation": "owns",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "device",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.76,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "owns-->makes",
+      "derivedFrom": [
+        {
+          "source": "device",
+          "relation": "owns",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "calendar-event",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5625,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "participates-in-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "calendar-event",
+          "relation": "participates-in",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "calendar-event",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.6000000000000001,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "participates-in-->makes",
+      "derivedFrom": [
+        {
+          "source": "calendar-event",
+          "relation": "participates-in",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "calendar-event",
+      "target": "*",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48999999999999994,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "located-at-->located-at",
+      "derivedFrom": [
+        {
+          "source": "calendar-event",
+          "relation": "located-at",
+          "target": "location"
+        },
+        {
+          "source": "location",
+          "relation": "located-at",
+          "target": "*"
+        }
+      ]
+    },
+    {
+      "source": "access-control",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "grants-to-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "access-control",
+          "relation": "grants-to",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "access-control",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "grants-to-->makes",
+      "derivedFrom": [
+        {
+          "source": "access-control",
+          "relation": "grants-to",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "public-profile",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5249999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "represents-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "public-profile",
+          "relation": "represents",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "public-profile",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.5599999999999999,
+      "confidence": 0.75,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "represents-->makes",
+      "derivedFrom": [
+        {
+          "source": "public-profile",
+          "relation": "represents",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "message",
+      "target": "relationship",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.44999999999999996,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "references-->participates-in",
+      "derivedFrom": [
+        {
+          "source": "message",
+          "relation": "references",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "participates-in",
+          "target": "relationship"
+        }
+      ]
+    },
+    {
+      "source": "message",
+      "target": "decision",
+      "type": "relates-to",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.48,
+      "confidence": 0.85,
+      "necessity": "may",
+      "ruleId": "transitive-general",
+      "chainPattern": "references-->makes",
+      "derivedFrom": [
+        {
+          "source": "message",
+          "relation": "references",
+          "target": "actor"
+        },
+        {
+          "source": "actor",
+          "relation": "makes",
+          "target": "decision"
+        }
+      ]
+    },
+    {
+      "source": "actor",
+      "target": "asset",
+      "type": "owned-by",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.95,
+      "confidence": 0.9,
+      "necessity": "must",
+      "ruleId": "inverse-owns",
+      "derivedFrom": {
+        "source": "asset",
+        "relation": "owns",
+        "target": "actor"
+      }
+    },
+    {
+      "source": "actor",
+      "target": "organisation",
+      "type": "works-for",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.9,
+      "confidence": 0.95,
+      "necessity": "must",
+      "ruleId": "inverse-employs",
+      "derivedFrom": {
+        "source": "organisation",
+        "relation": "employs",
+        "target": "actor"
+      }
+    },
+    {
+      "source": "actor",
+      "target": "property",
+      "type": "owned-by",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.95,
+      "confidence": 0.9,
+      "necessity": "must",
+      "ruleId": "inverse-owns",
+      "derivedFrom": {
+        "source": "property",
+        "relation": "owns",
+        "target": "actor"
+      }
+    },
+    {
+      "source": "actor",
+      "target": "vehicle",
+      "type": "owned-by",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.95,
+      "confidence": 0.9,
+      "necessity": "must",
+      "ruleId": "inverse-owns",
+      "derivedFrom": {
+        "source": "vehicle",
+        "relation": "owns",
+        "target": "actor"
+      }
+    },
+    {
+      "source": "actor",
+      "target": "team",
+      "type": "has-member",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.8,
+      "confidence": 0.9,
+      "necessity": "must",
+      "ruleId": "inverse-member-of",
+      "derivedFrom": {
+        "source": "team",
+        "relation": "member-of",
+        "target": "actor"
+      }
+    },
+    {
+      "source": "actor",
+      "target": "device",
+      "type": "owned-by",
+      "cardinality": "many",
+      "required": false,
+      "strength": 0.95,
+      "confidence": 0.9,
+      "necessity": "must",
+      "ruleId": "inverse-owns",
+      "derivedFrom": {
+        "source": "device",
+        "relation": "owns",
+        "target": "actor"
+      }
+    }
+  ]
+}

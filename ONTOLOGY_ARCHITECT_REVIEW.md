@@ -61,7 +61,7 @@ With semantic enrichment:
 ```
 class Goal {
   /**
-   * A desired future outcome pursued by an actor 
+   * A desired future outcome pursued by an actor
    * and measured through progress over time.
    * Related to: projects (fulfills), milestones (advances)
    * Part of: life-story, planning domains
@@ -273,12 +273,12 @@ You're at an inflection point:
 ## The Verdict
 
 > You no longer have an ontology quality problem.
-> 
+>
 > You now have a **knowledge density opportunity**.
-> 
-> The structure is solid. The next stage is teaching the graph 
+>
+> The structure is solid. The next stage is teaching the graph
 > enough meaning that AI can reason over it intelligently.
-> 
+>
 > That's a much more interesting problem to have.
 
 **Ready to build semantic richness.** 🧠✨

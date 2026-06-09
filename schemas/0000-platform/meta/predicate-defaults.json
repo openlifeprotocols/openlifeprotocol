@@ -1,0 +1,577 @@
+{
+  "version": "1.0.0",
+  "description": "Default semantic values for all 51 governed relationship predicates. Used to enrich relationships in schema-curation.json.",
+  "predicateDefaults": {
+    "owns": {
+      "strength": 0.95,
+      "confidence": 0.9,
+      "necessity": "must",
+      "category": "structural",
+      "notes": "Core ownership relationship - high importance"
+    },
+    "works-for": {
+      "strength": 0.9,
+      "confidence": 0.95,
+      "necessity": "must",
+      "category": "structural",
+      "notes": "Employment relationship - foundational"
+    },
+    "advises": {
+      "strength": 0.8,
+      "confidence": 0.85,
+      "necessity": "should",
+      "category": "social",
+      "notes": "Advisory relationship - important but optional"
+    },
+    "manages": {
+      "strength": 0.9,
+      "confidence": 0.95,
+      "necessity": "must",
+      "category": "structural",
+      "notes": "Management hierarchy - critical"
+    },
+    "funds": {
+      "strength": 0.85,
+      "confidence": 0.9,
+      "necessity": "should",
+      "category": "financial",
+      "notes": "Financial support - important for context"
+    },
+    "supports": {
+      "strength": 0.7,
+      "confidence": 0.8,
+      "necessity": "may",
+      "category": "social",
+      "notes": "General support - contextual"
+    },
+    "blocks": {
+      "strength": 0.85,
+      "confidence": 0.8,
+      "necessity": "should",
+      "category": "causal",
+      "notes": "Impediment relationship - important for planning"
+    },
+    "enables": {
+      "strength": 0.85,
+      "confidence": 0.8,
+      "necessity": "should",
+      "category": "causal",
+      "notes": "Enabling relationship - important for planning"
+    },
+    "depends-on": {
+      "strength": 0.8,
+      "confidence": 0.85,
+      "necessity": "must",
+      "category": "causal",
+      "notes": "Dependency - critical for execution"
+    },
+    "causes": {
+      "strength": 0.75,
+      "confidence": 0.7,
+      "necessity": "may",
+      "category": "causal",
+      "notes": "Causality - potentially speculative"
+    },
+    "mitigates": {
+      "strength": 0.8,
+      "confidence": 0.75,
+      "necessity": "should",
+      "category": "causal",
+      "notes": "Risk mitigation - important for planning"
+    },
+    "fulfills": {
+      "strength": 0.85,
+      "confidence": 0.85,
+      "necessity": "should",
+      "category": "structural",
+      "notes": "Goal fulfillment - tracks achievement"
+    },
+    "references": {
+      "strength": 0.6,
+      "confidence": 0.9,
+      "necessity": "may",
+      "category": "knowledge",
+      "notes": "Reference link - low importance, high certainty"
+    },
+    "advances": {
+      "strength": 0.8,
+      "confidence": 0.8,
+      "necessity": "should",
+      "category": "causal",
+      "notes": "Progress toward goal - important for tracking"
+    },
+    "acknowledges": {
+      "strength": 0.7,
+      "confidence": 0.75,
+      "necessity": "may",
+      "category": "social",
+      "notes": "Recognition - contextual"
+    },
+    "pursued-via": {
+      "strength": 0.8,
+      "confidence": 0.8,
+      "necessity": "should",
+      "category": "structural",
+      "notes": "Goal pursuit path - important for planning"
+    },
+    "threatens": {
+      "strength": 0.8,
+      "confidence": 0.7,
+      "necessity": "should",
+      "category": "causal",
+      "notes": "Risk threat - important for planning"
+    },
+    "participates-in": {
+      "strength": 0.75,
+      "confidence": 0.85,
+      "necessity": "may",
+      "category": "social",
+      "notes": "Participation - contextual"
+    },
+    "makes": {
+      "strength": 0.8,
+      "confidence": 0.85,
+      "necessity": "should",
+      "category": "structural",
+      "notes": "Decision making - important for governance"
+    },
+    "commits-to": {
+      "strength": 0.9,
+      "confidence": 0.85,
+      "necessity": "must",
+      "category": "structural",
+      "notes": "Commitment - binding relationship"
+    },
+    "initiates": {
+      "strength": 0.85,
+      "confidence": 0.9,
+      "necessity": "should",
+      "category": "structural",
+      "notes": "Initiation - important for tracking start"
+    },
+    "enabled-by": {
+      "strength": 0.85,
+      "confidence": 0.8,
+      "necessity": "should",
+      "category": "causal",
+      "notes": "Inverse of enables"
+    },
+    "blocked-by": {
+      "strength": 0.85,
+      "confidence": 0.8,
+      "necessity": "should",
+      "category": "causal",
+      "notes": "Inverse of blocks"
+    },
+    "explores": {
+      "strength": 0.7,
+      "confidence": 0.7,
+      "necessity": "may",
+      "category": "causal",
+      "notes": "Exploratory relationship - low certainty"
+    },
+    "contributes-to": {
+      "strength": 0.75,
+      "confidence": 0.8,
+      "necessity": "should",
+      "category": "structural",
+      "notes": "Contribution - important for impact"
+    },
+    "bound-by": {
+      "strength": 0.85,
+      "confidence": 0.9,
+      "necessity": "must",
+      "category": "governance",
+      "notes": "Legal/contractual binding"
+    },
+    "founded-by": {
+      "strength": 0.95,
+      "confidence": 0.95,
+      "necessity": "must",
+      "category": "structural",
+      "notes": "Founding relationship - historical fact"
+    },
+    "raises": {
+      "strength": 0.8,
+      "confidence": 0.85,
+      "necessity": "should",
+      "category": "financial",
+      "notes": "Capital raising - important for finance"
+    },
+    "held-by": {
+      "strength": 0.9,
+      "confidence": 0.95,
+      "necessity": "must",
+      "category": "structural",
+      "notes": "Holding relationship - ownership inverse"
+    },
+    "binds": {
+      "strength": 0.9,
+      "confidence": 0.95,
+      "necessity": "must",
+      "category": "governance",
+      "notes": "Binding agreement - legal"
+    },
+    "requests": {
+      "strength": 0.7,
+      "confidence": 0.8,
+      "necessity": "may",
+      "category": "social",
+      "notes": "Request - optional relationship"
+    },
+    "documents": {
+      "strength": 0.75,
+      "confidence": 0.9,
+      "necessity": "should",
+      "category": "knowledge",
+      "notes": "Documentation - high certainty"
+    },
+    "produces": {
+      "strength": 0.8,
+      "confidence": 0.85,
+      "necessity": "should",
+      "category": "structural",
+      "notes": "Output/production - important for workflow"
+    },
+    "comes-from": {
+      "strength": 0.8,
+      "confidence": 0.85,
+      "necessity": "should",
+      "category": "structural",
+      "notes": "Origin relationship"
+    },
+    "assigns": {
+      "strength": 0.8,
+      "confidence": 0.9,
+      "necessity": "must",
+      "category": "governance",
+      "notes": "Assignment - operational"
+    },
+    "marks": {
+      "strength": 0.6,
+      "confidence": 0.95,
+      "necessity": "may",
+      "category": "knowledge",
+      "notes": "Status marking - high certainty, low importance"
+    },
+    "gates": {
+      "strength": 0.85,
+      "confidence": 0.85,
+      "necessity": "should",
+      "category": "causal",
+      "notes": "Control gate - important for workflow"
+    },
+    "flows-to": {
+      "strength": 0.75,
+      "confidence": 0.8,
+      "necessity": "should",
+      "category": "structural",
+      "notes": "Flow relationship - process oriented"
+    },
+    "employs": {
+      "strength": 0.9,
+      "confidence": 0.95,
+      "necessity": "must",
+      "category": "structural",
+      "notes": "Inverse of works-for"
+    },
+    "connects": {
+      "strength": 0.7,
+      "confidence": 0.8,
+      "necessity": "may",
+      "category": "social",
+      "notes": "General connection - flexible"
+    },
+    "requires": {
+      "strength": 0.85,
+      "confidence": 0.85,
+      "necessity": "must",
+      "category": "causal",
+      "notes": "Requirement - critical for execution"
+    },
+    "informs": {
+      "strength": 0.7,
+      "confidence": 0.8,
+      "necessity": "should",
+      "category": "knowledge",
+      "notes": "Information flow - important for context"
+    },
+    "created": {
+      "strength": 0.95,
+      "confidence": 0.95,
+      "necessity": "must",
+      "category": "temporal",
+      "notes": "Creation - historical fact"
+    },
+    "assigned-to": {
+      "strength": 0.8,
+      "confidence": 0.9,
+      "necessity": "must",
+      "category": "governance",
+      "notes": "Inverse of assigns"
+    },
+    "responsible-for": {
+      "strength": 0.85,
+      "confidence": 0.85,
+      "necessity": "must",
+      "category": "governance",
+      "notes": "Responsibility - accountability"
+    },
+    "member-of": {
+      "strength": 0.8,
+      "confidence": 0.9,
+      "necessity": "must",
+      "category": "structural",
+      "notes": "Membership - organizational"
+    },
+    "located-at": {
+      "strength": 0.7,
+      "confidence": 0.85,
+      "necessity": "may",
+      "category": "spatial",
+      "notes": "Location - contextual"
+    },
+    "scheduled-for": {
+      "strength": 0.75,
+      "confidence": 0.8,
+      "necessity": "should",
+      "category": "temporal",
+      "notes": "Scheduling - time-based"
+    },
+    "derived-from": {
+      "strength": 0.75,
+      "confidence": 0.85,
+      "necessity": "should",
+      "category": "knowledge",
+      "notes": "Derivation - source relationship"
+    },
+    "verified-by": {
+      "strength": 0.85,
+      "confidence": 0.95,
+      "necessity": "should",
+      "category": "governance",
+      "notes": "Verification - high confidence"
+    },
+    "conflicts-with": {
+      "strength": 0.8,
+      "confidence": 0.75,
+      "necessity": "should",
+      "category": "causal",
+      "notes": "Conflict - important for planning"
+    },
+    "replaces": {
+      "strength": 0.85,
+      "confidence": 0.9,
+      "necessity": "should",
+      "category": "structural",
+      "notes": "Replacement - version management"
+    },
+    "extends": {
+      "strength": 0.8,
+      "confidence": 0.9,
+      "necessity": "must",
+      "category": "structural",
+      "notes": "Extension - ontology architecture"
+    },
+    "identifies": {
+      "strength": 0.8,
+      "confidence": 0.95,
+      "necessity": "must",
+      "category": "operational",
+      "notes": "Identification - unique identifier assignment"
+    },
+    "orders": {
+      "strength": 0.7,
+      "confidence": 0.85,
+      "necessity": "may",
+      "category": "operational",
+      "notes": "Ordering - sequencing"
+    },
+    "tracks": {
+      "strength": 0.75,
+      "confidence": 0.8,
+      "necessity": "should",
+      "category": "operational",
+      "notes": "Tracking - monitoring relationship"
+    },
+    "created-by": {
+      "strength": 0.9,
+      "confidence": 0.95,
+      "necessity": "must",
+      "category": "structural",
+      "notes": "Creation - provenance"
+    },
+    "represents": {
+      "strength": 0.75,
+      "confidence": 0.8,
+      "necessity": "should",
+      "category": "structural",
+      "notes": "Representation - standing for something"
+    },
+    "linked-to": {
+      "strength": 0.65,
+      "confidence": 0.8,
+      "necessity": "may",
+      "category": "knowledge",
+      "notes": "Linking - general connection"
+    },
+    "runs-on": {
+      "strength": 0.8,
+      "confidence": 0.9,
+      "necessity": "should",
+      "category": "operational",
+      "notes": "Infrastructure - execution platform"
+    },
+    "works-on": {
+      "strength": 0.75,
+      "confidence": 0.85,
+      "necessity": "should",
+      "category": "operational",
+      "notes": "Activity - work engagement"
+    },
+    "discusses": {
+      "strength": 0.65,
+      "confidence": 0.8,
+      "necessity": "may",
+      "category": "social",
+      "notes": "Communication - topic discussion"
+    },
+    "builds": {
+      "strength": 0.8,
+      "confidence": 0.85,
+      "necessity": "should",
+      "category": "structural",
+      "notes": "Creation - construction"
+    },
+    "covers": {
+      "strength": 0.75,
+      "confidence": 0.85,
+      "necessity": "should",
+      "category": "structural",
+      "notes": "Coverage - scope/protection"
+    },
+    "awarded-to": {
+      "strength": 0.85,
+      "confidence": 0.95,
+      "necessity": "must",
+      "category": "social",
+      "notes": "Recognition - award recipient"
+    },
+    "authorizes": {
+      "strength": 0.85,
+      "confidence": 0.95,
+      "necessity": "must",
+      "category": "governance",
+      "notes": "Authorization - permission granting"
+    },
+    "completes": {
+      "strength": 0.8,
+      "confidence": 0.9,
+      "necessity": "should",
+      "category": "operational",
+      "notes": "Completion - achievement"
+    },
+    "owned-by": {
+      "strength": 0.9,
+      "confidence": 0.95,
+      "necessity": "must",
+      "category": "structural",
+      "notes": "Ownership - inverse of owns"
+    },
+    "managed-by": {
+      "strength": 0.9,
+      "confidence": 0.95,
+      "necessity": "must",
+      "category": "structural",
+      "notes": "Management - inverse of manages"
+    },
+    "defines": {
+      "strength": 0.8,
+      "confidence": 0.9,
+      "necessity": "must",
+      "category": "operational",
+      "notes": "Definition - establishes structure"
+    },
+    "used-by": {
+      "strength": 0.7,
+      "confidence": 0.8,
+      "necessity": "may",
+      "category": "operational",
+      "notes": "Usage - application or employment"
+    },
+    "defined-by": {
+      "strength": 0.8,
+      "confidence": 0.9,
+      "necessity": "must",
+      "category": "operational",
+      "notes": "Definition - inverse of defines"
+    },
+    "executed-by": {
+      "strength": 0.8,
+      "confidence": 0.85,
+      "necessity": "should",
+      "category": "operational",
+      "notes": "Execution - process enactment"
+    },
+    "grants-to": {
+      "strength": 0.85,
+      "confidence": 0.95,
+      "necessity": "must",
+      "category": "governance",
+      "notes": "Permission - access granting"
+    },
+    "controls": {
+      "strength": 0.85,
+      "confidence": 0.9,
+      "necessity": "should",
+      "category": "governance",
+      "notes": "Control - governance/direction"
+    },
+    "classifies": {
+      "strength": 0.7,
+      "confidence": 0.85,
+      "necessity": "may",
+      "category": "knowledge",
+      "notes": "Classification - organizational"
+    },
+    "issued-by": {
+      "strength": 0.85,
+      "confidence": 0.95,
+      "necessity": "should",
+      "category": "structural",
+      "notes": "Issuance - authority relationship"
+    }
+  },
+  "enrichmentPatterns": {
+    "core": {
+      "description": "Core relationship predicates - highest importance",
+      "strength": 0.85,
+      "confidence": 0.9,
+      "necessity": "must"
+    },
+    "structural": {
+      "description": "Structural relationships - define entity composition",
+      "strength": 0.8,
+      "confidence": 0.85,
+      "necessity": "must"
+    },
+    "causal": {
+      "description": "Causal relationships - enable reasoning about consequences",
+      "strength": 0.75,
+      "confidence": 0.75,
+      "necessity": "should"
+    },
+    "social": {
+      "description": "Social relationships - network and interaction",
+      "strength": 0.7,
+      "confidence": 0.75,
+      "necessity": "may"
+    },
+    "utility": {
+      "description": "Utility relationships - supporting or optional",
+      "strength": 0.6,
+      "confidence": 0.8,
+      "necessity": "may"
+    }
+  }
+}

@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "inference-rule-types.schema.json",
+  "title": "Inference Rule Type Definition",
+  "description": "Governance schema for all valid reasoning patterns and inference rules in the life graph. Enables transitive reasoning, consequence detection, and temporal analysis.",
+  "version": "1.0.0",
+
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*[a-z0-9]$",
+      "description": "Unique identifier for this rule"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 100,
+      "description": "Human-readable rule name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Explanation of what this rule infers"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "transitive",
+        "inverse",
+        "aggregation",
+        "causal",
+        "temporal",
+        "negation",
+        "probabilistic"
+      ],
+      "description": "Category of reasoning pattern"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "structural",
+        "causal",
+        "temporal",
+        "organizational",
+        "knowledge",
+        "governance",
+        "financial",
+        "social"
+      ],
+      "description": "Business domain for this rule"
+    },
+    "pattern": {
+      "type": "array",
+      "description": "Relationship pattern to match. Variables (A, B, C) are placeholders for entities",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": {
+            "type": "string",
+            "description": "Source entity variable (A, B, C, ...)"
+          },
+          "relation": {
+            "type": "string",
+            "description": "Relationship predicate (owns, manages, blocks, causes, ...)"
+          },
+          "target": {
+            "type": "string",
+            "description": "Target entity variable"
+          },
+          "optional": {
+            "type": "boolean",
+            "description": "If true, this relationship may not exist (for negation rules)",
+            "default": false
+          }
+        },
+        "required": ["source", "relation", "target"]
+      }
+    },
+    "inference": {
+      "type": "object",
+      "description": "The inferred relationship to create when pattern matches",
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "Inferred relationship source entity variable"
+        },
+        "relation": {
+          "type": "string",
+          "description": "Inferred relationship predicate (may be new predicate)"
+        },
+        "target": {
+          "type": "string",
+          "description": "Inferred relationship target entity variable"
+        },
+        "strength": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0.1,
+              "maximum": 1.0,
+              "description": "Fixed strength value"
+            },
+            {
+              "type": "string",
+              "pattern": "^(multiply|min|max|decay|divide)\\(",
+              "description": "Formula: multiply(0.85, 0.8), min(s1, s2), max(s1, s2), decay(base, factor)"
+            }
+          ]
+        },
+        "confidence": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0.1,
+              "maximum": 1.0
+            },
+            {
+              "type": "string",
+              "pattern": "^(multiply|min|max|decay|divide)\\("
+            }
+          ]
+        },
+        "necessity": {
+          "type": "string",
+          "enum": ["must", "should", "may"],
+          "description": "Inferred relationship requirement level"
+        }
+      },
+      "required": ["source", "relation", "target"]
+    },
+    "applicableToPredicates": {
+      "type": "array",
+      "description": "Which relationship predicates trigger this rule. Empty = all predicates.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "applicableToEntityTypes": {
+      "type": "array",
+      "description": "Which entity types this rule applies to (schema names). Empty = all entities.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100,
+      "description": "Rule application priority (higher = applied first). Critical structural rules: 90+. Transitive: 50-70. Exploratory: 10-30."
+    },
+    "constraints": {
+      "type": "object",
+      "description": "Conditions for rule application",
+      "properties": {
+        "minConfidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Only apply to relationships with confidence >= this value"
+        },
+        "minStrength": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Only apply to relationships with strength >= this value"
+        },
+        "maxHops": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Maximum chain depth for transitive rules"
+        },
+        "sourceEntityTypes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Restrict source to these entity types"
+        },
+        "targetEntityTypes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Restrict target to these entity types"
+        },
+        "requiresTimeOrder": {
+          "type": "boolean",
+          "description": "For temporal rules: relationships must be time-ordered"
+        },
+        "timeWindow": {
+          "type": "string",
+          "pattern": "^P\\d+[YMWD]$",
+          "description": "ISO 8601 duration: relationships must be within this time window (e.g., P30D = 30 days)"
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "description": "Quality metrics for this rule",
+      "properties": {
+        "precision": {
+          "type": "number",
+          "description": "Estimated precision (0-1)"
+        },
+        "recall": {
+          "type": "number",
+          "description": "Estimated recall (0-1)"
+        },
+        "expectedMatches": {
+          "type": "integer",
+          "description": "Expected number of matches in registry"
+        }
+      }
+    },
+    "examples": {
+      "type": "array",
+      "description": "Real examples from the life graph",
+      "items": {
+        "type": "object",
+        "properties": {
+          "pattern": { "type": "string", "description": "Example pattern instance (e.g., 'Project fulfills Goal')" },
+          "inference": { "type": "string", "description": "Example inferred relationship" },
+          "entities": { "type": "string", "description": "Actual entity examples" }
+        }
+      }
+    }
+  },
+
+  "required": ["id", "name", "type", "pattern", "inference", "priority"]
+}
