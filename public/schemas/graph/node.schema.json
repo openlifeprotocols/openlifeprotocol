@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Node",
+  "description": "A node in a graph representing an entity or concept with relationships to other nodes.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^node_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "node_type": {
+      "type": "string",
+      "enum": ["actor", "event", "case", "document", "organization", "location", "concept"],
+      "description": "Type of entity represented by node"
+    },
+    "entity_id": {
+      "type": "string",
+      "description": "Reference to the actual entity"
+    },
+    "label": { "type": "string" },
+    "properties": {
+      "type": "object",
+      "description": "Node-specific properties",
+      "additionalProperties": true
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "node_type", "entity_id"],
+  "_phase1_todo": [
+    "Define node traversal algorithms",
+    "Define node ranking/centrality",
+    "Define node clustering",
+    "Define node visualization rules"
+  ]
+}

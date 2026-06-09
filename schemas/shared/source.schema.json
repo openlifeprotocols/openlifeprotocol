@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Source",
+  "description": "Represents the origin or source of information, data, or an event.",
+  "type": "object",
+  "properties": {
+    "source_type": {
+      "type": "string",
+      "enum": ["government", "third_party", "user_input", "api", "document", "system", "observation", "inference"],
+      "description": "Type of source"
+    },
+    "source_id": {
+      "type": "string",
+      "description": "Reference to the source entity"
+    },
+    "source_name": {
+      "type": "string",
+      "description": "Human-readable name of source"
+    },
+    "captured_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When data was captured from source"
+    },
+    "captured_by": {
+      "type": "string",
+      "description": "Actor who captured the data"
+    },
+    "url": {
+      "type": "string",
+      "description": "Reference URL if applicable"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["source_type"],
+  "_phase1_todo": [
+    "Define source credibility scoring",
+    "Define source citation standards",
+    "Define source access permissions",
+    "Define source data freshness"
+  ]
+}

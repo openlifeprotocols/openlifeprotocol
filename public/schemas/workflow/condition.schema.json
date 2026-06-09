@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Condition",
+  "description": "A conditional expression that evaluates to true or false in a workflow or decision context.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^condition_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "expression": {
+      "type": "string",
+      "description": "Condition expression (JSON logic, DSL, etc.)"
+    },
+    "context": {
+      "type": "object",
+      "description": "Context variables available to condition"
+    },
+    "operator": {
+      "type": "string",
+      "enum": ["and", "or", "not", "equals", "greater_than", "less_than", "contains", "in_list"],
+      "description": "Logical operator"
+    },
+    "operands": {
+      "type": "array",
+      "description": "Values or sub-conditions to evaluate"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "name", "expression"],
+  "_phase1_todo": [
+    "Define condition expression language",
+    "Define condition optimization",
+    "Define condition validation",
+    "Define condition testing framework"
+  ]
+}

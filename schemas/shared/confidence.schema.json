@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Confidence",
+  "description": "Represents confidence level in data, decisions, or predictions. Used for uncertainty quantification.",
+  "type": "object",
+  "properties": {
+    "score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Confidence score (0-1)"
+    },
+    "level": {
+      "type": "string",
+      "enum": ["very_low", "low", "medium", "high", "very_high"],
+      "description": "Confidence level category"
+    },
+    "basis": {
+      "type": "string",
+      "description": "Reason for confidence level",
+      "examples": ["all_documents_provided", "sample_data", "ai_prediction", "expert_review"]
+    },
+    "calculated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "method": {
+      "type": "string",
+      "description": "How confidence was calculated"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["score"],
+  "_phase1_todo": [
+    "Define confidence calibration methods",
+    "Define confidence thresholds for decisions",
+    "Define confidence communication to users",
+    "Define confidence uncertainty quantification"
+  ]
+}

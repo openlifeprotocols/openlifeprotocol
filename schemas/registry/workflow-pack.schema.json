@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workflow Pack",
+  "description": "A collection of pre-configured workflows and templates that can be deployed as a unit.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^workflow_pack_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "version": { "type": "string" },
+    "workflows": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Workflow IDs included in pack"
+    },
+    "templates": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Template IDs included in pack"
+    },
+    "documentation_url": { "type": "string" },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "name", "version"],
+  "_phase1_todo": [
+    "Define workflow pack deployment process",
+    "Define pack versioning strategy",
+    "Define pack compatibility matrix",
+    "Define pack update procedures"
+  ]
+}

@@ -136,9 +136,11 @@ function PropertyRow({
 
 export function SchemaViewer({
   filename,
+  category = 'core',
   title: customTitle,
 }: {
   filename: string
+  category?: string
   title?: string
 }) {
   const [schema, setSchema] = useState<Schema | null>(null)
@@ -147,7 +149,7 @@ export function SchemaViewer({
   useEffect(() => {
     async function loadSchema() {
       try {
-        const response = await fetch(`/schemas/core/${filename}`)
+        const response = await fetch(`/schemas/${category}/${filename}`)
         if (!response.ok) {
           throw new Error(`Failed to load schema: ${filename}`)
         }

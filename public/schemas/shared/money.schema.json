@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Money",
+  "description": "Represents a monetary amount with currency and optional metadata for financial transactions.",
+  "type": "object",
+  "properties": {
+    "amount": {
+      "type": "number",
+      "description": "Numeric amount"
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code",
+      "examples": ["GBP", "USD", "EUR"]
+    },
+    "decimal_places": {
+      "type": "integer",
+      "description": "Number of decimal places (default 2)"
+    },
+    "exchange_rate": {
+      "type": "number",
+      "description": "Exchange rate if converted"
+    },
+    "original_currency": {
+      "type": "string",
+      "description": "Original currency before conversion"
+    },
+    "converted_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When conversion occurred"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["amount", "currency"],
+  "_phase1_todo": [
+    "Define currency validation",
+    "Define rounding rules",
+    "Define precision handling for calculations",
+    "Define multi-currency operations"
+  ]
+}

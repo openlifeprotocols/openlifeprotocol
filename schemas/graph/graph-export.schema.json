@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Graph Export",
+  "description": "Export format for a graph, including nodes, edges, and metadata.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^graph_export_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "export_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "format": {
+      "type": "string",
+      "enum": ["json", "cypher", "gexf", "graphml", "neo4j"],
+      "description": "Export format"
+    },
+    "nodes": {
+      "type": "array",
+      "description": "All nodes in graph",
+      "items": { "type": "object" }
+    },
+    "edges": {
+      "type": "array",
+      "description": "All edges/relationships in graph",
+      "items": { "type": "object" }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "node_count": { "type": "integer" },
+        "edge_count": { "type": "integer" },
+        "density": { "type": "number" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "format", "nodes", "edges"],
+  "_phase1_todo": [
+    "Define graph compression",
+    "Define incremental export",
+    "Define graph versioning",
+    "Define graph transformation rules"
+  ]
+}

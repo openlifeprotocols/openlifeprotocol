@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Document Type",
+  "description": "Registry definition of document types used in workflows and cases.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^document_type_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "document_category": {
+      "type": "string",
+      "enum": ["legal", "financial", "medical", "identification", "evidence", "communication"]
+    },
+    "required_fields": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "mime_types": {
+      "type": "array",
+      "description": "Acceptable MIME types for this document type",
+      "items": { "type": "string" }
+    },
+    "schema": {
+      "type": "object",
+      "description": "JSON Schema for document content"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "name", "document_category"],
+  "_phase1_todo": [
+    "Define content validation rules",
+    "Define signing requirements",
+    "Define retention policies",
+    "Define document lifecycle"
+  ]
+}

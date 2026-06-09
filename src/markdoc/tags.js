@@ -47,6 +47,7 @@ const tags = {
     render: SchemaViewer,
     attributes: {
       filename: { type: String },
+      category: { type: String, default: 'core' },
       title: { type: String },
     },
   },

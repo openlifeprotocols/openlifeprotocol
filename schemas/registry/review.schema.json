@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Review",
+  "description": "A review or evaluation of a case, workflow, decision, or document.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^review_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" }
+        }
+      }
+    },
+    "entity_id": {
+      "type": "string",
+      "description": "ID of entity being reviewed"
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": ["case", "decision", "document", "workflow", "task"]
+    },
+    "reviewer_id": {
+      "type": "string"
+    },
+    "review_type": {
+      "type": "string",
+      "enum": ["peer_review", "expert_review", "compliance_review", "quality_review"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "in_progress", "approved", "rejected", "conditionally_approved"]
+    },
+    "comments": { "type": "string" },
+    "rating": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 5
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "entity_id", "entity_type", "reviewer_id"],
+  "_phase1_todo": [
+    "Define review standards",
+    "Define reviewer qualification requirements",
+    "Define review appeal process",
+    "Define review tracking and analytics"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Claim",
+  "description": "A claim for reimbursement, insurance, or resource allocation.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^claim_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" }
+        }
+      }
+    },
+    "case_id": {
+      "type": "string"
+    },
+    "claimant_id": {
+      "type": "string"
+    },
+    "claim_type": {
+      "type": "string",
+      "enum": ["insurance", "reimbursement", "damages", "benefits", "entitlement"]
+    },
+    "amount": {
+      "type": "number"
+    },
+    "currency": { "type": "string" },
+    "supporting_documents": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["submitted", "under_review", "approved", "denied", "appealed", "resolved"]
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "claimant_id", "claim_type", "amount"],
+  "_phase1_todo": [
+    "Define claim validation rules",
+    "Define claim appeal procedures",
+    "Define claim settlement procedures",
+    "Define fraud detection methods"
+  ]
+}

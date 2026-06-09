@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trigger",
+  "description": "An event or condition that initiates a workflow, action, or notification.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^trigger_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": { "type": "string" },
+    "trigger_type": {
+      "type": "string",
+      "enum": ["event", "time", "condition", "manual", "webhook", "api_call"],
+      "description": "Type of trigger"
+    },
+    "event_type": {
+      "type": "string",
+      "description": "Event that triggers (if event type)"
+    },
+    "schedule": {
+      "type": "string",
+      "description": "Schedule expression (if time type, e.g., cron)"
+    },
+    "condition_id": {
+      "type": "string",
+      "description": "Condition to evaluate (if condition type)"
+    },
+    "action": {
+      "type": "string",
+      "description": "Action to execute when triggered"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "name", "trigger_type", "action"],
+  "_phase1_todo": [
+    "Define trigger reliability guarantees",
+    "Define trigger deduplication",
+    "Define trigger backpressure handling",
+    "Define trigger retry logic"
+  ]
+}

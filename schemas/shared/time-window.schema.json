@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Time Window",
+  "description": "Represents a time period with start and end times, useful for scheduling, deadlines, and availability.",
+  "type": "object",
+  "properties": {
+    "start": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Start of time window"
+    },
+    "end": {
+      "type": "string",
+      "format": "date-time",
+      "description": "End of time window"
+    },
+    "duration_seconds": {
+      "type": "integer",
+      "description": "Duration in seconds"
+    },
+    "timezone": {
+      "type": "string",
+      "description": "IANA timezone identifier"
+    },
+    "recurring": {
+      "type": "string",
+      "enum": ["once", "daily", "weekly", "monthly", "yearly"],
+      "description": "Recurrence pattern if applicable"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["start", "end"],
+  "_phase1_todo": [
+    "Define timezone handling and conversion",
+    "Define recurrence rules (iCalendar spec)",
+    "Define time window overlap detection",
+    "Define daylight saving time handling"
+  ]
+}
