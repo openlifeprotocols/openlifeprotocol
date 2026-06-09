@@ -61,6 +61,61 @@ It is intentionally short, plain-language, and non-technical.
 - Consequence: Business, startups, customers, sales, marketing, operations, finance, HR, and strategy now roll up under enterprise.
 - Follow-up: Add linking conventions between 5000 career entities and 19000 enterprise entities.
 
+## 2026-06-09 - Create Public Presence account and remove identity leakage
+
+- Date: 2026-06-09
+- Decision: Move social media and reputation records out of person into `9500-public-presence`.
+- Status: accepted
+- Context: Social media and public visibility data were mixed into person/identity.
+- Rationale: Public presence is not core identity; it is an external-facing layer spanning digital and creator contexts.
+- Trade-offs: One-time folder migration and update to mental model.
+- Consequence: Public profile, social media, speaking, and media mentions now roll up in one coherent account.
+- Follow-up: Keep 1000-person focused on intrinsic identity, values, and personal attributes.
+
+## 2026-06-09 - Canonicalize document schema in platform
+
+- Date: 2026-06-09
+- Decision: Keep canonical `document` under `0000-platform/core` and move document-support schemas to `0000-platform/documents`.
+- Status: accepted
+- Context: Duplicate document schema existed under administration documents.
+- Rationale: Document is a platform primitive used by all accounts.
+- Trade-offs: Some account-local assumptions must now be represented through references/classification instead of duplicate schema copies.
+- Consequence: One canonical document concept, with support schemas centralized in platform documents.
+- Follow-up: Ensure domain records reference document IDs rather than redefining document models.
+
+## 2026-06-09 - Canonicalize project schema in platform
+
+- Date: 2026-06-09
+- Decision: Keep canonical `project` under `0000-platform/core` and remove duplicate account-specific project schemas.
+- Status: accepted
+- Context: Project existed in planning and enterprise operations with overlapping intent.
+- Rationale: Project is a cross-channel concept and should be classified by channel/role rather than duplicated by account.
+- Trade-offs: Business-specific project metadata now needs extension/reference patterns.
+- Consequence: Reduced schema drift and consistent project semantics across personal, business, and creator contexts.
+- Follow-up: Define extension conventions for specialized project metadata when needed.
+
+## 2026-06-09 - Canonicalize idea schema in opportunities
+
+- Date: 2026-06-09
+- Decision: Keep canonical `idea` in opportunities and remove creator-local duplicate `idea` schema.
+- Status: accepted
+- Context: Ideas appeared in multiple accounts with overlapping semantics.
+- Rationale: Ideas are pre-commitment opportunities, regardless of later domain (content, startup, investment, life).
+- Trade-offs: Creator-specific fields may need to be optional extensions.
+- Consequence: Single entry point for idea capture and conversion.
+- Follow-up: Use channel/role + metadata for creator-specific idea workflows.
+
+## 2026-06-09 - Introduce universal channel schema
+
+- Date: 2026-06-09
+- Decision: Add universal `channel.schema.json` in platform core.
+- Status: accepted
+- Context: Channel was a design principle but not yet formalized as a shared schema.
+- Rationale: A canonical channel model reduces duplication and enforces consistent classification across accounts.
+- Trade-offs: Requires governance of enum values and role vocabulary over time.
+- Consequence: Records can now be consistently tagged with channel and optional role.
+- Follow-up: Evaluate whether account-facing schemas should adopt a shared classification block pattern.
+
 ## 2026-06-09 - Rename Self to Person
 
 - Date: 2026-06-09

@@ -142,6 +142,15 @@ Career vs enterprise clarification:
 - Enterprise & Ventures (19000) models organizations, ventures, and operations the person owns, runs, advises, or participates in.
 - Use channel and role to connect person records to enterprise records without collapsing both concepts into one account.
 
+Public presence clarification:
+- Public Presence (9500) models external-facing identity: profiles, social media, speaking, media mentions, reputation signals.
+- Keep Person (1000) for intrinsic identity and personal attributes, not platform/public distribution data.
+
+Canonical primitives clarification:
+- Keep one canonical schema for cross-cutting primitives (for example: document, project, idea).
+- Do not reintroduce account-local duplicates of these primitives.
+- Express context through account placement, channel, role, and references.
+
 ## Maintenance Rhythm
 
 - When adding a schema: update decision log immediately.

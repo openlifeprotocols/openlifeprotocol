@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Channel",
+  "description": "Universal capacity context for records. Channel captures the mode in which a person is acting.",
+  "type": "object",
+  "properties": {
+    "channel": {
+      "type": "string",
+      "enum": [
+        "personal",
+        "employment",
+        "founder",
+        "business",
+        "creator",
+        "investor",
+        "community",
+        "family",
+        "education"
+      ],
+      "description": "Capacity in which the record exists"
+    },
+    "role": {
+      "type": "string",
+      "description": "Optional role label within a channel, e.g. employee, founder, operator, parent, mentor"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": ["channel"]
+}
