@@ -63,7 +63,7 @@ export function Hero() {
               </p>
               <p className="mt-3 text-2xl tracking-tight text-slate-400">
                 The contract-first standard for life, business, and AI. Standardize
-                hiring, moving, business formation, healthcare, and thousands of workflows.
+                how the world works together.
               </p>
               <div className="mt-8 flex gap-4 md:justify-center lg:justify-start">
                 <Button href="/">Get started</Button>
