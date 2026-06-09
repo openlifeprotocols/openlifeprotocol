@@ -1,8 +1,8 @@
 # OLP Ingestion Platform — Product Proposal
 
-**Project:** Open Life Protocol — Personal Data Ingestion Engine  
-**Status:** Proposal  
-**Date:** 9 June 2026  
+**Project:** Open Life Protocol — Personal Data Ingestion Engine
+**Status:** Proposal
+**Date:** 9 June 2026
 **Audience:** Engineering, Product
 
 ---
@@ -152,7 +152,7 @@ Subsequent runs on unchanged exports complete in milliseconds with zero API call
 scripts/
   ingest-openai.mjs          ← CLI entry point
                                Usage: node scripts/ingest-openai.mjs --input conversations.json --person-id person_abc123
-  
+
   enrichment/
     extract.mjs              ← single OpenAI structured outputs call per conversation
     map-to-olp.mjs           ← transforms LLM response JSON → OLP schema instances
@@ -223,16 +223,16 @@ This correctly signals to the OLP reasoning layer that these instances are AI-de
 
 ## Phased Delivery
 
-**Phase 1 — Core Pipeline (MVP)**  
+**Phase 1 — Core Pipeline (MVP)**
 `ingest-openai.mjs`, `extract.mjs`, `map-to-olp.mjs`, `validate.mjs`, NDJSON store, sync manifest. Produces `conversation`, `document-summary`, `classification`, `tag`, `provenance` instances.
 
-**Phase 2 — Entity Resolution**  
+**Phase 2 — Entity Resolution**
 `entity-resolver.mjs`, `entity-alias` linking, `entity-extraction` instances, `pending_review` queue.
 
-**Phase 3 — Decision and Action Intelligence**  
+**Phase 3 — Decision and Action Intelligence**
 `decision-journal` and `action-item` instance extraction. Confidence scoring. User review UI for promoted truth tier.
 
-**Phase 4 — Multi-Source Ingestion**  
+**Phase 4 — Multi-Source Ingestion**
 Extend the same pipeline to additional export formats: Google Takeout, iCloud, LinkedIn, Notion. Each source gets a `map-to-olp.mjs` adapter. The enrichment, validation, store and provenance layers are shared.
 
 ---
