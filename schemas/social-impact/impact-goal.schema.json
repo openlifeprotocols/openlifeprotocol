@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Impact Goal",
+  "description": "Specific impact goal or target.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^impact_goal_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "goal_name": { "type": "string" },
+    "cause_area": { "type": "string" },
+    "goal_description": { "type": "string" },
+    "goal_type": { "type": "string", "enum": ["fundraising", "volunteer_hours", "awareness", "behavior_change", "policy_influence"] },
+    "target_value": { "type": "string" },
+    "unit": { "type": "string" },
+    "current_progress": { "type": "string" },
+    "progress_percentage": { "type": "number", "minimum": 0, "maximum": 100 },
+    "start_date": { "type": "string", "format": "date" },
+    "target_completion_date": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["planning", "in_progress", "on_track", "at_risk", "completed", "failed"] },
+    "success_metrics": { "type": "array", "items": { "type": "string" } },
+    "stakeholders": { "type": "array", "items": { "type": "string" } },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "goal_name"],
+  "_phase1_todo": ["Define progress tracking", "Define risk assessment", "Define stakeholder communication"]
+}

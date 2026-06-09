@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pledge",
+  "description": "Personal pledge or commitment to social impact.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^pledge_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "pledge_name": { "type": "string" },
+    "pledge_description": { "type": "string" },
+    "cause_area": { "type": "string" },
+    "commitment_type": { "type": "string", "enum": ["financial", "time", "behavioral_change", "advocacy", "skill_sharing"] },
+    "pledge_target": { "type": "string" },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "duration_months": { "type": "integer" },
+    "progress_percentage": { "type": "number", "minimum": 0, "maximum": 100 },
+    "status": { "type": "string", "enum": ["active", "completed", "paused", "abandoned"] },
+    "public_pledge": { "type": "boolean" },
+    "accountability_partner_person_id": { "type": "string" },
+    "milestone_dates": { "type": "array", "items": { "type": "object", "properties": { "milestone_date": { "type": "string", "format": "date" }, "milestone_description": { "type": "string" }, "achieved": { "type": "boolean" } } } },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "pledge_name"],
+  "_phase1_todo": ["Define progress tracking", "Define accountability system", "Define milestone reminders"]
+}

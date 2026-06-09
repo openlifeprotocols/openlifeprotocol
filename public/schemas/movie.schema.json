@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Movie",
+  "description": "Film or cinema movie.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^movie_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "title": { "type": "string" },
+    "original_title": { "type": "string" },
+    "release_year": { "type": "integer" },
+    "release_date": { "type": "string", "format": "date" },
+    "directors": { "type": "array", "items": { "type": "string" } },
+    "cast": { "type": "array", "items": { "type": "string" } },
+    "genres": { "type": "array", "items": { "type": "string" } },
+    "runtime_minutes": { "type": "integer" },
+    "language": { "type": "string" },
+    "imdb_id": { "type": "string" },
+    "imdb_rating": { "type": "number", "minimum": 0, "maximum": 10 },
+    "description": { "type": "string" },
+    "user_rating": { "type": "number", "minimum": 1, "maximum": 5 },
+    "watched": { "type": "boolean" },
+    "watch_dates": { "type": "array", "items": { "type": "string", "format": "date" } },
+    "favorite": { "type": "boolean" },
+    "on_watchlist": { "type": "boolean" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "title"],
+  "_phase1_todo": ["Define watch history", "Define review management", "Define recommendation linking"]
+}

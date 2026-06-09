@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Donation Receipt",
+  "description": "Charitable donation receipt for tax purposes.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^donation_receipt_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "donation_id": { "type": "string" },
+    "person_id": { "type": "string" },
+    "charity_name": { "type": "string" },
+    "charity_registration_number": { "type": "string" },
+    "receipt_number": { "type": "string" },
+    "receipt_date": { "type": "string", "format": "date" },
+    "donation_amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "donor_name": { "type": "string" },
+    "donor_address": { "type": "string" },
+    "gift_aid_eligible": { "type": "boolean" },
+    "purpose_of_donation": { "type": "string" },
+    "document_id": { "type": "string" },
+    "document_url": { "type": "string", "format": "uri" },
+    "filing_status": { "type": "string", "enum": ["unfiled", "filed", "used_in_tax_return"] },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "charity_name"],
+  "_phase1_todo": ["Define OCR extraction", "Define tax filing integration", "Define archive management"]
+}

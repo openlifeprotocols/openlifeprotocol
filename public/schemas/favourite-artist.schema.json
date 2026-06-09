@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Favorite Artist",
+  "description": "Personal favorite music artist.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^favorite_artist_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "artist_name": { "type": "string" },
+    "artist_id": { "type": "string" },
+    "rank": { "type": "integer" },
+    "reason_favorite": { "type": "string" },
+    "discovery_date": { "type": "string", "format": "date" },
+    "discovery_method": { "type": "string" },
+    "estimated_listen_hours": { "type": "number" },
+    "favorite_albums": { "type": "array", "items": { "type": "string" } },
+    "favorite_songs": { "type": "array", "items": { "type": "string" } },
+    "concerts_attended": { "type": "integer" },
+    "concerts_to_see": { "type": "array", "items": { "type": "string" } },
+    "merchandise_owned": { "type": "array", "items": { "type": "string" } },
+    "social_media_following": { "type": "boolean" },
+    "fan_community": { "type": "boolean" },
+    "fan_art_or_covers": { "type": "boolean" },
+    "was_discovery": { "type": "boolean" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "artist_name"],
+  "_phase1_todo": ["Define ranking system", "Define discovery insights", "Define engagement tracking"]
+}

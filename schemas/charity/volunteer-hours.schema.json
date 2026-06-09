@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Volunteer Hours",
+  "description": "Record of volunteer hours worked.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^volunteer_hours_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "volunteering_id": { "type": "string" },
+    "volunteer_date": { "type": "string", "format": "date" },
+    "start_time": { "type": "string", "format": "time" },
+    "end_time": { "type": "string", "format": "time" },
+    "hours_worked": { "type": "number" },
+    "break_duration_minutes": { "type": "integer" },
+    "task_description": { "type": "string" },
+    "location": { "type": "string" },
+    "coordinator_name": { "type": "string" },
+    "notes": { "type": "string" },
+    "is_verified": { "type": "boolean" },
+    "verified_by": { "type": "string" },
+    "verified_date": { "type": "string", "format": "date" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "volunteer_date"],
+  "_phase1_todo": ["Define hour aggregation", "Define certificate generation", "Define impact calculation"]
+}

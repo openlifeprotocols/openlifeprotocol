@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Community Impact Record",
+  "description": "Record of impact from community engagement.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^impact_record_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "cause_id": { "type": "string" },
+    "cause_name": { "type": "string" },
+    "impact_date": { "type": "string", "format": "date" },
+    "impact_type": { "type": "string", "enum": ["monetary", "time", "skills", "advocacy", "education", "awareness"] },
+    "impact_description": { "type": "string" },
+    "quantified_impact": { "type": "string" },
+    "people_affected": { "type": "integer" },
+    "environmental_impact": { "type": "string" },
+    "beneficiary_feedback": { "type": "string" },
+    "media_coverage": { "type": "boolean" },
+    "document_id": { "type": "string" },
+    "verified_by": { "type": "string" },
+    "verification_date": { "type": "string", "format": "date" },
+    "follow_up_actions": { "type": "array", "items": { "type": "string" } },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define impact quantification", "Define verification workflow", "Define reporting"]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Playlist",
+  "description": "Music playlist or collection.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^playlist_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "playlist_name": { "type": "string" },
+    "description": { "type": "string" },
+    "playlist_type": { "type": "string", "enum": ["personal", "collaborative", "curated", "algorithmic"] },
+    "created_date": { "type": "string", "format": "date-time" },
+    "last_modified_date": { "type": "string", "format": "date-time" },
+    "track_count": { "type": "integer" },
+    "total_duration_minutes": { "type": "number" },
+    "genres": { "type": "array", "items": { "type": "string" } },
+    "mood": { "type": "string" },
+    "use_case": { "type": "string", "enum": ["workout", "relaxation", "focus", "party", "studying", "road_trip", "other"] },
+    "spotify_playlist_id": { "type": "string" },
+    "apple_music_id": { "type": "string" },
+    "shared_with": { "type": "array", "items": { "type": "string" } },
+    "is_public": { "type": "boolean" },
+    "collaborators": { "type": "array", "items": { "type": "string" } },
+    "song_ids": { "type": "array", "items": { "type": "string" } },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "playlist_name"],
+  "_phase1_todo": ["Define track management", "Define collaborative editing", "Define sharing controls"]
+}

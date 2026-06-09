@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Game Library",
+  "description": "Personal game library on a platform.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^game_library_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "platform_id": { "type": "string" },
+    "platform_name": { "type": "string" },
+    "account_username": { "type": "string" },
+    "account_id": { "type": "string" },
+    "total_games": { "type": "integer" },
+    "games_owned": { "type": "integer" },
+    "games_subscribed": { "type": "integer" },
+    "game_ids": { "type": "array", "items": { "type": "string" } },
+    "total_playtime_hours": { "type": "number" },
+    "account_level": { "type": "integer" },
+    "achievements_unlocked": { "type": "integer" },
+    "trophies_earned": { "type": "integer" },
+    "last_sync_date": { "type": "string", "format": "date-time" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "platform_name"],
+  "_phase1_todo": ["Define platform API sync", "Define library aggregation", "Define statistics tracking"]
+}

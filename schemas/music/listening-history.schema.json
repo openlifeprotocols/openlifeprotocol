@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Listening History",
+  "description": "Record of music listening activity.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^listening_history_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "song_id": { "type": "string" },
+    "song_title": { "type": "string" },
+    "artist_name": { "type": "string" },
+    "album_name": { "type": "string" },
+    "listen_date": { "type": "string", "format": "date-time" },
+    "platform": { "type": "string", "enum": ["spotify", "apple_music", "youtube", "bandcamp", "physical", "radio", "other"] },
+    "context": { "type": "string", "enum": ["workout", "work", "commute", "social", "relaxation", "party", "other"] },
+    "mood": { "type": "string" },
+    "mood_before": { "type": "string" },
+    "mood_after": { "type": "string" },
+    "device_type": { "type": "string" },
+    "location": { "type": "string" },
+    "companions": { "type": "array", "items": { "type": "string" } },
+    "was_enjoyable": { "type": "boolean" },
+    "rating": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "notes": { "type": "string" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "song_title"],
+  "_phase1_todo": ["Define streaming platform sync", "Define mood correlation", "Define recommendations"]
+}

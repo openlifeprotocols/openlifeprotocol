@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Community Event",
+  "description": "Community event or gathering.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^community_event_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "community_group_id": { "type": "string" },
+    "event_name": { "type": "string" },
+    "event_date": { "type": "string", "format": "date" },
+    "start_time": { "type": "string", "format": "time" },
+    "end_time": { "type": "string", "format": "time" },
+    "location": { "type": "string" },
+    "coordinates": { "type": "object", "properties": { "latitude": { "type": "number" }, "longitude": { "type": "number" } } },
+    "event_type": { "type": "string", "enum": ["meeting", "workshop", "social", "fundraiser", "celebration", "other"] },
+    "description": { "type": "string" },
+    "organizer_name": { "type": "string" },
+    "expected_attendees": { "type": "integer" },
+    "actual_attendees": { "type": "integer" },
+    "did_attend": { "type": "boolean" },
+    "rsvp_status": { "type": "string", "enum": ["not_responded", "declined", "maybe", "attending", "attended"] },
+    "ticket_price": { "type": "number" },
+    "registration_url": { "type": "string", "format": "uri" },
+    "notes": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "event_name"],
+  "_phase1_todo": ["Define RSVP automation", "Define reminder sending", "Define attendance tracking"]
+}

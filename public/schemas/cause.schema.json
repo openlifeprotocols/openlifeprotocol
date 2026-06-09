@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Community Cause",
+  "description": "Social or environmental cause supported.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^community_cause_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "cause_name": { "type": "string" },
+    "cause_category": { "type": "string", "enum": ["environmental", "social_justice", "health", "education", "economic", "political", "other"] },
+    "description": { "type": "string" },
+    "organizations_involved": { "type": "array", "items": { "type": "string" } },
+    "start_date": { "type": "string", "format": "date" },
+    "engagement_level": { "type": "string", "enum": ["aware", "supporter", "active", "leader"] },
+    "involvement_type": { "type": "array", "items": { "type": "string", "enum": ["advocacy", "donation", "volunteering", "activism", "voting", "education"] } },
+    "amount_donated": { "type": "number" },
+    "hours_volunteered": { "type": "number" },
+    "impact_achieved": { "type": "string" },
+    "personal_motivation": { "type": "string" },
+    "is_ongoing": { "type": "boolean" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "cause_name"],
+  "_phase1_todo": ["Define impact measurement", "Define engagement tracking", "Define advocacy tools"]
+}

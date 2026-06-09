@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reading List",
+  "description": "Personal reading list or book list.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^reading_list_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "list_name": { "type": "string" },
+    "description": { "type": "string" },
+    "list_type": { "type": "string", "enum": ["wishlist", "currently_reading", "to_read", "completed", "favorites", "curated"] },
+    "book_ids": { "type": "array", "items": { "type": "string" } },
+    "book_titles": { "type": "array", "items": { "type": "string" } },
+    "total_books": { "type": "integer" },
+    "total_pages": { "type": "integer" },
+    "estimated_reading_hours": { "type": "number" },
+    "genres": { "type": "array", "items": { "type": "string" } },
+    "average_rating": { "type": "number" },
+    "is_public": { "type": "boolean" },
+    "shared_with": { "type": "array", "items": { "type": "string" } },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "list_name"],
+  "_phase1_todo": ["Define list sharing", "Define reading goals", "Define progress tracking"]
+}

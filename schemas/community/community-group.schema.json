@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Community Group",
+  "description": "Local community group or network.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^community_group_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "group_name": { "type": "string" },
+    "group_type": { "type": "string", "enum": ["neighborhood", "hobby", "religious", "cultural", "support_group", "activism", "other"] },
+    "description": { "type": "string" },
+    "location": { "type": "string" },
+    "coordinates": { "type": "object", "properties": { "latitude": { "type": "number" }, "longitude": { "type": "number" } } },
+    "website": { "type": "string", "format": "uri" },
+    "contact_email": { "type": "string" },
+    "contact_phone": { "type": "string" },
+    "organizer_name": { "type": "string" },
+    "member_count": { "type": "integer" },
+    "meeting_frequency": { "type": "string" },
+    "meeting_location": { "type": "string" },
+    "founded_date": { "type": "string", "format": "date" },
+    "entry_fee": { "type": "number" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "is_member": { "type": "boolean" },
+    "joined_date": { "type": "string", "format": "date" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "group_name"],
+  "_phase1_todo": ["Define membership tracking", "Define event calendar", "Define network mapping"]
+}

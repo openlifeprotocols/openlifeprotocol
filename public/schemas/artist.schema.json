@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Artist",
+  "description": "Music artist or musician.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^artist_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "artist_name": { "type": "string" },
+    "artist_bio": { "type": "string" },
+    "genres": { "type": "array", "items": { "type": "string" } },
+    "origin_country": { "type": "string" },
+    "origin_region": { "type": "string" },
+    "birth_date": { "type": "string", "format": "date" },
+    "website": { "type": "string", "format": "uri" },
+    "spotify_artist_id": { "type": "string" },
+    "apple_music_id": { "type": "string" },
+    "instagram_handle": { "type": "string" },
+    "twitter_handle": { "type": "string" },
+    "bandcamp_url": { "type": "string", "format": "uri" },
+    "similar_artists": { "type": "array", "items": { "type": "string" } },
+    "active_years_start": { "type": "integer" },
+    "active_years_end": { "type": "integer" },
+    "current_status": { "type": "string", "enum": ["active", "hiatus", "disbanded", "deceased"] },
+    "user_rating": { "type": "number", "minimum": 1, "maximum": 5 },
+    "favorite": { "type": "boolean" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "artist_name"],
+  "_phase1_todo": ["Define discography linking", "Define concert tracking", "Define playlist integration"]
+}

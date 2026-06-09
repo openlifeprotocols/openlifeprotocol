@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Valuation",
+  "description": "Valuation of a collection item.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^valuation_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "collection_item_id": { "type": "string" },
+    "collection_id": { "type": "string" },
+    "valuation_date": { "type": "string", "format": "date" },
+    "valuation_method": { "type": "string", "enum": ["market_comparable", "appraiser", "online_database", "expert_opinion", "insurance_valuation"] },
+    "estimated_value": { "type": "number" },
+    "currency": { "type": "string" },
+    "valuation_range_low": { "type": "number" },
+    "valuation_range_high": { "type": "number" },
+    "confidence_level": { "type": "string", "enum": ["low", "medium", "high", "very_high"] },
+    "appraiser_name": { "type": "string" },
+    "appraiser_certification": { "type": "string" },
+    "appraisal_document_id": { "type": "string" },
+    "condition_notes": { "type": "string" },
+    "comparable_sales": { "type": "array", "items": { "type": "object", "properties": { "item_name": { "type": "string" }, "sale_price": { "type": "number" }, "sale_date": { "type": "string", "format": "date" } } } },
+    "market_trend": { "type": "string", "enum": ["rising", "stable", "declining"] },
+    "insurance_purposes": { "type": "boolean" },
+    "previous_valuations": { "type": "array", "items": { "type": "object", "properties": { "date": { "type": "string", "format": "date" }, "value": { "type": "number" } } } },
+    "notes": { "type": "string" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "collection_item_id"],
+  "_phase1_todo": ["Define valuation trends", "Define insurance updating", "Define appraisal scheduling"]
+}

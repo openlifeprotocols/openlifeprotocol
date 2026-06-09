@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Game Platform",
+  "description": "Gaming platform or console.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^game_platform_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "platform_name": { "type": "string", "enum": ["pc", "xbox_one", "xbox_series_x", "playstation_4", "playstation_5", "nintendo_switch", "steam_deck", "mobile", "vr", "arcade"] },
+    "model": { "type": "string" },
+    "serial_number": { "type": "string" },
+    "acquisition_date": { "type": "string", "format": "date" },
+    "purchase_price": { "type": "number" },
+    "current_value": { "type": "number" },
+    "condition": { "type": "string", "enum": ["poor", "fair", "good", "very_good", "mint"] },
+    "storage_capacity_gb": { "type": "number" },
+    "online_subscription_active": { "type": "boolean" },
+    "subscription_type": { "type": "string" },
+    "subscription_expiry": { "type": "string", "format": "date" },
+    "attached_user_ids": { "type": "array", "items": { "type": "string" } },
+    "storage_location": { "type": "string" },
+    "maintenance_notes": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "platform_name"],
+  "_phase1_todo": ["Define platform linking", "Define subscription tracking", "Define library sync"]
+}
