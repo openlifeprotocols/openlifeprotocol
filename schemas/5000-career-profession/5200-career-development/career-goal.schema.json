@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Career Goal",
+  "description": "Career-specific goal wrapper that references canonical platform goal.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^career_goal_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "goal_id": { "type": "string", "description": "Reference to 0000-platform/core/goal.schema.json" },
+    "target_role": { "type": "string" },
+    "target_compensation": { "type": "number" },
+    "target_currency": { "type": "string" },
+    "channel": { "type": "string", "enum": ["employment", "business", "founder", "creator", "investor"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "goal_id"]
+}

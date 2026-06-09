@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Recruiter",
+  "description": "Recruiter relationship in a job-search context.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^recruiter_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "recruiter_person_id": { "type": "string" },
+    "agency_or_company": { "type": "string" },
+    "specialism": { "type": "string" },
+    "relationship_strength": { "type": "string", "enum": ["new", "warm", "active", "trusted"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"]
+}

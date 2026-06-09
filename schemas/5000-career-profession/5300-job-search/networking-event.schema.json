@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Networking Event",
+  "description": "A professional networking event attended for opportunities or career development.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^networking_event_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "name": { "type": "string" },
+    "event_date": { "type": "string", "format": "date" },
+    "location": { "type": "string" },
+    "type": { "type": "string", "enum": ["conference", "meetup", "industry_event", "career_fair", "webinar", "private"] },
+    "contacts_made": { "type": "integer", "minimum": 0 },
+    "follow_up_actions": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "name", "event_date", "type"]
+}

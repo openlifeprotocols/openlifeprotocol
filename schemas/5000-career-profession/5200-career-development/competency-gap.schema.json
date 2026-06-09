@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Competency Gap",
+  "description": "A gap between current and required competency for a target role or objective.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^competency_gap_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "competency": { "type": "string" },
+    "current_level": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "target_level": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "development_actions": { "type": "array", "items": { "type": "string" } },
+    "review_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "competency", "current_level", "target_level"]
+}

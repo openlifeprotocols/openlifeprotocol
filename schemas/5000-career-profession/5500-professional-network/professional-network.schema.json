@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Professional Network",
+  "description": "A curated professional network map for career growth and opportunity flow.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^professional_network_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "name": { "type": "string" },
+    "focus": { "type": "string" },
+    "connection_ids": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["active", "archived"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "name", "status"]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Network Connection",
+  "description": "A directed connection edge between two actors within or across networks.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^connection_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "network_id": { "type": "string" },
+    "from_actor_id": { "type": "string" },
+    "to_actor_id": { "type": "string" },
+    "connection_type": { "type": "string", "enum": ["knows", "works_with", "advises", "reports_to", "introduced", "follows", "supports", "other"] },
+    "strength": { "type": "string", "enum": ["weak", "moderate", "strong", "very_strong"] },
+    "trust_level": { "type": "string", "enum": ["low", "medium", "high"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "from_actor_id", "to_actor_id", "connection_type"]
+}

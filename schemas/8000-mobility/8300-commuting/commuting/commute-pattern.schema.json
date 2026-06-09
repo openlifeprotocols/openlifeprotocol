@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Commute Pattern",
+  "description": "Recurring commuting pattern between key locations.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^commute_pattern_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "origin_location_id": { "type": "string" },
+    "destination_location_id": { "type": "string" },
+    "frequency": { "type": "string", "enum": ["daily", "weekly", "hybrid", "irregular"] },
+    "mode": { "type": "string", "enum": ["walk", "bike", "car", "public_transport", "remote"] },
+    "avg_duration_minutes": { "type": "integer", "minimum": 0 },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "frequency", "mode"]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Consulting Client",
+  "description": "Client relationship in consulting context.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^consulting_client_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "organisation_id": { "type": "string" },
+    "primary_contact_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["prospect", "active", "paused", "former"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "status"]
+}

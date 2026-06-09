@@ -116,6 +116,72 @@ It is intentionally short, plain-language, and non-technical.
 - Consequence: Records can now be consistently tagged with channel and optional role.
 - Follow-up: Evaluate whether account-facing schemas should adopt a shared classification block pattern.
 
+## 2026-06-09 - Canonicalize relationship entity
+
+- Date: 2026-06-09
+- Decision: Keep canonical `relationship` in `2000-relationships/relationships` and remove duplicate person-level relationship entity schemas.
+- Status: accepted
+- Context: Relationship entities existed in both person and relationships accounts with overlapping semantics.
+- Rationale: Relationship is a cross-domain entity and should have one canonical definition.
+- Trade-offs: Person-level nuance must be represented as linked reflection/annotation records rather than duplicate entities.
+- Consequence: Reduced ontology ambiguity and cleaner relationship querying.
+- Follow-up: Use linked reflection schemas for subjective/experiential relationship context.
+
+## 2026-06-09 - Canonicalize goal entity
+
+- Date: 2026-06-09
+- Decision: Keep canonical `goal` in `0000-platform/core` and remove duplicate planning/person base goal schemas.
+- Status: accepted
+- Context: Generic goals were defined in multiple accounts with inconsistent fields.
+- Rationale: Goal is cross-domain and should be queried/reportable through one base ontology shape.
+- Trade-offs: Domain-specific goals become wrappers/extensions linked to canonical goal IDs.
+- Consequence: Better interoperability and roll-up reporting across learning, wealth, parenting, impact, and career goals.
+- Follow-up: Encourage goal wrappers to reference `goal_id` instead of redefining core goal fields.
+
+## 2026-06-09 - Clarify opportunity vs lead/prospect semantics
+
+- Date: 2026-06-09
+- Decision: Keep `opportunity` generic; keep `lead` and `prospect` business-specific in enterprise/customer flows.
+- Status: accepted
+- Context: Similar terms existed across opportunities and enterprise pipelines.
+- Rationale: Distinct semantics reduce confusion in reporting and lifecycle automation.
+- Trade-offs: Generic opportunity use cases cannot rely on prospect terminology.
+- Consequence: Cleaner ontology boundaries between personal opportunity management and business sales/customer pipelines.
+- Follow-up: Maintain term glossary for opportunity pipeline vocabulary.
+
+## 2026-06-09 - Rename Travel account to Mobility
+
+- Date: 2026-06-09
+- Decision: Rename `8000-travel` to `8000-mobility` and treat travel as a subdomain.
+- Status: accepted
+- Context: Travel-only naming underrepresented commuting, transport, visas, and movement contexts.
+- Rationale: Mobility better captures all movement-related life records.
+- Trade-offs: One-time path migration.
+- Consequence: Broader, future-proof account for movement-related schemas.
+- Follow-up: Gradually populate transport/commuting/visa subdomains where needed.
+
+## 2026-06-09 - Expand Career account structure
+
+- Date: 2026-06-09
+- Decision: Add 5200 Career Development, 5300 Job Search, 5400 Consulting, and 5500 Professional Network subaccounts under 5000 Career & Profession.
+- Status: accepted
+- Context: Career account was underdeveloped relative to wealth and enterprise.
+- Rationale: Career requires dedicated structures for progression, market navigation, consulting mode, and network capital.
+- Trade-offs: Increased schema surface area and governance requirements.
+- Consequence: Career architecture now supports employee, freelancer, and portfolio-professional patterns.
+- Follow-up: Keep these schemas linked to canonical goal/relationship/opportunity entities.
+
+## 2026-06-09 - Add explicit network layer under Relationships
+
+- Date: 2026-06-09
+- Decision: Add `2400-networks` under relationships with network graph primitives.
+- Status: accepted
+- Context: Network data was previously scattered across opportunities, career, enterprise, and community records.
+- Rationale: Networks are first-class graph structures distinct from individual relationships.
+- Trade-offs: Potential overlap with opportunities introductions unless semantics are explicit.
+- Consequence: Dedicated place for network, connection, influence, introduction, and referral records.
+- Follow-up: Keep network introduction semantics distinct from opportunity pipeline introduction semantics.
+
 ## 2026-06-09 - Rename Self to Person
 
 - Date: 2026-06-09

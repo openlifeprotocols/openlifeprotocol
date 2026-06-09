@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Movement Event",
+  "description": "A movement event between locations for travel, commute, relocation, or transit.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^movement_event_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "from_location_id": { "type": "string" },
+    "to_location_id": { "type": "string" },
+    "movement_type": { "type": "string", "enum": ["trip", "commute", "relocation", "transit", "visit"] },
+    "departed_at": { "type": "string", "format": "date-time" },
+    "arrived_at": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "movement_type"]
+}

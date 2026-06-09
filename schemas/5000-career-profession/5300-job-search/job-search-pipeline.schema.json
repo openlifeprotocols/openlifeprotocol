@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Job Search Pipeline",
+  "description": "A pipeline view for role targets, introductions, and applications during job search.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^job_pipeline_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "name": { "type": "string" },
+    "role_targets": { "type": "array", "items": { "type": "string" } },
+    "introduction_ids": { "type": "array", "items": { "type": "string" } },
+    "application_ids": { "type": "array", "items": { "type": "string" }, "description": "References generic opportunities/application records" },
+    "status": { "type": "string", "enum": ["active", "paused", "closed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "name", "status"]
+}

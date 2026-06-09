@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Network",
+  "description": "A network grouping representing a social/professional/community graph around a theme or domain.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^network_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "owner_id": { "type": "string" },
+    "name": { "type": "string" },
+    "network_type": { "type": "string", "enum": ["professional", "community", "family", "investor", "creator", "learning", "mixed"] },
+    "purpose": { "type": "string" },
+    "member_ids": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "owner_id", "name", "network_type"]
+}

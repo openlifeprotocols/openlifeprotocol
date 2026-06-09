@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Promotion Plan",
+  "description": "A structured plan to progress to a target role level in a career path.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^promotion_plan_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "current_role": { "type": "string" },
+    "target_role": { "type": "string" },
+    "target_date": { "type": "string", "format": "date" },
+    "required_competencies": { "type": "array", "items": { "type": "string" } },
+    "sponsor_ids": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["draft", "active", "on_track", "off_track", "achieved", "archived"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "current_role", "target_role", "status"]
+}

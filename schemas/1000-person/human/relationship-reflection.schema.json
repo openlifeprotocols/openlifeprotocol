@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Relationship Reflection",
+  "description": "A person's subjective reflection on an existing canonical relationship record.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^relationship_reflection_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "relationship_id": { "type": "string", "description": "Canonical relationship ID from 2000-relationships" },
+    "quality": { "type": "string", "enum": ["thriving", "good", "strained", "distant", "conflicted", "estranged"] },
+    "importance": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+    "notes": { "type": "string" },
+    "needs_served": { "type": "array", "items": { "type": "string" } },
+    "values_expressed": { "type": "array", "items": { "type": "string" } },
+    "reflection_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "relationship_id"]
+}

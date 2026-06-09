@@ -151,6 +151,19 @@ Canonical primitives clarification:
 - Do not reintroduce account-local duplicates of these primitives.
 - Express context through account placement, channel, role, and references.
 
+Canonical entity clarification:
+- `relationship` is canonical in 2000-relationships; person-level records should be reflections or annotations linked to canonical relationship IDs.
+- `goal` is canonical in 0000-platform/core; account-specific goals should link to canonical goals, not redefine the base entity.
+
+Opportunity semantics clarification:
+- `opportunity` is generic and cross-domain.
+- `lead` and `prospect` are business/customer pipeline concepts in enterprise accounts.
+- `introduction` may exist in different contexts when semantics differ (for example: opportunity pipeline vs network graph).
+
+Mobility clarification:
+- Use Mobility (8000) as the parent account for travel, transport, commuting, visas, and movement.
+- Treat travel as one mobility subdomain, not the entire account.
+
 ## Maintenance Rhythm
 
 - When adding a schema: update decision log immediately.

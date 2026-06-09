@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Network Introduction",
+  "description": "An introduction made within a network context; distinct from opportunities pipeline introduction.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^network_intro_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "network_id": { "type": "string" },
+    "introduced_by_actor_id": { "type": "string" },
+    "introduced_to_actor_id": { "type": "string" },
+    "purpose": { "type": "string" },
+    "date": { "type": "string", "format": "date" },
+    "follow_up_status": { "type": "string", "enum": ["pending", "completed", "stalled"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "network_id", "date"]
+}

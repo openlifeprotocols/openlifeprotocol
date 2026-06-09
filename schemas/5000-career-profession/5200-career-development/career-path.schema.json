@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Career Path",
+  "description": "A mapped sequence of roles and milestones across a professional trajectory.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^career_path_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "track": { "type": "string", "enum": ["individual_contributor", "management", "founder_operator", "specialist", "portfolio", "custom"] },
+    "stages": { "type": "array", "items": { "type": "string" } },
+    "current_stage": { "type": "string" },
+    "next_stage": { "type": "string" },
+    "constraints": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "track"]
+}

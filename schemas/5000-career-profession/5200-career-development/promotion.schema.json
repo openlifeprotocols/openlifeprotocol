@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Promotion",
+  "description": "Record of promotion readiness, process, and outcome.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^promotion_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "from_role": { "type": "string" },
+    "to_role": { "type": "string" },
+    "status": { "type": "string", "enum": ["aspiring", "in_review", "approved", "declined", "completed"] },
+    "effective_date": { "type": "string", "format": "date" },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "status"]
+}
