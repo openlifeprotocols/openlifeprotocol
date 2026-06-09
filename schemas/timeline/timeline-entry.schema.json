@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Timeline Entry",
+  "description": "Individual entry in a timeline.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^timeline_entry_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "timeline_id": { "type": "string" },
+    "timeline_event_id": { "type": "string" },
+    "sequence_number": { "type": "integer" },
+    "entry_date": { "type": "string", "format": "date" },
+    "entry_title": { "type": "string" },
+    "entry_content": { "type": "string" },
+    "entry_type": { "type": "string", "enum": ["milestone", "achievement", "reflection", "decision", "learning", "memory", "other"] },
+    "mood_or_sentiment": { "type": "string" },
+    "attachments": { "type": "array", "items": { "type": "string" } },
+    "related_people": { "type": "array", "items": { "type": "string" } },
+    "related_locations": { "type": "array", "items": { "type": "string" } },
+    "creation_date": { "type": "string", "format": "date-time" },
+    "last_modified_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "timeline_id"],
+  "_phase1_todo": ["Define entry searching", "Define entry recommendations", "Define entry insights"]
+}

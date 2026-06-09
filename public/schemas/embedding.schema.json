@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Embedding",
+  "description": "Vector embedding for semantic search and similarity.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^embedding_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "entity_id": { "type": "string" },
+    "entity_type": { "type": "string" },
+    "embedding_model": { "type": "string" },
+    "model_version": { "type": "string" },
+    "embedding_dimension": { "type": "integer" },
+    "embedding_vector": { "type": "array", "items": { "type": "number" } },
+    "source_text": { "type": "string" },
+    "text_chunk_id": { "type": "integer" },
+    "metadata_for_indexing": { "type": "object", "additionalProperties": true },
+    "generation_date": { "type": "string", "format": "date-time" },
+    "is_indexed": { "type": "boolean" },
+    "indexing_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "entity_id", "embedding_vector"],
+  "_phase1_todo": ["Define embedding search", "Define similarity threshold", "Define embedding updates"]
+}

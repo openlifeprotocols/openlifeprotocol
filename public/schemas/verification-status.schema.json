@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Verification Status",
+  "description": "Verification status of data or claim.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^verification_status_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "entity_id": { "type": "string" },
+    "entity_type": { "type": "string" },
+    "field_name": { "type": "string" },
+    "current_value": { "type": "string" },
+    "verification_status": { "type": "string", "enum": ["unverified", "pending_verification", "verified", "failed_verification", "disputed", "requires_review"] },
+    "verification_method": { "type": "string", "enum": ["manual_review", "document_check", "api_verification", "third_party", "user_confirmation", "system_check"] },
+    "verified_by_person_id": { "type": "string" },
+    "verification_date": { "type": "string", "format": "date-time" },
+    "next_verification_due": { "type": "string", "format": "date" },
+    "verification_notes": { "type": "string" },
+    "verification_evidence": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "entity_id"],
+  "_phase1_todo": ["Define verification workflows", "Define reverification scheduling", "Define verification audits"]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Label",
+  "description": "User-defined label for quick identification.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^label_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "label_name": { "type": "string" },
+    "label_slug": { "type": "string" },
+    "label_type": { "type": "string", "enum": ["priority", "status", "action", "context", "custom"] },
+    "color": { "type": "string" },
+    "icon": { "type": "string" },
+    "description": { "type": "string" },
+    "is_public": { "type": "boolean" },
+    "created_by_person_id": { "type": "string" },
+    "usage_count": { "type": "integer" },
+    "last_used_date": { "type": "string", "format": "date-time" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "label_name"],
+  "_phase1_todo": ["Define label templates", "Define label bulk operations", "Define label recommendations"]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Timeline View",
+  "description": "Configured view of timeline.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^timeline_view_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "timeline_id": { "type": "string" },
+    "view_name": { "type": "string" },
+    "description": { "type": "string" },
+    "view_type": { "type": "string", "enum": ["linear", "circular", "branching", "map", "calendar", "custom"] },
+    "date_range_start": { "type": "string", "format": "date" },
+    "date_range_end": { "type": "string", "format": "date" },
+    "event_type_filters": { "type": "array", "items": { "type": "string" } },
+    "tag_filters": { "type": "array", "items": { "type": "string" } },
+    "importance_level_filters": { "type": "array", "items": { "type": "string" } },
+    "sort_order": { "type": "string", "enum": ["chronological", "reverse_chronological", "importance", "custom"] },
+    "zoom_level": { "type": "string", "enum": ["year", "month", "week", "day", "hour"] },
+    "is_favorite": { "type": "boolean" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "last_used_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define view sharing", "Define view templates", "Define collaborative views"]
+}

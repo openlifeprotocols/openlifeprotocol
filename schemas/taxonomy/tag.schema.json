@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tag",
+  "description": "Universal tag applicable to any entity in the system.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^tag_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "tag_name": { "type": "string" },
+    "tag_slug": { "type": "string" },
+    "description": { "type": "string" },
+    "color": { "type": "string" },
+    "icon": { "type": "string" },
+    "tag_type": { "type": "string", "enum": ["custom", "system", "inferred"] },
+    "parent_tag_id": { "type": "string" },
+    "synonyms": { "type": "array", "items": { "type": "string" } },
+    "usage_count": { "type": "integer" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "last_used_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "tag_name"],
+  "_phase1_todo": ["Define tag hierarchy", "Define tag merging", "Define tag suggestions"]
+}

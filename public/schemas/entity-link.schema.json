@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Entity Link",
+  "description": "Typed relationship link between entities.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^entity_link_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "source_entity_id": { "type": "string" },
+    "source_entity_type": { "type": "string" },
+    "target_entity_id": { "type": "string" },
+    "target_entity_type": { "type": "string" },
+    "link_type": { "type": "string", "enum": ["related_to", "contains", "part_of", "created_by", "created_for", "references", "depends_on", "supports", "conflicts_with", "similar_to", "derived_from", "custom"] },
+    "link_strength": { "type": "number", "minimum": 0, "maximum": 1 },
+    "is_bidirectional": { "type": "boolean" },
+    "is_verified": { "type": "boolean" },
+    "verification_date": { "type": "string", "format": "date-time" },
+    "source_of_link": { "type": "string", "enum": ["user_defined", "inferred", "extracted", "system"] },
+    "creation_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "source_entity_id", "target_entity_id", "link_type"],
+  "_phase1_todo": ["Define link visualization", "Define link inference", "Define link analytics"]
+}

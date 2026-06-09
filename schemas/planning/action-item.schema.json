@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Action Item",
+  "description": "Concrete action item supporting goals and projects.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^action_item_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "goal_id": { "type": "string" },
+    "project_id": { "type": "string" },
+    "objective_id": { "type": "string" },
+    "action_title": { "type": "string" },
+    "action_description": { "type": "string" },
+    "action_type": { "type": "string", "enum": ["task", "decision", "research", "meeting", "delivery", "review", "follow_up"] },
+    "priority_level": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+    "status": { "type": "string", "enum": ["not_started", "in_progress", "blocked", "completed", "cancelled"] },
+    "due_date": { "type": "string", "format": "date" },
+    "completion_date": { "type": "string", "format": "date" },
+    "owner": { "type": "string" },
+    "dependencies": { "type": "array", "items": { "type": "string" } },
+    "blockers": { "type": "array", "items": { "type": "string" } },
+    "time_estimate_hours": { "type": "number" },
+    "time_spent_hours": { "type": "number" },
+    "outcome": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define action automation", "Define blocker detection", "Define action analytics"]
+}

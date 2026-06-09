@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Data Confidence",
+  "description": "Confidence level in data quality and accuracy.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^data_confidence_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "entity_id": { "type": "string" },
+    "entity_type": { "type": "string" },
+    "field_name": { "type": "string" },
+    "overall_confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "source_credibility": { "type": "number" },
+    "data_consistency": { "type": "number" },
+    "recency_score": { "type": "number" },
+    "verification_count": { "type": "integer" },
+    "conflicting_records_count": { "type": "integer" },
+    "last_verified_date": { "type": "string", "format": "date" },
+    "confidence_reasoning": { "type": "string" },
+    "confidence_level": { "type": "string", "enum": ["very_low", "low", "medium", "high", "very_high"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "entity_id"],
+  "_phase1_todo": ["Define confidence algorithms", "Define confidence monitoring", "Define confidence alerts"]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Timeline Event",
+  "description": "Base event for master timeline across entire system.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^timeline_event_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "event_date": { "type": "string", "format": "date-time" },
+    "event_type": { "type": "string", "enum": ["life_event", "business_event", "travel_event", "memory", "document_created", "task_completed", "goal_achieved", "transaction", "communication", "decision", "other"] },
+    "event_title": { "type": "string" },
+    "event_description": { "type": "string" },
+    "importance_level": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+    "related_entities": { "type": "array", "items": { "type": "object", "properties": { "entity_type": { "type": "string" }, "entity_id": { "type": "string" } } } },
+    "location": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "timeline_id": { "type": "string" },
+    "is_pinned": { "type": "boolean" },
+    "visibility": { "type": "string", "enum": ["private", "shared", "public"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "event_date"],
+  "_phase1_todo": ["Define timeline queries", "Define event filtering", "Define timeline analytics"]
+}

@@ -1,24 +1,74 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Relationship",
-  "description": "Relationship between people.",
+  "description": "Represents relationships between actors (family, employment, organizational, legal, etc.). Tracks context, duration, and relationship-specific properties.",
   "type": "object",
   "properties": {
-    "id": { "type": "string", "pattern": "^relationship_[a-zA-Z0-9_-]+$" },
-    "uuid": { "type": "string", "format": "uuid" },
-    "person_one_id": { "type": "string" },
-    "person_two_id": { "type": "string" },
-    "relationship_type": { "type": "string", "enum": ["spouse", "parent", "child", "sibling", "grandparent", "grandchild", "cousin", "extended_family", "friend", "colleague", "professional", "other"] },
-    "relationship_status": { "type": "string", "enum": ["active", "estranged", "deceased", "unknown"] },
-    "start_date": { "type": "string", "format": "date" },
-    "end_date": { "type": "string", "format": "date" },
-    "is_reciprocal": { "type": "boolean" },
-    "relationship_strength": { "type": "string", "enum": ["weak", "moderate", "strong", "very_strong"] },
-    "emergency_contact": { "type": "boolean" },
-    "beneficiary": { "type": "boolean" },
-    "power_of_attorney": { "type": "boolean" },
-    "metadata": { "type": "object", "additionalProperties": true }
+    "id": {
+      "type": "string",
+      "pattern": "^relationship_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "actor_1_id": {
+      "type": "string",
+      "description": "First actor in relationship"
+    },
+    "actor_2_id": {
+      "type": "string",
+      "description": "Second actor in relationship"
+    },
+    "relationship_type": {
+      "type": "string",
+      "enum": ["family", "employment", "legal_representative", "power_of_attorney", "beneficiary", "guardian", "spouse", "parent", "child", "sibling", "business_partner", "colleague", "other"],
+      "description": "Type of relationship"
+    },
+    "relationship_detail": {
+      "type": "string",
+      "description": "More specific relationship (e.g., 'mother', 'employer', 'executor')"
+    },
+    "start_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When relationship began"
+    },
+    "end_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When relationship ended (if applicable)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "inactive", "terminated", "suspended"],
+      "description": "Current status"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Context-specific properties"
+    }
   },
-  "required": ["id", "uuid", "person_one_id", "person_two_id"],
-  "_phase1_todo": ["Define relationship visualization", "Define genealogy mapping", "Define conflict resolution"]
+  "required": ["id", "uuid", "actor_1_id", "actor_2_id", "relationship_type"],
+  "_phase1_todo": [
+    "Define relationship hierarchy and transitive properties",
+    "Define conflict of interest detection",
+    "Define relationship termination procedures",
+    "Define relationship documentation requirements",
+    "Define privacy and disclosure rules for relationships",
+    "Define relationship impact on case eligibility"
+  ]
 }

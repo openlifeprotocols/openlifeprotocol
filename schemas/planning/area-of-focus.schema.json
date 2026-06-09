@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Area of Focus",
+  "description": "High-level area of life focus (health, wealth, family, work, etc).",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^area_of_focus_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "area_name": { "type": "string" },
+    "area_type": { "type": "string", "enum": ["health", "wealth", "family", "work", "learning", "relationships", "personal_growth", "spirituality", "leisure", "community", "creativity", "other"] },
+    "description": { "type": "string" },
+    "icon": { "type": "string" },
+    "color": { "type": "string" },
+    "importance_level": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+    "current_status": { "type": "string", "enum": ["thriving", "stable", "needs_attention", "critical"] },
+    "goals": { "type": "array", "items": { "type": "string" } },
+    "projects": { "type": "array", "items": { "type": "string" } },
+    "metrics": { "type": "array", "items": { "type": "string" } },
+    "last_review_date": { "type": "string", "format": "date" },
+    "next_review_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define area health metrics", "Define progress tracking", "Define area balancing"]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Classification",
+  "description": "ML/AI-assisted classification of entities.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^classification_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "entity_id": { "type": "string" },
+    "entity_type": { "type": "string" },
+    "classification_model": { "type": "string" },
+    "model_version": { "type": "string" },
+    "classifications": { "type": "array", "items": { "type": "object", "properties": { "category": { "type": "string" }, "confidence_score": { "type": "number" }, "rank": { "type": "integer" } } } },
+    "primary_classification": { "type": "string" },
+    "primary_confidence": { "type": "number" },
+    "is_user_confirmed": { "type": "boolean" },
+    "user_override_classification": { "type": "string" },
+    "classification_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "entity_id"],
+  "_phase1_todo": ["Define classification feedback", "Define model retraining", "Define classification accuracy metrics"]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Objective",
+  "description": "Specific objective supporting goal.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^objective_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "goal_id": { "type": "string" },
+    "objective_title": { "type": "string" },
+    "objective_description": { "type": "string" },
+    "milestone_type": { "type": "string", "enum": ["key_result", "milestone", "checkpoint", "deliverable"] },
+    "target_date": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["not_started", "in_progress", "at_risk", "completed"] },
+    "completion_percentage": { "type": "number" },
+    "success_criteria": { "type": "array", "items": { "type": "string" } },
+    "dependencies": { "type": "array", "items": { "type": "string" } },
+    "owner": { "type": "string" },
+    "assignees": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "goal_id"],
+  "_phase1_todo": ["Define objective tracking", "Define dependency resolution", "Define objective reviews"]
+}

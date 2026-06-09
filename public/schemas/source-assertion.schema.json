@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Source Assertion",
+  "description": "Specific claim or assertion from a source.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^source_assertion_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "source_record_id": { "type": "string" },
+    "entity_id": { "type": "string" },
+    "entity_type": { "type": "string" },
+    "field_name": { "type": "string" },
+    "asserted_value": { "type": "string" },
+    "assertion_type": { "type": "string", "enum": ["current", "historical", "corrected", "superseded"] },
+    "assertion_date": { "type": "string", "format": "date" },
+    "assertion_confidence": { "type": "number" },
+    "contradicting_assertions": { "type": "array", "items": { "type": "string" } },
+    "verification_status": { "type": "string", "enum": ["unverified", "verified", "disputed", "superseded"] },
+    "supporting_evidence": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "source_record_id"],
+  "_phase1_todo": ["Define assertion resolution", "Define conflict handling", "Define assertion history"]
+}

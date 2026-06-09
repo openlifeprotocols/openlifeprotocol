@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Source Record",
+  "description": "Record of source of information.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^source_record_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "source_type": { "type": "string", "enum": ["document", "person", "system", "api", "user_input", "extracted", "inferred"] },
+    "source_name": { "type": "string" },
+    "source_url": { "type": "string", "format": "uri" },
+    "source_document_id": { "type": "string" },
+    "source_credential": { "type": "string" },
+    "source_institution": { "type": "string" },
+    "source_location": { "type": "string" },
+    "acquisition_date": { "type": "string", "format": "date-time" },
+    "is_primary_source": { "type": "boolean" },
+    "is_authoritative": { "type": "boolean" },
+    "reliability_score": { "type": "number" },
+    "accessibility": { "type": "string", "enum": ["online", "physical", "restricted", "archived"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "source_type"],
+  "_phase1_todo": ["Define source hierarchy", "Define source verification", "Define source quality metrics"]
+}
