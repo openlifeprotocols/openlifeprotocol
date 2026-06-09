@@ -6,9 +6,27 @@
   "properties": {
     "id": {
       "type": "string",
-      "description": "Unique identifier for the decision",
+      "description": "Semantic identifier for the decision. Human-readable reference.",
       "pattern": "^decision_[a-zA-Z0-9_-]+$",
       "examples": ["decision_approve_1", "decision_reject_2"]
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Internal unique identifier (RFC 4122 UUID). Immutable, system-generated."
+    },
+    "external_ids": {
+      "type": "array",
+      "description": "References to this decision in external systems",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
     },
     "case_id": {
       "type": "string",
@@ -131,7 +149,7 @@
       "additionalProperties": true
     }
   },
-  "required": ["id", "case_id", "question", "decision_type", "outcome", "made_by_actor_id", "created_at"],
+  "required": ["id", "uuid", "case_id", "question", "decision_type", "outcome", "made_by_actor_id", "created_at"],
   "examples": [
     {
       "id": "decision_will_validation_001",

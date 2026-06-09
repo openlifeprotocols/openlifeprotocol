@@ -4,12 +4,30 @@
   "title": "OLP Event",
   "description": "An event is something that happens and triggers a workflow. Events are immutable facts in time.",
   "type": "object",
-  "required": ["id", "type", "actor_id", "timestamp"],
+  "required": ["id", "uuid", "type", "actor_id", "timestamp"],
   "properties": {
     "id": {
       "type": "string",
-      "description": "Unique identifier for this event",
+      "description": "Semantic identifier for the event. Human-readable reference.",
       "pattern": "^event_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Internal unique identifier (RFC 4122 UUID). Immutable, system-generated."
+    },
+    "external_ids": {
+      "type": "array",
+      "description": "References to this event in external systems",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
     },
     "type": {
       "type": "string",

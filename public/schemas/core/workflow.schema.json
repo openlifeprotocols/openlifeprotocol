@@ -6,9 +6,27 @@
   "properties": {
     "id": {
       "type": "string",
-      "description": "Unique identifier for the workflow template",
+      "description": "Semantic identifier for the workflow template. Human-readable reference.",
       "pattern": "^workflow_[a-zA-Z0-9_-]+$",
       "examples": ["workflow_death_probate_uk", "workflow_hiring_acme"]
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Internal unique identifier (RFC 4122 UUID). Immutable, system-generated."
+    },
+    "external_ids": {
+      "type": "array",
+      "description": "References to this workflow in external systems",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
     },
     "name": {
       "type": "string",
@@ -162,7 +180,7 @@
       "additionalProperties": true
     }
   },
-  "required": ["id", "name", "type", "version", "status", "steps"],
+  "required": ["id", "uuid", "name", "type", "version", "status", "steps"],
   "_phase1_todo": [
     "Define workflow DSL (YAML/JSON syntax for defining workflows)",
     "Define workflow versioning and compatibility",

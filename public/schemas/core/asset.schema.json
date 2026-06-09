@@ -6,9 +6,27 @@
   "properties": {
     "id": {
       "type": "string",
-      "description": "Unique identifier for the asset",
+      "description": "Semantic identifier for the asset. Human-readable reference.",
       "pattern": "^asset_[a-zA-Z0-9_-]+$",
       "examples": ["asset_property_1", "asset_bank_account_456", "asset_liability_789"]
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Internal unique identifier (RFC 4122 UUID). Immutable, system-generated."
+    },
+    "external_ids": {
+      "type": "array",
+      "description": "References to this asset in external systems",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
     },
     "actor_id": {
       "type": "string",
@@ -159,7 +177,7 @@
       "additionalProperties": true
     }
   },
-  "required": ["id", "actor_id", "name", "type", "asset_class", "value", "currency", "status"],
+  "required": ["id", "uuid", "actor_id", "name", "type", "asset_class", "value", "currency", "status"],
   "examples": [
     {
       "id": "asset_property_family_home_001",

@@ -6,9 +6,27 @@
   "properties": {
     "id": {
       "type": "string",
-      "description": "Unique identifier for the case",
+      "description": "Semantic identifier for the case. Human-readable reference.",
       "pattern": "^case_[a-zA-Z0-9_-]+$",
       "examples": ["case_move_2026_123", "case_hiring_acme_corp_456"]
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Internal unique identifier (RFC 4122 UUID). Immutable, system-generated."
+    },
+    "external_ids": {
+      "type": "array",
+      "description": "References to this case in external systems",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
     },
     "type": {
       "type": "string",
@@ -109,7 +127,7 @@
       "additionalProperties": true
     }
   },
-  "required": ["id", "type", "title", "status", "principal_actor_id", "created_at", "opened_by_actor_id"],
+  "required": ["id", "uuid", "type", "title", "status", "principal_actor_id", "created_at", "opened_by_actor_id"],
   "examples": [
     {
       "id": "case_death_uk_2026_001",

@@ -6,9 +6,27 @@
   "properties": {
     "id": {
       "type": "string",
-      "description": "Unique identifier for the communication",
+      "description": "Semantic identifier for the communication. Human-readable reference.",
       "pattern": "^comm_[a-zA-Z0-9_-]+$",
       "examples": ["comm_email_123", "comm_sms_456"]
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Internal unique identifier (RFC 4122 UUID). Immutable, system-generated."
+    },
+    "external_ids": {
+      "type": "array",
+      "description": "References to this communication in external systems",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
     },
     "case_id": {
       "type": "string",
@@ -132,7 +150,7 @@
       "additionalProperties": true
     }
   },
-  "required": ["id", "case_id", "from_actor_id", "to_actor_ids", "type", "status", "created_at"],
+  "required": ["id", "uuid", "case_id", "from_actor_id", "to_actor_ids", "type", "status", "created_at"],
   "examples": [
     {
       "id": "comm_email_probate_001",

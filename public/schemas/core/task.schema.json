@@ -6,9 +6,27 @@
   "properties": {
     "id": {
       "type": "string",
-      "description": "Unique identifier for the task",
+      "description": "Semantic identifier for the task. Human-readable reference.",
       "pattern": "^task_[a-zA-Z0-9_-]+$",
       "examples": ["task_probate_review_1", "task_onboarding_docs_2"]
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Internal unique identifier (RFC 4122 UUID). Immutable, system-generated."
+    },
+    "external_ids": {
+      "type": "array",
+      "description": "References to this task in external systems",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
     },
     "case_id": {
       "type": "string",
@@ -107,7 +125,7 @@
       "additionalProperties": true
     }
   },
-  "required": ["id", "case_id", "title", "type", "status", "assigned_to_actor_id", "created_at"],
+  "required": ["id", "uuid", "case_id", "title", "type", "status", "assigned_to_actor_id", "created_at"],
   "examples": [
     {
       "id": "task_probate_review_001",

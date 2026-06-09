@@ -6,9 +6,27 @@
   "properties": {
     "id": {
       "type": "string",
-      "description": "Unique identifier for the outcome",
+      "description": "Semantic identifier for the outcome. Human-readable reference.",
       "pattern": "^outcome_[a-zA-Z0-9_-]+$",
       "examples": ["outcome_estate_settled_1", "outcome_onboarding_complete_2"]
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Internal unique identifier (RFC 4122 UUID). Immutable, system-generated."
+    },
+    "external_ids": {
+      "type": "array",
+      "description": "References to this outcome in external systems",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
     },
     "case_id": {
       "type": "string",
@@ -130,7 +148,7 @@
       "additionalProperties": true
     }
   },
-  "required": ["id", "case_id", "case_type", "status", "success", "completion_date"],
+  "required": ["id", "uuid", "case_id", "case_type", "status", "success", "completion_date"],
   "examples": [
     {
       "id": "outcome_estate_settled_2026_001",
