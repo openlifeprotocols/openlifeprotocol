@@ -432,6 +432,18 @@
           "type": "held-by",
           "cardinality": "many",
           "required": false
+        },
+        {
+          "target": "organisation",
+          "type": "issued-by",
+          "cardinality": "one",
+          "required": false
+        },
+        {
+          "target": "document",
+          "type": "references",
+          "cardinality": "one",
+          "required": false
         }
       ],
       "lifecycle": "certification-lifecycle",
@@ -442,7 +454,7 @@
       "roles": [],
       "semanticDescription": "Professional or educational credential.",
       "graphImportance": "supporting",
-      "lifeDomains": ["career", "learning"]
+      "lifeDomains": ["career", "learning", "education"]
     },
     {
       "schema": "contract",
@@ -458,6 +470,12 @@
           "type": "references",
           "cardinality": "many",
           "required": false
+        },
+        {
+          "target": "document",
+          "type": "documents",
+          "cardinality": "one",
+          "required": true
         }
       ],
       "lifecycle": "contract-lifecycle",
@@ -468,7 +486,7 @@
       "roles": [],
       "semanticDescription": "A binding legal agreement.",
       "graphImportance": "core",
-      "lifeDomains": ["wealth", "enterprise"]
+      "lifeDomains": ["wealth", "enterprise", "legal"]
     },
     {
       "schema": "invoice",
@@ -1556,7 +1574,7 @@
       "roles": [],
       "semanticDescription": "An automated alert or system message.",
       "graphImportance": "utility",
-      "lifeDomains": []
+      "lifeDomains": ["notifications", "administration"]
     },
     {
       "schema": "course",
@@ -1708,7 +1726,7 @@
       "roles": [],
       "semanticDescription": "A tool, document, or material used to accomplish goals.",
       "graphImportance": "supporting",
-      "lifeDomains": []
+      "lifeDomains": ["learning", "resources"]
     },
     {
       "schema": "contact",
@@ -2084,7 +2102,7 @@
       "roles": [],
       "semanticDescription": "A saved link or reference to content.",
       "graphImportance": "utility",
-      "lifeDomains": []
+      "lifeDomains": ["search", "knowledge"]
     },
     {
       "schema": "search-result",
@@ -2104,7 +2122,7 @@
       "roles": [],
       "semanticDescription": "A result from a search query.",
       "graphImportance": "utility",
-      "lifeDomains": []
+      "lifeDomains": ["search", "knowledge"]
     },
     {
       "schema": "collection",

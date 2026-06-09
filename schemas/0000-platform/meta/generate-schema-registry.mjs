@@ -168,7 +168,7 @@ const entries = rows.map((row) => {
     ontologyType: previous.ontologyType ?? ontologyType,
     canonicalReferences: Array.isArray(previous.canonicalReferences) ? previous.canonicalReferences : [],
     tags: Array.isArray(previous.tags) ? previous.tags : tags,
-    relationships: Array.isArray(previous.relationships) ? previous.relationships : (curated.relationships ?? []),
+    relationships: (curated.relationships?.length > 0) ? curated.relationships : (Array.isArray(previous.relationships) ? previous.relationships : []),
     lifecycle: previous.lifecycle ?? (curated.lifecycle ?? null),
     expectedAuthority: previous.expectedAuthority ?? (curated.expectedAuthority ?? null),
     sensitivity: previous.sensitivity ?? (curated.sensitivity ?? "low"),
@@ -177,7 +177,7 @@ const entries = rows.map((row) => {
     roles: Array.isArray(previous.roles) ? previous.roles : (curated.roles ?? []),
     semanticDescription: previous.semanticDescription ?? (curated.semanticDescription ?? null),
     graphImportance: previous.graphImportance ?? (curated.graphImportance ?? "supporting"),
-    lifeDomains: Array.isArray(previous.lifeDomains) ? previous.lifeDomains : (curated.lifeDomains ?? [])
+    lifeDomains: (curated.lifeDomains?.length > 0) ? curated.lifeDomains : (Array.isArray(previous.lifeDomains) ? previous.lifeDomains : [])
   };
 });
 
