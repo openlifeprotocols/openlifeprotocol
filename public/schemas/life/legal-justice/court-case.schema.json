@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Court Case",
+  "description": "A court or tribunal case — proceedings, parties, hearings, and judgment. Extends legal/court-case with full privacy controls.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^court_case_lj_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "legal_matter_id": { "type": "string" },
+    "case_number": { "type": "string" },
+    "case_type": { "type": "string", "enum": ["civil", "criminal", "family", "employment_tribunal", "immigration_tribunal", "coroner", "magistrates", "crown_court", "high_court", "court_of_appeal", "supreme_court", "other"] },
+    "court_name": { "type": "string" },
+    "judge_name": { "type": "string" },
+    "claimant_ids": { "type": "array", "items": { "type": "string" } },
+    "defendant_ids": { "type": "array", "items": { "type": "string" } },
+    "legal_representative_ids": { "type": "array", "items": { "type": "string" } },
+    "is_public": { "type": "boolean", "description": "Is this a public hearing? False = in camera/closed." },
+    "anonymised": { "type": "boolean", "description": "Has the court anonymised the parties?" },
+    "filed_date": { "type": "string", "format": "date" },
+    "first_hearing_date": { "type": "string", "format": "date" },
+    "judgment_date": { "type": "string", "format": "date" },
+    "judgment_summary": { "type": "string" },
+    "outcome": { "type": "string", "enum": ["claimant_won", "defendant_won", "settled", "dismissed", "withdrawn", "ongoing", "appealed"] },
+    "amount_awarded": { "type": "number" },
+    "costs_awarded": { "type": "number" },
+    "currency": { "type": "string" },
+    "appeal_deadline": { "type": "string", "format": "date" },
+    "appealed": { "type": "boolean" },
+    "appeal_case_id": { "type": "string" },
+    "sensitivity_id": { "type": "string" },
+    "access_control_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["filed", "directions", "listed", "heard", "judgment", "enforcing", "appealing", "closed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "legal_matter_id", "case_type", "court_name"],
+  "_phase1_todo": [
+    "Define case document bundle management",
+    "Define HMCTS e-filing integration",
+    "Define costs tracking and assessment",
+    "Define judgment enforcement workflow"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Consent (Privacy)",
+  "description": "A granular consent record for OLP data processing — distinct from the people/consent.schema.json which covers service consent. This governs the legal basis for OLP itself holding and processing a person's data.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^privacy_consent_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "processing_purpose_id": { "type": "string" },
+    "processing_purpose": {
+      "type": "string",
+      "enum": [
+        "life_administration",
+        "estate_planning",
+        "legal_representation",
+        "medical_care",
+        "social_care",
+        "benefits_administration",
+        "financial_planning",
+        "safeguarding",
+        "research_anonymised",
+        "emergency_access",
+        "professional_support"
+      ]
+    },
+    "data_categories": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Categories of data this consent covers"
+    },
+    "legal_basis": {
+      "type": "string",
+      "enum": ["explicit_consent", "contract", "legal_obligation", "vital_interests", "public_task", "legitimate_interests"]
+    },
+    "granted_at": { "type": "string", "format": "date-time" },
+    "granted_via": { "type": "string", "enum": ["olp_app", "written_form", "verbal_recorded", "digital_signature", "proxy_consent"] },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "withdrawn_at": { "type": "string", "format": "date-time" },
+    "withdrawal_reason": { "type": "string" },
+    "proxy_grantor_id": { "type": "string", "description": "If consent given by parent/guardian/attorney on behalf of subject" },
+    "capacity_assessed": { "type": "boolean", "description": "Was mental capacity assessed before consent was taken?" },
+    "status": { "type": "string", "enum": ["active", "expired", "withdrawn", "superseded"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "processing_purpose", "legal_basis", "granted_at"],
+  "_phase1_todo": [
+    "Define consent version tracking",
+    "Define consent withdrawal cascade (what data must be deleted)",
+    "Define proxy consent (children, incapacity)",
+    "Define GDPR Article 7 consent requirements"
+  ]
+}

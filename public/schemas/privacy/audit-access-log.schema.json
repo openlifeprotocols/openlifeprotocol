@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Audit Access Log",
+  "description": "An immutable log entry recording every access to a sensitive OLP record — who accessed it, when, why, and what they did. Append-only; cannot be modified or deleted.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^audit_access_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "entity_type": { "type": "string" },
+    "entity_id": { "type": "string" },
+    "accessor_id": { "type": "string" },
+    "accessor_role": { "type": "string" },
+    "accessor_organisation": { "type": "string" },
+    "action": {
+      "type": "string",
+      "enum": ["read", "write", "create", "delete", "redact", "share", "export", "print", "break_glass_access"]
+    },
+    "accessed_at": { "type": "string", "format": "date-time" },
+    "ip_address": { "type": "string" },
+    "session_id": { "type": "string" },
+    "device_fingerprint": { "type": "string" },
+    "purpose_stated": { "type": "string" },
+    "disclosure_purpose_id": { "type": "string" },
+    "consent_id": { "type": "string" },
+    "fields_accessed": { "type": "array", "items": { "type": "string" }, "description": "Specific fields read or modified" },
+    "fields_modified": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "field": { "type": "string" },
+          "previous_value_hash": { "type": "string", "description": "Hash of previous value — not the value itself" },
+          "new_value_hash": { "type": "string" }
+        }
+      }
+    },
+    "was_break_glass": { "type": "boolean" },
+    "break_glass_reason": { "type": "string" },
+    "subject_notified": { "type": "boolean" },
+    "log_hash": { "type": "string", "description": "Cryptographic hash of this log entry — tamper evidence" }
+  },
+  "required": ["id", "uuid", "entity_type", "entity_id", "accessor_id", "action", "accessed_at"],
+  "_phase1_todo": [
+    "Define log immutability (write-once storage)",
+    "Define cryptographic chaining between log entries",
+    "Define subject access to their own audit log",
+    "Define suspicious access pattern alerting"
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Access Control",
+  "description": "An access control policy for a specific OLP record — who can read, write, and share it, and under what conditions.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^access_control_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "entity_type": { "type": "string" },
+    "entity_id": { "type": "string" },
+    "sensitivity_id": { "type": "string" },
+    "owner_id": { "type": "string", "description": "The data subject — always has read access to their own data" },
+    "grants": {
+      "type": "array",
+      "description": "Explicit access grants",
+      "items": {
+        "type": "object",
+        "properties": {
+          "actor_id": { "type": "string" },
+          "role": { "type": "string", "enum": ["owner", "agent", "legal_representative", "carer", "professional", "researcher", "auditor", "emergency"] },
+          "permissions": { "type": "array", "items": { "type": "string", "enum": ["read", "write", "share", "redact", "delete"] } },
+          "granted_by_id": { "type": "string" },
+          "granted_at": { "type": "string", "format": "date-time" },
+          "expires_at": { "type": "string", "format": "date-time" },
+          "conditions": { "type": "string", "description": "e.g., 'Only when acting as solicitor on case X'" },
+          "consent_id": { "type": "string" }
+        },
+        "required": ["actor_id", "role", "permissions", "granted_by_id"]
+      }
+    },
+    "break_glass": {
+      "type": "object",
+      "description": "Emergency access override — logged, time-limited, requires reason",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "authorised_roles": { "type": "array", "items": { "type": "string" } },
+        "requires_reason": { "type": "boolean" },
+        "auto_expires_hours": { "type": "integer" },
+        "notifies_owner": { "type": "boolean" }
+      }
+    },
+    "audit_log_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "entity_type", "entity_id", "owner_id", "grants"],
+  "_phase1_todo": [
+    "Define role-based access control (RBAC) inheritance",
+    "Define access expiry automation",
+    "Define break-glass notification to supervisory body",
+    "Define access grant approval workflow for restricted records"
+  ]
+}

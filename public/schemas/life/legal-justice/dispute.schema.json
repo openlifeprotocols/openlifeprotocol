@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dispute",
+  "description": "A formal dispute between parties — pre-litigation stage. May escalate to a court case or resolve through ADR.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^dispute_lj_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "legal_matter_id": { "type": "string" },
+    "claimant_id": { "type": "string" },
+    "respondent_id": { "type": "string" },
+    "dispute_type": { "type": "string", "enum": ["contract", "property", "employment", "consumer", "debt", "professional_negligence", "clinical_negligence", "neighbour", "estate", "partnership", "other"] },
+    "description": { "type": "string" },
+    "amount_in_dispute": { "type": "number" },
+    "currency": { "type": "string" },
+    "pre_action_protocol": { "type": "string", "description": "Applicable PAP, e.g., 'Personal Injury'" },
+    "letter_before_action_sent": { "type": "boolean" },
+    "lba_date": { "type": "string", "format": "date" },
+    "response_deadline": { "type": "string", "format": "date" },
+    "limitation_deadline": { "type": "string", "format": "date", "description": "Limitation Act deadline — miss this and the claim is barred" },
+    "adr_attempted": { "type": "boolean" },
+    "adr_method": { "type": "string", "enum": ["mediation", "arbitration", "ombudsman", "negotiation", "early_neutral_evaluation"] },
+    "adr_outcome": { "type": "string" },
+    "escalated_to_court": { "type": "boolean" },
+    "court_case_id": { "type": "string" },
+    "sensitivity_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["pre_action", "in_adr", "settled", "issued", "withdrawn"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "legal_matter_id", "claimant_id", "respondent_id", "dispute_type"],
+  "_phase1_todo": [
+    "Define limitation period calculator per dispute type",
+    "Define pre-action protocol compliance checker",
+    "Define ADR provider registry",
+    "Define without prejudice negotiation tracking"
+  ]
+}

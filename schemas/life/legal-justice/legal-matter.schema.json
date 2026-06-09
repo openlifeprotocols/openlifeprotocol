@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Legal Matter",
+  "description": "The top-level container for any legal issue — civil, criminal, family, employment, or regulatory. Holds all related legal schemas under one roof.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^legal_matter_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "matter_type": {
+      "type": "string",
+      "enum": ["civil", "criminal", "family", "employment_tribunal", "immigration", "regulatory", "coroner", "mental_health_tribunal", "other"]
+    },
+    "matter_category": {
+      "type": "string",
+      "enum": [
+        "dispute_contract", "dispute_property", "dispute_neighbour",
+        "personal_injury", "clinical_negligence",
+        "employment_unfair_dismissal", "employment_discrimination",
+        "family_divorce", "family_custody", "family_finance",
+        "criminal_offence", "criminal_appeal",
+        "immigration_asylum", "immigration_visa",
+        "regulatory_investigation", "regulatory_sanction",
+        "debt_recovery", "probate_dispute", "other"
+      ]
+    },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "subject_position": { "type": "string", "enum": ["claimant", "defendant", "appellant", "respondent", "accused", "victim", "witness", "third_party"] },
+    "opposing_party_ids": { "type": "array", "items": { "type": "string" } },
+    "legal_representative_id": { "type": "string" },
+    "jurisdiction_id": { "type": "string" },
+    "opened_date": { "type": "string", "format": "date" },
+    "closed_date": { "type": "string", "format": "date" },
+    "court_case_id": { "type": "string" },
+    "document_ids": { "type": "array", "items": { "type": "string" } },
+    "sensitivity_id": { "type": "string", "description": "Reference to privacy/sensitivity-classification" },
+    "access_control_id": { "type": "string" },
+    "outcome": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "settled", "closed", "on_hold", "appealing"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "matter_type", "matter_category", "title"],
+  "_phase1_todo": [
+    "Define legal aid eligibility assessment",
+    "Define limitation period tracking per matter type",
+    "Define legal professional privilege marking",
+    "Define multi-party matter coordination"
+  ]
+}

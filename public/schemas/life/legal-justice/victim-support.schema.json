@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Victim Support",
+  "description": "A victim support record — services, referrals, and rights exercised by a victim of crime or harm.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^victim_support_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "legal_matter_id": { "type": "string" },
+    "police_report_id": { "type": "string" },
+    "crime_type": { "type": "string" },
+    "referral_source": { "type": "string" },
+    "support_organisation": { "type": "string", "examples": ["Victim Support", "RASSO Unit", "IDVA", "Refuge", "Samaritans"] },
+    "key_worker_id": { "type": "string" },
+    "victims_code_rights": {
+      "type": "array",
+      "description": "Rights exercised under the Victims' Code 2021",
+      "items": { "type": "string", "enum": ["enhanced_entitlements", "victims_right_to_review", "special_measures", "witness_care", "compensation_claim", "restorative_justice"] }
+    },
+    "special_measures_requested": { "type": "array", "items": { "type": "string" } },
+    "compensation_claim_id": { "type": "string", "description": "CICA claim reference" },
+    "start_date": { "type": "string", "format": "date" },
+    "closed_date": { "type": "string", "format": "date" },
+    "sensitivity_level": { "type": "string", "const": "highly_restricted" },
+    "sensitivity_id": { "type": "string" },
+    "access_control_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "closed", "referred_on"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "crime_type"],
+  "_phase1_todo": [
+    "Define Victims' Code rights tracker",
+    "Define CICA Criminal Injuries Compensation workflow",
+    "Define special measures application",
+    "Define restorative justice referral"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Restraining Order",
+  "description": "A restraining order, non-molestation order, or injunction prohibiting contact or proximity. Applies to both protected persons and those subject to the order.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^restraining_order_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "protected_person_id": { "type": "string" },
+    "subject_person_id": { "type": "string", "description": "Person the order is imposed on" },
+    "legal_matter_id": { "type": "string" },
+    "order_type": { "type": "string", "enum": ["restraining_order", "non_molestation_order", "occupation_order", "injunction", "stalking_protection_order", "forced_marriage_protection_order"] },
+    "court_name": { "type": "string" },
+    "case_number": { "type": "string" },
+    "granted_date": { "type": "string", "format": "date" },
+    "effective_from": { "type": "string", "format": "date" },
+    "expiry_date": { "type": "string", "format": "date" },
+    "is_indefinite": { "type": "boolean" },
+    "prohibitions": { "type": "array", "items": { "type": "string" }, "description": "e.g., 'No contact by any means', 'Must not attend [address]'" },
+    "exclusion_zone_addresses": { "type": "array", "items": { "type": "string" } },
+    "power_of_arrest_attached": { "type": "boolean" },
+    "breach_ids": { "type": "array", "items": { "type": "string" } },
+    "sensitivity_level": { "type": "string", "const": "highly_restricted" },
+    "sensitivity_id": { "type": "string" },
+    "access_control_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "expired", "discharged", "breached", "varied"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "protected_person_id", "subject_person_id", "order_type", "granted_date"],
+  "_phase1_todo": [
+    "Define breach alert workflow",
+    "Define automatic police notification on breach",
+    "Define order variation application",
+    "Define DASH risk assessment linkage"
+  ]
+}

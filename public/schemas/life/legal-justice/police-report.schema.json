@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Police Report",
+  "description": "A police report made by or about a person — crime report, incident report, or witness statement. Highly restricted.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^police_report_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "legal_matter_id": { "type": "string" },
+    "crn": { "type": "string", "description": "Crime Reference Number" },
+    "report_type": { "type": "string", "enum": ["crime_report", "incident_report", "witness_statement", "victim_statement", "intelligence_report"] },
+    "person_role": { "type": "string", "enum": ["reporter", "victim", "witness", "suspect", "person_of_interest"] },
+    "offence_type": { "type": "string" },
+    "reported_date": { "type": "string", "format": "date-time" },
+    "offence_date": { "type": "string", "format": "date-time" },
+    "offence_location": { "type": "string" },
+    "reporting_force": { "type": "string" },
+    "investigating_officer": { "type": "string" },
+    "investigation_status": { "type": "string", "enum": ["under_investigation", "no_further_action", "charged", "discontinued", "closed"] },
+    "document_id": { "type": "string" },
+    "sensitivity_level": { "type": "string", "const": "highly_restricted" },
+    "sensitivity_id": { "type": "string" },
+    "access_control_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "report_type", "person_role", "reported_date"],
+  "_phase1_todo": [
+    "Define victim support auto-referral",
+    "Define witness anonymity protections",
+    "Define data sharing with CPS",
+    "Define NFA notification to victim"
+  ]
+}

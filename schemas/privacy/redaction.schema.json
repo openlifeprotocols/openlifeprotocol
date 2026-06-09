@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Redaction",
+  "description": "A redaction record — a documented removal or masking of specific data fields within an OLP record, with reason, authority, and scope.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^redaction_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "entity_type": { "type": "string" },
+    "entity_id": { "type": "string" },
+    "redacted_fields": {
+      "type": "array",
+      "description": "Field paths that have been redacted",
+      "items": { "type": "string", "examples": ["description", "notes", "address.street"] }
+    },
+    "redaction_reason": {
+      "type": "string",
+      "enum": [
+        "court_order",
+        "statutory_requirement",
+        "data_subject_request",
+        "third_party_protection",
+        "national_security",
+        "ongoing_investigation",
+        "safeguarding",
+        "legal_privilege"
+      ]
+    },
+    "legal_authority": { "type": "string", "description": "e.g., 'Family Court Order [2026] FAM 1234'" },
+    "redacted_by_id": { "type": "string" },
+    "redacted_at": { "type": "string", "format": "date-time" },
+    "approved_by_id": { "type": "string" },
+    "reversible": { "type": "boolean", "description": "Can original data be restored? False = permanent deletion." },
+    "restore_condition": { "type": "string", "description": "Condition under which redaction can be reversed" },
+    "restored_at": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "entity_type", "entity_id", "redacted_fields", "redaction_reason", "redacted_by_id", "redacted_at"],
+  "_phase1_todo": [
+    "Define redaction propagation to derived records",
+    "Define redaction visibility (can subject see that redaction exists?)",
+    "Define legal privilege claim workflow",
+    "Define court-ordered redaction compliance audit"
+  ]
+}

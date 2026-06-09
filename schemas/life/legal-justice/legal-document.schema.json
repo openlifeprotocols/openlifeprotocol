@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Legal Document",
+  "description": "A legal document in the context of a matter — pleadings, witness statements, orders, notices, and correspondence with legal privilege classification.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^legal_doc_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "legal_matter_id": { "type": "string" },
+    "court_case_id": { "type": "string" },
+    "olp_document_id": { "type": "string", "description": "Reference to core Document record" },
+    "document_type": {
+      "type": "string",
+      "enum": ["claim_form", "defence", "counterclaim", "witness_statement", "expert_report", "skeleton_argument", "court_order", "injunction", "judgment", "notice", "letter_before_action", "settlement_agreement", "contract", "police_report", "charge_sheet", "indictment", "plea_in_mitigation", "pre_sentence_report", "other"]
+    },
+    "title": { "type": "string" },
+    "authored_by_id": { "type": "string" },
+    "dated": { "type": "string", "format": "date" },
+    "filed_with_court": { "type": "boolean" },
+    "filed_date": { "type": "string", "format": "date" },
+    "is_privileged": { "type": "boolean", "description": "Legal professional privilege applies — cannot be disclosed" },
+    "privilege_type": { "type": "string", "enum": ["legal_advice", "litigation", "without_prejudice", "public_interest_immunity"] },
+    "served_on_parties": { "type": "array", "items": { "type": "string" } },
+    "served_date": { "type": "string", "format": "date" },
+    "deadline": { "type": "string", "format": "date" },
+    "sensitivity_id": { "type": "string" },
+    "access_control_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "legal_matter_id", "document_type", "title", "dated"],
+  "_phase1_todo": [
+    "Define privilege log requirements",
+    "Define without prejudice protection",
+    "Define court bundle indexing",
+    "Define document service confirmation"
+  ]
+}

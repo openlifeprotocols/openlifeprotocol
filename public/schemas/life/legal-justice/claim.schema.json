@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Claim",
+  "description": "A legal claim — the formal assertion of a right to remedy, compensation, or enforcement.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^claim_lj_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "legal_matter_id": { "type": "string" },
+    "claimant_id": { "type": "string" },
+    "defendant_id": { "type": "string" },
+    "claim_type": { "type": "string", "enum": ["damages", "debt_recovery", "injunction", "specific_performance", "declaration", "judicial_review", "personal_injury", "clinical_negligence", "employment", "housing", "benefits_appeal", "other"] },
+    "particulars": { "type": "string" },
+    "amount_claimed": { "type": "number" },
+    "interest_claimed": { "type": "number" },
+    "costs_claimed": { "type": "number" },
+    "currency": { "type": "string" },
+    "issued_date": { "type": "string", "format": "date" },
+    "served_date": { "type": "string", "format": "date" },
+    "acknowledgement_deadline": { "type": "string", "format": "date" },
+    "defence_deadline": { "type": "string", "format": "date" },
+    "defended": { "type": "boolean" },
+    "judgment_in_default": { "type": "boolean" },
+    "court_case_id": { "type": "string" },
+    "sensitivity_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["draft", "issued", "served", "defended", "judgment", "enforced", "settled", "discontinued"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "legal_matter_id", "claimant_id", "defendant_id", "claim_type"],
+  "_phase1_todo": [
+    "Define Money Claim Online (MCOL) integration",
+    "Define default judgment application",
+    "Define Part 36 offer tracking",
+    "Define costs consequences of outcome"
+  ]
+}

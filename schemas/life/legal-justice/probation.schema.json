@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Probation",
+  "description": "A probation supervision record — community supervision following a sentence.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^probation_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "sentence_id": { "type": "string" },
+    "probation_service": { "type": "string" },
+    "responsible_officer": { "type": "string" },
+    "supervision_level": { "type": "string", "enum": ["standard", "enhanced", "intensive"] },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "reporting_frequency": { "type": "string", "enum": ["weekly", "fortnightly", "monthly"] },
+    "conditions": {
+      "type": "array",
+      "items": { "type": "string", "examples": ["curfew", "exclusion_zone", "drug_testing", "unpaid_work", "accredited_programme", "residence_requirement"] }
+    },
+    "appointments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": { "type": "string", "format": "date-time" },
+          "attended": { "type": "boolean" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "breach_proceedings": { "type": "boolean" },
+    "sensitivity_level": { "type": "string", "const": "highly_restricted" },
+    "sensitivity_id": { "type": "string" },
+    "access_control_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "completed", "breached", "revoked"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "sentence_id", "start_date"],
+  "_phase1_todo": [
+    "Define breach of probation workflow",
+    "Define multi-agency safeguarding linkage (MAPPA)",
+    "Define rehabilitation programme completion tracking",
+    "Define release on licence supervision"
+  ]
+}

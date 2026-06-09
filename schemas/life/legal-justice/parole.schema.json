@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Parole",
+  "description": "A parole record — conditional early release from a custodial sentence.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^parole_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "sentence_id": { "type": "string" },
+    "parole_board_reference": { "type": "string" },
+    "eligible_from": { "type": "string", "format": "date" },
+    "hearing_date": { "type": "string", "format": "date" },
+    "release_date": { "type": "string", "format": "date" },
+    "licence_expiry": { "type": "string", "format": "date" },
+    "conditions": { "type": "array", "items": { "type": "string" } },
+    "exclusion_zones": { "type": "array", "items": { "type": "string" } },
+    "supervision_officer": { "type": "string" },
+    "recalls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "recall_date": { "type": "string", "format": "date" },
+          "recall_reason": { "type": "string" },
+          "returned_to_custody": { "type": "boolean" }
+        }
+      }
+    },
+    "sensitivity_level": { "type": "string", "const": "highly_restricted" },
+    "sensitivity_id": { "type": "string" },
+    "access_control_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["pending_hearing", "granted", "refused", "active", "recalled", "completed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "sentence_id"],
+  "_phase1_todo": [
+    "Define Parole Board submission workflow",
+    "Define recall risk assessment",
+    "Define licence condition variation",
+    "Define OASys risk assessment linkage"
+  ]
+}

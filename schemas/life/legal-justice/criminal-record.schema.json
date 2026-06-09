@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Criminal Record",
+  "description": "A criminal record summary — the aggregate of convictions, cautions, and spent status. Highly restricted: accessible only to the data subject, their legal representative, and authorised disclosure bodies.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^criminal_record_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "conviction_ids": { "type": "array", "items": { "type": "string" } },
+    "caution_ids": { "type": "array", "items": { "type": "string" } },
+    "has_unspent_convictions": { "type": "boolean" },
+    "has_spent_convictions": { "type": "boolean" },
+    "all_spent_date": { "type": "string", "format": "date", "description": "Date when all convictions become spent" },
+    "highest_disposal": { "type": "string", "enum": ["none", "caution", "conditional_caution", "fine", "community_order", "suspended_sentence", "custodial_sentence"] },
+    "dbs_certificate_level": { "type": "string", "enum": ["none", "basic", "standard", "enhanced", "enhanced_with_barred_list"] },
+    "last_dbs_date": { "type": "string", "format": "date" },
+    "sensitivity_level": { "type": "string", "const": "highly_restricted" },
+    "sensitivity_id": { "type": "string" },
+    "access_control_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": [
+    "Define Rehabilitation of Offenders Act 1974 spent calculation",
+    "Define DBS certificate integration",
+    "Define self-disclosure guidance by employer type",
+    "Define filtering rules (protected cautions/convictions)"
+  ]
+}

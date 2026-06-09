@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Expungement",
+  "description": "An expungement or deletion order — a legal order to remove or seal a record from public or official databases.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^expungement_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "record_type": { "type": "string", "enum": ["conviction", "caution", "arrest_record", "police_record", "dbs_record", "court_record"] },
+    "record_id": { "type": "string" },
+    "expungement_type": { "type": "string", "enum": ["spent_conviction_filter", "deletion_on_acquittal", "dna_data_deletion", "court_order_destruction", "pardon", "other"] },
+    "grounds": { "type": "string" },
+    "application_date": { "type": "string", "format": "date" },
+    "granted_date": { "type": "string", "format": "date" },
+    "granted_by": { "type": "string" },
+    "order_reference": { "type": "string" },
+    "effective_from": { "type": "string", "format": "date" },
+    "databases_affected": { "type": "array", "items": { "type": "string" } },
+    "sensitivity_level": { "type": "string", "const": "sealed" },
+    "sensitivity_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["applied", "granted", "refused", "implemented"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "record_type", "expungement_type"],
+  "_phase1_todo": [
+    "Define PNC record deletion workflow",
+    "Define DBS filtering rules for protected convictions",
+    "Define multi-agency record deletion co-ordination",
+    "Define royal pardon procedures"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Judgment",
+  "description": "A court judgment or tribunal decision — the formal legal determination of a case.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^judgment_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "court_case_id": { "type": "string" },
+    "legal_matter_id": { "type": "string" },
+    "judgment_type": { "type": "string", "enum": ["final_judgment", "summary_judgment", "default_judgment", "consent_order", "court_order", "injunction", "costs_order", "tribunal_decision"] },
+    "judgment_date": { "type": "string", "format": "date" },
+    "judge_name": { "type": "string" },
+    "in_favour_of_id": { "type": "string" },
+    "against_id": { "type": "string" },
+    "summary": { "type": "string" },
+    "amount_awarded": { "type": "number" },
+    "interest_awarded": { "type": "number" },
+    "costs_awarded": { "type": "number" },
+    "currency": { "type": "string" },
+    "payment_deadline": { "type": "string", "format": "date" },
+    "compliance_deadline": { "type": "string", "format": "date" },
+    "is_public": { "type": "boolean" },
+    "judgment_neutral_citation": { "type": "string" },
+    "appeal_deadline": { "type": "string", "format": "date" },
+    "appealed": { "type": "boolean" },
+    "registered_on_register": { "type": "boolean", "description": "County Court Judgment registered on credit register" },
+    "satisfied": { "type": "boolean" },
+    "satisfied_date": { "type": "string", "format": "date" },
+    "document_id": { "type": "string" },
+    "sensitivity_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "court_case_id", "judgment_type", "judgment_date"],
+  "_phase1_todo": [
+    "Define CCJ register integration",
+    "Define judgment enforcement options (bailiff, charging order, attachment of earnings)",
+    "Define satisfaction certificate workflow",
+    "Define foreign judgment recognition"
+  ]
+}

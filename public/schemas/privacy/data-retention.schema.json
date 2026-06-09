@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Data Retention",
+  "description": "A retention policy for an OLP record or record category — defining how long data is kept, when it must be deleted, and what triggers deletion.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^retention_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "entity_type": { "type": "string", "description": "OLP schema type, or '*' for a policy applying to all" },
+    "entity_id": { "type": "string", "description": "Specific record ID, or omit for type-wide policy" },
+    "person_id": { "type": "string" },
+    "retention_basis": {
+      "type": "string",
+      "enum": [
+        "legal_obligation",
+        "regulatory_requirement",
+        "contractual_obligation",
+        "legitimate_interests",
+        "consent",
+        "vital_interests",
+        "public_task"
+      ]
+    },
+    "statutory_basis": { "type": "string", "description": "e.g., 'Companies Act 2006 s.386 (6 years)', 'HMRC VAT (6 years)'" },
+    "retain_for_years": { "type": "number" },
+    "retain_until_date": { "type": "string", "format": "date" },
+    "deletion_trigger": {
+      "type": "string",
+      "enum": ["date_reached", "relationship_ended", "consent_withdrawn", "death_plus_n_years", "case_closed_plus_n_years", "manual_review"]
+    },
+    "deletion_method": {
+      "type": "string",
+      "enum": ["hard_delete", "anonymise", "archive_offline", "redact_fields"]
+    },
+    "auto_delete": { "type": "boolean" },
+    "review_before_delete": { "type": "boolean" },
+    "deletion_date": { "type": "string", "format": "date" },
+    "deleted_at": { "type": "string", "format": "date-time" },
+    "deleted_by_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "review_pending", "deleted", "exempted"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "entity_type", "retention_basis", "deletion_method"],
+  "_phase1_todo": [
+    "Define statutory retention schedule by record type",
+    "Define retention extension for litigation hold",
+    "Define deletion certificate generation",
+    "Define right to erasure (Art 17) conflict with legal obligation"
+  ]
+}
