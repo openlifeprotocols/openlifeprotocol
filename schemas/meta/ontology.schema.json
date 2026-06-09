@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ontology",
+  "description": "Personal knowledge ontology definition.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^ontology_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "ontology_name": { "type": "string" },
+    "version": { "type": "string" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "last_updated_date": { "type": "string", "format": "date-time" },
+    "entity_types": { "type": "array", "items": { "type": "object", "properties": { "entity_type": { "type": "string" }, "description": { "type": "string" }, "attributes": { "type": "array" }, "examples": { "type": "array" } } } },
+    "relationship_types": { "type": "array", "items": { "type": "object", "properties": { "relationship": { "type": "string" }, "from_entity": { "type": "string" }, "to_entity": { "type": "string" }, "description": { "type": "string" } } } },
+    "properties": { "type": "array", "items": { "type": "object", "properties": { "property_name": { "type": "string" }, "data_type": { "type": "string" }, "description": { "type": "string" } } } },
+    "hierarchies": { "type": "array", "items": { "type": "object", "properties": { "hierarchy_name": { "type": "string" }, "parent": { "type": "string" }, "children": { "type": "array" } } } },
+    "key_concepts": { "type": "array", "items": { "type": "string" } },
+    "domains_covered": { "type": "array", "items": { "type": "string" } },
+    "axioms_or_rules": { "type": "array", "items": { "type": "string" } },
+    "constraints": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "ontology_name"],
+  "_phase1_todo": ["Define ontology versioning", "Define schema validation", "Define entity linking"]
+}

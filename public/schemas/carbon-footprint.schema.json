@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Carbon Footprint",
+  "description": "Personal or household carbon footprint tracking.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^carbon_footprint_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "household_id": { "type": "string" },
+    "tracking_period": { "type": "string", "enum": ["daily", "weekly", "monthly", "yearly"] },
+    "period_start_date": { "type": "string", "format": "date" },
+    "period_end_date": { "type": "string", "format": "date" },
+    "total_emissions_kg_co2": { "type": "number" },
+    "emissions_breakdown": { "type": "object", "properties": { "energy_usage": { "type": "number" }, "transportation": { "type": "number" }, "food": { "type": "number" }, "waste": { "type": "number" }, "water": { "type": "number" }, "other": { "type": "number" } } },
+    "energy_source_mix": { "type": "object", "properties": { "renewable_percentage": { "type": "number" }, "fossil_fuel_percentage": { "type": "number" }, "nuclear_percentage": { "type": "number" } } },
+    "transportation_emissions": { "type": "array", "items": { "type": "object", "properties": { "mode": { "type": "string" }, "miles_or_km": { "type": "number" }, "emissions_kg": { "type": "number" } } } },
+    "household_members": { "type": "integer" },
+    "per_capita_emissions": { "type": "number" },
+    "comparison_to_national_average": { "type": "number" },
+    "offset_programs_participated": { "type": "array", "items": { "type": "string" } },
+    "reduction_actions_taken": { "type": "array", "items": { "type": "string" } },
+    "reduction_targets": { "type": "array", "items": { "type": "object", "properties": { "target": { "type": "string" }, "target_date": { "type": "string", "format": "date" }, "progress": { "type": "number" } } } },
+    "notes": { "type": "string" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define emissions tracking", "Define reduction goal setting", "Define impact reporting"]
+}

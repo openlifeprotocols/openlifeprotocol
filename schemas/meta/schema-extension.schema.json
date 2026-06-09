@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Schema Extension",
+  "description": "Custom schema extension or customization.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^schema_extension_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "base_schema": { "type": "string" },
+    "extension_name": { "type": "string" },
+    "extension_version": { "type": "string" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "reason_for_extension": { "type": "string" },
+    "new_properties": { "type": "array", "items": { "type": "object", "properties": { "property_name": { "type": "string" }, "type": { "type": "string" }, "description": { "type": "string" }, "required": { "type": "boolean" } } } },
+    "modified_properties": { "type": "array", "items": { "type": "object", "properties": { "property_name": { "type": "string" }, "modification": { "type": "string" } } } },
+    "new_relationships": { "type": "array", "items": { "type": "object", "properties": { "relationship_name": { "type": "string" }, "target_entity": { "type": "string" } } } },
+    "use_cases": { "type": "array", "items": { "type": "string" } },
+    "compatibility_notes": { "type": "string" },
+    "migration_path": { "type": "string" },
+    "validation_rules": { "type": "array", "items": { "type": "string" } },
+    "performance_impact": { "type": "string" },
+    "status": { "type": "string", "enum": ["draft", "testing", "production", "deprecated"] },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "base_schema"],
+  "_phase1_todo": ["Define extension versioning", "Define backward compatibility", "Define extension publishing"]
+}

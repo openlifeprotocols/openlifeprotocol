@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Family Record",
+  "description": "Important family document or record.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^family_record_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "document_type": { "type": "string", "enum": ["birth_certificate", "marriage_certificate", "death_certificate", "divorce_decree", "adoption_record", "family_bible", "census_record", "land_record", "other"] },
+    "document_date": { "type": "string", "format": "date" },
+    "subject_name": { "type": "string" },
+    "subject_relationship": { "type": "string" },
+    "document_location": { "type": "string" },
+    "issuing_authority": { "type": "string" },
+    "document_number": { "type": "string" },
+    "file_location": { "type": "string" },
+    "digital_copy_location": { "type": "string" },
+    "key_information": { "type": "array", "items": { "type": "string" } },
+    "notarized": { "type": "boolean" },
+    "certified_copy": { "type": "boolean" },
+    "condition": { "type": "string" },
+    "access_restrictions": { "type": "string" },
+    "related_people": { "type": "array", "items": { "type": "string" } },
+    "historical_context": { "type": "string" },
+    "notes": { "type": "string" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "document_type"],
+  "_phase1_todo": ["Define document archival", "Define genealogy linking", "Define record verification"]
+}

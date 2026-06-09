@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Schema Mapping",
+  "description": "Mapping between schema versions or external schemas.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^schema_mapping_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "source_schema": { "type": "string" },
+    "target_schema": { "type": "string" },
+    "mapping_type": { "type": "string", "enum": ["version_upgrade", "version_downgrade", "external_system", "data_migration", "integration"] },
+    "created_date": { "type": "string", "format": "date-time" },
+    "mapping_rules": { "type": "array", "items": { "type": "object", "properties": { "source_field": { "type": "string" }, "target_field": { "type": "string" }, "transformation_rule": { "type": "string" }, "data_loss_risk": { "type": "boolean" } } } },
+    "field_transformations": { "type": "object", "additionalProperties": { "type": "string" } },
+    "data_loss_assessment": { "type": "string" },
+    "validation_strategy": { "type": "string" },
+    "rollback_plan": { "type": "string" },
+    "testing_status": { "type": "string" },
+    "migration_success_rate": { "type": "number", "minimum": 0, "maximum": 100 },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "source_schema", "target_schema"],
+  "_phase1_todo": ["Define mapping validation", "Define migration testing", "Define success metrics"]
+}
