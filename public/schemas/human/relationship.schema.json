@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Relationship (Human)",
+  "description": "A meaningful relationship — the human experience of connection, not just the legal or operational link. Captures quality, history, and what the relationship means to a person. Complements the operational Relationship schema in people/.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^human_relationship_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string", "description": "The person for whom this relationship is described" },
+    "other_person_id": { "type": "string" },
+    "other_name": { "type": "string", "description": "Used when the other person is not an OLP record" },
+    "relationship_type": {
+      "type": "string",
+      "enum": ["partner", "spouse", "parent", "child", "sibling", "grandparent", "grandchild", "friend", "close_friend", "colleague", "mentor", "mentee", "community", "other"]
+    },
+    "description": { "type": "string", "description": "What this relationship means to the person — in their own words" },
+    "needs_served": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Need slugs this relationship serves, e.g. belonging, love, trust"
+    },
+    "values_expressed": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Value slugs expressed through this relationship"
+    },
+    "quality": {
+      "type": "string",
+      "enum": ["thriving", "good", "strained", "distant", "conflicted", "estranged"],
+      "description": "Current relationship quality from this person's perspective"
+    },
+    "is_priority": { "type": "boolean", "description": "Is this a priority relationship the person wants to nurture?" },
+    "started_date": { "type": "string", "format": "date" },
+    "ended_date": { "type": "string", "format": "date" },
+    "linked_relationship_id": { "type": "string", "description": "Optional link to operational people/relationship.schema.json record" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "relationship_type"],
+  "_phase1_todo": [
+    "Define relationship wellbeing linkage",
+    "Define relationship repair workflow suggestions",
+    "Define relationship legacy planning",
+    "Define relationship privacy model"
+  ]
+}

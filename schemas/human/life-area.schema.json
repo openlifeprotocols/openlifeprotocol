@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Life Area",
+  "description": "A domain of human life. The top-level classification used to organise goals, needs, events, and cases. Every object in OLP can map to one or more life areas — providing context for why something matters.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^life_area_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "slug": {
+      "type": "string",
+      "enum": [
+        "health",
+        "mental_health",
+        "relationships",
+        "family",
+        "housing",
+        "finance",
+        "career",
+        "business",
+        "education",
+        "travel",
+        "pets",
+        "legal",
+        "community",
+        "spirituality",
+        "creativity",
+        "nature",
+        "legacy",
+        "digital_life",
+        "other"
+      ],
+      "description": "Canonical identifier for the life area"
+    },
+    "description": { "type": "string" },
+    "icon": { "type": "string", "description": "Optional UI icon reference" },
+    "colour": { "type": "string", "description": "Optional UI colour code" },
+    "parent_area": { "type": "string", "description": "Slug of a broader life area, enabling nesting" },
+    "typical_needs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Need slugs commonly associated with this area"
+    },
+    "typical_events": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Life event types typically belonging to this area"
+    },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "name", "slug"],
+  "_phase1_todo": [
+    "Define life area weighting per person",
+    "Define life area balance scoring",
+    "Define life area transitions",
+    "Define life area goal distribution"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Aspiration",
+  "description": "A long-range aspiration or vision — a statement of who a person wants to become or what kind of life they want to live. More directional than a goal, less specific than a plan. The horizon beyond the horizon.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^aspiration_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string", "examples": ["Live abroad", "Build something that outlasts me", "Be fully present for my family"] },
+    "description": { "type": "string", "description": "A richer narrative — a few sentences in the person's own voice" },
+    "life_area_slugs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "supports_value_ids": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "related_goal_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Goals that are steps toward this aspiration"
+    },
+    "time_horizon": {
+      "type": "string",
+      "enum": ["5_years", "10_years", "20_years", "lifetime", "open_ended"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "dormant", "achieved", "relinquished"]
+    },
+    "last_reflected": { "type": "string", "format": "date", "description": "When the person last reviewed this aspiration" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title"],
+  "_phase1_todo": [
+    "Define aspiration narrative format",
+    "Define aspiration-to-goal decomposition",
+    "Define life stage aspiration evolution",
+    "Define aspiration sharing and mentorship"
+  ]
+}

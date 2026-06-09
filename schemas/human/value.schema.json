@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Value",
+  "description": "A personal value — a deeply held principle that guides decisions, priorities, and what a person considers important. Values sit above goals and give them meaning.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^value_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "name": { "type": "string" },
+    "slug": {
+      "type": "string",
+      "enum": [
+        "freedom", "autonomy", "independence",
+        "family", "loyalty", "belonging", "love",
+        "achievement", "success", "ambition", "mastery",
+        "security", "stability", "safety",
+        "health", "vitality", "longevity",
+        "adventure", "exploration", "novelty",
+        "creativity", "self_expression", "beauty",
+        "justice", "fairness", "equality",
+        "integrity", "honesty", "authenticity",
+        "spirituality", "faith", "transcendence",
+        "learning", "knowledge", "wisdom", "curiosity",
+        "nature", "sustainability", "environment",
+        "legacy", "impact", "contribution",
+        "community", "service", "compassion",
+        "wealth", "financial_security", "abundance",
+        "pleasure", "enjoyment", "fun",
+        "recognition", "status", "respect",
+        "simplicity", "minimalism",
+        "other"
+      ],
+      "description": "Canonical value identifier"
+    },
+    "description": { "type": "string" },
+    "importance_rank": { "type": "integer", "minimum": 1, "description": "Relative rank among this person's values; 1 = most important" },
+    "life_area_slugs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "goal_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Goals that express this value"
+    },
+    "aligned": { "type": "boolean", "description": "Does the person feel their current life aligns with this value?" },
+    "alignment_notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "name", "slug"],
+  "_phase1_todo": [
+    "Define value elicitation methodology",
+    "Define value conflict detection",
+    "Define value-goal alignment scoring",
+    "Define values change tracking over life stages"
+  ]
+}
