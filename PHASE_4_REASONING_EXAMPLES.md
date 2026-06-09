@@ -18,8 +18,8 @@ Risk ← mitigated-by ← Project (strength: 0.8, confidence: 0.75)
 
 **Inference Rule:** `indirect-support-via-mitigation`
 ```json
-Pattern: 
-  Goal --blocked-by--> Risk AND 
+Pattern:
+  Goal --blocked-by--> Risk AND
   Risk --mitigated-by--> Project
 Inference:
   Project --indirectly-supports--> Goal
@@ -88,7 +88,7 @@ Impact magnitude: 0.427 × 0.80 = 0.342 (34.2% total effect)
 ```
 CRITICAL CHAIN DETECTED
 
-A payment failure has 34.2% probability of eventually affecting 
+A payment failure has 34.2% probability of eventually affecting
 your revenue target within 3-4 months.
 
 Mitigation options:
@@ -110,7 +110,7 @@ Jan 29 - Service access suspended
 Feb 15 - Product launch delayed
          ↓ (impact accumulates over weeks)
 Feb 28 - Revenue target slips
-         ↓ 
+         ↓
 Mar 15 - Q1 goals partially missed
 
 Total lag: P59D (59 days from failure to goal impact)
@@ -193,7 +193,7 @@ Lag: 171 days (Jan 10 → Jun 30)
   └─ Spent time on portfolio (Jan-Mar)
   └─ Applied to target companies (Apr-May)
   └─ Interviewed and received offer (Jun 30)
-  
+
 Total lag: 171 days
 Confidence: 80% (strong correlation, some external factors)
 Strength: 68% (decision was important but not sole cause)
@@ -221,7 +221,7 @@ Risk --threatens--> Project1 (strength: 0.8, confidence: 0.85)
 
 Risk --threatens--> Project2 (strength: 0.85, confidence: 0.9)
   --blocks--> Goal2 (strength: 0.8, confidence: 0.85)
-  
+
 Risk --relates-to--> Dependency (strength: 0.9, confidence: 0.9)
   --affects--> Project3 (strength: 0.8, confidence: 0.8)
   --impacts--> Goal3 (strength: 0.7, confidence: 0.75)
@@ -271,7 +271,7 @@ Topic --relates-to--> Subject (strength: 0.65, confidence: 0.75)
 
 **Inference Rule:** `knowledge-inheritance`
 ```json
-Pattern: 
+Pattern:
   Document --references--> Topic AND
   Topic --relates-to--> Subject
 Inference:
