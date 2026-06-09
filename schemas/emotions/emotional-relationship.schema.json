@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Emotional Relationship",
+  "description": "The emotional dimension of a relationship — feelings, attachment style, emotional dynamics, support.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^emotional_relationship_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "person_involved": { "type": "string" },
+    "relationship_type": { "type": "string", "enum": ["romantic", "family", "friendship", "professional", "mentorship", "colleague"] },
+    "overall_feeling": { "type": "string", "enum": ["loving", "affectionate", "warm", "neutral", "tense", "cold", "hostile"] },
+    "attachment_security": { "type": "string", "enum": ["secure", "anxious", "avoidant", "disorganized"] },
+    "emotional_safety": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "trust_level": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "vulnerability_comfort": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "emotional_support_received": { "type": "array", "items": { "type": "string" } },
+    "emotional_support_given": { "type": "array", "items": { "type": "string" } },
+    "conflicts": { "type": "array", "items": { "type": "string" } },
+    "conflict_resolution_style": { "type": "string", "enum": ["avoidant", "confrontational", "collaborative", "compromising"] },
+    "emotional_needs_met": { "type": "boolean" },
+    "unmet_needs": { "type": "array", "items": { "type": "string" } },
+    "growth_together": { "type": "string" },
+    "future_potential": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "person_involved", "relationship_type"],
+  "_phase1_todo": [
+    "Define attachment pattern analysis",
+    "Define relationship health scoring",
+    "Define conflict resolution strategy recommendation"
+  ]
+}

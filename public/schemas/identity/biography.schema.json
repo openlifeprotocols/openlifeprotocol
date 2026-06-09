@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Biography",
+  "description": "A biography — life story summary, official biography, how I present myself.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^biography_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "biography_text": { "type": "string" },
+    "bio_type": { "type": "string", "enum": ["official", "personal", "professional", "social_media", "short_form", "long_form"] },
+    "created_date": { "type": "string", "format": "date" },
+    "last_updated": { "type": "string", "format": "date" },
+    "key_biographical_facts": { "type": "array", "items": { "type": "string" } },
+    "highlights": { "type": "array", "items": { "type": "string" } },
+    "achievements_included": { "type": "array", "items": { "type": "string" } },
+    "used_in": { "type": "array", "items": { "type": "string" } },
+    "tone": { "type": "string", "enum": ["formal", "casual", "professional", "humble", "boastful", "poetic"] },
+    "audience": { "type": "string" },
+    "what_emphasizes": { "type": "array", "items": { "type": "string" } },
+    "what_omits": { "type": "array", "items": { "type": "string" } },
+    "authentic_representation": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "biography_text"],
+  "_phase1_todo": [
+    "Define biography versioning and variations",
+    "Define biography authenticity assessment",
+    "Define biographical evolution tracking"
+  ]
+}

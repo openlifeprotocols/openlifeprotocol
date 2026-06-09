@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Nickname",
+  "description": "A nickname — alternative name, how known to others, informal designation.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^nickname_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "nickname": { "type": "string" },
+    "origin": { "type": "string" },
+    "how_given": { "type": "string", "enum": ["self_given", "given_by_family", "given_by_friends", "given_by_community", "professional", "historical"] },
+    "used_by": { "type": "array", "items": { "type": "string" } },
+    "contexts": { "type": "array", "items": { "type": "string" } },
+    "meaning": { "type": "string" },
+    "how_feels_about": { "type": "string" },
+    "variations": { "type": "array", "items": { "type": "string" } },
+    "formal_or_casual": { "type": "string", "enum": ["formal", "informal", "mixed"] },
+    "still_used": { "type": "boolean" },
+    "duration_used": { "type": "string" },
+    "significance": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "nickname"],
+  "_phase1_todo": [
+    "Define nickname aliases and variants",
+    "Define context-appropriate name usage",
+    "Define identity facets by nickname"
+  ]
+}

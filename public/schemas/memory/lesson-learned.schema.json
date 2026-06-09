@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Lesson Learned",
+  "description": "A lesson learned — principle, insight, wisdom distilled from experience.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^lesson_learned_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "lesson_statement": { "type": "string" },
+    "description": { "type": "string" },
+    "lesson_category": { "type": "string", "enum": ["interpersonal", "professional", "financial", "health", "spiritual", "creative", "personal_development", "practical", "wisdom"] },
+    "source_of_lesson": { "type": "string", "enum": ["direct_experience", "observation", "mistake", "failure", "success", "mentorship", "teaching_others", "books_media"] },
+    "life_area_applies_to": { "type": "array", "items": { "type": "string" } },
+    "first_learned_date": { "type": "string", "format": "date" },
+    "reinforcement_instances": { "type": "integer" },
+    "conviction_level": { "type": "string", "enum": ["tentative", "confident", "deeply_held", "absolute"] },
+    "teaching_others": { "type": "boolean" },
+    "changed_behavior": { "type": "string" },
+    "linked_experiences": { "type": "array", "items": { "type": "string" } },
+    "relevance_to_future": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "lesson_statement"],
+  "_phase1_todo": [
+    "Define wisdom graph and interconnections",
+    "Define lesson applicability to new situations",
+    "Define wisdom inheritance and teaching model"
+  ]
+}

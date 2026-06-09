@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Life Stage",
+  "description": "A life stage — developmental period (childhood, adolescence, adulthood, etc.) with characteristics and milestones.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^life_stage_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "stage_name": { "type": "string" },
+    "description": { "type": "string" },
+    "stage_type": { "type": "string", "enum": ["infancy", "childhood", "adolescence", "young_adulthood", "adulthood", "middle_age", "senior"] },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "age_range": { "type": "object", "properties": { "start_age": { "type": "integer" }, "end_age": { "type": "integer" } } },
+    "major_characteristics": { "type": "array", "items": { "type": "string" } },
+    "key_relationships": { "type": "array", "items": { "type": "string" } },
+    "living_situation": { "type": "string" },
+    "primary_roles": { "type": "array", "items": { "type": "string" } },
+    "accomplishments": { "type": "array", "items": { "type": "string" } },
+    "challenges": { "type": "array", "items": { "type": "string" } },
+    "lessons_from_stage": { "type": "array", "items": { "type": "string" } },
+    "how_you_changed": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "stage_name", "stage_type"],
+  "_phase1_todo": [
+    "Define life stage transition detection",
+    "Define stage-based archiving and retrieval",
+    "Define life trajectory visualization across stages"
+  ]
+}

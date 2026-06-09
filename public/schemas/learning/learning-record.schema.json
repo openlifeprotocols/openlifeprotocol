@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Learning Record",
+  "description": "A record of a learning activity — course completion, skill acquired, topic studied, material reviewed.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^learning_record_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "learning_type": { "type": "string", "enum": ["course", "book", "article", "video", "podcast", "seminar", "workshop", "tutorial", "certification", "degree", "self_study", "teaching_others", "experiential"] },
+    "topic": { "type": "string" },
+    "subject_area": { "type": "string", "enum": ["technical", "business", "creative", "health", "language", "hobby", "personal_development", "academic", "professional", "other"] },
+    "title": { "type": "string" },
+    "provider": { "type": "string" },
+    "source_url": { "type": "string", "format": "uri" },
+    "started_date": { "type": "string", "format": "date" },
+    "completed_date": { "type": "string", "format": "date" },
+    "duration_hours": { "type": "number" },
+    "completion_status": { "type": "string", "enum": ["in_progress", "completed", "abandoned", "paused"] },
+    "difficulty_level": { "type": "string", "enum": ["beginner", "intermediate", "advanced", "expert"] },
+    "rating": { "type": "number", "minimum": 0, "maximum": 5 },
+    "notes": { "type": "string" },
+    "skills_acquired": { "type": "array", "items": { "type": "string" } },
+    "certificate_url": { "type": "string", "format": "uri" },
+    "linked_certification_id": { "type": "string" },
+    "linked_skill_ids": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "learning_type", "title"],
+  "_phase1_todo": [
+    "Define learning path chains (prerequisite tracking)",
+    "Define skill mastery levels from learning records",
+    "Define learning goal achievement tracking",
+    "Define learning timeline visualization"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Belief",
+  "description": "A personal belief — something held to be true, conviction, article of faith.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^belief_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "belief_statement": { "type": "string" },
+    "belief_category": { "type": "string", "enum": ["spiritual", "philosophical", "political", "scientific", "moral", "personal", "social"] },
+    "description": { "type": "string" },
+    "conviction_level": { "type": "string", "enum": ["tentative", "moderate", "strong", "unwavering"] },
+    "origin": { "type": "string" },
+    "influenced_by": { "type": "array", "items": { "type": "string" } },
+    "first_adopted_date": { "type": "string", "format": "date" },
+    "changed_over_time": { "type": "boolean" },
+    "how_changed": { "type": "string" },
+    "evidence_for": { "type": "array", "items": { "type": "string" } },
+    "evidence_against": { "type": "array", "items": { "type": "string" } },
+    "impacts_decisions": { "type": "boolean" },
+    "shapes_behavior": { "type": "array", "items": { "type": "string" } },
+    "challenges_to_belief": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "belief_statement"],
+  "_phase1_todo": [
+    "Define belief system coherence analysis",
+    "Define belief-to-decision mapping",
+    "Define worldview synthesis from beliefs"
+  ]
+}

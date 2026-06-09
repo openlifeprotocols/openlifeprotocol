@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Life Rule",
+  "description": "A life rule — a guideline I follow, a personal rule of thumb, a maxim for living.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^life_rule_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "rule": { "type": "string" },
+    "description": { "type": "string" },
+    "rule_category": { "type": "string", "enum": ["health", "relationship", "work", "money", "growth", "fun", "kindness", "integrity", "wisdom", "balance"] },
+    "why_adopted": { "type": "string" },
+    "origin_story": { "type": "string" },
+    "learned_from": { "type": "array", "items": { "type": "string" } },
+    "how_long_followed": { "type": "string" },
+    "effectiveness": { "type": "string", "enum": ["rarely_effective", "sometimes_effective", "often_effective", "always_works"] },
+    "exceptions": { "type": "array", "items": { "type": "string" } },
+    "changed_over_time": { "type": "boolean" },
+    "current_version": { "type": "string" },
+    "helps_with": { "type": "array", "items": { "type": "string" } },
+    "recommend_to_others": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "rule"],
+  "_phase1_todo": [
+    "Define life rule effectiveness scoring",
+    "Define rule application recommendation",
+    "Define rule adaptation for new contexts"
+  ]
+}

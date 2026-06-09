@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Milestone",
+  "description": "A life milestone — graduation, marriage, birth, achievement, accomplishment marking a significant point in time.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^milestone_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "milestone_type": { "type": "string", "enum": ["personal", "professional", "educational", "relational", "health", "financial", "creative", "spiritual", "civic"] },
+    "date": { "type": "string", "format": "date" },
+    "significance_level": { "type": "string", "enum": ["minor", "moderate", "major", "life_defining"] },
+    "achievement_described": { "type": "string" },
+    "preparation_time": { "type": "string" },
+    "emotional_response": { "type": "string" },
+    "who_celebrated_with": { "type": "array", "items": { "type": "string" } },
+    "photos": { "type": "array", "items": { "type": "string", "format": "uri" } },
+    "reflection_on_milestone": { "type": "string" },
+    "impact_on_trajectory": { "type": "string" },
+    "next_milestone_anticipated": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "milestone_type", "date"],
+  "_phase1_todo": [
+    "Define milestone timeline visualization",
+    "Define interpersonal milestone syncing (shared milestones)",
+    "Define milestone prediction and planning"
+  ]
+}

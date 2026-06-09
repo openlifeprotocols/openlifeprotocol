@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Note",
+  "description": "A learning note — study notes, highlights, summaries from reading or learning sessions.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^note_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "content": { "type": "string" },
+    "note_type": { "type": "string", "enum": ["study_note", "highlight", "summary", "annotation", "reflection", "question", "bookmark"] },
+    "subject": { "type": "string" },
+    "linked_learning_record_id": { "type": "string" },
+    "linked_resource_url": { "type": "string", "format": "uri" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "last_modified_date": { "type": "string", "format": "date-time" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "review_status": { "type": "string", "enum": ["not_reviewed", "reviewed", "mastered", "abandoned"] },
+    "review_count": { "type": "integer" },
+    "last_reviewed_date": { "type": "string", "format": "date" },
+    "importance_flag": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "content"],
+  "_phase1_todo": [
+    "Define spaced repetition review scheduling",
+    "Define knowledge graph from note linking",
+    "Define similarity matching across notes"
+  ]
+}

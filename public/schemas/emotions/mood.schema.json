@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mood",
+  "description": "A mood — overall emotional state over a period of time, baseline feeling, general disposition.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^mood_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "mood_date": { "type": "string", "format": "date" },
+    "mood_type": { "type": "string", "enum": ["very_positive", "positive", "neutral", "negative", "very_negative"] },
+    "mood_descriptors": { "type": "array", "items": { "type": "string" } },
+    "contributing_factors": { "type": "array", "items": { "type": "string" } },
+    "energy_level": { "type": "string", "enum": ["very_low", "low", "moderate", "high", "very_high"] },
+    "sleep_quality": { "type": "string", "enum": ["poor", "fair", "good", "excellent"] },
+    "sleep_hours": { "type": "number" },
+    "exercise_done": { "type": "boolean" },
+    "health_status": { "type": "string" },
+    "stress_level": { "type": "integer", "minimum": 0, "maximum": 10 },
+    "social_interaction": { "type": "string", "enum": ["isolated", "minimal", "moderate", "extensive"] },
+    "medication_changes": { "type": "array", "items": { "type": "string" } },
+    "therapy_session": { "type": "boolean" },
+    "gratitude_list": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "mood_date", "mood_type"],
+  "_phase1_todo": [
+    "Define mood trend analysis and prediction",
+    "Define mood-to-factor correlation analysis",
+    "Define depression/anxiety screening from mood logs"
+  ]
+}

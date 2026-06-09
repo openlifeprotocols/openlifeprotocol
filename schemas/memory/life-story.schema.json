@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Life Story",
+  "description": "A narrative or chapter of a person's life — autobiography, memoir section, biographical narrative.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^life_story_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "narrative": { "type": "string" },
+    "chapter_number": { "type": "integer" },
+    "life_period": { "type": "string" },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "key_themes": { "type": "array", "items": { "type": "string" } },
+    "major_events": { "type": "array", "items": { "type": "string" } },
+    "turning_points": { "type": "array", "items": { "type": "string" } },
+    "characters": { "type": "array", "items": { "type": "string" } },
+    "writing_date": { "type": "string", "format": "date" },
+    "tone": { "type": "string", "enum": ["reflective", "celebratory", "regretful", "philosophical", "nostalgic", "honest", "poetic"] },
+    "revision_count": { "type": "integer" },
+    "word_count": { "type": "integer" },
+    "linked_memories": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "narrative"],
+  "_phase1_todo": [
+    "Define chapter sequencing and continuity",
+    "Define story arc analysis",
+    "Define legacy preservation framework"
+  ]
+}

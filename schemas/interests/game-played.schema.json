@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Game Played",
+  "description": "A game played — board game, video game, sport, game session with details and outcomes.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^game_played_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "game_name": { "type": "string" },
+    "game_type": { "type": "string", "enum": ["video_game", "board_game", "card_game", "sport", "puzzle", "strategy_game", "cooperative_game", "competitive_game", "casual_game"] },
+    "play_date": { "type": "string", "format": "date" },
+    "duration_minutes": { "type": "integer" },
+    "played_with": { "type": "array", "items": { "type": "string" } },
+    "location": { "type": "string" },
+    "skill_level": { "type": "string", "enum": ["beginner", "intermediate", "advanced", "expert"] },
+    "outcome": { "type": "string", "enum": ["won", "lost", "tied", "abandoned", "in_progress"] },
+    "score": { "type": "number" },
+    "strategy_used": { "type": "string" },
+    "memorable_moment": { "type": "string" },
+    "difficulty_setting": { "type": "string" },
+    "enjoyment_level": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "would_play_again": { "type": "boolean" },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "game_name", "game_type", "play_date"],
+  "_phase1_todo": [
+    "Define gaming statistics and analytics",
+    "Define win/loss history and patterns",
+    "Define gaming companion network"
+  ]
+}

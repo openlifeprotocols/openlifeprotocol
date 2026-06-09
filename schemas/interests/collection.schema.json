@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Collection",
+  "description": "A collection — curated set of items, possessions organized around a theme or interest.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^collection_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "collection_name": { "type": "string" },
+    "description": { "type": "string" },
+    "collection_type": { "type": "string", "enum": ["books", "art", "memorabilia", "digital", "physical_objects", "experiences", "media", "ephemera"] },
+    "why_collect": { "type": "string" },
+    "date_started": { "type": "string", "format": "date" },
+    "number_of_items": { "type": "integer" },
+    "estimated_value": { "type": "number" },
+    "rarity": { "type": "string", "enum": ["common", "uncommon", "rare", "very_rare", "unique"] },
+    "storage_location": { "type": "string" },
+    "display_status": { "type": "string", "enum": ["displayed", "stored", "archived", "distributed"] },
+    "acquisition_method": { "type": "array", "items": { "type": "string", "enum": ["purchased", "gifted", "inherited", "found", "traded"] } },
+    "care_requirements": { "type": "array", "items": { "type": "string" } },
+    "cataloged": { "type": "boolean" },
+    "featured_item": { "type": "string" },
+    "disposal_plans": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "collection_name", "collection_type"],
+  "_phase1_todo": [
+    "Define collection cataloging system",
+    "Define collection value tracking",
+    "Define collection sharing and exhibition"
+  ]
+}

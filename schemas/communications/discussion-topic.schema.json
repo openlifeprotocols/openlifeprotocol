@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Discussion Topic",
+  "description": "A discussion topic — subject that came up, debate, exploration of ideas, collaborative thinking.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^discussion_topic_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "topic": { "type": "string" },
+    "description": { "type": "string" },
+    "topic_type": { "type": "string", "enum": ["philosophical", "technical", "personal", "political", "creative", "strategic", "problem_solving", "brainstorming"] },
+    "participants": { "type": "array", "items": { "type": "string" } },
+    "discussion_date": { "type": "string", "format": "date" },
+    "duration_minutes": { "type": "integer" },
+    "format": { "type": "string", "enum": ["meeting", "conversation", "email_thread", "forum", "chat", "workshop"] },
+    "perspectives_shared": { "type": "array", "items": { "type": "string" } },
+    "consensus_reached": { "type": "boolean" },
+    "decisions_from_discussion": { "type": "array", "items": { "type": "string" } },
+    "further_research_needed": { "type": "boolean", "default": false },
+    "personal_thoughts_changed": { "type": "boolean" },
+    "key_insights": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "topic"],
+  "_phase1_todo": [
+    "Define discussion outcome tracking",
+    "Define perspective evolution from discussions",
+    "Define collaborative knowledge graph"
+  ]
+}

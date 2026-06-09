@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Self Description",
+  "description": "A self-description — how I describe myself, personal attributes I claim, self-concept.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^self_description_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "description": { "type": "string" },
+    "context": { "type": "string" },
+    "audience": { "type": "string" },
+    "traits_claimed": { "type": "array", "items": { "type": "string" } },
+    "positive_attributes": { "type": "array", "items": { "type": "string" } },
+    "challenges_acknowledged": { "type": "array", "items": { "type": "string" } },
+    "values_expressed": { "type": "array", "items": { "type": "string" } },
+    "self_concept_type": { "type": "string", "enum": ["realistic", "humble", "confident", "inflated", "self_critical", "balanced"] },
+    "alignment_with_external_perception": { "type": "string" },
+    "most_central_claim": { "type": "string" },
+    "newest_understanding": { "type": "string" },
+    "outdated_descriptions": { "type": "array", "items": { "type": "string" } },
+    "describes_ideal_self": { "type": "boolean" },
+    "describes_actual_self": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "description"],
+  "_phase1_todo": [
+    "Define self-concept evolution tracking",
+    "Define self-perception vs. external perception analysis",
+    "Define authentic self-concept development"
+  ]
+}

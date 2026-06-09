@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Principle",
+  "description": "A personal principle — a foundational rule or standard of conduct.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^principle_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "principle": { "type": "string" },
+    "description": { "type": "string" },
+    "why_important": { "type": "string" },
+    "principle_type": { "type": "string", "enum": ["ethical", "operational", "interpersonal", "professional", "financial", "health", "spiritual"] },
+    "domain": { "type": "string" },
+    "adhered_to": { "type": "boolean" },
+    "times_violated": { "type": "integer" },
+    "circumstances_of_violation": { "type": "array", "items": { "type": "string" } },
+    "consequences_of_violation": { "type": "array", "items": { "type": "string" } },
+    "learned_from": { "type": "string" },
+    "conflicts_with_other_principles": { "type": "array", "items": { "type": "string" } },
+    "guides_decisions": { "type": "boolean" },
+    "guiding_behavior": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "principle"],
+  "_phase1_todo": [
+    "Define principle integrity tracking",
+    "Define principle conflict resolution",
+    "Define principle impact on life outcomes"
+  ]
+}

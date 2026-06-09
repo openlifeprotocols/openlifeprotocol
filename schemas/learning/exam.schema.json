@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Exam",
+  "description": "A formal exam or assessment — test results, score, date, subject, certification context.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^exam_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "exam_name": { "type": "string" },
+    "exam_code": { "type": "string" },
+    "subject_area": { "type": "string" },
+    "exam_date": { "type": "string", "format": "date" },
+    "score": { "type": "number" },
+    "total_points": { "type": "number" },
+    "percentage": { "type": "number", "minimum": 0, "maximum": 100 },
+    "pass_fail": { "type": "boolean" },
+    "grade_letter": { "type": "string" },
+    "certification_exam": { "type": "boolean" },
+    "linked_certification_id": { "type": "string" },
+    "exam_type": { "type": "string", "enum": ["standardized_test", "academic_exam", "professional_certification", "competency_assessment", "diagnostic_test", "practice_test"] },
+    "testing_center": { "type": "string" },
+    "language": { "type": "string" },
+    "validity_period": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "exam_name", "exam_date", "score"],
+  "_phase1_todo": [
+    "Define exam preparation tracking",
+    "Define retake history and improvement trends",
+    "Define test score conversion between exam types"
+  ]
+}

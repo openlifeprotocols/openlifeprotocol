@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Chat Message",
+  "description": "A significant chat message or message thread — SMS, Slack, messaging app message worth archiving.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^chat_message_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "message_from": { "type": "string" },
+    "message_to": { "type": "array", "items": { "type": "string" } },
+    "message_date": { "type": "string", "format": "date" },
+    "message_time": { "type": "string", "format": "time" },
+    "platform": { "type": "string", "enum": ["sms", "slack", "whatsapp", "telegram", "signal", "email", "imessage", "discord", "other"] },
+    "message_text": { "type": "string" },
+    "message_type": { "type": "string", "enum": ["regular", "important", "decision", "advice", "support", "celebration", "conflict"] },
+    "sentiment": { "type": "string", "enum": ["positive", "negative", "neutral", "mixed"] },
+    "thread_id": { "type": "string" },
+    "reply_to_message_id": { "type": "string" },
+    "attachments": { "type": "array", "items": { "type": "string", "format": "uri" } },
+    "reaction": { "type": "string" },
+    "significance_flag": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "message_from", "message_date", "message_text"],
+  "_phase1_todo": [
+    "Define message thread extraction and visualization",
+    "Define meaningful message detection",
+    "Define conversation flow reconstruction"
+  ]
+}

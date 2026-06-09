@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Philosophy",
+  "description": "A personal philosophy — an overarching way of thinking, approach to life, philosophical position.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^philosophy_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "philosophy_type": { "type": "string", "enum": ["existential", "stoic", "hedonistic", "pragmatic", "idealistic", "cynical", "optimistic", "spiritual", "secular", "mixed"] },
+    "core_tenets": { "type": "array", "items": { "type": "string" } },
+    "influences": { "type": "array", "items": { "type": "string" } },
+    "adopted_date": { "type": "string", "format": "date" },
+    "evolution": { "type": "string" },
+    "how_guides_life": { "type": "string" },
+    "biggest_questions_addresses": { "type": "array", "items": { "type": "string" } },
+    "conflicts_with_society": { "type": "string" },
+    "helps_with": { "type": "array", "items": { "type": "string" } },
+    "limitations": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "name"],
+  "_phase1_todo": [
+    "Define philosophy consistency checking",
+    "Define life-philosophy alignment assessment",
+    "Define philosophy evolution tracking"
+  ]
+}

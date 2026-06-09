@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Decision Option",
+  "description": "An option considered in a decision — alternative course of action, choice available.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^decision_option_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "decision_id": { "type": "string", "pattern": "^decision_[a-zA-Z0-9_-]+$" },
+    "person_id": { "type": "string" },
+    "option_name": { "type": "string" },
+    "description": { "type": "string" },
+    "pros": { "type": "array", "items": { "type": "string" } },
+    "cons": { "type": "array", "items": { "type": "string" } },
+    "pros_weight": { "type": "number", "minimum": -100, "maximum": 100 },
+    "cons_weight": { "type": "number", "minimum": -100, "maximum": 100 },
+    "feasibility": { "type": "string", "enum": ["not_feasible", "difficult", "moderate", "easy", "highly_feasible"] },
+    "cost_estimate": { "type": "number" },
+    "time_required": { "type": "string" },
+    "resource_needs": { "type": "array", "items": { "type": "string" } },
+    "risk_level": { "type": "string", "enum": ["very_low", "low", "moderate", "high", "very_high"] },
+    "reversibility": { "type": "string", "enum": ["fully_reversible", "mostly_reversible", "partially_reversible", "irreversible"] },
+    "aligned_with_values": { "type": "boolean" },
+    "long_term_impact": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "decision_id", "person_id", "option_name"],
+  "_phase1_todo": [
+    "Define option scoring and ranking",
+    "Define option comparison matrices",
+    "Define option consequence modeling"
+  ]
+}

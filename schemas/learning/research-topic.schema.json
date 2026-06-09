@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Research Topic",
+  "description": "A topic of personal research or deep study — investigating, experimenting, exploring an area of interest.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^research_topic_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "topic_name": { "type": "string" },
+    "description": { "type": "string" },
+    "category": { "type": "string" },
+    "started_date": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["active", "paused", "completed", "abandoned"] },
+    "motivation": { "type": "string" },
+    "key_questions": { "type": "array", "items": { "type": "string" } },
+    "resources_consulted": { "type": "array", "items": { "type": "string" } },
+    "findings": { "type": "string" },
+    "practical_applications": { "type": "array", "items": { "type": "string" } },
+    "related_skills": { "type": "array", "items": { "type": "string" } },
+    "related_projects": { "type": "array", "items": { "type": "string" } },
+    "depth_level": { "type": "string", "enum": ["surface_level", "intermediate", "deep_expert"] },
+    "collaboration_partners": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "topic_name"],
+  "_phase1_todo": [
+    "Define research methodology framework",
+    "Define knowledge output (papers, artifacts)",
+    "Define insight capture and synthesis"
+  ]
+}

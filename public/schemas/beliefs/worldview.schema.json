@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Worldview",
+  "description": "A worldview — comprehensive perspective on reality, meaning, purpose, human nature.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^worldview_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "on_meaning_of_life": { "type": "string" },
+    "on_human_nature": { "type": "string" },
+    "on_good_vs_evil": { "type": "string" },
+    "on_morality": { "type": "string" },
+    "on_success": { "type": "string" },
+    "on_happiness": { "type": "string" },
+    "on_community": { "type": "string" },
+    "on_nature": { "type": "string" },
+    "on_change": { "type": "string" },
+    "on_death": { "type": "string" },
+    "spiritual_or_secular": { "type": "string", "enum": ["spiritual", "religious", "secular", "agnostic", "mixed"] },
+    "worldview_sources": { "type": "array", "items": { "type": "string" } },
+    "how_developed": { "type": "string" },
+    "major_influences": { "type": "array", "items": { "type": "string" } },
+    "coherence_assessment": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title"],
+  "_phase1_todo": [
+    "Define worldview coherence analysis",
+    "Define decision-worldview alignment checking",
+    "Define worldview evolution tracking over time"
+  ]
+}

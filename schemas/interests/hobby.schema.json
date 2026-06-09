@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Hobby",
+  "description": "A hobby — regular leisure activity pursued for enjoyment, relaxation, personal fulfillment.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^hobby_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "hobby_name": { "type": "string" },
+    "description": { "type": "string" },
+    "hobby_type": { "type": "string", "enum": ["creative", "physical", "intellectual", "collecting", "social", "digital", "outdoor", "indoor"] },
+    "date_started": { "type": "string", "format": "date" },
+    "skill_level": { "type": "string", "enum": ["beginner", "intermediate", "advanced", "expert"] },
+    "frequency": { "type": "string", "enum": ["daily", "weekly", "monthly", "occasionally", "seasonal"] },
+    "time_spent_weekly": { "type": "number" },
+    "why_enjoy": { "type": "array", "items": { "type": "string" } },
+    "benefits": { "type": "array", "items": { "type": "string" } },
+    "communities_involved": { "type": "array", "items": { "type": "string" } },
+    "equipment_or_supplies": { "type": "array", "items": { "type": "string" } },
+    "expenses": { "type": "number" },
+    "learned_through": { "type": "array", "items": { "type": "string" } },
+    "improvement_goals": { "type": "array", "items": { "type": "string" } },
+    "would_pursue_professionally": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "hobby_name", "hobby_type"],
+  "_phase1_todo": [
+    "Define hobby community networking",
+    "Define skill progression tracking",
+    "Define hobby project portfolio"
+  ]
+}

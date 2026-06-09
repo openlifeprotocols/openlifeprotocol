@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Skill",
+  "description": "A skill — technical or non-technical capability with proficiency level and acquisition method.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^skill_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "name": { "type": "string" },
+    "category": { "type": "string", "enum": ["technical", "soft_skill", "language", "creative", "physical", "business", "other"] },
+    "proficiency_level": { "type": "string", "enum": ["novice", "beginner", "intermediate", "advanced", "expert", "master"] },
+    "acquisition_method": { "type": "string", "enum": ["formal_education", "self_taught", "on_the_job", "mentorship", "course", "practice", "experience"] },
+    "years_of_experience": { "type": "number" },
+    "first_acquired_date": { "type": "string", "format": "date" },
+    "last_used_date": { "type": "string", "format": "date" },
+    "endorsements": { "type": "integer" },
+    "related_certifications": { "type": "array", "items": { "type": "string" } },
+    "related_learning_records": { "type": "array", "items": { "type": "string" } },
+    "is_active": { "type": "boolean" },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "name", "proficiency_level"],
+  "_phase1_todo": [
+    "Define skill decay over time without use",
+    "Define skill transferability across domains",
+    "Define skill gap analysis for roles"
+  ]
+}

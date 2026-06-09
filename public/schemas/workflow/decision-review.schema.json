@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Decision Review",
+  "description": "A review of a decision — reflection, post-mortem, assessment of decision quality and outcome.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^decision_review_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "decision_id": { "type": "string", "pattern": "^decision_[a-zA-Z0-9_-]+$" },
+    "person_id": { "type": "string" },
+    "review_date": { "type": "string", "format": "date" },
+    "time_since_decision": { "type": "string" },
+    "decision_quality_rating": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "decision_process_quality": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "outcome_quality_rating": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "what_went_well": { "type": "array", "items": { "type": "string" } },
+    "what_went_poorly": { "type": "array", "items": { "type": "string" } },
+    "bias_detected": { "type": "array", "items": { "type": "string" } },
+    "information_gaps": { "type": "array", "items": { "type": "string" } },
+    "process_improvements": { "type": "array", "items": { "type": "string" } },
+    "pattern_recognition": { "type": "string" },
+    "similar_past_decisions": { "type": "array", "items": { "type": "string" } },
+    "wisdom_for_future": { "type": "array", "items": { "type": "string" } },
+    "better_alternative_existed": { "type": "boolean" },
+    "what_would_do_differently": { "type": "string" },
+    "confidence_in_future_similar_decisions": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "decision_id", "person_id"],
+  "_phase1_todo": [
+    "Define decision pattern analytics",
+    "Define decision quality improvement over time",
+    "Define decision bias correction learning"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Experience",
+  "description": "A significant experience — lived through, participated in, witnessed — with its meaning and impact.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^experience_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "experience_type": { "type": "string", "enum": ["travel", "work", "education", "relationship", "health", "adventure", "loss", "achievement", "challenge", "discovery", "other"] },
+    "date": { "type": "string", "format": "date" },
+    "duration": { "type": "string" },
+    "location": { "type": "string" },
+    "people_involved": { "type": "array", "items": { "type": "string" } },
+    "skills_challenged": { "type": "array", "items": { "type": "string" } },
+    "comfort_zone": { "type": "string", "enum": ["within_comfort_zone", "slightly_outside", "far_outside", "terrifying"] },
+    "growth_achieved": { "type": "string" },
+    "personal_impact": { "type": "string", "enum": ["minimal", "moderate", "significant", "transformative"] },
+    "lessons_learned": { "type": "array", "items": { "type": "string" } },
+    "perspective_shift": { "type": "string" },
+    "would_repeat": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "experience_type"],
+  "_phase1_todo": [
+    "Define experience growth assessment",
+    "Define comfort zone expansion tracking",
+    "Define transferable insights extraction"
+  ]
+}

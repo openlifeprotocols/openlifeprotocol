@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Transition",
+  "description": "A life transition — major change, pivot point, shift from one state to another.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^transition_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "transition_type": { "type": "string", "enum": ["career_change", "relocation", "relationship_change", "health_change", "identity_shift", "belief_shift", "role_change", "life_stage_transition"] },
+    "start_date": { "type": "string", "format": "date" },
+    "completion_date": { "type": "string", "format": "date" },
+    "duration": { "type": "string" },
+    "what_ended": { "type": "string" },
+    "what_began": { "type": "string" },
+    "why_happened": { "type": "string" },
+    "was_planned": { "type": "boolean" },
+    "difficulty_level": { "type": "string", "enum": ["smooth", "challenging", "difficult", "traumatic"] },
+    "support_received": { "type": "array", "items": { "type": "string" } },
+    "growth_from_transition": { "type": "string" },
+    "regrets": { "type": "string" },
+    "wisdom_gained": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "transition_type"],
+  "_phase1_todo": [
+    "Define transition support network mapping",
+    "Define transition difficulty assessment",
+    "Define post-transition adjustment tracking"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Interest",
+  "description": "An interest — area of curiosity, topic of engagement, subject that captures attention.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^interest_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "interest_name": { "type": "string" },
+    "description": { "type": "string" },
+    "interest_category": { "type": "string", "enum": ["science", "technology", "arts", "history", "politics", "philosophy", "sports", "music", "literature", "other"] },
+    "passion_level": { "type": "string", "enum": ["casual", "moderate", "strong", "obsessive"] },
+    "discovered_when": { "type": "string", "format": "date" },
+    "what_attracts": { "type": "array", "items": { "type": "string" } },
+    "how_explored": { "type": "array", "items": { "type": "string" } },
+    "resources_consumed": { "type": "array", "items": { "type": "string", "format": "uri" } },
+    "communities_joined": { "type": "array", "items": { "type": "string" } },
+    "conversations_had": { "type": "integer" },
+    "unanswered_questions": { "type": "array", "items": { "type": "string" } },
+    "connections_to_other_interests": { "type": "array", "items": { "type": "string" } },
+    "career_potential": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "interest_name"],
+  "_phase1_todo": [
+    "Define interest graph and connections",
+    "Define interest recommendation engine",
+    "Define expertise development from interests"
+  ]
+}

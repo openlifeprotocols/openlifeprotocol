@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Decision Outcome",
+  "description": "The outcome of a decision — what resulted, how it went, consequences experienced.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^decision_outcome_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "decision_id": { "type": "string", "pattern": "^decision_[a-zA-Z0-9_-]+$" },
+    "person_id": { "type": "string" },
+    "outcome_date": { "type": "string", "format": "date" },
+    "what_happened": { "type": "string" },
+    "expected_vs_actual": { "type": "string" },
+    "satisfaction_with_outcome": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "positive_consequences": { "type": "array", "items": { "type": "string" } },
+    "negative_consequences": { "type": "array", "items": { "type": "string" } },
+    "unexpected_consequences": { "type": "array", "items": { "type": "string" } },
+    "people_affected": { "type": "array", "items": { "type": "string" } },
+    "financial_impact": { "type": "number" },
+    "time_investment": { "type": "string" },
+    "relationships_impacted": { "type": "array", "items": { "type": "string" } },
+    "health_impact": { "type": "string" },
+    "career_impact": { "type": "string" },
+    "would_choose_same": { "type": "boolean" },
+    "regret_level": { "type": "string", "enum": ["no_regret", "slight_regret", "moderate_regret", "severe_regret"] },
+    "lessons_learned": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "decision_id", "person_id", "what_happened"],
+  "_phase1_todo": [
+    "Define outcome prediction accuracy tracking",
+    "Define long-term consequence follow-up",
+    "Define counterfactual thinking support (if I had chosen otherwise)"
+  ]
+}
