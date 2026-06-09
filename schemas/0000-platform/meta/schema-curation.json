@@ -388,7 +388,7 @@
           "required": false
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "resource-allocation-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "7-years",
@@ -506,7 +506,7 @@
           "required": false
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "customer-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
@@ -532,7 +532,7 @@
           "required": false
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "employee-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
@@ -552,7 +552,7 @@
           "required": false
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "mentor-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",
@@ -578,7 +578,7 @@
           "required": false
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "contractor-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "medium",
       "retention": "permanent",

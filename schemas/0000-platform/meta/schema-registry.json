@@ -1,7 +1,7 @@
 {
   "version": 3,
   "description": "Ontology registry for schema-to-account mapping, canonical lineage, and graph references (generated index).",
-  "generatedAt": "2026-06-09T21:37:22.067Z",
+  "generatedAt": "2026-06-09T21:38:28.773Z",
   "entryCount": 811,
   "fields": {
     "required": [
@@ -10938,7 +10938,7 @@
         "customers"
       ],
       "relationships": [],
-      "lifecycle": null,
+      "lifecycle": "customer-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
@@ -13057,7 +13057,7 @@
         "people"
       ],
       "relationships": [],
-      "lifecycle": null,
+      "lifecycle": "contractor-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
@@ -13109,7 +13109,7 @@
         "people"
       ],
       "relationships": [],
-      "lifecycle": null,
+      "lifecycle": "employee-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "low",
       "retention": "permanent",
@@ -16332,7 +16332,7 @@
         "mentorship"
       ],
       "relationships": [],
-      "lifecycle": null,
+      "lifecycle": "mentor-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
@@ -18656,7 +18656,7 @@
         "property-construction"
       ],
       "relationships": [],
-      "lifecycle": null,
+      "lifecycle": "contractor-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "low",
       "retention": "permanent",
