@@ -182,6 +182,50 @@ It is intentionally short, plain-language, and non-technical.
 - Consequence: Dedicated place for network, connection, influence, introduction, and referral records.
 - Follow-up: Keep network introduction semantics distinct from opportunity pipeline introduction semantics.
 
+## 2026-06-09 - Strengthen ontology governance principles
+
+- Date: 2026-06-09
+- Decision: Formalize primitive promotion, source-of-truth, lifecycle, sensitivity, and deletion-test rules in schema design governance.
+- Status: accepted
+- Context: Architecture reached high coverage; remaining risk shifted from missing domains to ontology drift and governance inconsistency.
+- Rationale: Strong governance keeps a mature ontology coherent as contributors and use-cases grow.
+- Trade-offs: Slightly slower schema authoring due to stronger design checks.
+- Consequence: New schemas must pass explicit checks before introduction.
+- Follow-up: Include governance checks in schema review process.
+
+## 2026-06-09 - Primitive promotion rule adopted
+
+- Date: 2026-06-09
+- Decision: If a concept appears across 3+ accounts, evaluate promotion to platform core canonical primitive.
+- Status: accepted
+- Context: Cross-account duplicates historically emerged when concepts were first introduced as account-local entities.
+- Rationale: Centralized primitives reduce duplication and improve interoperability.
+- Trade-offs: Requires extension/wrapper patterns for local context.
+- Consequence: Better queryability and less ontology fragmentation.
+- Follow-up: Periodically audit cross-account entities for promotion candidates.
+
+## 2026-06-09 - Source-of-truth and confidence rule adopted
+
+- Date: 2026-06-09
+- Decision: Every schema design should define source-of-truth expectations and confidence posture.
+- Status: accepted
+- Context: Multi-source records can conflict (for example, imported vs user-entered vs institution-provided data).
+- Rationale: Explicit source/confidence principles are necessary for trustworthy reasoning and reconciliation.
+- Trade-offs: Added design and review overhead.
+- Consequence: Better conflict resolution and provenance-aware decision support.
+- Follow-up: Define reusable source/confidence patterns in platform-level guidance.
+
+## 2026-06-09 - Sensitivity and retention governance adopted
+
+- Date: 2026-06-09
+- Decision: Every schema should define expected sensitivity, sharing posture, and retention expectations.
+- Status: accepted
+- Context: Personal operating systems include highly sensitive data where governance must be first-class.
+- Rationale: Privacy and retention need ontology-level treatment, not implementation-only handling.
+- Trade-offs: Requires policy mapping and review discipline.
+- Consequence: More secure and policy-ready schema design.
+- Follow-up: Establish sensitivity class taxonomy and default retention categories.
+
 ## 2026-06-09 - Rename Self to Person
 
 - Date: 2026-06-09

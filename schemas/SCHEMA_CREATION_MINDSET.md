@@ -11,7 +11,7 @@ A schema in this system should answer one question clearly:
 
 If the answer is vague, stop and redefine it before writing fields.
 
-## Core Mindset
+## Ontology Principles
 
 1. Model reality, not apps
 - We model enduring life entities and events, not UI screens or features.
@@ -49,6 +49,26 @@ If the answer is vague, stop and redefine it before writing fields.
 - Role answers: who the person is acting as in that context.
 - Keep one shared schema where possible, then classify with channel and role.
 
+9. Prefer canonical primitives for cross-cutting concepts
+- If a concept is likely to appear in more than three accounts, consider promoting it to a platform primitive.
+- Most schemas should reference or extend canonical primitives rather than redefine them.
+
+10. Define source of truth and confidence
+- Every schema should identify expected source-of-truth patterns and confidence expectations.
+- Conflicting records are normal; source and confidence must be explicit so resolution is governable.
+
+11. Require a real-world lifecycle
+- Every schema should represent real-world state transitions, not only storage structure.
+- Lifecycle states should reflect real decisions and outcomes.
+
+12. Classify sensitivity, sharing, and retention expectations
+- Privacy and retention are ontology concerns, not implementation afterthoughts.
+- Each schema should have an expected sensitivity and sharing posture.
+
+13. Apply the deletion test
+- Ask: if this record disappeared tomorrow, what real-world thing would no longer be represented?
+- If the answer is "nothing", it likely should not be a schema.
+
 ## Classification Model: Account + Channel + Role
 
 Use this mental model for every record:
@@ -65,7 +85,7 @@ Design rule:
 - Do not fork schemas into personal vs business unless the concept itself is different.
 - Prefer shared schema plus explicit channel and role classification.
 
-## Creation Flow (Non-Technical)
+## Schema Design Process
 
 1. Name the concept in plain language
 - "What is this in a person's life?"
@@ -99,6 +119,18 @@ Design rule:
 - If yes, reuse schema and classify by channel and role.
 - If no, only then create a distinct schema.
 
+10. Run canonical primitive promotion test
+- If the concept is appearing across 3+ accounts, evaluate promotion to `0000-platform/core`.
+
+11. Declare source and confidence expectations
+- Define expected evidence/source quality for this record type.
+
+12. Declare sensitivity and retention posture
+- Define expected sensitivity class and default retention expectations.
+
+13. Run the deletion test
+- Confirm this schema represents a real-world fact that would be lost if the record disappeared.
+
 ## Quality Bar (Before Adding Any Schema)
 
 A new schema is ready only if all are true:
@@ -108,6 +140,30 @@ A new schema is ready only if all are true:
 - Its role in cross-domain analysis is clear.
 - A future teammate can understand the "why" in 60 seconds.
 - It is clear whether variation should be modeled via channel/role rather than a new schema.
+- It passes the canonical primitive promotion test when cross-account reuse is likely.
+- It has a clear source-of-truth and confidence posture.
+- It has a clear lifecycle with meaningful states.
+- It has defined sensitivity/sharing/retention expectations.
+- It passes the deletion test.
+
+## Canonical Primitive Set
+
+Default canonical primitives to reference or extend unless there is a clear reason not to:
+- actor
+- organisation
+- document
+- event
+- relationship
+- project
+- goal
+- task
+- opportunity
+- risk
+- decision
+- communication
+- payment
+- asset
+- liability
 
 ## Naming and Scope Heuristics
 
