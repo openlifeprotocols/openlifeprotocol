@@ -20,13 +20,46 @@ It is intentionally short, plain-language, and non-technical.
 ## 2026-06-09 - Adopt numbered life accounts as primary structure
 
 - Date: 2026-06-09
-- Decision: Organize schemas under numbered top-level accounts (0000-18000) instead of unnumbered domain buckets.
+- Decision: Organize schemas under numbered top-level accounts (0000-19000) instead of unnumbered domain buckets.
 - Status: accepted
 - Context: Flat and mixed domain naming became harder to navigate at scale.
 - Rationale: Numbered accounts create stable hierarchy, clear rollups, and long-term expansion room.
 - Trade-offs: Initial migration effort and temporary path churn.
 - Consequence: Improved discoverability, consistent growth model, better reporting by life domain.
 - Follow-up: Keep new domains aligned to account logic, not convenience.
+
+## 2026-06-09 - Split Work into Career and Enterprise
+
+- Date: 2026-06-09
+- Decision: Replace `5000-work` with `5000-career-profession` and introduce `19000-enterprise-ventures`.
+- Status: accepted
+- Context: Work mixed person-as-labour and person-as-owner/operator concepts in one account.
+- Rationale: Career and enterprise are different modes of participation and should be modeled separately.
+- Trade-offs: One-time migration complexity and path churn.
+- Consequence: Cleaner reasoning for employee, freelancer, founder, creator, investor, and volunteer combinations.
+- Follow-up: Keep person-facing career records in 5000 and organization/venture operations in 19000.
+
+## 2026-06-09 - Career account scope clarified
+
+- Date: 2026-06-09
+- Decision: Define 5000 as Career & Profession (labour and professional identity), including employment and professional mentorship.
+- Status: accepted
+- Context: Mentorship could sit under relationships or career depending on purpose.
+- Rationale: Professional mentorship is primarily career-development in this model.
+- Trade-offs: Personal/life mentorship use cases may need explicit channel tagging.
+- Consequence: Career account now reflects worker-centric journey and progression.
+- Follow-up: Distinguish professional vs personal mentorship through channel and role.
+
+## 2026-06-09 - Enterprise account scope clarified
+
+- Date: 2026-06-09
+- Decision: Define 19000 as Enterprise & Ventures and map business operations into numbered enterprise subaccounts.
+- Status: accepted
+- Context: Business and startup structures were previously nested under work.
+- Rationale: Ventures are organizational systems and should be modeled independently from labour/career.
+- Trade-offs: Requires clear links between person records and enterprise records.
+- Consequence: Business, startups, customers, sales, marketing, operations, finance, HR, and strategy now roll up under enterprise.
+- Follow-up: Add linking conventions between 5000 career entities and 19000 enterprise entities.
 
 ## 2026-06-09 - Rename Self to Person
 

@@ -137,6 +137,11 @@ Channel and role mindset applied:
 - Capacity differences are captured by channel and role, not duplicate schema trees.
 - Enterprise records can live in enterprise-focused accounts, while person-facing records stay in life accounts and carry business/founder channels when relevant.
 
+Career vs enterprise clarification:
+- Career & Profession (5000) models the person as a worker/professional.
+- Enterprise & Ventures (19000) models organizations, ventures, and operations the person owns, runs, advises, or participates in.
+- Use channel and role to connect person records to enterprise records without collapsing both concepts into one account.
+
 ## Maintenance Rhythm
 
 - When adding a schema: update decision log immediately.
