@@ -59,11 +59,10 @@ export function Hero() {
             />
             <div className="relative">
               <p className="inline bg-linear-to-r from-indigo-200 via-sky-400 to-indigo-200 bg-clip-text font-display text-5xl tracking-tight text-transparent">
-                Standardize any workflow.
+                One protocol. Every workflow.
               </p>
               <p className="mt-3 text-2xl tracking-tight text-slate-400">
-                The contract-first standard for life, business, and AI. Standardize
-                how the world works together.
+                The contract-first standard for life, business, and AI.
               </p>
               <div className="mt-8 flex gap-4 md:justify-center lg:justify-start">
                 <Button href="/">Get started</Button>
