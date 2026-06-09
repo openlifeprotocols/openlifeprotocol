@@ -1,0 +1,124 @@
+import fs from 'node:fs';
+import { execSync } from 'node:child_process';
+
+const registryPath = 'schemas/0000-platform/meta/schema-registry.json';
+const accountsPath = 'schemas/0000-platform/meta/accounts.json';
+
+const existing = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+const accounts = JSON.parse(fs.readFileSync(accountsPath, 'utf8'));
+
+const byPath = new Map();
+for (const entry of existing.entries || []) {
+  if (entry.path) byPath.set(entry.path, entry);
+}
+
+const accountNameByCode = new Map(Object.entries(accounts).map(([code, v]) => [code, v.name]));
+
+const schemaFiles = execSync("find schemas -name '*.schema.json' | sort", { encoding: 'utf8' })
+  .trim()
+  .split('\n')
+  .filter(Boolean);
+
+const canonicalPathOverrides = new Map([
+  ['relationship', 'schemas/2000-relationships/relationships/relationship.schema.json'],
+  ['opportunity', 'schemas/17000-opportunities/opportunities/opportunity.schema.json']
+]);
+
+const explicitExtends = new Map([
+  ['creative-project', 'project'],
+  ['consulting-engagement', 'project'],
+  ['engagement', 'project'],
+  ['career-goal', 'goal'],
+  ['learning-goal', 'goal'],
+  ['impact-goal', 'goal'],
+  ['parenting-goal', 'goal'],
+  ['sustainability-goal', 'goal'],
+  ['financial-goals', 'goal'],
+  ['startup', 'organisation'],
+  ['lead', 'opportunity'],
+  ['prospect', 'opportunity']
+]);
+
+const rows = schemaFiles.map((path) => {
+  const rel = path.replace(/^schemas\//, '');
+  const parts = rel.split('/');
+  const accountPart = parts[0] || '0000-platform';
+  const account = (accountPart.match(/^(\d{4,5})-/) || [])[1] || '0000';
+  const schema = parts.at(-1).replace(/\.schema\.json$/, '');
+  const parent = parts.length >= 3 ? parts.at(-2) : (parts[1] || 'core');
+
+  return { schema, account, parent, path };
+});
+
+const groups = new Map();
+for (const row of rows) {
+  if (!groups.has(row.schema)) groups.set(row.schema, []);
+  groups.get(row.schema).push(row);
+}
+
+const canonicalPathBySchema = new Map();
+for (const [schema, entries] of groups.entries()) {
+  const override = canonicalPathOverrides.get(schema);
+  if (override && entries.some((e) => e.path === override)) {
+    canonicalPathBySchema.set(schema, override);
+    continue;
+  }
+
+  const coreCandidate = entries.find((e) => e.path.startsWith('schemas/0000-platform/core/'));
+  if (coreCandidate) {
+    canonicalPathBySchema.set(schema, coreCandidate.path);
+    continue;
+  }
+
+  const sorted = [...entries].sort((a, b) => {
+    if (a.path.length !== b.path.length) return a.path.length - b.path.length;
+    return a.path.localeCompare(b.path);
+  });
+  canonicalPathBySchema.set(schema, sorted[0].path);
+}
+
+const entries = rows.map((row) => {
+  const previous = byPath.get(row.path) || {};
+  const canonicalPath = canonicalPathBySchema.get(row.schema);
+  const canonical = row.path === canonicalPath;
+
+  let extendsSchema = null;
+  if (explicitExtends.has(row.schema)) {
+    extendsSchema = explicitExtends.get(row.schema);
+  } else if (!canonical && groups.get(row.schema)?.length > 1) {
+    extendsSchema = row.schema;
+  }
+
+  const accountName = accountNameByCode.get(row.account) || 'Unknown';
+  const tags = Array.from(new Set([
+    row.account,
+    accountName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+    row.parent
+  ])).filter(Boolean);
+
+  return {
+    schema: row.schema,
+    account: row.account,
+    parent: row.parent,
+    path: row.path,
+    canonical: previous.canonical ?? canonical,
+    extends: previous.extends ?? extendsSchema,
+    canonicalReferences: Array.isArray(previous.canonicalReferences) ? previous.canonicalReferences : [],
+    tags: Array.isArray(previous.tags) ? previous.tags : tags
+  };
+});
+
+const out = {
+  version: 3,
+  description: 'Ontology registry for schema-to-account mapping, canonical lineage, and graph references (generated index).',
+  generatedAt: new Date().toISOString(),
+  entryCount: entries.length,
+  fields: {
+    required: ['schema', 'account', 'parent', 'path', 'canonical'],
+    optional: ['extends', 'canonicalReferences', 'tags']
+  },
+  entries
+};
+
+fs.writeFileSync(registryPath, JSON.stringify(out, null, 2) + '\n');
+console.log(`Generated ${entries.length} registry entries -> ${registryPath}`);

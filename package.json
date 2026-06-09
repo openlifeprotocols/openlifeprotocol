@@ -6,7 +6,9 @@
     "dev": "next dev --webpack",
     "build": "next build --webpack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "registry:generate": "node schemas/0000-platform/meta/generate-schema-registry.mjs",
+    "registry:validate": "node schemas/0000-platform/meta/validate-schema-registry.mjs"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {

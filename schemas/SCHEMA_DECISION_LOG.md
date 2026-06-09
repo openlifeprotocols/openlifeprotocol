@@ -226,6 +226,28 @@ It is intentionally short, plain-language, and non-technical.
 - Consequence: More secure and policy-ready schema design.
 - Follow-up: Establish sensitivity class taxonomy and default retention categories.
 
+## 2026-06-09 - Elevate schema registry to ontology source-of-truth index
+
+- Date: 2026-06-09
+- Decision: Expand `schema-registry.json` to full corpus coverage with canonical lineage metadata (`canonical`, `extends`, `tags`).
+- Status: accepted
+- Context: Folder structure alone is insufficient for robust AI/search/graph reasoning.
+- Rationale: Registry-level semantics make ontology relationships explicit and machine-operable.
+- Trade-offs: Requires generation and validation discipline.
+- Consequence: Ontology interpretation now depends on registry metadata, not only folder paths.
+- Follow-up: Curate canonicalReferences and extends mappings over time for higher semantic precision.
+
+## 2026-06-09 - Enforce registry coverage and field integrity
+
+- Date: 2026-06-09
+- Decision: Add generator and validator tooling; require every schema file to exist in registry with required fields.
+- Status: accepted
+- Context: Registry drift risk grows as schema count scales.
+- Rationale: Validation prevents orphan schemas and metadata degradation.
+- Trade-offs: Adds one more maintenance step in schema workflows.
+- Consequence: CI/local checks can reject incomplete ontology registrations.
+- Follow-up: Wire `registry:validate` into CI pipeline.
+
 ## 2026-06-09 - Rename Self to Person
 
 - Date: 2026-06-09
