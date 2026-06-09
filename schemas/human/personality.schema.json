@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Personality",
+  "description": "A personality profile — framework of personality assessment, psychological type, traits assessment.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^personality_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "assessment_type": { "type": "string", "enum": ["big_five", "myers_briggs", "enneagram", "disc", "other", "self_assessment"] },
+    "assessment_date": { "type": "string", "format": "date" },
+    "results_summary": { "type": "string" },
+    "primary_type": { "type": "string" },
+    "secondary_type": { "type": "string" },
+    "scores": { "type": "object", "additionalProperties": { "type": "number" } },
+    "key_traits": { "type": "array", "items": { "type": "string" } },
+    "strengths": { "type": "array", "items": { "type": "string" } },
+    "growth_areas": { "type": "array", "items": { "type": "string" } },
+    "how_manifests": { "type": "string" },
+    "relationships_pattern": { "type": "string" },
+    "work_style": { "type": "string" },
+    "decision_making_style": { "type": "string" },
+    "stress_response": { "type": "string" },
+    "motivators": { "type": "array", "items": { "type": "string" } },
+    "demotivators": { "type": "array", "items": { "type": "string" } },
+    "assessment_accuracy": { "type": "string", "enum": ["not_accurate", "somewhat_accurate", "accurate", "very_accurate"] },
+    "applicable_contexts": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "assessment_type"],
+  "_phase1_todo": [
+    "Define personality evolution tracking",
+    "Define personality-behavior alignment",
+    "Define personality framework integration"
+  ]
+}

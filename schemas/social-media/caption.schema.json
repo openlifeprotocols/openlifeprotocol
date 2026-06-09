@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Caption",
+  "description": "Caption or text overlay for social media content.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^caption_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "content_piece_id": { "type": "string" },
+    "caption_text": { "type": "string" },
+    "caption_type": { "type": "string", "enum": ["text_overlay", "subtitle", "description", "title", "hashtags_description"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "language": { "type": "string" },
+    "character_count": { "type": "integer" },
+    "cta_included": { "type": "boolean" },
+    "emoji_count": { "type": "integer" },
+    "hashtag_count": { "type": "integer" },
+    "mention_count": { "type": "integer" },
+    "is_optimized_for_platform": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "content_piece_id", "caption_text"],
+  "_phase1_todo": [
+    "Define caption optimization suggestions",
+    "Define caption performance correlation",
+    "Define multi-language caption management"
+  ]
+}

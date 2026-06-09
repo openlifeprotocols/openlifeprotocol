@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Podcast Episode",
+  "description": "An episode of a podcast created by a creator.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^podcast_episode_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "creative_project_id": { "type": "string" },
+    "episode_number": { "type": "integer" },
+    "episode_title": { "type": "string" },
+    "episode_description": { "type": "string" },
+    "release_date": { "type": "string", "format": "date" },
+    "duration_seconds": { "type": "integer" },
+    "audio_file_url": { "type": "string", "format": "uri" },
+    "guest_name": { "type": "string" },
+    "guest_bio": { "type": "string" },
+    "topics_discussed": { "type": "array", "items": { "type": "string" } },
+    "recording_date": { "type": "string", "format": "date" },
+    "recording_location": { "type": "string" },
+    "equipment_used": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["planned", "recorded", "editing", "ready", "published"] },
+    "distribution_platforms": { "type": "array", "items": { "type": "string" } },
+    "listener_count": { "type": "integer" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "creative_project_id", "episode_title"],
+  "_phase1_todo": [
+    "Define episode show notes generation",
+    "Define episode distribution automation",
+    "Define listener engagement tracking"
+  ]
+}

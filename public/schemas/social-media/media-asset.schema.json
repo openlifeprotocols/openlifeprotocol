@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Media Asset",
+  "description": "A media file (image, video, audio) used in social media content.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^media_asset_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "social_account_id": { "type": "string" },
+    "asset_type": { "type": "string", "enum": ["image", "video", "audio", "gif", "document"] },
+    "file_name": { "type": "string" },
+    "file_size": { "type": "integer" },
+    "file_url": { "type": "string", "format": "uri" },
+    "uploaded_at": { "type": "string", "format": "date-time" },
+    "dimensions": { "type": "object", "properties": { "width": { "type": "integer" }, "height": { "type": "integer" }, "duration": { "type": "number" } } },
+    "asset_description": { "type": "string" },
+    "alt_text": { "type": "string" },
+    "usage_count": { "type": "integer" },
+    "last_used_at": { "type": "string", "format": "date-time" },
+    "storage_location": { "type": "string", "enum": ["local", "cloud", "cdn"] },
+    "is_archived": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "social_account_id", "asset_type", "file_name"],
+  "_phase1_todo": [
+    "Define asset optimization for platforms",
+    "Define asset format conversion",
+    "Define asset usage analytics"
+  ]
+}

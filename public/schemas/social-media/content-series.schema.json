@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content Series",
+  "description": "A series of related content pieces on social media.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^content_series_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "social_account_id": { "type": "string" },
+    "series_name": { "type": "string" },
+    "series_description": { "type": "string" },
+    "series_type": { "type": "string", "enum": ["educational", "entertainment", "promotional", "storytelling", "tutorial", "documentary"] },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "episode_count": { "type": "integer" },
+    "published_episodes": { "type": "integer" },
+    "episode_ids": { "type": "array", "items": { "type": "string" } },
+    "series_theme": { "type": "string" },
+    "audience_target": { "type": "string" },
+    "content_piece_ids": { "type": "array", "items": { "type": "string" } },
+    "series_performance": { "type": "object", "additionalProperties": { "type": "number" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "social_account_id", "series_name"],
+  "_phase1_todo": [
+    "Define series engagement tracking",
+    "Define series audience retention metrics",
+    "Define series completion prediction"
+  ]
+}

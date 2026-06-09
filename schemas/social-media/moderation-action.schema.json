@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Moderation Action",
+  "description": "A moderation action taken on social media content or account.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^moderation_action_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "social_account_id": { "type": "string" },
+    "target_type": { "type": "string", "enum": ["post", "comment", "message", "account", "user"] },
+    "target_id": { "type": "string" },
+    "action_type": { "type": "string", "enum": ["delete", "hide", "restrict", "ban", "warn", "flag", "edit"] },
+    "reason": { "type": "string", "enum": ["spam", "harassment", "misinformation", "inappropriate_content", "copyright", "policy_violation", "other"] },
+    "taken_at": { "type": "string", "format": "date-time" },
+    "taken_by": { "type": "string", "enum": ["creator", "platform", "ai", "community"] },
+    "is_appealable": { "type": "boolean" },
+    "appeal_status": { "type": "string", "enum": ["not_appealed", "pending", "approved", "denied"] },
+    "action_duration": { "type": "string", "enum": ["permanent", "temporary", "warning"] },
+    "duration_days": { "type": "integer" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "social_account_id", "target_type", "target_id", "action_type"],
+  "_phase1_todo": [
+    "Define moderation appeals process",
+    "Define moderation action logging",
+    "Define moderation effectiveness tracking"
+  ]
+}

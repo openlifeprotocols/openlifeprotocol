@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Comment",
+  "description": "A comment on social media post or content.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^comment_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "post_id": { "type": "string" },
+    "social_account_id": { "type": "string" },
+    "parent_comment_id": { "type": "string" },
+    "comment_text": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "edited_at": { "type": "string", "format": "date-time" },
+    "is_edited": { "type": "boolean" },
+    "is_deleted": { "type": "boolean" },
+    "like_count": { "type": "integer" },
+    "reply_count": { "type": "integer" },
+    "mentioned_accounts": { "type": "array", "items": { "type": "string" } },
+    "sentiment": { "type": "string", "enum": ["positive", "neutral", "negative"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "post_id", "social_account_id", "comment_text"],
+  "_phase1_todo": [
+    "Define comment thread structure",
+    "Define comment sentiment tracking",
+    "Define comment controversy scoring"
+  ]
+}

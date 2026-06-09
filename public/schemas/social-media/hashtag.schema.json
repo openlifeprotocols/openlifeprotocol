@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Hashtag",
+  "description": "A hashtag used in social media content.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^hashtag_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "hashtag_text": { "type": "string" },
+    "hashtag_category": { "type": "string" },
+    "popularity": { "type": "string", "enum": ["trending", "popular", "niche", "emerging"] },
+    "search_volume": { "type": "integer" },
+    "post_count": { "type": "integer" },
+    "engagement_rate": { "type": "number" },
+    "use_frequency_in_account": { "type": "integer" },
+    "last_used_at": { "type": "string", "format": "date-time" },
+    "associated_themes": { "type": "array", "items": { "type": "string" } },
+    "is_branded": { "type": "boolean" },
+    "is_custom": { "type": "boolean" },
+    "algorithm_affinity": { "type": "number" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "hashtag_text"],
+  "_phase1_todo": [
+    "Define hashtag research tool",
+    "Define hashtag performance tracking",
+    "Define hashtag seasonal variation"
+  ]
+}

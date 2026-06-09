@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Motivation",
+  "description": "A motivator — what drives behavior, what provides impetus, internal or external incentive.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^motivation_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "motivation_name": { "type": "string" },
+    "description": { "type": "string" },
+    "motivation_type": { "type": "string", "enum": ["intrinsic", "extrinsic", "mixed", "avoiding_negative", "pursuing_positive"] },
+    "domain": { "type": "string", "enum": ["work", "relationships", "health", "growth", "security", "achievement", "autonomy", "meaning", "other"] },
+    "strength": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "consistency": { "type": "string", "enum": ["inconsistent", "occasional", "consistent", "unwavering"] },
+    "origin": { "type": "string" },
+    "source": { "type": "string", "enum": ["personal_value", "external_reward", "fear", "love", "curiosity", "purpose", "identity"] },
+    "behaviors_driven": { "type": "array", "items": { "type": "string" } },
+    "outcomes_achieved": { "type": "array", "items": { "type": "string" } },
+    "when_activated": { "type": "string" },
+    "when_diminished": { "type": "string" },
+    "sustainability": { "type": "string", "enum": ["burnout_risk", "moderate_sustainability", "sustainable", "infinitely_sustainable"] },
+    "supports_values": { "type": "boolean" },
+    "aligned_with_identity": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "motivation_name", "motivation_type"],
+  "_phase1_todo": [
+    "Define motivation portfolio analysis",
+    "Define sustainable motivation cultivation",
+    "Define motivation-goal alignment checking"
+  ]
+}

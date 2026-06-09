@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Monetisation",
+  "description": "Monetization method or revenue stream from social media.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^monetisation_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "social_account_id": { "type": "string" },
+    "monetization_type": { "type": "string", "enum": ["ads", "subscriptions", "tipping", "affiliate", "sponsored_content", "digital_products", "services", "grants"] },
+    "revenue_model": { "type": "string" },
+    "monthly_revenue": { "type": "number" },
+    "currency": { "type": "string" },
+    "revenue_share": { "type": "number" },
+    "platform_cut": { "type": "number" },
+    "start_date": { "type": "string", "format": "date" },
+    "is_active": { "type": "boolean" },
+    "threshold_requirements": { "type": "string" },
+    "payment_frequency": { "type": "string", "enum": ["weekly", "monthly", "quarterly", "yearly"] },
+    "next_payout_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "social_account_id", "monetization_type"],
+  "_phase1_todo": [
+    "Define monetization forecasting",
+    "Define monetization optimization recommendations",
+    "Define monetization compliance requirements"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Message",
+  "description": "A direct message or private message sent via social media.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^message_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "social_account_id": { "type": "string" },
+    "recipient_account_id": { "type": "string" },
+    "platform_id": { "type": "string" },
+    "message_text": { "type": "string" },
+    "message_type": { "type": "string", "enum": ["text", "image", "video", "link", "emoji", "voice"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "is_read": { "type": "boolean" },
+    "read_at": { "type": "string", "format": "date-time" },
+    "is_edited": { "type": "boolean" },
+    "is_deleted": { "type": "boolean" },
+    "is_forwarded": { "type": "boolean" },
+    "conversation_id": { "type": "string" },
+    "media_asset_ids": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "social_account_id", "recipient_account_id", "platform_id", "message_text"],
+  "_phase1_todo": [
+    "Define conversation threading",
+    "Define message encryption status",
+    "Define message archival policy"
+  ]
+}

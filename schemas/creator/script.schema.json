@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Script",
+  "description": "A script for video or podcast content.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^script_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "creative_project_id": { "type": "string" },
+    "script_title": { "type": "string" },
+    "script_format": { "type": "string", "enum": ["full_script", "outline", "bullet_points", "talking_points", "shot_description"] },
+    "content_type": { "type": "string", "enum": ["video", "podcast", "livestream", "other"] },
+    "duration_seconds": { "type": "integer" },
+    "estimated_word_count": { "type": "integer" },
+    "script_text": { "type": "string" },
+    "tone": { "type": "string", "enum": ["casual", "professional", "educational", "entertaining", "inspirational"] },
+    "target_audience": { "type": "string" },
+    "version": { "type": "integer" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "last_edited": { "type": "string", "format": "date-time" },
+    "is_approved": { "type": "boolean" },
+    "revision_notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "creative_project_id", "script_title", "script_format"],
+  "_phase1_todo": [
+    "Define script auto-generation",
+    "Define script optimization suggestions",
+    "Define script version control"
+  ]
+}

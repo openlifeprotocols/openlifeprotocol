@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Video",
+  "description": "A video piece created by a creator.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^video_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "creative_project_id": { "type": "string" },
+    "video_title": { "type": "string" },
+    "video_description": { "type": "string" },
+    "video_type": { "type": "string", "enum": ["tutorial", "vlog", "short_form", "long_form", "documentary", "entertainment", "educational"] },
+    "duration_seconds": { "type": "integer" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "published_at": { "type": "string", "format": "date-time" },
+    "video_file_url": { "type": "string", "format": "uri" },
+    "status": { "type": "string", "enum": ["draft", "filming", "editing", "ready", "published", "archived"] },
+    "raw_footage_location": { "type": "string" },
+    "editing_software": { "type": "string" },
+    "target_platforms": { "type": "array", "items": { "type": "string" } },
+    "upload_status": { "type": "string", "enum": ["not_uploaded", "uploading", "uploaded", "processing", "published"] },
+    "visibility": { "type": "string", "enum": ["public", "unlisted", "private"] },
+    "monetization_enabled": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "creative_project_id", "video_title"],
+  "_phase1_todo": [
+    "Define video editing workflow",
+    "Define video distribution automation",
+    "Define video performance analytics"
+  ]
+}

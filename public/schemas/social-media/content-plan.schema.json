@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content Plan",
+  "description": "Strategic content plan for social media presence.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^content_plan_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "social_account_id": { "type": "string" },
+    "plan_name": { "type": "string" },
+    "plan_description": { "type": "string" },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "posting_frequency": { "type": "string", "enum": ["daily", "twice_daily", "weekly", "bi_weekly", "monthly"] },
+    "target_audience_segments": { "type": "array", "items": { "type": "string" } },
+    "key_themes": { "type": "array", "items": { "type": "string" } },
+    "content_mix": { "type": "object", "additionalProperties": { "type": "number" } },
+    "engagement_goals": { "type": "object", "additionalProperties": { "type": "number" } },
+    "budget_allocated": { "type": "number" },
+    "status": { "type": "string", "enum": ["planning", "active", "paused", "completed", "archived"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "social_account_id", "plan_name"],
+  "_phase1_todo": [
+    "Define plan performance tracking",
+    "Define plan adjustment recommendations",
+    "Define plan ROI calculation"
+  ]
+}

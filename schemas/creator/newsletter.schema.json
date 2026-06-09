@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Newsletter",
+  "description": "A newsletter created and distributed by a creator.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^newsletter_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "creative_project_id": { "type": "string" },
+    "newsletter_name": { "type": "string" },
+    "newsletter_description": { "type": "string" },
+    "frequency": { "type": "string", "enum": ["daily", "weekly", "bi_weekly", "monthly", "irregular"] },
+    "subscriber_count": { "type": "integer" },
+    "content": { "type": "string" },
+    "publication_date": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["draft", "scheduled", "published", "archived"] },
+    "email_service_provider": { "type": "string", "enum": ["substack", "mailchimp", "brevo", "beehiiv", "other"] },
+    "open_rate": { "type": "number" },
+    "click_rate": { "type": "number" },
+    "unsubscribe_rate": { "type": "number" },
+    "monetization_enabled": { "type": "boolean" },
+    "revenue_from_newsletter": { "type": "number" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "creative_project_id", "newsletter_name"],
+  "_phase1_todo": [
+    "Define newsletter template management",
+    "Define subscriber segmentation",
+    "Define performance optimization recommendations"
+  ]
+}

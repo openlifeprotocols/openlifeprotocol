@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content Draft",
+  "description": "A draft version of social media content before publication.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^content_draft_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "content_piece_id": { "type": "string" },
+    "social_account_id": { "type": "string" },
+    "draft_version": { "type": "integer" },
+    "draft_text": { "type": "string" },
+    "draft_notes": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "last_edited_at": { "type": "string", "format": "date-time" },
+    "draft_status": { "type": "string", "enum": ["in_progress", "ready_for_review", "needs_revision", "approved", "rejected"] },
+    "reviewer_notes": { "type": "string" },
+    "media_placeholders": { "type": "array", "items": { "type": "string" } },
+    "estimated_performance": { "type": "object", "additionalProperties": { "type": "number" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "content_piece_id", "social_account_id", "draft_version"],
+  "_phase1_todo": [
+    "Define draft collaboration",
+    "Define draft approval workflows",
+    "Define draft version history"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Digital Product",
+  "description": "A digital product created and sold by a creator.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^digital_product_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "creator_profile_id": { "type": "string" },
+    "product_name": { "type": "string" },
+    "product_description": { "type": "string" },
+    "product_type": { "type": "string", "enum": ["template", "presets", "ebook", "resource_pack", "printable", "software", "music", "art", "other"] },
+    "price": { "type": "number" },
+    "currency": { "type": "string" },
+    "launch_date": { "type": "string", "format": "date" },
+    "download_url": { "type": "string", "format": "uri" },
+    "file_size": { "type": "integer" },
+    "format": { "type": "string" },
+    "units_sold": { "type": "integer" },
+    "total_revenue": { "type": "number" },
+    "average_rating": { "type": "number" },
+    "reviews_count": { "type": "integer" },
+    "sale_status": { "type": "string", "enum": ["for_sale", "out_of_stock", "discontinued"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "creator_profile_id", "product_name", "product_type"],
+  "_phase1_todo": [
+    "Define product licensing model",
+    "Define product update management",
+    "Define product sales analytics"
+  ]
+}

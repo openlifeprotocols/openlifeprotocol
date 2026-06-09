@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Creative Project",
+  "description": "A professional creative project undertaken by a creator.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^creative_project_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "creator_profile_id": { "type": "string" },
+    "project_name": { "type": "string" },
+    "project_description": { "type": "string" },
+    "project_type": { "type": "string", "enum": ["video_series", "podcast", "newsletter", "blog", "digital_product", "course", "livestream", "book", "photography", "music", "other"] },
+    "status": { "type": "string", "enum": ["planning", "in_progress", "completed", "on_hold", "archived"] },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "target_audience": { "type": "string" },
+    "budget": { "type": "number" },
+    "collaborators": { "type": "array", "items": { "type": "string" } },
+    "expected_revenue": { "type": "number" },
+    "actual_revenue": { "type": "number" },
+    "audience_reached": { "type": "integer" },
+    "engagement_metrics": { "type": "object", "additionalProperties": { "type": "number" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "creator_profile_id", "project_name", "project_type"],
+  "_phase1_todo": [
+    "Define project ROI tracking",
+    "Define project timeline management",
+    "Define project milestone tracking"
+  ]
+}

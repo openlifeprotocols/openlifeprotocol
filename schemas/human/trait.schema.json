@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trait",
+  "description": "A personality trait — consistent characteristic, stable behavioral tendency, aspect of personality.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^trait_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "trait_name": { "type": "string" },
+    "description": { "type": "string" },
+    "trait_category": { "type": "string", "enum": ["openness", "conscientiousness", "extraversion", "agreeableness", "neuroticism", "other"] },
+    "intensity": { "type": "string", "enum": ["very_low", "low", "moderate", "high", "very_high"] },
+    "stability": { "type": "string", "enum": ["variable", "somewhat_stable", "stable", "very_stable"] },
+    "context_dependent": { "type": "boolean" },
+    "how_manifests": { "type": "array", "items": { "type": "string" } },
+    "behavioral_expression": { "type": "array", "items": { "type": "string" } },
+    "strengths_from_trait": { "type": "array", "items": { "type": "string" } },
+    "challenges_from_trait": { "type": "array", "items": { "type": "string" } },
+    "self_assessment": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "others_assessment": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "changed_over_time": { "type": "boolean" },
+    "trajectory": { "type": "string", "enum": ["increasing", "decreasing", "stable", "cyclical"] },
+    "acceptance_of_trait": { "type": "string", "enum": ["reject", "tolerate", "embrace", "leverage"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "trait_name"],
+  "_phase1_todo": [
+    "Define trait-outcome correlation analysis",
+    "Define trait interaction and synergy",
+    "Define trait development coaching"
+  ]
+}

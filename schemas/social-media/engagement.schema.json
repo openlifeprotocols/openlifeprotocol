@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Engagement",
+  "description": "Engagement interaction on social media content (like, share, save, etc).",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^engagement_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "post_id": { "type": "string" },
+    "account_id": { "type": "string" },
+    "engagement_type": { "type": "string", "enum": ["like", "comment", "share", "save", "click", "view", "retweet", "bookmark", "reaction"] },
+    "engaged_at": { "type": "string", "format": "date-time" },
+    "engagement_value": { "type": "number" },
+    "is_genuine": { "type": "boolean" },
+    "engagement_sentiment": { "type": "string", "enum": ["positive", "neutral", "negative"] },
+    "platform_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "post_id", "account_id", "engagement_type"],
+  "_phase1_todo": [
+    "Define engagement authenticity verification",
+    "Define engagement prediction models",
+    "Define engagement quality scoring"
+  ]
+}

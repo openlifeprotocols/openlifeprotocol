@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content Calendar",
+  "description": "Calendar of planned and published social media content.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^content_calendar_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "social_account_id": { "type": "string" },
+    "calendar_name": { "type": "string" },
+    "period": { "type": "string", "enum": ["daily", "weekly", "monthly", "quarterly", "yearly"] },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "total_planned_posts": { "type": "integer" },
+    "total_published_posts": { "type": "integer" },
+    "publication_rate": { "type": "number" },
+    "content_pieces": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "social_account_id", "calendar_name"],
+  "_phase1_todo": [
+    "Define calendar view exports",
+    "Define calendar collaboration features",
+    "Define calendar template creation"
+  ]
+}

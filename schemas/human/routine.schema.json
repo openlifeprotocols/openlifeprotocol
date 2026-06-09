@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Routine",
+  "description": "A routine — structured sequence of actions, scheduled pattern, standard procedure.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^routine_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "routine_name": { "type": "string" },
+    "description": { "type": "string" },
+    "routine_type": { "type": "string", "enum": ["morning", "evening", "work", "exercise", "meal", "bedtime", "weekly", "seasonal", "custom"] },
+    "steps": { "type": "array", "items": { "type": "object", "properties": { "step_number": { "type": "integer" }, "action": { "type": "string" }, "duration_minutes": { "type": "integer" } } } },
+    "total_duration_minutes": { "type": "integer" },
+    "frequency": { "type": "string", "enum": ["daily", "weekdays_only", "weekends_only", "weekly", "monthly"] },
+    "time_of_day": { "type": "string", "format": "time" },
+    "location": { "type": "string" },
+    "purpose": { "type": "string" },
+    "when_established": { "type": "string", "format": "date" },
+    "flexibility": { "type": "string", "enum": ["rigid", "somewhat_flexible", "very_flexible"] },
+    "adherence_rate": { "type": "number", "minimum": 0, "maximum": 100 },
+    "effectiveness": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "consistency": { "type": "boolean" },
+    "obstacles": { "type": "array", "items": { "type": "string" } },
+    "improvements": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "routine_name", "routine_type", "steps"],
+  "_phase1_todo": [
+    "Define routine optimization",
+    "Define adherence tracking",
+    "Define routine-health outcome correlation"
+  ]
+}

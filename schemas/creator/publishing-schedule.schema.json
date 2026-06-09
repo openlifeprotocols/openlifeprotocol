@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Publishing Schedule",
+  "description": "Publishing schedule for content across multiple platforms.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^publishing_schedule_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "creator_profile_id": { "type": "string" },
+    "content_piece_id": { "type": "string" },
+    "primary_platform": { "type": "string" },
+    "scheduled_publish_date": { "type": "string", "format": "date-time" },
+    "platforms_and_times": { "type": "array", "items": { "type": "object", "properties": { "platform": { "type": "string" }, "publish_date": { "type": "string", "format": "date-time" }, "optimized_for_platform": { "type": "boolean" } } } },
+    "time_zone": { "type": "string" },
+    "optimization_notes": { "type": "string" },
+    "hashtags_list": { "type": "array", "items": { "type": "string" } },
+    "caption_variations": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["scheduled", "published", "failed", "cancelled"] },
+    "publication_tracking": { "type": "array", "items": { "type": "object", "properties": { "platform": { "type": "string" }, "is_published": { "type": "boolean" }, "published_at": { "type": "string", "format": "date-time" }, "url": { "type": "string", "format": "uri" } } } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "creator_profile_id", "scheduled_publish_date"],
+  "_phase1_todo": [
+    "Define cross-platform scheduling",
+    "Define optimal posting times",
+    "Define publication retry logic"
+  ]
+}

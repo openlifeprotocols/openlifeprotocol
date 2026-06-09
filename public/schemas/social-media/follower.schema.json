@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Follower",
+  "description": "A follower relationship on social media.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^follower_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "social_account_id": { "type": "string" },
+    "follower_account_id": { "type": "string" },
+    "platform_id": { "type": "string" },
+    "followed_at": { "type": "string", "format": "date-time" },
+    "is_following_back": { "type": "boolean" },
+    "is_close_friend": { "type": "boolean" },
+    "is_muted": { "type": "boolean" },
+    "is_restricted": { "type": "boolean" },
+    "follower_quality": { "type": "string", "enum": ["high", "medium", "low", "bot", "verified"] },
+    "engagement_level": { "type": "string", "enum": ["high", "medium", "low", "none"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "social_account_id", "follower_account_id", "platform_id"],
+  "_phase1_todo": [
+    "Define follower growth analytics",
+    "Define follower demographics",
+    "Define follower engagement patterns"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Creator Profile",
+  "description": "Professional profile for a content creator.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^creator_profile_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "creator_name": { "type": "string" },
+    "bio": { "type": "string" },
+    "profile_picture": { "type": "string", "format": "uri" },
+    "website": { "type": "string", "format": "uri" },
+    "contact_email": { "type": "string", "format": "email" },
+    "specialties": { "type": "array", "items": { "type": "string" } },
+    "experience_level": { "type": "string", "enum": ["beginner", "intermediate", "advanced", "expert"] },
+    "total_followers": { "type": "integer" },
+    "total_subscribers": { "type": "integer" },
+    "total_views": { "type": "integer" },
+    "average_engagement_rate": { "type": "number" },
+    "collaboration_open": { "type": "boolean" },
+    "preferred_collaboration_types": { "type": "array", "items": { "type": "string" } },
+    "monetization_status": { "type": "string", "enum": ["none", "exploring", "monetizing", "full_time"] },
+    "content_creation_start_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "creator_name"],
+  "_phase1_todo": [
+    "Define creator portfolio generation",
+    "Define creator analytics dashboard",
+    "Define creator growth tracking"
+  ]
+}
