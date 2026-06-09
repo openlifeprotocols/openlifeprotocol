@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Booking",
+  "description": "A travel booking — any reservation made for a trip including flights, accommodation, tours, and transfers.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^booking_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "trip_id": { "type": "string" },
+    "booking_type": { "type": "string", "enum": ["flight", "accommodation", "car_hire", "transfer", "tour", "activity", "cruise", "rail", "ferry", "package"] },
+    "booking_reference": { "type": "string" },
+    "supplier_name": { "type": "string" },
+    "supplier_id": { "type": "string" },
+    "traveller_ids": { "type": "array", "items": { "type": "string" } },
+    "booked_at": { "type": "string", "format": "date-time" },
+    "booked_by_id": { "type": "string" },
+    "check_in": { "type": "string", "format": "date-time" },
+    "check_out": { "type": "string", "format": "date-time" },
+    "total_cost": { "type": "number" },
+    "amount_paid": { "type": "number" },
+    "currency": { "type": "string" },
+    "payment_ids": { "type": "array", "items": { "type": "string" } },
+    "cancellation_policy": { "type": "string" },
+    "free_cancellation_until": { "type": "string", "format": "date-time" },
+    "refundable": { "type": "boolean" },
+    "confirmation_document_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["confirmed", "pending", "cancelled", "amended", "no_show"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "trip_id", "booking_type", "booking_reference", "supplier_name", "booked_at"],
+  "_phase1_todo": [
+    "Define booking aggregation from email",
+    "Define ATOL/ABTA protection flagging",
+    "Define package travel regulation compliance",
+    "Define booking amendment tracking"
+  ]
+}

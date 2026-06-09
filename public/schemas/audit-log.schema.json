@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Audit Log",
+  "description": "Immutable record of actions taken in the system. Captures who did what, when, and on what resource.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^auditlog_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "actor_id": {
+      "type": "string",
+      "description": "Actor who performed the action"
+    },
+    "action": {
+      "type": "string",
+      "enum": [\"create\", \"read\", \"update\", \"delete\", \"approve\", \"reject\", \"publish\", \"archive\"],
+      "description": "Action performed"
+    },
+    "resource_type": {
+      "type": "string",
+      "description": "Type of resource affected"
+    },
+    "resource_id": {
+      "type": "string",
+      "description": "ID of resource affected"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When action occurred"
+    },
+    "old_values": {
+      "type": "object",
+      "description": "Previous values (for updates)"
+    },
+    "new_values": {
+      "type": "object",
+      "description": "New values (for updates)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [\"success\", \"failure\", \"partial\"],
+      "description": "Whether action succeeded"
+    },
+    "error_message": {
+      "type": "string"
+    },
+    "ip_address": {
+      "type": "string"
+    },
+    "user_agent": {
+      "type": \"string\"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "actor_id", "action", "resource_type", "timestamp"],
+  "_phase1_todo": [
+    "Define audit log retention policies",
+    "Define audit log immutability guarantees",
+    "Define audit log encryption",
+    "Define audit log search and analytics",
+    "Define audit log compliance (HIPAA, GDPR, SOX)",
+    "Define audit log performance and storage optimization"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Relationship Case",
+  "description": "Legal or administrative case involving relationship.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^relationship_case_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "relationship_id": { "type": "string" },
+    "case_type": { "type": "string", "enum": ["divorce", "custody", "support", "estate", "guardianship", "power_of_attorney", "dispute", "other"] },
+    "case_number": { "type": "string" },
+    "case_status": { "type": "string", "enum": ["pending", "active", "settled", "resolved", "appealed"] },
+    "court": { "type": "string" },
+    "judge_name": { "type": "string" },
+    "attorney_name": { "type": "string" },
+    "filing_date": { "type": "string", "format": "date" },
+    "resolution_date": { "type": "string", "format": "date" },
+    "case_outcome": { "type": "string" },
+    "documents_related": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "relationship_id"],
+  "_phase1_todo": ["Define document management", "Define outcome tracking", "Define appeal process"]
+}

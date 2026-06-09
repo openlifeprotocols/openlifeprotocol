@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Regret",
+  "description": "A personal regret — actions not taken, words unsaid, opportunities missed, decisions reconsidered.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^regret_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "regret_type": { "type": "string", "enum": ["action_taken", "action_not_taken", "words_said", "words_unsaid", "missed_opportunity", "poor_decision", "burned_bridge", "other"] },
+    "date_of_event": { "type": "string", "format": "date" },
+    "time_since_regret": { "type": "string" },
+    "severity": { "type": "string", "enum": ["minor", "moderate", "significant", "profound"] },
+    "person_affected": { "type": "array", "items": { "type": "string" } },
+    "what_happened": { "type": "string" },
+    "what_should_have_happened": { "type": "string" },
+    "learning_from_regret": { "type": "string" },
+    "changed_future_behavior": { "type": "boolean" },
+    "reconciliation_attempted": { "type": "boolean" },
+    "acceptance_level": { "type": "string", "enum": ["dwelling", "processing", "accepted", "transcended"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "regret_type"],
+  "_phase1_todo": [
+    "Define regret resolution tracking",
+    "Define forgiveness and acceptance support",
+    "Define regret-to-growth connection mapping"
+  ]
+}

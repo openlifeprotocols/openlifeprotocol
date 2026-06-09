@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Event Impact",
+  "description": "Impact and consequences of life event.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^event_impact_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "life_event_id": { "type": "string" },
+    "impact_area": { "type": "string", "enum": ["financial", "legal", "health", "family", "housing", "employment", "insurance", "tax", "other"] },
+    "impact_type": { "type": "string", "enum": ["positive", "negative", "neutral", "complex"] },
+    "impact_description": { "type": "string" },
+    "immediate_actions_required": { "type": "array", "items": { "type": "string" } },
+    "affected_accounts_or_services": { "type": "array", "items": { "type": "string" } },
+    "deadline_for_updates": { "type": "string", "format": "date" },
+    "financial_impact": { "type": "number" },
+    "is_completed": { "type": "boolean" },
+    "completion_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "life_event_id"],
+  "_phase1_todo": ["Define impact scoring", "Define action prioritization", "Define impact tracking"]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Email Import",
+  "description": "Email or email attachment import.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^email_import_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "email_account": { "type": "string" },
+    "email_provider": { "type": "string", "enum": ["gmail", "outlook", "yahoo", "icloud", "other"] },
+    "import_scope": { "type": "string", "enum": ["all_emails", "specific_folder", "date_range", "sender_specific"] },
+    "import_start_date": { "type": "string", "format": "date" },
+    "import_end_date": { "type": "string", "format": "date" },
+    "emails_to_import": { "type": "integer" },
+    "emails_imported": { "type": "integer" },
+    "attachments_imported": { "type": "integer" },
+    "import_status": { "type": "string", "enum": ["pending", "in_progress", "completed", "paused", "failed"] },
+    "last_import_date": { "type": "string", "format": "date-time" },
+    "auto_import_enabled": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define incremental import", "Define deduplication", "Define sender filtering"]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trusted Contact",
+  "description": "Trusted contacts for account recovery or emergency.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^trusted_contact_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "contact_name": { "type": "string" },
+    "contact_type": { "type": "string", "enum": ["family_member", "friend", "colleague", "professional", "organization"] },
+    "email": { "type": "string", "format": "email" },
+    "phone": { "type": "string" },
+    "relationship": { "type": "string" },
+    "trust_level": { "type": "string", "enum": ["limited", "moderate", "high", "full"] },
+    "added_date": { "type": "string", "format": "date-time" },
+    "verification_status": { "type": "string", "enum": ["unverified", "pending", "verified"] },
+    "can_access_accounts": { "type": "boolean" },
+    "can_access_documents": { "type": "boolean" },
+    "can_approve_changes": { "type": "boolean" },
+    "notification_on_emergency": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define verification workflow", "Define access granting", "Define emergency notification"]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Insurance Policy",
+  "description": "Insurance policy details (life, home, travel, device, income protection).",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^insurance_policy_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "policy_type": { "type": "string", "enum": ["life", "home", "travel", "device", "income_protection", "health", "vehicle", "pet", "other"] },
+    "policy_number": { "type": "string" },
+    "provider_name": { "type": "string" },
+    "provider_contact": { "type": "string" },
+    "policy_start_date": { "type": "string", "format": "date" },
+    "policy_end_date": { "type": "string", "format": "date" },
+    "premium_amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "premium_frequency": { "type": "string", "enum": ["monthly", "quarterly", "semi_annual", "annual"] },
+    "coverage_amount": { "type": "number" },
+    "deductible": { "type": "number" },
+    "coverage_details": { "type": "string" },
+    "exclusions": { "type": "array", "items": { "type": "string" } },
+    "next_payment_date": { "type": "string", "format": "date" },
+    "payment_method": { "type": "string", "enum": ["credit_card", "bank_transfer", "check", "auto_pay"] },
+    "claims_made": { "type": "integer" },
+    "claims_approved": { "type": "integer" },
+    "document_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define claim filing", "Define coverage verification", "Define policy renewal"]
+}

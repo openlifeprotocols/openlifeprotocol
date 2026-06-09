@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Post",
+  "description": "A social media post — content published on a social platform.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^post_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "social_account_id": { "type": "string" },
+    "platform_id": { "type": "string" },
+    "post_text": { "type": "string" },
+    "post_type": { "type": "string", "enum": ["text", "image", "video", "carousel", "reel", "story", "live", "poll", "link"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "published_at": { "type": "string", "format": "date-time" },
+    "edited_at": { "type": "string", "format": "date-time" },
+    "is_draft": { "type": "boolean" },
+    "is_scheduled": { "type": "boolean" },
+    "scheduled_for": { "type": "string", "format": "date-time" },
+    "is_archived": { "type": "boolean" },
+    "visibility": { "type": "string", "enum": ["public", "friends_only", "private", "followers_only"] },
+    "media_asset_ids": { "type": "array", "items": { "type": "string" } },
+    "hashtags": { "type": "array", "items": { "type": "string" } },
+    "mentioned_accounts": { "type": "array", "items": { "type": "string" } },
+    "like_count": { "type": "integer" },
+    "comment_count": { "type": "integer" },
+    "share_count": { "type": "integer" },
+    "view_count": { "type": "integer" },
+    "engagement_rate": { "type": "number" },
+    "campaign_id": { "type": "string" },
+    "content_series_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "social_account_id", "platform_id", "post_text"],
+  "_phase1_todo": [
+    "Define post performance scoring",
+    "Define post lifetime analytics",
+    "Define post engagement decay over time",
+    "Define post virality tracking"
+  ]
+}

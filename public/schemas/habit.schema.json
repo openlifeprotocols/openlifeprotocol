@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Habit",
+  "description": "A habit — automatic behavior pattern, regularly repeated action, ingrained routine.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^habit_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "habit_name": { "type": "string" },
+    "description": { "type": "string" },
+    "habit_type": { "type": "string", "enum": ["productive", "neutral", "destructive", "mixed"] },
+    "frequency": { "type": "string", "enum": ["daily", "weekly", "multiple_daily", "occasional"] },
+    "time_of_day": { "type": "string" },
+    "trigger": { "type": "string" },
+    "cue": { "type": "string" },
+    "routine": { "type": "string" },
+    "reward": { "type": "string" },
+    "context": { "type": "string" },
+    "when_established": { "type": "string", "format": "date" },
+    "strength": { "type": "string", "enum": ["weak", "moderate", "strong", "automatic"] },
+    "automatic_level": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "why_formed": { "type": "string" },
+    "awareness_of_habit": { "type": "string", "enum": ["unconscious", "semi_conscious", "fully_conscious"] },
+    "attempts_to_change": { "type": "array", "items": { "type": "string" } },
+    "current_status": { "type": "string", "enum": ["active", "trying_to_break", "trying_to_reinforce", "dormant", "broken"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "habit_name", "habit_type"],
+  "_phase1_todo": [
+    "Define habit strength measurement",
+    "Define habit stacking chains",
+    "Define habit replacement strategies"
+  ]
+}

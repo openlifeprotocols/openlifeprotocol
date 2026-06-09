@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Webhook",
+  "description": "Configuration and payload for webhook events sent to external systems.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^webhook_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "endpoint_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "event_types": {
+      "type": "array",
+      "description": "Event types that trigger this webhook",
+      "items": { "type": "string" }
+    },
+    "payload": {
+      "type": "object",
+      "description": "Webhook event payload"
+    },
+    "headers": {
+      "type": "object",
+      "description": "HTTP headers to include",
+      "additionalProperties": { "type": "string" }
+    },
+    "retry_policy": {
+      "type": "object",
+      "properties": {
+        "max_retries": { "type": "integer" },
+        "backoff_seconds": { "type": "integer" }
+      }
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "endpoint_url", "event_types"],
+  "_phase1_todo": [
+    "Define webhook signing/verification",
+    "Define webhook delivery guarantees",
+    "Define webhook throttling",
+    "Define webhook debugging/logging"
+  ]
+}

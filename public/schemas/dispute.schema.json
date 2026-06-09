@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dispute",
+  "description": "A formal dispute between parties — contractual, property, employment, consumer, or family.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^dispute_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "claimant_id": { "type": "string" },
+    "respondent_id": { "type": "string" },
+    "dispute_type": { "type": "string", "enum": ["contract", "property", "employment", "consumer", "family", "debt", "professional_negligence", "neighbour", "probate", "other"] },
+    "description": { "type": "string" },
+    "amount_in_dispute": { "type": "number" },
+    "currency": { "type": "string" },
+    "opened_date": { "type": "string", "format": "date" },
+    "resolution_method": { "type": "string", "enum": ["mediation", "arbitration", "court", "ombudsman", "negotiation", "withdrawn"] },
+    "court_case_id": { "type": "string" },
+    "resolution_date": { "type": "string", "format": "date" },
+    "outcome": { "type": "string" },
+    "jurisdiction_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["open", "in_mediation", "in_arbitration", "in_court", "resolved", "withdrawn"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "claimant_id", "respondent_id", "dispute_type", "opened_date"],
+  "_phase1_todo": [
+    "Define ADR (Alternative Dispute Resolution) workflows",
+    "Define limitation periods by dispute type",
+    "Define costs tracking",
+    "Define enforcement procedures"
+  ]
+}

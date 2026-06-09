@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Location History",
+  "description": "A location history entry — a recorded position at a point in time. Aggregated from phone GPS, check-ins, or transport bookings. Used to understand where a person lives, works, and travels.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^location_history_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "source": { "type": "string", "enum": ["google_timeline", "apple_significant_locations", "foursquare", "olp_inferred", "travel_booking", "manual"] },
+    "recorded_at": { "type": "string", "format": "date-time" },
+    "latitude": { "type": "number" },
+    "longitude": { "type": "number" },
+    "accuracy_metres": { "type": "number" },
+    "place_name": { "type": "string" },
+    "place_type": { "type": "string", "enum": ["home", "work", "transit", "accommodation", "attraction", "restaurant", "medical", "government", "other"] },
+    "country": { "type": "string", "description": "ISO 3166-1 alpha-2" },
+    "city": { "type": "string" },
+    "duration_minutes": { "type": "integer", "description": "Time spent at this location" },
+    "linked_trip_id": { "type": "string" },
+    "linked_address_id": { "type": "string" },
+    "consent_given": { "type": "boolean", "description": "Person explicitly consented to location logging" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "source", "recorded_at", "latitude", "longitude", "consent_given"],
+  "_phase1_todo": [
+    "Define location data retention limits",
+    "Define home/work address inference",
+    "Define travel pattern for visa/tax residency",
+    "Define location sharing consent model"
+  ]
+}

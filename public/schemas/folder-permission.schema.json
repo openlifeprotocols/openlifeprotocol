@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Folder Permission",
+  "description": "Folder access control and permissions.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^folder_permission_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "folder_id": { "type": "string" },
+    "user_id": { "type": "string" },
+    "permission_type": { "type": "string", "enum": ["view", "comment", "edit", "admin", "owner"] },
+    "granted_date": { "type": "string", "format": "date-time" },
+    "granted_by": { "type": "string" },
+    "expiration_date": { "type": "string", "format": "date" },
+    "can_share": { "type": "boolean" },
+    "can_delete": { "type": "boolean" },
+    "can_download": { "type": "boolean" },
+    "can_print": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "folder_id"],
+  "_phase1_todo": ["Define permission inheritance", "Define audit logging", "Define permission revocation"]
+}

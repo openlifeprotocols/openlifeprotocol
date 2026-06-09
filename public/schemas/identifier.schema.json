@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Identifier",
+  "description": "A typed identifier that can be used to reference entities across systems. Combines identifier type with value.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^identifier_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "identifier_type": {
+      "type": "string",
+      "enum": ["ssn", "passport", "driving_license", "tax_id", "ein", "business_id", "student_id", "employee_id", "account_number", "reference_number"],
+      "description": "Type of identifier"
+    },
+    "value": {
+      "type": "string",
+      "description": "The identifier value"
+    },
+    "issuing_authority": {
+      "type": "string",
+      "description": "Authority that issued this identifier"
+    },
+    "issue_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "expiry_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "identifier_type", "value"],
+  "_phase1_todo": [
+    "Define identifier validation rules",
+    "Define identifier uniqueness constraints",
+    "Define identifier masking for display",
+    "Define identifier lifecycle management"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content Piece",
+  "description": "A specific piece of content published or planned for social media.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^content_piece_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "social_account_id": { "type": "string" },
+    "content_title": { "type": "string" },
+    "content_description": { "type": "string" },
+    "content_type": { "type": "string", "enum": ["post", "story", "reel", "carousel", "video", "live", "poll", "quiz"] },
+    "platforms": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["draft", "scheduled", "published", "archived", "failed"] },
+    "created_at": { "type": "string", "format": "date-time" },
+    "published_at": { "type": "string", "format": "date-time" },
+    "scheduled_for": { "type": "string", "format": "date-time" },
+    "content_source": { "type": "string" },
+    "media_asset_ids": { "type": "array", "items": { "type": "string" } },
+    "campaign_id": { "type": "string" },
+    "series_id": { "type": "string" },
+    "engagement_metrics": { "type": "object", "additionalProperties": { "type": "number" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "social_account_id", "content_title", "content_type"],
+  "_phase1_todo": [
+    "Define content performance prediction",
+    "Define content recommendation engine",
+    "Define content adaptation for platforms"
+  ]
+}

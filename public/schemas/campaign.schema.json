@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Campaign",
+  "description": "A social media marketing campaign — coordinated effort across posts and platforms.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^campaign_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "social_account_id": { "type": "string" },
+    "campaign_name": { "type": "string" },
+    "campaign_description": { "type": "string" },
+    "campaign_goal": { "type": "string", "enum": ["awareness", "engagement", "conversion", "retention", "viral", "lead_generation"] },
+    "campaign_start_date": { "type": "string", "format": "date" },
+    "campaign_end_date": { "type": "string", "format": "date" },
+    "platforms": { "type": "array", "items": { "type": "string" } },
+    "budget": { "type": "number" },
+    "content_piece_ids": { "type": "array", "items": { "type": "string" } },
+    "target_kpis": { "type": "object", "additionalProperties": { "type": "number" } },
+    "actual_performance": { "type": "object", "additionalProperties": { "type": "number" } },
+    "status": { "type": "string", "enum": ["planning", "active", "completed", "paused", "cancelled"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "social_account_id", "campaign_name"],
+  "_phase1_todo": [
+    "Define campaign performance tracking",
+    "Define campaign ROI analysis",
+    "Define campaign A/B testing"
+  ]
+}

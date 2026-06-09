@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Resource Allocation",
+  "description": "The assignment of a person, equipment, or material to a project, task, or time period.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^resource_allocation_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "project_id": { "type": "string" },
+    "task_id": { "type": "string" },
+    "resource_type": { "type": "string", "enum": ["person", "equipment", "material", "subcontractor"] },
+    "resource_id": { "type": "string" },
+    "role": { "type": "string", "description": "Role on the project, e.g., 'structural engineer'" },
+    "allocation_from": { "type": "string", "format": "date" },
+    "allocation_to": { "type": "string", "format": "date" },
+    "hours_allocated": { "type": "number" },
+    "hours_actual": { "type": "number" },
+    "fte": { "type": "number", "description": "Fraction of full-time equivalent" },
+    "cost_rate": { "type": "number" },
+    "currency": { "type": "string" },
+    "estimated_cost": { "type": "number" },
+    "actual_cost": { "type": "number" },
+    "status": { "type": "string", "enum": ["planned", "confirmed", "active", "complete", "cancelled"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "project_id", "resource_type", "resource_id", "allocation_from"],
+  "_phase1_todo": [
+    "Define resource conflict detection",
+    "Define capacity planning across projects",
+    "Define resource levelling",
+    "Define overage tracking and alerts"
+  ]
+}

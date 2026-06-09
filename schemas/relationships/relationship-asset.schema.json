@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Relationship Asset",
+  "description": "Assets shared or jointly owned between related people.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^relationship_asset_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "relationship_id": { "type": "string" },
+    "asset_id": { "type": "string" },
+    "asset_type": { "type": "string" },
+    "ownership_structure": { "type": "string", "enum": ["joint_tenancy", "tenancy_in_common", "shared_custody", "community_property", "other"] },
+    "ownership_percentage_person_one": { "type": "number" },
+    "ownership_percentage_person_two": { "type": "number" },
+    "contributed_by_person_one": { "type": "number" },
+    "contributed_by_person_two": { "type": "number" },
+    "currency": { "type": "string" },
+    "asset_value": { "type": "number" },
+    "last_valuation_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "relationship_id"],
+  "_phase1_todo": ["Define ownership disputes", "Define valuations", "Define division scenarios"]
+}

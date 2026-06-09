@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Permit",
+  "description": "A government-issued permit for a specific activity — planning, building, event, travel, import, or export.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^permit_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "holder_id": { "type": "string" },
+    "permit_type": { "type": "string", "enum": ["planning", "building_regulations", "event", "road_closure", "skip", "scaffolding", "import", "export", "work_visa", "travel", "firearms", "other"] },
+    "permit_number": { "type": "string" },
+    "issuing_authority": { "type": "string" },
+    "jurisdiction_id": { "type": "string" },
+    "scope": { "type": "string" },
+    "issued_date": { "type": "string", "format": "date" },
+    "expiry_date": { "type": "string", "format": "date" },
+    "conditions": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["applied", "granted", "refused", "expired", "revoked"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "holder_id", "permit_type", "permit_number", "issuing_authority"],
+  "_phase1_todo": [
+    "Define permit objection procedures",
+    "Define conditional permit compliance",
+    "Define permit transfer",
+    "Define permit renewal workflow"
+  ]
+}

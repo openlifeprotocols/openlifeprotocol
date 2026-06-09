@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Disruption",
+  "description": "A travel disruption event — flight delay, cancellation, natural disaster, strike, or medical emergency — with resolution and compensation tracking.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^disruption_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "trip_id": { "type": "string" },
+    "affected_booking_ids": { "type": "array", "items": { "type": "string" } },
+    "disruption_type": { "type": "string", "enum": ["flight_delay", "flight_cancellation", "missed_connection", "accommodation_issue", "natural_disaster", "strike_industrial_action", "medical_emergency", "theft_loss", "political_unrest", "weather", "transport_breakdown", "other"] },
+    "description": { "type": "string" },
+    "occurred_at": { "type": "string", "format": "date-time" },
+    "location": { "type": "string" },
+    "delay_hours": { "type": "number" },
+    "additional_cost": { "type": "number" },
+    "currency": { "type": "string" },
+    "actions_taken": { "type": "array", "items": { "type": "string" } },
+    "rebooked": { "type": "boolean" },
+    "rebooked_booking_id": { "type": "string" },
+    "compensation_eligible": { "type": "boolean" },
+    "compensation_basis": { "type": "string", "enum": ["eu261", "uk261", "denied_boarding", "nts_conditions", "insurance_claim", "goodwill", "other"] },
+    "compensation_amount": { "type": "number" },
+    "compensation_status": { "type": "string", "enum": ["not_claimed", "claimed", "received", "rejected"] },
+    "insurance_claim_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["open", "resolved", "compensation_pending"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "trip_id", "disruption_type", "occurred_at"],
+  "_phase1_todo": [
+    "Define EU/UK261 compensation calculator",
+    "Define airline response tracking",
+    "Define disruption insurance claim workflow",
+    "Define rebooking cost recovery"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Material",
+  "description": "A raw material, component, or consumable used in production, construction, or operations.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^material_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "material_type": { "type": "string", "enum": ["raw_material", "component", "consumable", "chemical", "structural", "finishing", "insulation", "mechanical", "electrical", "other"] },
+    "category": { "type": "string", "examples": ["timber", "concrete", "steel", "glazing"] },
+    "unit_of_measure": { "type": "string", "examples": ["kg", "tonne", "litre", "m2", "m3", "each", "metre"] },
+    "unit_cost": { "type": "number" },
+    "currency": { "type": "string" },
+    "specification": { "type": "string", "description": "Technical specification or grade" },
+    "supplier_ids": { "type": "array", "items": { "type": "string" } },
+    "lead_time_days": { "type": "integer" },
+    "hazardous": { "type": "boolean" },
+    "co2_kg_per_unit": { "type": "number", "description": "Embodied carbon per unit" },
+    "status": { "type": "string", "enum": ["active", "discontinued", "obsolete"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "name", "material_type", "unit_of_measure"],
+  "_phase1_todo": [
+    "Define COSHH safety data sheet linking",
+    "Define embodied carbon tracking",
+    "Define substitute material mapping",
+    "Define material certifications (CE, UKCA)"
+  ]
+}

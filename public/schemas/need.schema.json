@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Need",
+  "description": "A human need — a fundamental requirement for wellbeing, safety, or fulfilment. The motivational layer beneath goals and events. Needs explain *why* life events and workflows matter.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^need_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "name": { "type": "string" },
+    "slug": {
+      "type": "string",
+      "enum": [
+        "survival", "food", "water", "sleep", "warmth", "shelter", "physical_safety", "health", "energy",
+        "mental_health", "comfort", "calmness", "privacy", "understanding", "choice", "self_esteem", "hope", "identity",
+        "belonging", "family", "friendship", "romance", "community", "trust", "acceptance",
+        "meaning", "purpose", "authenticity", "enjoyment", "growth", "achievement", "contribution",
+        "freedom", "autonomy", "learning", "creativity", "beauty", "spirituality", "nature", "justice", "legacy",
+        "security", "stability", "recognition", "other"
+      ],
+      "description": "Canonical need identifier"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["physical", "safety", "mental_health", "relationships", "satisfaction", "values"],
+      "description": "Broad category of need"
+    },
+    "description": { "type": "string" },
+    "life_area_slugs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Life areas this need relates to"
+    },
+    "intensity": {
+      "type": "string",
+      "enum": ["unmet", "partially_met", "met", "not_applicable"],
+      "description": "Current status of this need for the person"
+    },
+    "importance": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "goal_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Goals that serve this need"
+    },
+    "case_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Cases currently addressing this need"
+    },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "name", "slug", "category"],
+  "_phase1_todo": [
+    "Define need assessment methodology",
+    "Define need change tracking over time",
+    "Define need conflict resolution (e.g., freedom vs safety)",
+    "Define need-to-workflow automatic suggestion"
+  ]
+}

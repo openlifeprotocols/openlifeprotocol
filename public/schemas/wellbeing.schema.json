@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Wellbeing",
+  "description": "A periodic wellbeing snapshot — how a person is doing across life areas at a point in time. Not a clinical assessment, but a self-reported or OLP-inferred state used to surface unmet needs and prioritise support.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^wellbeing_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "recorded_at": { "type": "string", "format": "date-time" },
+    "source": {
+      "type": "string",
+      "enum": ["self_reported", "advisor_assessed", "inferred_from_events", "periodic_checkin"],
+      "description": "How this wellbeing record was created"
+    },
+    "scores": {
+      "type": "array",
+      "description": "Wellbeing score per life area",
+      "items": {
+        "type": "object",
+        "properties": {
+          "life_area_slug": { "type": "string" },
+          "score": { "type": "integer", "minimum": 1, "maximum": 10, "description": "1 = very poor, 10 = excellent" },
+          "trend": { "type": "string", "enum": ["improving", "stable", "declining", "unknown"] },
+          "notes": { "type": "string" }
+        },
+        "required": ["life_area_slug", "score"]
+      }
+    },
+    "overall_score": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "overall_trend": { "type": "string", "enum": ["improving", "stable", "declining", "unknown"] },
+    "unmet_need_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Needs flagged as unmet or partially met at this snapshot"
+    },
+    "active_stressors": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Life events or situations currently causing stress"
+    },
+    "positive_factors": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Current sources of strength or positive energy"
+    },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "recorded_at", "source", "scores"],
+  "_phase1_todo": [
+    "Define validated wellbeing frameworks (ONS4, PERMA, WHO-5)",
+    "Define wellbeing trend alerts",
+    "Define wellbeing-to-action suggestions",
+    "Define privacy controls for sensitive wellbeing data"
+  ]
+}

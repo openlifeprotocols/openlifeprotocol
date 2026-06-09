@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Loan Document",
+  "description": "Loan agreement or mortgage document.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^loan_document_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "loan_id": { "type": "string" },
+    "loan_type": { "type": "string", "enum": ["mortgage", "personal", "auto", "student", "business", "line_of_credit"] },
+    "lender": { "type": "string" },
+    "loan_amount": { "type": "number" },
+    "loan_currency": { "type": "string" },
+    "interest_rate": { "type": "number" },
+    "loan_term_months": { "type": "integer" },
+    "loan_start_date": { "type": "string", "format": "date" },
+    "loan_end_date": { "type": "string", "format": "date" },
+    "monthly_payment": { "type": "number" },
+    "remaining_balance": { "type": "number" },
+    "document_type": { "type": "string", "enum": ["promissory_note", "deed_of_trust", "mortgage", "disclosure", "amendment", "other"] },
+    "document_date": { "type": "string", "format": "date" },
+    "document_id": { "type": "string" },
+    "upload_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define payment tracking", "Define refinance options", "Define payoff scenarios"]
+}

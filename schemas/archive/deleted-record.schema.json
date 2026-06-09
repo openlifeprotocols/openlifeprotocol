@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Deleted Record",
+  "description": "Soft-deleted record in recycle bin.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^deleted_record_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "owner_id": { "type": "string" },
+    "original_record_id": { "type": "string" },
+    "original_record_type": { "type": "string" },
+    "deletion_date": { "type": "string", "format": "date-time" },
+    "deleted_by": { "type": "string" },
+    "deletion_reason": { "type": "string" },
+    "recovery_available": { "type": "boolean" },
+    "recovery_deadline": { "type": "string", "format": "date" },
+    "permanent_deletion_date": { "type": "string", "format": "date-time" },
+    "storage_location": { "type": "string" },
+    "file_size_bytes": { "type": "integer" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "owner_id"],
+  "_phase1_todo": ["Define recovery workflow", "Define permanent deletion", "Define retention period"]
+}

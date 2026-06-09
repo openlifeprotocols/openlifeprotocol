@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Appointment",
+  "description": "A healthcare appointment — GP, specialist, hospital, or care appointment.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^appointment_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "patient_id": { "type": "string" },
+    "provider_id": { "type": "string" },
+    "clinician_id": { "type": "string" },
+    "appointment_type": { "type": "string", "enum": ["gp", "outpatient", "inpatient", "emergency", "dental", "optical", "mental_health", "therapy", "screening", "vaccination", "home_visit", "telehealth", "other"] },
+    "reason": { "type": "string" },
+    "booked_at": { "type": "string", "format": "date-time" },
+    "scheduled_start": { "type": "string", "format": "date-time" },
+    "scheduled_end": { "type": "string", "format": "date-time" },
+    "attended_at": { "type": "string", "format": "date-time" },
+    "duration_minutes": { "type": "integer" },
+    "location": { "type": "string", "enum": ["in_person", "telephone", "video", "home_visit"] },
+    "address_id": { "type": "string" },
+    "outcome": { "type": "string" },
+    "follow_up_required": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["booked", "attended", "cancelled", "dna", "rescheduled"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "patient_id", "provider_id", "appointment_type", "scheduled_start"],
+  "_phase1_todo": [
+    "Define appointment reminder workflow",
+    "Define referral chain tracking",
+    "Define waiting time tracking",
+    "Define appointment sharing with carers/guardians"
+  ]
+}

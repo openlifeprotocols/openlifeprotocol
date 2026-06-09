@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Emergency Contact",
+  "description": "Emergency contact person.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^emergency_contact_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "contact_name": { "type": "string" },
+    "relationship": { "type": "string" },
+    "phone_primary": { "type": "string" },
+    "phone_secondary": { "type": "string" },
+    "email": { "type": "string", "format": "email" },
+    "address": { "type": "string" },
+    "priority_order": { "type": "integer" },
+    "contact_role": { "type": "array", "items": { "type": "string", "enum": ["medical_decisions", "financial_decisions", "legal_decisions", "property_management", "child_guardianship", "pet_care", "funeral_arrangements"] } },
+    "is_primary_contact": { "type": "boolean" },
+    "is_alternate_contact": { "type": "boolean" },
+    "notification_preferences": { "type": "array", "items": { "type": "string", "enum": ["call", "email", "sms", "in_person"] } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define contact verification", "Define availability check", "Define escalation procedures"]
+}

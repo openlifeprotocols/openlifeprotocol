@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subscription Detected",
+  "description": "A subscription detected from email, bank feed, or app store — an automatically discovered recurring charge. The inbox/bank-derived counterpart to digital-life/subscription.schema.json.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^subscription_detected_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "detection_source": { "type": "string", "enum": ["email_scan", "bank_feed", "app_store_ios", "app_store_android", "google_payments", "manual"] },
+    "merchant_name": { "type": "string" },
+    "normalised_name": { "type": "string", "description": "Cleaned, deduplicated merchant name" },
+    "category": { "type": "string", "enum": ["streaming", "software_saas", "news_media", "gym", "box_delivery", "gaming", "insurance", "utility", "membership", "other"] },
+    "amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "billing_frequency": { "type": "string", "enum": ["weekly", "monthly", "quarterly", "annual", "unknown"] },
+    "annual_equivalent": { "type": "number" },
+    "last_charged_date": { "type": "string", "format": "date" },
+    "next_charge_estimate": { "type": "string", "format": "date" },
+    "first_detected_date": { "type": "string", "format": "date" },
+    "receipt_ids": { "type": "array", "items": { "type": "string" } },
+    "email_sender": { "type": "string", "format": "email" },
+    "linked_subscription_id": { "type": "string", "description": "Confirmed link to digital-life/subscription.schema.json" },
+    "is_confirmed": { "type": "boolean" },
+    "is_active": { "type": "boolean" },
+    "cancellation_url": { "type": "string", "format": "uri" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "merchant_name", "amount", "currency"],
+  "_phase1_todo": [
+    "Define subscription deduplication across sources",
+    "Define cancellation difficulty scoring",
+    "Define total subscription spend alert",
+    "Define subscription-to-goal value alignment"
+  ]
+}

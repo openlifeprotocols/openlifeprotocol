@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Home Insurance",
+  "description": "Home or property insurance policy.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^home_insurance_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "insurance_policy_id": { "type": "string" },
+    "person_id": { "type": "string" },
+    "property_address": { "type": "string" },
+    "property_type": { "type": "string", "enum": ["house", "apartment", "condominium", "townhouse", "flat", "other"] },
+    "coverage_type": { "type": "string", "enum": ["buildings_only", "contents_only", "combined", "landlord"] },
+    "buildings_coverage": { "type": "number" },
+    "contents_coverage": { "type": "number" },
+    "currency": { "type": "string" },
+    "annual_premium": { "type": "number" },
+    "monthly_premium": { "type": "number" },
+    "policy_start_date": { "type": "string", "format": "date" },
+    "policy_end_date": { "type": "string", "format": "date" },
+    "buildings_excess": { "type": "number" },
+    "contents_excess": { "type": "number" },
+    "accidental_damage_cover": { "type": "boolean" },
+    "home_emergency_cover": { "type": "boolean" },
+    "new_for_old": { "type": "boolean" },
+    "no_claims_discount": { "type": "number" },
+    "claims_history": { "type": "array", "items": { "type": "object", "properties": { "claim_date": { "type": "string" }, "claim_amount": { "type": "number" }, "claim_status": { "type": "string" } } } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define inventory integration", "Define claim submission", "Define coverage adequacy check"]
+}

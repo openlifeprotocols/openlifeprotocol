@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Email Thread",
+  "description": "A conversation thread — a group of related email messages. Used to understand ongoing correspondence with institutions, service providers, and people.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^email_thread_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "account_id": { "type": "string" },
+    "subject": { "type": "string" },
+    "participants": { "type": "array", "items": { "type": "string", "format": "email" } },
+    "message_ids": { "type": "array", "items": { "type": "string" } },
+    "message_count": { "type": "integer" },
+    "first_message_at": { "type": "string", "format": "date-time" },
+    "last_message_at": { "type": "string", "format": "date-time" },
+    "is_read": { "type": "boolean" },
+    "label_ids": { "type": "array", "items": { "type": "string" } },
+    "classification": { "type": "string", "enum": ["government_official", "financial", "legal", "medical", "subscription", "work", "personal", "marketing", "other"] },
+    "linked_case_id": { "type": "string" },
+    "linked_actor_id": { "type": "string", "description": "Institution or person this thread concerns" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "account_id", "subject"],
+  "_phase1_todo": [
+    "Define thread summarisation",
+    "Define thread-to-case auto-linking",
+    "Define thread action extraction",
+    "Define thread archival policy"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Livestream",
+  "description": "A livestream event created by a creator.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^livestream_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "creator_profile_id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "scheduled_start_time": { "type": "string", "format": "date-time" },
+    "actual_start_time": { "type": "string", "format": "date-time" },
+    "actual_end_time": { "type": "string", "format": "date-time" },
+    "duration_seconds": { "type": "integer" },
+    "platforms": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["scheduled", "live", "ended", "cancelled"] },
+    "live_viewers_peak": { "type": "integer" },
+    "total_viewers": { "type": "integer" },
+    "replay_available": { "type": "boolean" },
+    "replay_url": { "type": "string", "format": "uri" },
+    "chat_enabled": { "type": "boolean" },
+    "comments_count": { "type": "integer" },
+    "donations_received": { "type": "number" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "creator_profile_id", "title"],
+  "_phase1_todo": [
+    "Define livestream audience insights",
+    "Define livestream promotion automation",
+    "Define livestream recording management"
+  ]
+}

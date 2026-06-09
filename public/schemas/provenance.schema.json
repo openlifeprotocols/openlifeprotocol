@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Provenance",
+  "description": "Complete lineage and history of how data or decisions were created, modified, and used.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^provenance_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "entity_id": {
+      "type": "string",
+      "description": "Entity this provenance tracks"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "created_by": {
+      "type": "string"
+    },
+    "sources": {
+      "type": "array",
+      "description": "Sources used to create this entity",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source_type": { "type": "string" },
+          "source_id": { "type": "string" }
+        }
+      }
+    },
+    "modifications": {
+      "type": "array",
+      "description": "History of modifications",
+      "items": {
+        "type": "object",
+        "properties": {
+          "modified_at": { "type": "string", "format": "date-time" },
+          "modified_by": { "type": "string" },
+          "changes": { "type": "object" }
+        }
+      }
+    },
+    "used_by": {
+      "type": "array",
+      "description": "Entities or decisions that use this data",
+      "items": { "type": "string" }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "entity_id"],
+  "_phase1_todo": [
+    "Define provenance chain validation",
+    "Define provenance data retention",
+    "Define provenance graph queries",
+    "Define provenance immutability guarantees"
+  ]
+}

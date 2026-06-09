@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Profit and Loss",
+  "description": "A profit and loss statement for a period — revenue minus costs equals gross and net profit.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^pnl_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "entity_id": { "type": "string" },
+    "period": {
+      "type": "object",
+      "properties": {
+        "from": { "type": "string", "format": "date" },
+        "to": { "type": "string", "format": "date" },
+        "label": { "type": "string", "examples": ["2026-Q2", "FY2025-26"] }
+      },
+      "required": ["from", "to", "label"]
+    },
+    "revenue": { "type": "number" },
+    "cost_of_goods_sold": { "type": "number" },
+    "gross_profit": { "type": "number" },
+    "gross_margin": { "type": "number", "description": "gross_profit / revenue" },
+    "operating_expenses": { "type": "number" },
+    "ebitda": { "type": "number" },
+    "depreciation_amortisation": { "type": "number" },
+    "ebit": { "type": "number" },
+    "interest": { "type": "number" },
+    "tax": { "type": "number" },
+    "net_profit": { "type": "number" },
+    "net_margin": { "type": "number" },
+    "currency": { "type": "string" },
+    "revenue_ids": { "type": "array", "items": { "type": "string" } },
+    "cost_ids": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "entity_id", "period", "revenue", "net_profit", "currency"],
+  "_phase1_todo": [
+    "Define period comparison (YoY, QoQ)",
+    "Define P&L by segment",
+    "Define P&L consolidation across entities",
+    "Define P&L forecasting model"
+  ]
+}

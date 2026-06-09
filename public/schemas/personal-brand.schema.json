@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Personal Brand",
+  "description": "A personal brand — how I want to be known, my brand promise, my unique value proposition.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^personal_brand_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "brand_name": { "type": "string" },
+    "tagline": { "type": "string" },
+    "mission_statement": { "type": "string" },
+    "brand_values": { "type": "array", "items": { "type": "string" } },
+    "what_known_for": { "type": "array", "items": { "type": "string" } },
+    "unique_proposition": { "type": "string" },
+    "target_audience": { "type": "string" },
+    "visual_identity": { "type": "string" },
+    "brand_voice": { "type": "string" },
+    "brand_colors": { "type": "array", "items": { "type": "string" } },
+    "brand_associations": { "type": "array", "items": { "type": "string" } },
+    "authenticity_level": { "type": "string", "enum": ["highly_authentic", "mostly_authentic", "partially_curated", "heavily_curated"] },
+    "platforms": { "type": "array", "items": { "type": "string" } },
+    "consistent_across_platforms": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "brand_name"],
+  "_phase1_todo": [
+    "Define brand presence consistency auditing",
+    "Define brand evolution tracking",
+    "Define audience perception vs. brand intent analysis"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reminder",
+  "description": "A time or location-based reminder — to take action, make a call, submit something, or attend something.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^reminder_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "notes": { "type": "string" },
+    "reminder_type": { "type": "string", "enum": ["time_based", "location_based", "recurring", "deadline"] },
+    "trigger_at": { "type": "string", "format": "date-time" },
+    "trigger_location": { "type": "string" },
+    "recurrence": { "type": "string", "description": "RRULE string for recurring reminders" },
+    "priority": { "type": "string", "enum": ["low", "medium", "high", "urgent"] },
+    "linked_case_id": { "type": "string" },
+    "linked_task_id": { "type": "string" },
+    "linked_calendar_event_id": { "type": "string" },
+    "source": { "type": "string", "enum": ["olp_generated", "apple_reminders", "google_tasks", "manual", "other"] },
+    "snoozed_until": { "type": "string", "format": "date-time" },
+    "snooze_count": { "type": "integer", "default": 0 },
+    "completed": { "type": "boolean" },
+    "completed_at": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "reminder_type"],
+  "_phase1_todo": [
+    "Define OLP-driven reminder generation from deadlines",
+    "Define snooze limit and escalation",
+    "Define location trigger integration",
+    "Define reminder delegation"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Distribution Channel",
+  "description": "A channel through which creator content is distributed.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^distribution_channel_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "creator_profile_id": { "type": "string" },
+    "channel_name": { "type": "string" },
+    "channel_type": { "type": "string", "enum": ["social_media", "website", "email", "newsletter", "podcast_platform", "video_platform", "marketplace", "other"] },
+    "platform_name": { "type": "string" },
+    "audience_size": { "type": "integer" },
+    "engagement_rate": { "type": "number" },
+    "average_reach": { "type": "integer" },
+    "is_primary_channel": { "type": "boolean" },
+    "revenue_generated": { "type": "number" },
+    "date_started": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["active", "growing", "dormant", "abandoned"] },
+    "growth_strategy": { "type": "string" },
+    "performance_score": { "type": "number" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "creator_profile_id", "channel_name", "channel_type"],
+  "_phase1_todo": [
+    "Define channel performance comparison",
+    "Define channel growth recommendations",
+    "Define audience migration tracking"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Smart Folder",
+  "description": "Dynamic folder based on rules or saved search.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^smart_folder_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "owner_id": { "type": "string" },
+    "folder_name": { "type": "string" },
+    "description": { "type": "string" },
+    "search_query": { "type": "string" },
+    "filter_rules": { "type": "array", "items": { "type": "object", "properties": { "field": { "type": "string" }, "operator": { "type": "string" }, "value": { "type": "string" } } } },
+    "filter_logic": { "type": "string", "enum": ["AND", "OR"] },
+    "sort_by": { "type": "string" },
+    "sort_order": { "type": "string", "enum": ["ascending", "descending"] },
+    "auto_refresh": { "type": "boolean" },
+    "refresh_frequency": { "type": "string", "enum": ["hourly", "daily", "weekly"] },
+    "item_count": { "type": "integer" },
+    "creation_date": { "type": "string", "format": "date-time" },
+    "last_updated": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "owner_id"],
+  "_phase1_todo": ["Define rule builder UI", "Define query optimization", "Define result caching"]
+}

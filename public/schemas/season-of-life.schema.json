@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Season of Life",
+  "description": "A season of life — shorter period, often defined by weather, recurring cycle, or temporal context.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^season_of_life_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "season_name": { "type": "string" },
+    "season_type": { "type": "string", "enum": ["spring", "summer", "autumn", "winter", "busy_season", "rest_season", "exploration_season", "building_season", "transition_season"] },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "climate_or_context": { "type": "string" },
+    "energy_level": { "type": "string", "enum": ["low", "moderate", "high"] },
+    "focus_areas": { "type": "array", "items": { "type": "string" } },
+    "notable_events": { "type": "array", "items": { "type": "string" } },
+    "feelings": { "type": "array", "items": { "type": "string" } },
+    "productivity": { "type": "string" },
+    "social_activity": { "type": "string", "enum": ["reclusive", "moderate", "social", "very_social"] },
+    "health_status": { "type": "string" },
+    "anticipated_changes": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "season_name", "start_date"],
+  "_phase1_todo": [
+    "Define seasonal pattern detection",
+    "Define season-based recommendations and planning",
+    "Define circular time modeling for recurring seasons"
+  ]
+}

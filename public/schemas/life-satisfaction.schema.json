@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Life Satisfaction",
+  "description": "Life satisfaction assessment — quality of life rating, life satisfaction score, domain satisfaction.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^life_satisfaction_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "assessment_date": { "type": "string", "format": "date" },
+    "overall_satisfaction": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "life_satisfaction_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+    "domain_satisfaction": { "type": "object", "properties": { "work_career": { "type": "integer", "minimum": 1, "maximum": 10 }, "relationships": { "type": "integer", "minimum": 1, "maximum": 10 }, "health": { "type": "integer", "minimum": 1, "maximum": 10 }, "personal_growth": { "type": "integer", "minimum": 1, "maximum": 10 }, "finances": { "type": "integer", "minimum": 1, "maximum": 10 }, "living_situation": { "type": "integer", "minimum": 1, "maximum": 10 }, "leisure_fun": { "type": "integer", "minimum": 1, "maximum": 10 }, "spirituality": { "type": "integer", "minimum": 1, "maximum": 10 } } },
+    "what_satisfies": { "type": "array", "items": { "type": "string" } },
+    "what_dissatisfies": { "type": "array", "items": { "type": "string" } },
+    "biggest_frustration": { "type": "string" },
+    "greatest_joy": { "type": "string" },
+    "contributing_factors": { "type": "array", "items": { "type": "string" } },
+    "recent_changes_in_satisfaction": { "type": "string" },
+    "reason_for_changes": { "type": "array", "items": { "type": "string" } },
+    "goals_for_improvement": { "type": "array", "items": { "type": "string" } },
+    "resources_available": { "type": "array", "items": { "type": "string" } },
+    "trend": { "type": "string", "enum": ["declining", "stable", "improving", "fluctuating"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "assessment_date", "overall_satisfaction"],
+  "_phase1_todo": [
+    "Define life satisfaction trend analysis",
+    "Define domain-to-overall satisfaction correlation",
+    "Define satisfaction improvement planning"
+  ]
+}

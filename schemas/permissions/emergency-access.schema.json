@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Emergency Access",
+  "description": "Emergency access credentials or procedures.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^emergency_access_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "access_type": { "type": "string", "enum": ["account_access", "data_access", "vault_access", "device_access"] },
+    "account_or_service": { "type": "string" },
+    "authorized_person_id": { "type": "string" },
+    "authorized_person_name": { "type": "string" },
+    "authorization_method": { "type": "string", "enum": ["documented", "verbal", "legal_document", "advance_directive"] },
+    "activation_condition": { "type": "string", "enum": ["death", "incapacity", "emergency", "consent"] },
+    "credentials_stored": { "type": "boolean" },
+    "credentials_location": { "type": "string" },
+    "credentials_encrypted": { "type": "boolean" },
+    "authorized_date": { "type": "string", "format": "date-time" },
+    "last_reviewed": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define access activation", "Define consent verification", "Define audit logging"]
+}

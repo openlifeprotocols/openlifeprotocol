@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Archival Package",
+  "description": "Grouped archived items package.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^archival_package_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "package_name": { "type": "string" },
+    "owner_id": { "type": "string" },
+    "creation_date": { "type": "string", "format": "date-time" },
+    "package_items": { "type": "array", "items": { "type": "string" } },
+    "item_count": { "type": "integer" },
+    "total_size_bytes": { "type": "integer" },
+    "checksum": { "type": "string" },
+    "package_format": { "type": "string", "enum": ["tar", "zip", "7z", "tar_gz", "other"] },
+    "encryption_algorithm": { "type": "string" },
+    "encryption_key_id": { "type": "string" },
+    "archive_location": { "type": "string" },
+    "retrieval_date": { "type": "string", "format": "date" },
+    "access_log": { "type": "array", "items": { "type": "object", "properties": { "accessed_date": { "type": "string" }, "accessed_by": { "type": "string" } } } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "owner_id"],
+  "_phase1_todo": ["Define package integrity verification", "Define extraction workflow", "Define access control"]
+}

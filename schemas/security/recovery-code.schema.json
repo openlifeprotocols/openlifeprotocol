@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Recovery Code",
+  "description": "Backup or recovery codes for account access.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^recovery_code_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "account_type": { "type": "string" },
+    "service_name": { "type": "string" },
+    "recovery_codes": { "type": "array", "items": { "type": "string" } },
+    "code_format": { "type": "string", "enum": ["8_character", "10_character", "12_character", "alphanumeric", "other"] },
+    "generated_date": { "type": "string", "format": "date-time" },
+    "codes_used": { "type": "integer" },
+    "codes_remaining": { "type": "integer" },
+    "backup_location": { "type": "string", "enum": ["secure_note", "printed", "encrypted_file", "vault"] },
+    "is_secure_stored": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define code usage tracking", "Define regeneration workflow", "Define secure printing"]
+}

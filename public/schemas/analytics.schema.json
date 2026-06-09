@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Analytics",
+  "description": "Analytics and performance metrics for social media content or account.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^analytics_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "social_account_id": { "type": "string" },
+    "content_piece_id": { "type": "string" },
+    "period_start": { "type": "string", "format": "date" },
+    "period_end": { "type": "string", "format": "date" },
+    "impressions": { "type": "integer" },
+    "reach": { "type": "integer" },
+    "engagement_count": { "type": "integer" },
+    "engagement_rate": { "type": "number" },
+    "clicks": { "type": "integer" },
+    "click_through_rate": { "type": "number" },
+    "conversions": { "type": "integer" },
+    "conversion_rate": { "type": "number" },
+    "shares": { "type": "integer" },
+    "comments": { "type": "integer" },
+    "saves": { "type": "integer" },
+    "followers_gained": { "type": "integer" },
+    "traffic_source": { "type": "string" },
+    "roi": { "type": "number" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "social_account_id"],
+  "_phase1_todo": [
+    "Define analytics benchmarking",
+    "Define analytics forecasting",
+    "Define cross-platform analytics comparison"
+  ]
+}

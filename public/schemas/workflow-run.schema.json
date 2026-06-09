@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workflow Run",
+  "description": "Execution record of a workflow for a specific case. Tracks step completions, timing, and outcomes.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^workflowrun_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "case_id": { "type": "string" },
+    "workflow_id": { "type": "string" },
+    "workflow_version": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "in_progress", "completed", "failed", "cancelled", "paused"],
+      "description": "Current status"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "step_executions": {
+      "type": "array",
+      "description": "Records of each step execution",
+      "items": {
+        "type": "object",
+        "properties": {
+          "step_id": { "type": "string" },
+          "status": { "type": "string" },
+          "started_at": { "type": "string", "format": "date-time" },
+          "completed_at": { "type": "string", "format": "date-time" },
+          "result": { "type": "object" }
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "description": "Workflow context data"
+    },
+    "total_duration_seconds": {
+      "type": "integer"
+    },
+    "error_message": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "case_id", "workflow_id", "status"],
+  "_phase1_todo": [
+    "Define workflow run performance metrics",
+    "Define workflow step timing and bottleneck detection",
+    "Define workflow pause and resume logic",
+    "Define workflow compensation for failures",
+    "Define workflow version migration",
+    "Define workflow audit and traceability"
+  ]
+}

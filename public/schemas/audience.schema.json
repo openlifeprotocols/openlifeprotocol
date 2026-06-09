@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Audience",
+  "description": "Audience profile and engagement metrics for a social account.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^audience_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "social_account_id": { "type": "string" },
+    "total_followers": { "type": "integer" },
+    "age_distribution": { "type": "object", "additionalProperties": { "type": "integer" } },
+    "gender_distribution": { "type": "object", "additionalProperties": { "type": "integer" } },
+    "top_locations": { "type": "array", "items": { "type": "string" } },
+    "top_interests": { "type": "array", "items": { "type": "string" } },
+    "average_engagement_rate": { "type": "number" },
+    "peak_activity_days": { "type": "array", "items": { "type": "string", "enum": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"] } },
+    "peak_activity_hours": { "type": "array", "items": { "type": "integer" } },
+    "follower_growth_rate": { "type": "number" },
+    "audience_retention_rate": { "type": "number" },
+    "audience_quality_score": { "type": "number" },
+    "last_updated": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "social_account_id"],
+  "_phase1_todo": [
+    "Define audience segmentation",
+    "Define audience sentiment tracking",
+    "Define audience growth prediction"
+  ]
+}

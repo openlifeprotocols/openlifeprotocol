@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Extracted Entity",
+  "description": "Named entities extracted from document text.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^extracted_entity_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "document_id": { "type": "string" },
+    "entity_type": { "type": "string", "enum": ["person", "organization", "location", "date", "email", "phone", "amount", "identifier", "address", "url"] },
+    "entity_value": { "type": "string" },
+    "confidence_score": { "type": "number" },
+    "extraction_method": { "type": "string", "enum": ["nlp", "regex", "ml_model", "rule_based", "manual"] },
+    "context": { "type": "string" },
+    "start_position": { "type": "integer" },
+    "end_position": { "type": "integer" },
+    "extraction_date": { "type": "string", "format": "date-time" },
+    "verified": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "document_id"],
+  "_phase1_todo": ["Define entity validation", "Define entity linking", "Define entity aggregation"]
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Tenancy",
+  "description": "A rental agreement between a landlord and tenant for a residential or commercial property.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^tenancy_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "property_id": { "type": "string" },
+    "landlord_id": { "type": "string" },
+    "tenant_ids": { "type": "array", "items": { "type": "string" } },
+    "tenancy_type": { "type": "string", "enum": ["assured_shorthold", "assured", "regulated", "secure", "periodic", "fixed_term", "commercial", "lodger"] },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "is_periodic": { "type": "boolean" },
+    "rent": {
+      "type": "object",
+      "properties": {
+        "amount": { "type": "number" },
+        "currency": { "type": "string" },
+        "frequency": { "type": "string", "enum": ["weekly", "monthly", "quarterly"] },
+        "due_day": { "type": "integer" }
+      }
+    },
+    "deposit": {
+      "type": "object",
+      "properties": {
+        "amount": { "type": "number" },
+        "currency": { "type": "string" },
+        "scheme": { "type": "string" },
+        "reference": { "type": "string" }
+      }
+    },
+    "notice_period_days": { "type": "integer" },
+    "status": { "type": "string", "enum": ["active", "notice_given", "ended", "disputed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "property_id", "landlord_id", "tenant_ids", "tenancy_type", "start_date"],
+  "_phase1_todo": [
+    "Define rent arrears workflow",
+    "Define section 21/8 notice procedures",
+    "Define deposit dispute resolution",
+    "Define tenancy succession on death"
+  ]
+}

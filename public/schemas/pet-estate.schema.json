@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pet Estate",
+  "description": "Instructions for a pet's ongoing welfare in the event of the owner's death, incapacity, or hospitalisation.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^pet_estate_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "pet_id": { "type": "string" },
+    "owner_id": { "type": "string" },
+    "created_date": { "type": "string", "format": "date" },
+    "trigger": { "type": "string", "enum": ["owner_death", "owner_incapacity", "owner_hospitalisation", "any_emergency"] },
+    "primary_carer_id": { "type": "string", "description": "Person who will take the pet" },
+    "secondary_carer_id": { "type": "string" },
+    "care_conditions": { "type": "string", "description": "Instructions for the carer" },
+    "emergency_vet_id": { "type": "string" },
+    "financial_provision": {
+      "type": "object",
+      "description": "Financial provision for ongoing care",
+      "properties": {
+        "amount": { "type": "number" },
+        "currency": { "type": "string" },
+        "source": { "type": "string", "description": "e.g., 'estate', 'trust', 'insurance payout'" }
+      }
+    },
+    "care_plan_id": { "type": "string" },
+    "will_reference": { "type": "string" },
+    "if_no_carer_found": { "type": "string", "enum": ["donate_to_rescue", "contact_breed_rescue", "euthanasia_last_resort"] },
+    "document_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["draft", "active"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "pet_id", "owner_id", "trigger", "primary_carer_id"],
+  "_phase1_todo": [
+    "Define pet legacy trust",
+    "Define pet care provisions in will",
+    "Define emergency pet care card",
+    "Define breed-specific rescue referral"
+  ]
+}

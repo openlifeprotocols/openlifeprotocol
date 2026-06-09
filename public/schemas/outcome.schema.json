@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Outcome",
+  "description": "An Outcome represents the final result or completion of a case. It documents what was achieved, who was affected, and what happens next.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Semantic identifier for the outcome. Human-readable reference.",
+      "pattern": "^outcome_[a-zA-Z0-9_-]+$",
+      "examples": ["outcome_estate_settled_1", "outcome_onboarding_complete_2"]
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Internal unique identifier (RFC 4122 UUID). Immutable, system-generated."
+    },
+    "external_ids": {
+      "type": "array",
+      "description": "References to this outcome in external systems",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "case_id": {
+      "type": "string",
+      "description": "Reference to the case this outcome completes"
+    },
+    "case_type": {
+      "type": "string",
+      "description": "Type of case this outcome closes",
+      "enum": [
+        "death",
+        "birth",
+        "move",
+        "hiring",
+        "termination",
+        "business_formation",
+        "business_closure",
+        "healthcare_enrollment",
+        "marriage",
+        "divorce"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the outcome",
+      "enum": ["in_progress", "completed", "failed", "cancelled", "archived"],
+      "examples": ["completed"]
+    },
+    "success": {
+      "type": "boolean",
+      "description": "Whether the case was resolved successfully"
+    },
+    "completion_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the case was completed"
+    },
+    "summary": {
+      "type": "string",
+      "description": "High-level summary of what was accomplished"
+    },
+    "results": {
+      "type": "object",
+      "description": "Structured results specific to the case type",
+      "additionalProperties": true,
+      "examples": [
+        {
+          "estate_distributed": true,
+          "total_distributed": 450000,
+          "currency": "GBP",
+          "beneficiaries_paid": 3
+        }
+      ]
+    },
+    "affected_actors": {
+      "type": "array",
+      "description": "Actors affected by this outcome",
+      "items": {
+        "type": "object",
+        "properties": {
+          "actor_id": {
+            "type": "string"
+          },
+          "role": {
+            "type": "string"
+          },
+          "impact": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "documents_generated": {
+      "type": "array",
+      "description": "Final documents produced by this case",
+      "items": {
+        "type": "string"
+      }
+    },
+    "next_steps": {
+      "type": "array",
+      "description": "Any follow-up actions required",
+      "items": {
+        "type": "string"
+      }
+    },
+    "completion_notes": {
+      "type": "string",
+      "description": "Notes about the completion"
+    },
+    "total_duration_days": {
+      "type": "integer",
+      "description": "Total days from case opening to completion"
+    },
+    "total_cost": {
+      "type": "number",
+      "description": "Total cost to process this case (if applicable)"
+    },
+    "cost_currency": {
+      "type": "string",
+      "description": "Currency for cost",
+      "examples": ["GBP", "USD", "EUR"]
+    },
+    "completed_by_actor_id": {
+      "type": "string",
+      "description": "Actor who completed the case"
+    },
+    "approved_by_actor_id": {
+      "type": "string",
+      "description": "Actor who approved the completion"
+    },
+    "approved_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the outcome was approved"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Custom metadata",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "case_id", "case_type", "status", "success", "completion_date"],
+  "examples": [
+    {
+      "id": "outcome_estate_settled_2026_001",
+      "case_id": "case_death_uk_2026_001",
+      "case_type": "death",
+      "status": "completed",
+      "success": true,
+      "completion_date": "2026-09-15T17:00:00Z",
+      "summary": "Estate of John Doe settled. All beneficiaries paid. Final accounts submitted to HMRC.",
+      "results": {
+        "estate_distributed": true,
+        "total_distributed": 450000,
+        "currency": "GBP",
+        "beneficiaries_paid": 3,
+        "inheritance_tax_paid": 0,
+        "solicitor_fees": 5000
+      },
+      "affected_actors": [
+        {
+          "actor_id": "person_executor_456",
+          "role": "Executor",
+          "impact": "Completed duties, estate distributed"
+        },
+        {
+          "actor_id": "person_beneficiary_1",
+          "role": "Beneficiary",
+          "impact": "Received £150,000"
+        }
+      ],
+      "documents_generated": ["doc_final_accounts", "doc_distribution_statement", "doc_tax_clearance"],
+      "next_steps": ["Archive case after 6 year retention period"],
+      "completion_notes": "Smooth probate process. No disputes. All beneficiaries satisfied.",
+      "total_duration_days": 98,
+      "total_cost": 5500,
+      "cost_currency": "GBP",
+      "completed_by_actor_id": "person_solicitor_789",
+      "approved_by_actor_id": "person_senior_solicitor_999",
+      "approved_at": "2026-09-16T10:00:00Z"
+    }
+  ],
+  "_phase1_todo": [
+    "Define outcome notification process to all stakeholders",
+    "Define outcome appeal or reconsideration windows",
+    "Define outcome archival and retention policies",
+    "Define outcome metrics collection for reporting",
+    "Define outcome data export for compliance",
+    "Define outcome impact on related cases or actors",
+    "Define satisfaction metrics and feedback collection",
+    "Define outcome precedent establishment and learning"
+  ]
+}

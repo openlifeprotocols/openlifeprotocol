@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Disclosure Purpose",
+  "description": "A declared purpose for disclosing OLP data to a third party — the why and who of every data share. Required before any data leaves OLP.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^disclosure_purpose_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "requester_id": { "type": "string", "description": "Actor requesting disclosure" },
+    "requester_organisation": { "type": "string" },
+    "data_subject_id": { "type": "string" },
+    "purpose": {
+      "type": "string",
+      "enum": [
+        "legal_representation",
+        "medical_treatment",
+        "social_care_assessment",
+        "benefits_claim",
+        "safeguarding_investigation",
+        "court_order_compliance",
+        "police_investigation",
+        "regulatory_investigation",
+        "insurance_claim",
+        "mortgage_application",
+        "employment_reference",
+        "voluntary_disclosure"
+      ]
+    },
+    "legal_gateway": { "type": "string", "description": "Statutory power or legal basis for disclosure" },
+    "data_categories": { "type": "array", "items": { "type": "string" } },
+    "entity_ids": { "type": "array", "items": { "type": "string" }, "description": "Specific records being disclosed" },
+    "subject_notified": { "type": "boolean" },
+    "subject_notification_exempt": { "type": "boolean", "description": "e.g., ongoing investigation exemption" },
+    "subject_notification_exemption_reason": { "type": "string" },
+    "consent_id": { "type": "string" },
+    "requested_at": { "type": "string", "format": "date-time" },
+    "approved_at": { "type": "string", "format": "date-time" },
+    "approved_by_id": { "type": "string" },
+    "disclosed_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "status": { "type": "string", "enum": ["requested", "approved", "disclosed", "rejected", "expired"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "requester_id", "data_subject_id", "purpose", "legal_gateway"],
+  "_phase1_todo": [
+    "Define onward disclosure restriction (no re-sharing without new purpose)",
+    "Define bulk disclosure prevention",
+    "Define disclosure register (s.61 DPA 2018 style)",
+    "Define subject access request integration"
+  ]
+}

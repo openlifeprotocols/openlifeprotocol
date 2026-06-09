@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Decision Factor",
+  "description": "A factor influencing a decision — criteria, consideration, constraint, variable affecting the choice.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^decision_factor_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "decision_id": { "type": "string", "pattern": "^decision_[a-zA-Z0-9_-]+$" },
+    "person_id": { "type": "string" },
+    "factor_name": { "type": "string" },
+    "description": { "type": "string" },
+    "factor_type": { "type": "string", "enum": ["value", "constraint", "risk", "opportunity", "emotional", "practical", "financial", "temporal", "relational"] },
+    "importance": { "type": "string", "enum": ["trivial", "minor", "important", "critical"] },
+    "influenced_by": { "type": "array", "items": { "type": "string" } },
+    "related_belief": { "type": "string" },
+    "related_principle": { "type": "string" },
+    "measurable": { "type": "boolean" },
+    "measurement_method": { "type": "string" },
+    "current_value": { "type": "string" },
+    "desired_value": { "type": "string" },
+    "gap": { "type": "string" },
+    "how_affects_options": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "decision_id", "person_id", "factor_name"],
+  "_phase1_todo": [
+    "Define factor weighting schemes",
+    "Define factor conflict resolution",
+    "Define factor satiation thresholds"
+  ]
+}

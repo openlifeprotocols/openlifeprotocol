@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Community",
+  "description": "A community or group formed around social media content or creator.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^community_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "social_account_id": { "type": "string" },
+    "community_name": { "type": "string" },
+    "community_description": { "type": "string" },
+    "community_type": { "type": "string", "enum": ["followers", "members", "subscribers", "exclusive", "fan_group"] },
+    "member_count": { "type": "integer" },
+    "creation_date": { "type": "string", "format": "date" },
+    "community_guidelines": { "type": "string" },
+    "activity_level": { "type": "string", "enum": ["very_active", "active", "moderate", "low", "inactive"] },
+    "engagement_rate": { "type": "number" },
+    "sentiment": { "type": "string", "enum": ["very_positive", "positive", "neutral", "negative", "very_negative"] },
+    "moderation_level": { "type": "string", "enum": ["light", "moderate", "strict"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "social_account_id", "community_name"],
+  "_phase1_todo": [
+    "Define community health scoring",
+    "Define community growth strategies",
+    "Define community sentiment tracking"
+  ]
+}

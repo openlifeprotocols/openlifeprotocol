@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Benefit",
+  "description": "A government or state benefit entitlement or payment record — Universal Credit, Housing Benefit, DLA, etc.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^benefit_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "claimant_id": { "type": "string" },
+    "household_id": { "type": "string" },
+    "benefit_type": { "type": "string", "enum": ["universal_credit", "housing_benefit", "child_benefit", "pip", "dla", "esa", "jsa", "state_pension", "pension_credit", "carers_allowance", "attendance_allowance", "other"] },
+    "reference_number": { "type": "string" },
+    "jurisdiction_id": { "type": "string" },
+    "claim_date": { "type": "string", "format": "date" },
+    "award_date": { "type": "string", "format": "date" },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "frequency": { "type": "string", "enum": ["weekly", "fortnightly", "monthly", "four_weekly"] },
+    "status": { "type": "string", "enum": ["pending", "awarded", "active", "suspended", "ended", "appealing"] },
+    "change_triggers": { "type": "array", "items": { "type": "string" }, "description": "Life events that should trigger review" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "claimant_id", "benefit_type", "claim_date"],
+  "_phase1_todo": [
+    "Define life event benefit review triggers",
+    "Define benefit overpayment recovery",
+    "Define benefit appeal process",
+    "Define means-testing calculations"
+  ]
+}

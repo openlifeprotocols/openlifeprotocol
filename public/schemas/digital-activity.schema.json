@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Digital Activity",
+  "description": "A significant digital activity event — app open, website visit, purchase, account creation, or data export. Used to build a picture of digital behaviour without surveillance-level tracking.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^digital_activity_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "activity_type": {
+      "type": "string",
+      "enum": [
+        "account_created", "account_closed", "subscription_started", "subscription_cancelled",
+        "purchase_made", "document_signed", "data_downloaded", "password_changed",
+        "two_factor_enabled", "login_from_new_device", "email_forwarding_set",
+        "app_installed", "app_deleted", "calendar_event_created", "file_shared",
+        "photo_exported", "location_shared", "consent_given", "consent_withdrawn",
+        "data_export_requested", "account_deletion_requested", "other"
+      ]
+    },
+    "service_name": { "type": "string" },
+    "occurred_at": { "type": "string", "format": "date-time" },
+    "source": { "type": "string", "enum": ["email_extracted", "app_notification", "bank_feed", "manual", "oauth_event", "other"] },
+    "description": { "type": "string" },
+    "linked_account_id": { "type": "string" },
+    "linked_subscription_id": { "type": "string" },
+    "linked_receipt_id": { "type": "string" },
+    "security_relevant": { "type": "boolean", "description": "True for events like login from new device, password change" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "activity_type", "occurred_at"],
+  "_phase1_todo": [
+    "Define security-relevant activity alerting",
+    "Define activity-to-OLP-case linking",
+    "Define digital timeline generation",
+    "Define activity data minimisation policy"
+  ]
+}

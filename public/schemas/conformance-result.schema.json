@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Conformance Result",
+  "description": "Results from testing protocol conformance against OLP specifications.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^conformance_result_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "test_suite_id": {
+      "type": "string"
+    },
+    "implementation_name": {
+      "type": "string"
+    },
+    "protocol_version": {
+      "type": "string"
+    },
+    "test_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "test_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "test_id": { "type": "string" },
+          "test_name": { "type": "string" },
+          "status": { "type": "string", "enum": ["passed", "failed", "skipped"] },
+          "message": { "type": "string" }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "total_tests": { "type": "integer" },
+        "passed": { "type": "integer" },
+        "failed": { "type": "integer" },
+        "skipped": { "type": "integer" },
+        "pass_percentage": { "type": "number" }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "test_suite_id", "implementation_name", "protocol_version"],
+  "_phase1_todo": [
+    "Define conformance levels",
+    "Define certification process",
+    "Define recertification schedule",
+    "Define conformance badges"
+  ]
+}

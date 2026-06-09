@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reference",
+  "description": "Professional reference contact.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^reference_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "reference_name": { "type": "string" },
+    "relationship": { "type": "string", "enum": ["manager", "colleague", "mentor", "professor", "client", "professional_contact"] },
+    "company": { "type": "string" },
+    "job_title": { "type": "string" },
+    "email": { "type": "string", "format": "email" },
+    "phone": { "type": "string" },
+    "contact_address": { "type": "string" },
+    "context_of_relationship": { "type": "string" },
+    "period_known": { "type": "object", "properties": { "start_date": { "type": "string", "format": "date" }, "end_date": { "type": "string", "format": "date" } } },
+    "areas_of_expertise": { "type": "array", "items": { "type": "string" } },
+    "reference_permission": { "type": "boolean" },
+    "last_contacted": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "reference_name"],
+  "_phase1_todo": ["Define reference verification", "Define reference request automation", "Define reference quality scoring"]
+}

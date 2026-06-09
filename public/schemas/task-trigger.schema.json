@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task Trigger",
+  "description": "Task triggered by automation rule.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^task_trigger_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "automation_rule_id": { "type": "string" },
+    "task_type": { "type": "string", "enum": ["send_email", "create_document", "send_notification", "schedule_appointment", "update_status", "archive", "backup", "other"] },
+    "task_status": { "type": "string", "enum": ["pending", "in_progress", "completed", "failed", "cancelled"] },
+    "trigger_date": { "type": "string", "format": "date-time" },
+    "execution_date": { "type": "string", "format": "date-time" },
+    "completion_date": { "type": "string", "format": "date-time" },
+    "execution_result": { "type": "string" },
+    "error_message": { "type": "string" },
+    "retry_count": { "type": "integer" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "automation_rule_id"],
+  "_phase1_todo": ["Define task queuing", "Define retry logic", "Define failure alerts"]
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sponsorship",
+  "description": "A sponsored content or monetization arrangement.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^sponsorship_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "content_piece_id": { "type": "string" },
+    "social_account_id": { "type": "string" },
+    "sponsor_name": { "type": "string" },
+    "sponsorship_type": { "type": "string", "enum": ["direct_payment", "product_placement", "revenue_share", "barter"] },
+    "sponsorship_amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "sponsorship_period": { "type": "string" },
+    "terms": { "type": "string" },
+    "visibility": { "type": "string", "enum": ["disclosed", "undisclosed"] },
+    "performance_required": { "type": "boolean" },
+    "payment_status": { "type": "string", "enum": ["pending", "paid", "disputed"] },
+    "payment_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "content_piece_id", "social_account_id", "sponsor_name"],
+  "_phase1_todo": [
+    "Define sponsorship compliance",
+    "Define sponsorship ROI tracking",
+    "Define sponsorship audience impact"
+  ]
+}

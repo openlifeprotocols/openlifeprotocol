@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sharing Permission",
+  "description": "Document or file sharing permissions.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^sharing_permission_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "document_id": { "type": "string" },
+    "owner_id": { "type": "string" },
+    "shared_with_id": { "type": "string" },
+    "shared_with_type": { "type": "string", "enum": ["user", "group", "email", "link"] },
+    "permission_level": { "type": "string", "enum": ["viewer", "commenter", "editor", "owner"] },
+    "share_date": { "type": "string", "format": "date-time" },
+    "expiration_date": { "type": "string", "format": "date" },
+    "can_share": { "type": "boolean" },
+    "can_download": { "type": "boolean" },
+    "can_print": { "type": "boolean" },
+    "require_password": { "type": "boolean" },
+    "shared_link": { "type": "string", "format": "uri" },
+    "view_count": { "type": "integer" },
+    "last_viewed": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "document_id"],
+  "_phase1_todo": ["Define permission revocation", "Define access audit", "Define bulk sharing"]
+}

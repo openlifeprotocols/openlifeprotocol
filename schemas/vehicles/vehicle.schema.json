@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Vehicle",
+  "description": "Vehicle registration and ownership details.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^vehicle_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "vehicle_type": { "type": "string", "enum": ["car", "motorcycle", "truck", "van", "suv", "bicycle", "scooter", "other"] },
+    "registration_number": { "type": "string" },
+    "vin": { "type": "string" },
+    "make": { "type": "string" },
+    "model": { "type": "string" },
+    "year": { "type": "integer" },
+    "color": { "type": "string" },
+    "fuel_type": { "type": "string", "enum": ["petrol", "diesel", "hybrid", "electric", "lpg", "other"] },
+    "engine_size": { "type": "string" },
+    "registration_date": { "type": "string", "format": "date" },
+    "expiration_date": { "type": "string", "format": "date" },
+    "owner_name": { "type": "string" },
+    "keeper_address": { "type": "string" },
+    "mot_status": { "type": "string", "enum": ["valid", "expired", "not_due", "failed"] },
+    "tax_status": { "type": "string", "enum": ["paid", "unpaid", "exempt", "historic"] },
+    "document_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define vehicle verification", "Define maintenance scheduling", "Define ownership transfer"]
+}

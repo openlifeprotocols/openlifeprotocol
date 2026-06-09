@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Achievement",
+  "description": "A personal achievement — accomplishment, success, goal reached, obstacle overcome.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^achievement_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "achievement_type": { "type": "string", "enum": ["personal_goal", "professional_success", "creative_output", "physical_challenge", "emotional_growth", "learning_mastery", "relationship_milestone", "overcoming_obstacle"] },
+    "date_achieved": { "type": "string", "format": "date" },
+    "difficulty_level": { "type": "string", "enum": ["easy", "moderate", "challenging", "extremely_difficult"] },
+    "effort_required": { "type": "string" },
+    "time_spent": { "type": "string" },
+    "challenges_overcome": { "type": "array", "items": { "type": "string" } },
+    "people_who_helped": { "type": "array", "items": { "type": "string" } },
+    "pride_level": { "type": "string", "enum": ["minimal", "modest", "significant", "immense"] },
+    "impact": { "type": "string" },
+    "validation_received": { "type": "array", "items": { "type": "string" } },
+    "skills_demonstrated": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "achievement_type"],
+  "_phase1_todo": [
+    "Define achievement celebration tracking",
+    "Define achievement-to-capability mapping",
+    "Define achievement replay and reminiscence"
+  ]
+}

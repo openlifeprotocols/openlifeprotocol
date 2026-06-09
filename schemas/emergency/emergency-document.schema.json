@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Emergency Document",
+  "description": "Critical document for emergency access.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^emergency_document_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "document_type": { "type": "string", "enum": ["living_will", "power_of_attorney", "advance_directive", "will", "trust", "insurance_policy", "medical_records", "vaccination_record", "allergy_information", "medication_list", "home_inventory", "asset_list", "contact_list", "password_list", "financial_account_list", "property_deed", "other"] },
+    "document_id": { "type": "string" },
+    "access_location": { "type": "string" },
+    "access_instructions": { "type": "string" },
+    "authorized_access_people": { "type": "array", "items": { "type": "string" } },
+    "is_notarized": { "type": "boolean" },
+    "notarization_date": { "type": "string", "format": "date" },
+    "creation_date": { "type": "string", "format": "date" },
+    "review_date": { "type": "string", "format": "date" },
+    "renewal_date": { "type": "string", "format": "date" },
+    "digital_copy_available": { "type": "boolean" },
+    "physical_copy_available": { "type": "boolean" },
+    "physical_copy_location": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define access authorization", "Define document security", "Define renewal reminders"]
+}

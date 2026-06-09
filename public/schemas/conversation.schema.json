@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Conversation",
+  "description": "A documented conversation — key topics discussed, decisions made, insights shared, important dialogue.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^conversation_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "conversation_with": { "type": "array", "items": { "type": "string" } },
+    "date": { "type": "string", "format": "date" },
+    "start_time": { "type": "string", "format": "time" },
+    "duration_minutes": { "type": "integer" },
+    "format": { "type": "string", "enum": ["in_person", "phone", "video_call", "chat", "email_thread", "messaging_app"] },
+    "location": { "type": "string" },
+    "purpose": { "type": "string" },
+    "topics_discussed": { "type": "array", "items": { "type": "string" } },
+    "key_points": { "type": "array", "items": { "type": "string" } },
+    "decisions_made": { "type": "array", "items": { "type": "string" } },
+    "action_items": { "type": "array", "items": { "type": "string" } },
+    "insights_gained": { "type": "array", "items": { "type": "string" } },
+    "tone": { "type": "string", "enum": ["friendly", "professional", "contentious", "collaborative", "instructional", "brainstorming"] },
+    "follow_up_required": { "type": "boolean" },
+    "follow_up_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "conversation_with", "date"],
+  "_phase1_todo": [
+    "Define conversation transcription and summary",
+    "Define action item tracking from conversations",
+    "Define conversation topic clustering and discovery"
+  ]
+}

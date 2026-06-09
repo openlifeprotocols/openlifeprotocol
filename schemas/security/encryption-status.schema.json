@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Encryption Status",
+  "description": "Encryption status of data and systems.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^encryption_status_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "device_id": { "type": "string" },
+    "encryption_type": { "type": "string", "enum": ["full_disk", "folder_level", "file_level", "end_to_end", "database", "cloud_storage"] },
+    "is_encrypted": { "type": "boolean" },
+    "encryption_algorithm": { "type": "string" },
+    "encryption_key_id": { "type": "string" },
+    "enabled_date": { "type": "string", "format": "date-time" },
+    "encryption_percentage": { "type": "number" },
+    "encrypted_size_bytes": { "type": "integer" },
+    "total_size_bytes": { "type": "integer" },
+    "recovery_key_backed_up": { "type": "boolean" },
+    "recovery_key_location": { "type": "string" },
+    "last_encryption_check": { "type": "string", "format": "date-time" },
+    "is_compliant": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid"],
+  "_phase1_todo": ["Define compliance scanning", "Define recovery key management", "Define encryption monitoring"]
+}

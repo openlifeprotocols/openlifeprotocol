@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sensitivity Classification",
+  "description": "A classification of how sensitive a data record is — determining access controls, retention, redaction, and disclosure rules. Applied to any OLP schema.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^sensitivity_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "entity_type": { "type": "string", "description": "OLP schema type being classified, e.g. 'legal-matter', 'medical-condition'" },
+    "entity_id": { "type": "string" },
+    "sensitivity_level": {
+      "type": "string",
+      "enum": ["public", "internal", "restricted", "highly_restricted", "sealed"],
+      "description": "public: any authenticated user | internal: the subject and their agents | restricted: named individuals only | highly_restricted: named individuals with explicit need-to-know | sealed: court-ordered or statutory seal"
+    },
+    "sensitivity_categories": {
+      "type": "array",
+      "description": "UK GDPR / DPA 2018 special category classifications where applicable",
+      "items": {
+        "type": "string",
+        "enum": [
+          "criminal_offence_data",
+          "health_data",
+          "biometric_data",
+          "genetic_data",
+          "racial_ethnic_origin",
+          "political_opinions",
+          "religious_beliefs",
+          "trade_union_membership",
+          "sex_life_sexual_orientation",
+          "financial_vulnerable",
+          "child_data",
+          "safeguarding",
+          "domestic_abuse",
+          "immigration_status"
+        ]
+      }
+    },
+    "legal_basis": {
+      "type": "string",
+      "enum": ["explicit_consent", "vital_interests", "substantial_public_interest", "legal_obligation", "legal_claim", "medical_treatment"],
+      "description": "UK GDPR Article 9 legal basis for processing special category data"
+    },
+    "classified_by_id": { "type": "string" },
+    "classified_at": { "type": "string", "format": "date-time" },
+    "reviewed_at": { "type": "string", "format": "date-time" },
+    "review_due": { "type": "string", "format": "date" },
+    "override_reason": { "type": "string", "description": "Required when accessing above normal permission level" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "entity_type", "entity_id", "sensitivity_level", "legal_basis"],
+  "_phase1_todo": [
+    "Define sensitivity propagation (child records inherit parent classification)",
+    "Define automatic classification from entity_type",
+    "Define sensitivity downgrade workflow with audit trail",
+    "Define court-ordered seal implementation"
+  ]
+}

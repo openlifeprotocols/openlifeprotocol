@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Recurring Bill",
+  "description": "Recurring subscription or payment.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^recurring_bill_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "service_name": { "type": "string" },
+    "service_category": { "type": "string", "enum": ["streaming", "software", "fitness", "subscription_box", "membership", "other"] },
+    "provider": { "type": "string" },
+    "account_email": { "type": "string" },
+    "subscription_start_date": { "type": "string", "format": "date" },
+    "subscription_end_date": { "type": "string", "format": "date" },
+    "monthly_cost": { "type": "number" },
+    "currency": { "type": "string" },
+    "billing_frequency": { "type": "string", "enum": ["monthly", "quarterly", "annual", "weekly"] },
+    "payment_method": { "type": "string" },
+    "auto_renewal": { "type": "boolean" },
+    "cancellation_terms": { "type": "string" },
+    "renewal_date": { "type": "string", "format": "date" },
+    "next_billing_date": { "type": "string", "format": "date" },
+    "is_active": { "type": "boolean" },
+    "total_spent": { "type": "number" },
+    "value_for_money": { "type": "string", "enum": ["excellent", "good", "fair", "poor", "cancel_planned"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define subscription auditing", "Define cancellation workflow", "Define spending analysis"]
+}

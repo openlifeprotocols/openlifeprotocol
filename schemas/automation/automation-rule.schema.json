@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Automation Rule",
+  "description": "Automation or workflow rule.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^automation_rule_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "rule_name": { "type": "string" },
+    "rule_type": { "type": "string", "enum": ["renewal_alert", "document_action", "data_sync", "notification", "payment_reminder", "archive_action", "backup_action"] },
+    "trigger_type": { "type": "string", "enum": ["date_based", "event_based", "document_based", "threshold_based"] },
+    "trigger_condition": { "type": "string" },
+    "trigger_parameters": { "type": "object", "additionalProperties": true },
+    "action_type": { "type": "string" },
+    "action_parameters": { "type": "object", "additionalProperties": true },
+    "is_active": { "type": "boolean" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "last_executed": { "type": "string", "format": "date-time" },
+    "execution_count": { "type": "integer" },
+    "next_execution": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define rule builder UI", "Define execution logging", "Define error handling"]
+}

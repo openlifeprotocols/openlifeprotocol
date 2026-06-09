@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Goal",
+  "description": "A personal goal — an intended future state that serves one or more needs and expresses one or more values. Goals bridge abstract values and concrete OLP cases, workflows, and events.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^goal_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string", "examples": ["Retire by age 55", "Buy a home", "Run a marathon", "Start a business"] },
+    "description": { "type": "string" },
+    "category": {
+      "type": "string",
+      "enum": ["health", "financial", "career", "relationships", "family", "education", "housing", "travel", "personal_growth", "business", "community", "legacy", "creative", "spiritual", "other"]
+    },
+    "life_area_slugs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "supports_need_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Need IDs this goal serves"
+    },
+    "supports_value_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Value IDs this goal expresses"
+    },
+    "parent_goal_id": { "type": "string", "description": "A larger goal this is part of" },
+    "sub_goal_ids": { "type": "array", "items": { "type": "string" } },
+    "horizon": {
+      "type": "string",
+      "enum": ["this_week", "this_month", "this_year", "3_years", "5_years", "10_years", "lifetime"],
+      "description": "Timeframe for this goal"
+    },
+    "target_date": { "type": "string", "format": "date" },
+    "achieved_date": { "type": "string", "format": "date" },
+    "progress": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Estimated percentage complete"
+    },
+    "success_criteria": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "How will you know this goal is achieved?"
+    },
+    "obstacles": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "case_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "OLP Cases opened in pursuit of this goal"
+    },
+    "event_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Life events that advanced or threatened this goal"
+    },
+    "outcome_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Outcomes that contributed to this goal"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "paused", "achieved", "abandoned", "deferred"]
+    },
+    "visibility": {
+      "type": "string",
+      "enum": ["private", "shared_with_advisor", "household", "public"],
+      "description": "Who can see this goal"
+    },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "category"],
+  "_phase1_todo": [
+    "Define goal dependency graph",
+    "Define goal-to-workflow suggestion engine",
+    "Define goal review cadence",
+    "Define goal progress from case/outcome data"
+  ]
+}

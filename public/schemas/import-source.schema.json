@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Import Source",
+  "description": "Data source for importing documents or data.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^import_source_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "source_name": { "type": "string" },
+    "source_type": { "type": "string", "enum": ["email_account", "cloud_drive", "scanner", "camera", "external_drive", "website", "other"] },
+    "connection_status": { "type": "string", "enum": ["connected", "disconnected", "error", "pending_auth"] },
+    "last_sync_date": { "type": "string", "format": "date-time" },
+    "next_sync_date": { "type": "string", "format": "date" },
+    "auto_import_enabled": { "type": "boolean" },
+    "import_frequency": { "type": "string", "enum": ["real_time", "hourly", "daily", "weekly", "manual"] },
+    "documents_imported": { "type": "integer" },
+    "import_errors": { "type": "integer" },
+    "credentials_encrypted": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define import scheduling", "Define error handling", "Define credential management"]
+}

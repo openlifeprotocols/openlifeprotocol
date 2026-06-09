@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bill",
+  "description": "Generic bill or invoice.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^bill_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "bill_type": { "type": "string", "enum": ["utility", "council_tax", "internet", "phone", "subscription", "insurance", "loan_payment", "rent", "other"] },
+    "provider_name": { "type": "string" },
+    "account_number": { "type": "string" },
+    "bill_date": { "type": "string", "format": "date" },
+    "due_date": { "type": "string", "format": "date" },
+    "amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "status": { "type": "string", "enum": ["unpaid", "paid", "overdue", "disputed"] },
+    "payment_date": { "type": "string", "format": "date" },
+    "payment_method": { "type": "string", "enum": ["direct_debit", "credit_card", "bank_transfer", "check", "cash", "auto_pay"] },
+    "is_recurring": { "type": "boolean" },
+    "frequency": { "type": "string", "enum": ["monthly", "quarterly", "annual", "one_time"] },
+    "document_id": { "type": "string" },
+    "document_url": { "type": "string", "format": "uri" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define payment automation", "Define bill reminders", "Define payment history tracking"]
+}

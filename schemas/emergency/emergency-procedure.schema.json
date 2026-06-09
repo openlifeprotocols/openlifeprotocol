@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Emergency Procedure",
+  "description": "Emergency procedure or crisis instruction.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^emergency_procedure_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "procedure_type": { "type": "string", "enum": ["medical_emergency", "natural_disaster", "evacuation", "shelter_in_place", "active_threat", "cyber_attack", "financial_emergency", "identity_theft", "other"] },
+    "procedure_name": { "type": "string" },
+    "description": { "type": "string" },
+    "step_by_step_instructions": { "type": "array", "items": { "type": "object", "properties": { "step_number": { "type": "integer" }, "description": { "type": "string" }, "resources": { "type": "array", "items": { "type": "string" } } } } },
+    "emergency_contacts_to_notify": { "type": "array", "items": { "type": "string" } },
+    "location_details": { "type": "string" },
+    "critical_documents": { "type": "array", "items": { "type": "string" } },
+    "medications_or_supplies": { "type": "array", "items": { "type": "string" } },
+    "creation_date": { "type": "string", "format": "date-time" },
+    "last_reviewed_date": { "type": "string", "format": "date" },
+    "review_frequency_months": { "type": "integer" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define procedure testing", "Define annual review", "Define family communication"]
+}

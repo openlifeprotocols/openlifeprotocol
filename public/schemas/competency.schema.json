@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Competency",
+  "description": "A competency framework entry — demonstrates mastery of a skill across multiple contexts.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^competency_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "skill_ids": { "type": "array", "items": { "type": "string" } },
+    "competency_level": { "type": "string", "enum": ["developing", "proficient", "advanced", "expert"] },
+    "assessment_method": { "type": "string", "enum": ["self_assessment", "peer_review", "supervisor_feedback", "test", "portfolio", "project_outcome"] },
+    "assessment_date": { "type": "string", "format": "date" },
+    "assessment_score": { "type": "number", "minimum": 0, "maximum": 100 },
+    "demonstrated_through": { "type": "array", "items": { "type": "string" } },
+    "context": { "type": "string" },
+    "industry_framework": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "name", "competency_level"],
+  "_phase1_todo": [
+    "Define competency framework standards (ESCO, O*NET, etc.)",
+    "Define competency progression pathways",
+    "Define role-to-competency mapping"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cloud Import",
+  "description": "Cloud storage service import (Google Drive, Dropbox, OneDrive, etc).",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^cloud_import_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "cloud_service": { "type": "string", "enum": ["google_drive", "dropbox", "onedrive", "icloud", "amazon_s3", "box", "other"] },
+    "account_email": { "type": "string" },
+    "connection_status": { "type": "string", "enum": ["connected", "disconnected", "awaiting_auth", "error"] },
+    "folders_to_import": { "type": "array", "items": { "type": "string" } },
+    "files_to_import": { "type": "integer" },
+    "files_imported": { "type": "integer" },
+    "total_size_bytes": { "type": "integer" },
+    "import_date_started": { "type": "string", "format": "date-time" },
+    "import_date_completed": { "type": "string", "format": "date-time" },
+    "import_status": { "type": "string", "enum": ["pending", "in_progress", "completed", "paused", "failed"] },
+    "auto_sync_enabled": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define folder synchronization", "Define conflict resolution", "Define selective sync"]
+}

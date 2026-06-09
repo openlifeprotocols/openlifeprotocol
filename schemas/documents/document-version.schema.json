@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Document Version",
+  "description": "Document version history.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^document_version_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "document_id": { "type": "string" },
+    "version_number": { "type": "integer" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "created_by": { "type": "string" },
+    "modification_date": { "type": "string", "format": "date-time" },
+    "file_size_bytes": { "type": "integer" },
+    "change_summary": { "type": "string" },
+    "is_current": { "type": "boolean" },
+    "storage_location": { "type": "string" },
+    "document_url": { "type": "string", "format": "uri" },
+    "download_url": { "type": "string", "format": "uri" },
+    "is_recoverable": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "document_id"],
+  "_phase1_todo": ["Define version comparison", "Define rollback functionality", "Define retention policy"]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reminder",
+  "description": "Automated reminder or notification.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^reminder_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "reminder_type": { "type": "string", "enum": ["expiration_date", "renewal_due", "payment_due", "appointment", "task", "milestone", "other"] },
+    "related_item_id": { "type": "string" },
+    "reminder_message": { "type": "string" },
+    "reminder_date": { "type": "string", "format": "date" },
+    "reminder_time": { "type": "string", "format": "time" },
+    "frequency": { "type": "string", "enum": ["once", "daily", "weekly", "monthly", "yearly"] },
+    "notification_method": { "type": "array", "items": { "type": "string", "enum": ["email", "sms", "push_notification", "in_app", "calendar"] } },
+    "is_sent": { "type": "boolean" },
+    "sent_date": { "type": "string", "format": "date-time" },
+    "acknowledged": { "type": "boolean" },
+    "acknowledged_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define snooze functionality", "Define reminder scheduling", "Define acknowledgement tracking"]
+}

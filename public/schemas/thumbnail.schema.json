@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Thumbnail",
+  "description": "A thumbnail image for video content.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^thumbnail_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "video_id": { "type": "string" },
+    "content_piece_id": { "type": "string" },
+    "thumbnail_url": { "type": "string", "format": "uri" },
+    "file_name": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "design_tool": { "type": "string", "enum": ["photoshop", "canva", "figma", "other"] },
+    "dimensions": { "type": "object", "properties": { "width": { "type": "integer" }, "height": { "type": "integer" } } },
+    "file_size": { "type": "integer" },
+    "version": { "type": "integer" },
+    "is_approved": { "type": "boolean" },
+    "ctr_estimate": { "type": "number" },
+    "actual_ctr": { "type": "number" },
+    "test_variants": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "video_id"],
+  "_phase1_todo": [
+    "Define thumbnail A/B testing",
+    "Define thumbnail CTR optimization",
+    "Define thumbnail performance analytics"
+  ]
+}

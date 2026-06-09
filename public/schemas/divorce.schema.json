@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Divorce",
+  "description": "A divorce or dissolution of marriage/civil partnership record.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^divorce_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "marriage_id": { "type": "string" },
+    "petitioner_id": { "type": "string" },
+    "respondent_id": { "type": "string" },
+    "grounds": { "type": "string", "enum": ["irretrievable_breakdown", "mutual_consent", "separation", "fault_based", "other"] },
+    "petition_date": { "type": "string", "format": "date" },
+    "decree_nisi_date": { "type": "string", "format": "date" },
+    "decree_absolute_date": { "type": "string", "format": "date" },
+    "financial_settlement_id": { "type": "string" },
+    "child_arrangements_id": { "type": "string" },
+    "court_case_id": { "type": "string" },
+    "jurisdiction_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["filed", "in_progress", "decree_nisi", "absolute", "withdrawn"] },
+    "event_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "marriage_id", "grounds"],
+  "_phase1_todo": [
+    "Define contested vs uncontested divorce",
+    "Define international divorce recognition",
+    "Define child arrangement orders",
+    "Define financial settlement procedures"
+  ]
+}

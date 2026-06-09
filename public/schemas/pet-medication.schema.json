@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pet Medication",
+  "description": "A medication prescribed or administered to a pet.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^pet_medication_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "pet_id": { "type": "string" },
+    "prescribed_by_id": { "type": "string" },
+    "name": { "type": "string" },
+    "generic_name": { "type": "string" },
+    "indication": { "type": "string", "description": "What it's treating" },
+    "form": { "type": "string", "enum": ["tablet", "liquid", "injection", "topical", "spray", "drops", "chewable", "other"] },
+    "dosage": { "type": "string", "examples": ["1 tablet", "0.5ml"] },
+    "frequency": { "type": "string", "examples": ["once daily", "twice daily", "as needed"] },
+    "route": { "type": "string", "enum": ["oral", "topical", "injection", "eye", "ear", "other"] },
+    "prescribed_date": { "type": "string", "format": "date" },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "is_repeat": { "type": "boolean" },
+    "cost_per_course": { "type": "number" },
+    "currency": { "type": "string" },
+    "insured": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["active", "completed", "discontinued"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "pet_id", "name", "prescribed_date"],
+  "_phase1_todo": [
+    "Define controlled drug pet prescriptions",
+    "Define repeat prescription automation",
+    "Define medication adherence tracking",
+    "Define drug interaction checking for animals"
+  ]
+}

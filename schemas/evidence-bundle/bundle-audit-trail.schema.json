@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bundle Audit Trail",
+  "description": "Audit trail for evidence bundle.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^bundle_audit_trail_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "evidence_bundle_id": { "type": "string" },
+    "event_type": { "type": "string", "enum": ["created", "modified", "document_added", "document_removed", "submitted", "verified", "reviewed", "approved", "rejected", "closed"] },
+    "event_timestamp": { "type": "string", "format": "date-time" },
+    "actor": { "type": "string" },
+    "actor_role": { "type": "string", "enum": ["owner", "reviewer", "admin", "system", "other"] },
+    "description": { "type": "string" },
+    "previous_state": { "type": "object", "additionalProperties": true },
+    "new_state": { "type": "object", "additionalProperties": true },
+    "approval_status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+    "comments": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "evidence_bundle_id"],
+  "_phase1_todo": ["Define audit log retention", "Define change notifications", "Define compliance reporting"]
+}

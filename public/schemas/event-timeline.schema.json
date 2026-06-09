@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Event Timeline",
+  "description": "Timeline of related life events.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^event_timeline_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "timeline_name": { "type": "string" },
+    "events": { "type": "array", "items": { "type": "object", "properties": { "event_id": { "type": "string" }, "event_date": { "type": "string" }, "event_type": { "type": "string" }, "event_description": { "type": "string" }, "sequence_number": { "type": "integer" } } } },
+    "time_period": { "type": "string" },
+    "theme": { "type": "string" },
+    "description": { "type": "string" },
+    "visualization_type": { "type": "string", "enum": ["linear", "circular", "branching", "milestone"] },
+    "creation_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define timeline visualization", "Define event correlation", "Define insight generation"]
+}

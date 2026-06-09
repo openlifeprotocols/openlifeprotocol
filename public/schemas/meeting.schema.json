@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Meeting",
+  "description": "A formal meeting — agenda, attendees, decisions, outcomes, follow-ups.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^meeting_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "meeting_date": { "type": "string", "format": "date" },
+    "start_time": { "type": "string", "format": "time" },
+    "end_time": { "type": "string", "format": "time" },
+    "organizer": { "type": "string" },
+    "attendees": { "type": "array", "items": { "type": "string" } },
+    "meeting_type": { "type": "string", "enum": ["standup", "planning", "review", "retrospective", "one_on_one", "team_meeting", "all_hands", "client_meeting", "interview", "workshop"] },
+    "format": { "type": "string", "enum": ["in_person", "video_conference", "phone", "hybrid"] },
+    "location": { "type": "string" },
+    "agenda": { "type": "array", "items": { "type": "string" } },
+    "minutes": { "type": "string" },
+    "decisions_made": { "type": "array", "items": { "type": "string" } },
+    "action_items": { "type": "array", "items": { "object", "properties": { "task": { "type": "string" }, "owner": { "type": "string" }, "due_date": { "type": "string", "format": "date" } } } },
+    "recording_url": { "type": "string", "format": "uri" },
+    "slides_url": { "type": "string", "format": "uri" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "meeting_date"],
+  "_phase1_todo": [
+    "Define meeting action item tracking and completion",
+    "Define meeting recurrence and series tracking",
+    "Define decision documentation and versioning"
+  ]
+}

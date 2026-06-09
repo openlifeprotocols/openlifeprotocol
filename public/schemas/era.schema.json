@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Era",
+  "description": "An era in a person's life — significant historical or personal period spanning multiple years.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^era_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "era_name": { "type": "string" },
+    "description": { "type": "string" },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "duration_years": { "type": "number" },
+    "defining_characteristic": { "type": "string" },
+    "era_type": { "type": "string", "enum": ["professional_era", "geographical_era", "relationship_era", "creative_era", "adventure_era", "exploration_era", "building_era"] },
+    "geographical_focus": { "type": "array", "items": { "type": "string" } },
+    "professional_context": { "type": "string" },
+    "relationship_context": { "type": "string" },
+    "key_accomplishments": { "type": "array", "items": { "type": "string" } },
+    "defining_people": { "type": "array", "items": { "type": "string" } },
+    "cultural_backdrop": { "type": "string" },
+    "personal_growth": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "era_name", "start_date"],
+  "_phase1_todo": [
+    "Define era relationship and causation",
+    "Define era-scoped retrieval and searching",
+    "Define era summary and abstraction"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Platform",
+  "description": "A social media platform — system or service for sharing content, connecting with others.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^platform_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "platform_name": { "type": "string" },
+    "description": { "type": "string" },
+    "platform_type": { "type": "string", "enum": ["social_network", "video", "photo", "microblog", "messaging", "community", "professional", "forum", "streaming"] },
+    "url": { "type": "string", "format": "uri" },
+    "founded_date": { "type": "string", "format": "date" },
+    "primary_audience": { "type": "string" },
+    "age_demographic": { "type": "string" },
+    "content_types_supported": { "type": "array", "items": { "type": "string" } },
+    "primary_content_format": { "type": "string", "enum": ["text", "images", "video", "audio", "mixed"] },
+    "monetization_options": { "type": "array", "items": { "type": "string", "enum": ["ads", "subscriptions", "tipping", "sponsorships", "affiliate", "none"] } },
+    "algorithm_driven": { "type": "boolean" },
+    "algorithmic_reach": { "type": "string", "enum": ["organic_only", "limited_algorithmic", "algorithmic_dominant"] },
+    "api_available": { "type": "boolean" },
+    "archive_capability": { "type": "boolean" },
+    "deletion_policy": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "platform_name", "platform_type"],
+  "_phase1_todo": [
+    "Define platform reach analytics",
+    "Define algorithm impact tracking",
+    "Define platform policy compliance checking"
+  ]
+}

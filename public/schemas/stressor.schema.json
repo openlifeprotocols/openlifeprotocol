@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Stressor",
+  "description": "A stressor — source of stress, trigger of anxiety, pressure point, challenge causing strain.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^stressor_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "stressor_name": { "type": "string" },
+    "description": { "type": "string" },
+    "stressor_type": { "type": "string", "enum": ["work", "relationship", "financial", "health", "family", "existential", "situational", "chronic", "acute"] },
+    "intensity_level": { "type": "integer", "minimum": 1, "maximum": 10 },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "ongoing": { "type": "boolean" },
+    "frequency": { "type": "string", "enum": ["constant", "daily", "weekly", "occasional"] },
+    "physical_impact": { "type": "array", "items": { "type": "string" } },
+    "emotional_impact": { "type": "array", "items": { "type": "string" } },
+    "behavioral_impact": { "type": "array", "items": { "type": "string" } },
+    "coping_strategies": { "type": "array", "items": { "type": "string" } },
+    "support_sought": { "type": "array", "items": { "type": "string" } },
+    "resolution_status": { "type": "string", "enum": ["unresolved", "managing", "improving", "resolved"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "stressor_name", "stressor_type"],
+  "_phase1_todo": [
+    "Define stress tracking and burnout prediction",
+    "Define coping strategy effectiveness measurement",
+    "Define support network activation triggers"
+  ]
+}

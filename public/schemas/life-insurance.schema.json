@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Life Insurance",
+  "description": "Life insurance policy details.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^life_insurance_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "insurance_policy_id": { "type": "string" },
+    "person_id": { "type": "string" },
+    "policy_type": { "type": "string", "enum": ["term_life", "whole_life", "universal_life", "variable_universal", "final_expense"] },
+    "coverage_amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "term_years": { "type": "integer" },
+    "monthly_premium": { "type": "number" },
+    "annual_premium": { "type": "number" },
+    "policy_start_date": { "type": "string", "format": "date" },
+    "policy_expiration_date": { "type": "string", "format": "date" },
+    "insured_person": { "type": "string" },
+    "age_at_issuance": { "type": "integer" },
+    "health_rating": { "type": "string", "enum": ["excellent", "good", "standard", "below_standard", "smoker"] },
+    "beneficiary_name": { "type": "string" },
+    "beneficiary_relationship": { "type": "string" },
+    "death_benefits_paid": { "type": "boolean" },
+    "cash_value": { "type": "number" },
+    "surrender_value": { "type": "number" },
+    "policy_loans_available": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define beneficiary management", "Define coverage needs analysis", "Define term conversion"]
+}

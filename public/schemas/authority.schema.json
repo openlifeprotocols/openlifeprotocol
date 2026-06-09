@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Authority",
+  "description": "A delegated authority record — one person or entity empowered to act on behalf of another.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^authority_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "principal_id": { "type": "string", "description": "Person who grants authority" },
+    "agent_id": { "type": "string", "description": "Person or org given authority to act" },
+    "authority_type": {
+      "type": "string",
+      "enum": ["power_of_attorney", "deputyship", "guardianship", "executorship", "trusteeship", "mandate", "proxy", "parental_responsibility"]
+    },
+    "scope": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["financial", "medical", "legal", "property", "welfare", "all"] },
+      "description": "Areas the authority covers"
+    },
+    "granted_at": { "type": "string", "format": "date" },
+    "effective_from": { "type": "string", "format": "date" },
+    "expires_at": { "type": "string", "format": "date" },
+    "revoked_at": { "type": "string", "format": "date" },
+    "trigger_condition": { "type": "string", "description": "e.g., 'Upon loss of mental capacity'" },
+    "status": { "type": "string", "enum": ["active", "dormant", "revoked", "expired"] },
+    "registered_with": { "type": "string", "description": "Registering authority, e.g., 'Office of the Public Guardian'" },
+    "registration_reference": { "type": "string" },
+    "document_ids": { "type": "array", "items": { "type": "string" } },
+    "jurisdiction_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "principal_id", "agent_id", "authority_type", "scope"],
+  "_phase1_todo": [
+    "Define authority capacity assessments",
+    "Define competing authority conflicts",
+    "Define authority registration procedures",
+    "Define authority notification requirements"
+  ]
+}

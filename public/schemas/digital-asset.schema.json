@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Digital Asset",
+  "description": "A digital asset with monetary or sentimental value — cryptocurrency, NFT, domain name, digital media, or loyalty points.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^digital_asset_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "owner_id": { "type": "string" },
+    "asset_type": { "type": "string", "enum": ["cryptocurrency", "nft", "domain_name", "digital_media", "loyalty_points", "game_assets", "ebook", "software_licence", "digital_art", "other"] },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "platform": { "type": "string" },
+    "estimated_value": { "type": "number" },
+    "currency": { "type": "string" },
+    "quantity": { "type": "number" },
+    "wallet_address": { "type": "string" },
+    "account_id": { "type": "string" },
+    "access_instructions": { "type": "string", "description": "How to access (not credentials — reference only)" },
+    "beneficiary_ids": { "type": "array", "items": { "type": "string" } },
+    "acquired_date": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["owned", "transferred", "lost", "expired"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "owner_id", "asset_type", "name"],
+  "_phase1_todo": [
+    "Define cryptocurrency inheritance procedures",
+    "Define digital asset valuation",
+    "Define access key escrow options",
+    "Define platform terms of service on death"
+  ]
+}

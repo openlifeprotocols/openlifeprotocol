@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Document Content",
+  "description": "Structured content extracted from a document — the machine-readable layer beneath a scanned or uploaded file. Enables OLP to understand what a document says without storing sensitive raw text permanently.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^doc_content_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "drive_file_id": { "type": "string" },
+    "olp_document_id": { "type": "string" },
+    "extracted_at": { "type": "string", "format": "date-time" },
+    "extraction_method": { "type": "string", "enum": ["ocr", "pdf_parse", "structured_api", "manual", "email_body"] },
+    "document_type": { "type": "string", "enum": ["letter", "contract", "invoice", "form", "certificate", "statement", "notice", "report", "other"] },
+    "issuer": { "type": "string" },
+    "issued_date": { "type": "string", "format": "date" },
+    "reference_numbers": { "type": "array", "items": { "type": "string" } },
+    "key_dates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": { "type": "string", "examples": ["deadline", "effective_date", "expiry"] },
+          "date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "key_amounts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": { "type": "string" },
+          "amount": { "type": "number" },
+          "currency": { "type": "string" }
+        }
+      }
+    },
+    "action_required": { "type": "boolean" },
+    "action_description": { "type": "string" },
+    "action_deadline": { "type": "string", "format": "date" },
+    "confidence_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "linked_case_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "extracted_at", "extraction_method", "document_type"],
+  "_phase1_todo": [
+    "Define structured extraction pipeline per document type",
+    "Define confidence threshold for auto-linking",
+    "Define human review queue for low-confidence extractions",
+    "Define retention policy for extracted content"
+  ]
+}

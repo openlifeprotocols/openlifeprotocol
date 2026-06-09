@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contact (Personal Digital)",
+  "description": "A contact in a personal address book — synced from phone, email, or cloud. The digital representation of a known person or organisation.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^digital_contact_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string", "description": "Person who owns this address book" },
+    "olp_actor_id": { "type": "string", "description": "Link to OLP Actor if matched" },
+    "given_name": { "type": "string" },
+    "family_name": { "type": "string" },
+    "organisation": { "type": "string" },
+    "job_title": { "type": "string" },
+    "emails": { "type": "array", "items": { "type": "object", "properties": { "label": { "type": "string" }, "address": { "type": "string", "format": "email" } } } },
+    "phones": { "type": "array", "items": { "type": "object", "properties": { "label": { "type": "string" }, "number": { "type": "string" } } } },
+    "addresses": { "type": "array", "items": { "type": "object", "additionalProperties": true } },
+    "birthday": { "type": "string", "format": "date" },
+    "notes": { "type": "string" },
+    "photo_url": { "type": "string" },
+    "groups": { "type": "array", "items": { "type": "string" } },
+    "source": { "type": "string", "enum": ["google", "apple", "microsoft", "linkedin", "manual", "imported"] },
+    "last_synced": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": [
+    "Define contact deduplication",
+    "Define contact-to-OLP-actor matching",
+    "Define contact merge workflow",
+    "Define contact privacy on death"
+  ]
+}

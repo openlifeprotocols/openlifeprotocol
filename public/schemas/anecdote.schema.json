@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Anecdote",
+  "description": "A personal anecdote — story worth telling, memorable moment, often with humor or point.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^anecdote_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "story": { "type": "string" },
+    "date_of_event": { "type": "string", "format": "date" },
+    "characters": { "type": "array", "items": { "type": "string" } },
+    "setting": { "type": "string" },
+    "tone": { "type": "string", "enum": ["humorous", "poignant", "surprising", "embarrassing", "inspiring", "cautionary", "heartwarming"] },
+    "punchline": { "type": "string" },
+    "moral": { "type": "string" },
+    "times_told": { "type": "integer" },
+    "audiences": { "type": "array", "items": { "type": "string" } },
+    "told_to_whom": { "type": "array", "items": { "type": "string" } },
+    "accuracy": { "type": "string", "enum": ["factually_accurate", "mostly_accurate", "embellished", "highly_fictionalized"] },
+    "related_people": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "story"],
+  "_phase1_todo": [
+    "Define anecdote categorization and tagging",
+    "Define story variants tracking (retelling differences)",
+    "Define narrative graph linking anecdotes by character/location/theme"
+  ]
+}

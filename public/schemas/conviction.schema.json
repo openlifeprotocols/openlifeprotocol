@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Conviction",
+  "description": "A conviction — something believed and acted upon with strong certainty.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^conviction_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "conviction_statement": { "type": "string" },
+    "why_convinced": { "type": "string" },
+    "strength": { "type": "string", "enum": ["mild_conviction", "moderate", "strong", "absolute_conviction"] },
+    "conviction_type": { "type": "string", "enum": ["moral", "personal", "political", "social", "professional", "spiritual"] },
+    "adopted_date": { "type": "string", "format": "date" },
+    "critical_moment": { "type": "string" },
+    "tested_by": { "type": "array", "items": { "type": "string" } },
+    "willing_to_sacrifice_for": { "type": "array", "items": { "type": "string" } },
+    "conflicts_with_society": { "type": "string" },
+    "conflicts_with_loved_ones": { "type": "string" },
+    "consequences_of_conviction": { "type": "array", "items": { "type": "string" } },
+    "would_change": { "type": "boolean" },
+    "conditions_for_change": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "conviction_statement"],
+  "_phase1_todo": [
+    "Define conviction authenticity assessment",
+    "Define conviction-action alignment verification",
+    "Define conviction cost-benefit analysis"
+  ]
+}

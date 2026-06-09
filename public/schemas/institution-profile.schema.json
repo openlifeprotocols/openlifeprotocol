@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Institution Profile",
+  "description": "Registry entry for an institution (bank, hospital, government agency, etc.) with standardized data.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^institution_profile_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" }
+        }
+      }
+    },
+    "name": { "type": "string" },
+    "institution_type": {
+      "type": "string",
+      "enum": ["bank", "hospital", "government", "university", "insurance", "legal"]
+    },
+    "address": { "type": "object" },
+    "contact_points": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "certifications": {
+      "type": "array",
+      "description": "Regulatory certifications held",
+      "items": { "type": "string" }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "name", "institution_type"],
+  "_phase1_todo": [
+    "Define certification standards",
+    "Define regulatory compliance mapping",
+    "Define audit procedures",
+    "Define accreditation tracking"
+  ]
+}

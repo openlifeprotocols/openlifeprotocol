@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Notification Rule",
+  "description": "Rule for sending notifications.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^notification_rule_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "rule_name": { "type": "string" },
+    "event_type": { "type": "string", "enum": ["document_updated", "task_created", "reminder_triggered", "alert_threshold", "expiration_approaching", "payment_due", "other"] },
+    "notification_method": { "type": "array", "items": { "type": "string", "enum": ["email", "sms", "push", "in_app", "calendar", "slack"] } },
+    "recipient_email": { "type": "string", "format": "email" },
+    "recipient_phone": { "type": "string" },
+    "recipient_app_user_id": { "type": "string" },
+    "notification_template": { "type": "string" },
+    "is_active": { "type": "boolean" },
+    "quiet_hours_enabled": { "type": "boolean" },
+    "quiet_hours_start": { "type": "string", "format": "time" },
+    "quiet_hours_end": { "type": "string", "format": "time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define notification templates", "Define delivery tracking", "Define opt-out management"]
+}

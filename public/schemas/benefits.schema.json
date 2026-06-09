@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Employment Benefits",
+  "description": "Workplace benefits provided to an employee as part of their compensation package.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^work_benefits_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "employment_id": { "type": "string" },
+    "employee_id": { "type": "string" },
+    "benefits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["health_insurance", "life_assurance", "income_protection", "company_car", "cycle_to_work", "gym", "childcare_vouchers", "share_scheme", "study_support", "other"] },
+          "description": { "type": "string" },
+          "value_per_year": { "type": "number" },
+          "currency": { "type": "string" },
+          "provider_id": { "type": "string" },
+          "start_date": { "type": "string", "format": "date" },
+          "end_date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "annual_leave_days": { "type": "integer" },
+    "sick_leave_policy": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "employment_id"],
+  "_phase1_todo": [
+    "Define benefits valuation for tax",
+    "Define benefits on parental leave",
+    "Define flexible benefits selection",
+    "Define benefits on termination"
+  ]
+}

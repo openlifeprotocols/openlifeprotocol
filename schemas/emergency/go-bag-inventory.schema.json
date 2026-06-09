@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Go Bag Inventory",
+  "description": "Emergency kit or go bag inventory.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^go_bag_inventory_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "bag_name": { "type": "string" },
+    "bag_location": { "type": "string" },
+    "bag_type": { "type": "string", "enum": ["home_go_bag", "vehicle_kit", "workplace_kit", "travel_kit", "medical_kit", "other"] },
+    "items": { "type": "array", "items": { "type": "object", "properties": { "item_id": { "type": "string" }, "item_name": { "type": "string" }, "quantity": { "type": "integer" }, "category": { "type": "string" }, "expiration_date": { "type": "string", "format": "date" }, "replacement_cost": { "type": "number" }, "is_current": { "type": "boolean" }, "purchase_date": { "type": "string", "format": "date" } } } },
+    "total_items": { "type": "integer" },
+    "total_weight_kg": { "type": "number" },
+    "ready_to_go": { "type": "boolean" },
+    "last_checked_date": { "type": "string", "format": "date" },
+    "next_review_date": { "type": "string", "format": "date" },
+    "photos_or_media": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define item tracking", "Define expiration alerts", "Define replacement scheduling"]
+}

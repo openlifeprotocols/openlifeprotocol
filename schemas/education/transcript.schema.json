@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Transcript",
+  "description": "Academic transcript and grades.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^transcript_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "education_history_id": { "type": "string" },
+    "transcript_type": { "type": "string", "enum": ["official", "unofficial", "certified_copy", "digital"] },
+    "issue_date": { "type": "string", "format": "date" },
+    "institution_name": { "type": "string" },
+    "student_name": { "type": "string" },
+    "student_id_number": { "type": "string" },
+    "overall_gpa": { "type": "number" },
+    "cumulative_credits": { "type": "number" },
+    "credits_attempted": { "type": "number" },
+    "credits_earned": { "type": "number" },
+    "grading_scale": { "type": "string" },
+    "courses": { "type": "array", "items": { "type": "object", "properties": { "course_code": { "type": "string" }, "course_name": { "type": "string" }, "credits": { "type": "number" }, "grade": { "type": "string" } } } },
+    "document_id": { "type": "string" },
+    "document_url": { "type": "string", "format": "uri" },
+    "verification_status": { "type": "string", "enum": ["not_verified", "pending", "verified", "expired"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "education_history_id"],
+  "_phase1_todo": ["Define transcript parsing", "Define GPA calculation", "Define course credit validation"]
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Event Envelope",
+  "description": "Container for an event with metadata, versioning, and routing information.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^event_envelope_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "event_id": {
+      "type": "string",
+      "description": "ID of contained event"
+    },
+    "event_type": { "type": "string" },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "type": "string",
+      "description": "Source system/service that produced event"
+    },
+    "destinations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Target systems/services"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Event payload"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "version": { "type": "string" },
+        "correlation_id": { "type": "string" },
+        "causation_id": { "type": "string" },
+        "retry_count": { "type": "integer" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "event_id", "event_type", "timestamp", "payload"],
+  "_phase1_todo": [
+    "Define event serialization",
+    "Define event encryption",
+    "Define event signing",
+    "Define event compression"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Identity Claim",
+  "description": "An identity claim — assertion about who I am, identity statement, self-identification.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^identity_claim_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "claim": { "type": "string" },
+    "claim_type": { "type": "string", "enum": ["demographic", "professional", "social", "personal", "political", "spiritual", "emotional", "physical", "cultural"] },
+    "level_of_certainty": { "type": "string", "enum": ["tentative", "moderate", "strong", "absolute"] },
+    "public_or_private": { "type": "string", "enum": ["public", "private", "selective", "depends_on_context"] },
+    "claimed_since": { "type": "string", "format": "date" },
+    "source_of_claim": { "type": "string" },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "counterevidence": { "type": "array", "items": { "type": "string" } },
+    "importance": { "type": "string", "enum": ["peripheral", "moderate", "important", "central_to_identity"] },
+    "how_expressed": { "type": "array", "items": { "type": "string" } },
+    "accepted_by_others": { "type": "boolean" },
+    "still_true": { "type": "boolean" },
+    "evolved_since": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "claim"],
+  "_phase1_todo": [
+    "Define identity claim validation and verification",
+    "Define identity coherence checking across claims",
+    "Define identity evolution from claim to claim"
+  ]
+}

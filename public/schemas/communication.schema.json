@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Communication",
+  "description": "A Communication represents a message, notification, or contact event that is sent to an Actor during a case. This includes emails, SMS, push notifications, and formal letters.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Semantic identifier for the communication. Human-readable reference.",
+      "pattern": "^comm_[a-zA-Z0-9_-]+$",
+      "examples": ["comm_email_123", "comm_sms_456"]
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Internal unique identifier (RFC 4122 UUID). Immutable, system-generated."
+    },
+    "external_ids": {
+      "type": "array",
+      "description": "References to this communication in external systems",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "case_id": {
+      "type": "string",
+      "description": "Reference to the case this communication is part of"
+    },
+    "from_actor_id": {
+      "type": "string",
+      "description": "Actor sending the communication"
+    },
+    "to_actor_ids": {
+      "type": "array",
+      "description": "Actors receiving the communication",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cc_actor_ids": {
+      "type": "array",
+      "description": "Actors copied on the communication",
+      "items": {
+        "type": "string"
+      }
+    },
+    "bcc_actor_ids": {
+      "type": "array",
+      "description": "Actors blind-copied on the communication",
+      "items": {
+        "type": "string"
+      }
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of communication",
+      "enum": [
+        "email",
+        "sms",
+        "whatsapp",
+        "push_notification",
+        "letter",
+        "phone_call",
+        "in_app_notification",
+        "webhook",
+        "api_call",
+        "formal_notice"
+      ]
+    },
+    "channel": {
+      "type": "string",
+      "description": "Channel/medium used",
+      "examples": ["email", "sms", "whatsapp", "push_notification", "letter", "phone_call", "in_app_notification", "webhook", "api_call", "formal_notice"]
+    },
+    "subject": {
+      "type": "string",
+      "description": "Subject line for the communication"
+    },
+    "body": {
+      "type": "string",
+      "description": "Message body/content"
+    },
+    "template_id": {
+      "type": "string",
+      "description": "Reference to a communication template if used"
+    },
+    "status": {
+      "type": "string",
+      "description": "Status of the communication",
+      "enum": ["draft", "queued", "sent", "delivered", "failed", "read", "bounced"],
+      "examples": ["delivered", "read"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the communication was created"
+    },
+    "sent_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the communication was sent"
+    },
+    "delivered_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the communication was delivered"
+    },
+    "read_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the communication was read (if applicable)"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["low", "normal", "high", "urgent"],
+      "description": "Priority level"
+    },
+    "attachments": {
+      "type": "array",
+      "description": "Documents attached to this communication",
+      "items": {
+        "type": "object",
+        "properties": {
+          "document_id": {
+            "type": "string"
+          },
+          "filename": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "requires_response": {
+      "type": "boolean",
+      "description": "Whether a response is required"
+    },
+    "response_deadline": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Deadline for response if required"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Custom metadata",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "case_id", "from_actor_id", "to_actor_ids", "type", "status", "created_at"],
+  "examples": [
+    {
+      "id": "comm_email_probate_001",
+      "case_id": "case_death_uk_2026_001",
+      "from_actor_id": "person_solicitor_789",
+      "to_actor_ids": ["person_executor_456"],
+      "type": "email",
+      "channel": "email",
+      "subject": "Estate Valuation Complete - Action Required",
+      "body": "Dear [Executor Name], The estate valuation is now complete. Please review the attached schedule and confirm acceptance.",
+      "status": "delivered",
+      "created_at": "2026-06-09T14:00:00Z",
+      "sent_at": "2026-06-09T14:05:00Z",
+      "delivered_at": "2026-06-09T14:06:00Z",
+      "read_at": "2026-06-09T15:30:00Z",
+      "priority": "high",
+      "requires_response": true,
+      "response_deadline": "2026-06-11T17:00:00Z"
+    }
+  ],
+  "_phase1_todo": [
+    "Define communication templates and personalization",
+    "Define multi-language support for communications",
+    "Define accessibility requirements (screen readers, alt text)",
+    "Define communication scheduling and delivery options",
+    "Define do-not-contact/opt-out mechanisms",
+    "Define communication compliance (GDPR, HIPAA, etc.)",
+    "Define communication retry policies for failed delivery",
+    "Define communication monitoring and analytics"
+  ]
+}

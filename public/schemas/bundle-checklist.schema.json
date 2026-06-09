@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bundle Checklist",
+  "description": "Checklist for evidence bundle preparation.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^bundle_checklist_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "evidence_bundle_id": { "type": "string" },
+    "checklist_name": { "type": "string" },
+    "items": { "type": "array", "items": { "type": "object", "properties": { "item_id": { "type": "string" }, "item_description": { "type": "string" }, "is_required": { "type": "boolean" }, "is_completed": { "type": "boolean" }, "completion_date": { "type": "string" }, "notes": { "type": "string" } } } },
+    "total_items": { "type": "integer" },
+    "completed_items": { "type": "integer" },
+    "completion_percentage": { "type": "number" },
+    "creation_date": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "evidence_bundle_id"],
+  "_phase1_todo": ["Define checklist templates", "Define progress tracking", "Define reminders"]
+}

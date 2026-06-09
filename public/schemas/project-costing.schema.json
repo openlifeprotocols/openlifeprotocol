@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Project Costing",
+  "description": "A rolled-up cost summary for a project — estimated vs actual costs by category, feeding into P&L.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^project_costing_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "project_id": { "type": "string" },
+    "as_at_date": { "type": "string", "format": "date" },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": { "type": "string" },
+          "budgeted": { "type": "number" },
+          "committed": { "type": "number", "description": "Approved orders not yet invoiced" },
+          "actual": { "type": "number" },
+          "forecast_to_complete": { "type": "number" },
+          "forecast_at_completion": { "type": "number" },
+          "variance": { "type": "number" }
+        }
+      }
+    },
+    "total_budget": { "type": "number" },
+    "total_committed": { "type": "number" },
+    "total_actual": { "type": "number" },
+    "total_forecast_at_completion": { "type": "number" },
+    "total_variance": { "type": "number" },
+    "contingency_remaining": { "type": "number" },
+    "currency": { "type": "string" },
+    "cost_performance_index": { "type": "number", "description": "CPI = earned value / actual cost; > 1 is under budget" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "project_id", "as_at_date", "total_budget", "currency"],
+  "_phase1_todo": [
+    "Define earned value management (EV, PV, AC)",
+    "Define cost-at-completion forecasting models",
+    "Define cost reporting by phase",
+    "Define final account reconciliation"
+  ]
+}

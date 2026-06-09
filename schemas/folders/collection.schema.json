@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Collection",
+  "description": "Grouped items or dynamic collection.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^collection_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "owner_id": { "type": "string" },
+    "collection_name": { "type": "string" },
+    "description": { "type": "string" },
+    "collection_type": { "type": "string", "enum": ["folder", "smart_folder", "saved_search", "favorite", "project", "case", "other"] },
+    "creation_date": { "type": "string", "format": "date-time" },
+    "modification_date": { "type": "string", "format": "date-time" },
+    "item_ids": { "type": "array", "items": { "type": "string" } },
+    "item_count": { "type": "integer" },
+    "color": { "type": "string" },
+    "icon": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "is_public": { "type": "boolean" },
+    "shared_with": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "owner_id"],
+  "_phase1_todo": ["Define smart collection rules", "Define collection syncing", "Define bulk operations"]
+}

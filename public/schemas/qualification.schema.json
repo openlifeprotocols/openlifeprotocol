@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Qualification",
+  "description": "A formal qualification — degree, diploma, license, professional designation.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^qualification_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "qualification_type": { "type": "string", "enum": ["degree", "diploma", "license", "professional_designation", "award", "permit", "other"] },
+    "name": { "type": "string" },
+    "field_of_study": { "type": "string" },
+    "institution": { "type": "string" },
+    "level": { "type": "string", "enum": ["associate", "bachelor", "master", "doctoral", "postdoctoral", "vocational", "trade"] },
+    "issue_date": { "type": "string", "format": "date" },
+    "expiry_date": { "type": "string", "format": "date" },
+    "is_active": { "type": "boolean" },
+    "grade_or_honors": { "type": "string" },
+    "gpa": { "type": "number" },
+    "verification_number": { "type": "string" },
+    "issuing_country": { "type": "string" },
+    "credential_url": { "type": "string", "format": "uri" },
+    "specialization": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "qualification_type", "name", "institution"],
+  "_phase1_todo": [
+    "Define qualification equivalency mapping across regions",
+    "Define skills ladder from qualification level",
+    "Define career path probability given qualifications"
+  ]
+}

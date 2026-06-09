@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Household",
+  "description": "A group of people sharing a residence, forming the basic unit for housing, benefits, and family services.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^household_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "name": { "type": "string", "description": "Informal household name, e.g., 'The Smith Household'" },
+    "primary_address_id": { "type": "string" },
+    "members": {
+      "type": "array",
+      "description": "People in this household",
+      "items": {
+        "type": "object",
+        "properties": {
+          "person_id": { "type": "string" },
+          "role": { "type": "string", "enum": ["head", "spouse", "partner", "child", "dependent", "lodger", "carer", "other"] },
+          "joined_date": { "type": "string", "format": "date" },
+          "left_date": { "type": "string", "format": "date" }
+        },
+        "required": ["person_id", "role"]
+      }
+    },
+    "household_type": {
+      "type": "string",
+      "enum": ["single_person", "couple", "family_with_children", "single_parent", "multigenerational", "shared_accommodation", "other"]
+    },
+    "income_band": { "type": "string", "enum": ["low", "medium", "high"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "primary_address_id", "members"],
+  "_phase1_todo": [
+    "Define household income calculation",
+    "Define benefits eligibility",
+    "Define household split/merge procedures",
+    "Define household composition change tracking"
+  ]
+}

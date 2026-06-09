@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Liability",
+  "description": "Represents a financial or legal liability or obligation. Extends Asset model with liability-specific properties.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^liability_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "name": { "type": "string" },
+    "actor_id": { "type": "string" },
+    "case_id": { "type": "string" },
+    "liability_type": {
+      "type": "string",
+      "enum": ["debt_loan", "mortgage", "credit_card", "tax_liability", "legal_judgment", "guarantee", "lease"],
+      "description": "Type of liability"
+    },
+    "creditor_id": {
+      "type": "string",
+      "description": "Actor who is owed"
+    },
+    "amount": {
+      "type": "number"
+    },
+    "currency": { "type": "string" },
+    "interest_rate": {
+      "type": "number"
+    },
+    "maturity_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "paid", "discharged", "forgiven"]
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "name", "actor_id", "liability_type", "amount"],
+  "_phase1_todo": [
+    "Define liability discharge procedures",
+    "Define liability priority and ranking",
+    "Define liability forgiveness rules",
+    "Define liability tax implications"
+  ]
+}

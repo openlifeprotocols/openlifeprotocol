@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Device Insurance",
+  "description": "Device or gadget insurance policy.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^device_insurance_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "insurance_policy_id": { "type": "string" },
+    "person_id": { "type": "string" },
+    "device_type": { "type": "string", "enum": ["smartphone", "laptop", "tablet", "smartwatch", "camera", "gaming_console", "headphones", "other"] },
+    "device_brand": { "type": "string" },
+    "device_model": { "type": "string" },
+    "device_value": { "type": "number" },
+    "currency": { "type": "string" },
+    "purchase_date": { "type": "string", "format": "date" },
+    "serial_number": { "type": "string" },
+    "imei_number": { "type": "string" },
+    "annual_premium": { "type": "number" },
+    "monthly_premium": { "type": "number" },
+    "coverage_type": { "type": "string", "enum": ["accidental_damage", "theft", "loss", "malfunction", "water_damage", "all_risks"] },
+    "excess_per_claim": { "type": "number" },
+    "maximum_claims_per_year": { "type": "integer" },
+    "claims_made": { "type": "integer" },
+    "coverage_start_date": { "type": "string", "format": "date" },
+    "coverage_end_date": { "type": "string", "format": "date" },
+    "replacement_cover": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define device registration", "Define damage claim process", "Define replacement workflow"]
+}

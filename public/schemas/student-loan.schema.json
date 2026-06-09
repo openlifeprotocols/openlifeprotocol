@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Student Loan",
+  "description": "Student loan debt tracking.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^student_loan_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "education_history_id": { "type": "string" },
+    "lender_name": { "type": "string" },
+    "loan_type": { "type": "string", "enum": ["federal_subsidized", "federal_unsubsidized", "federal_plus", "private", "other"] },
+    "loan_amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "disbursement_date": { "type": "string", "format": "date" },
+    "interest_rate": { "type": "number" },
+    "repayment_plan": { "type": "string", "enum": ["standard", "income_driven", "graduated", "extended", "income_contingent"] },
+    "repayment_start_date": { "type": "string", "format": "date" },
+    "repayment_end_date": { "type": "string", "format": "date" },
+    "current_balance": { "type": "number" },
+    "monthly_payment": { "type": "number" },
+    "total_paid": { "type": "number" },
+    "total_interest_paid": { "type": "number" },
+    "status": { "type": "string", "enum": ["active", "in_grace_period", "in_deferment", "in_forbearance", "paid_off", "defaulted"] },
+    "forgiveness_eligible": { "type": "boolean" },
+    "forgiveness_amount_remaining": { "type": "number" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define loan repayment tracking", "Define forgiveness eligibility calculation", "Define loan consolidation options"]
+}

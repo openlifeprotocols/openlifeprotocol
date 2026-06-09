@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pet Medical Record",
+  "description": "The lifetime medical record for a pet — vaccinations, treatments, diagnoses, and weight history.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^pet_medical_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "pet_id": { "type": "string" },
+    "registered_vet_id": { "type": "string" },
+    "vaccinations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "vaccine_name": { "type": "string" },
+          "administered_date": { "type": "string", "format": "date" },
+          "next_due": { "type": "string", "format": "date" },
+          "batch_number": { "type": "string" },
+          "administered_by_id": { "type": "string" }
+        }
+      }
+    },
+    "diagnoses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "condition": { "type": "string" },
+          "diagnosed_date": { "type": "string", "format": "date" },
+          "is_chronic": { "type": "boolean" },
+          "is_pre_existing": { "type": "boolean" },
+          "status": { "type": "string", "enum": ["active", "resolved", "managed"] }
+        }
+      }
+    },
+    "procedures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "procedure": { "type": "string" },
+          "date": { "type": "string", "format": "date" },
+          "vet_id": { "type": "string" },
+          "cost": { "type": "number" },
+          "currency": { "type": "string" },
+          "insured": { "type": "boolean" }
+        }
+      }
+    },
+    "weight_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": { "type": "string", "format": "date" },
+          "weight_kg": { "type": "number" }
+        }
+      }
+    },
+    "allergies": { "type": "array", "items": { "type": "string" } },
+    "dietary_requirements": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "pet_id"],
+  "_phase1_todo": [
+    "Define vet record sharing standards",
+    "Define pet health passport integration",
+    "Define vaccination reminder workflow",
+    "Define insurance claim linkage from diagnoses"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Call",
+  "description": "A phone or video call — participant, duration, purpose, key topics.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^call_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "call_with": { "type": "array", "items": { "type": "string" } },
+    "call_type": { "type": "string", "enum": ["phone_call", "video_call", "conference_call", "group_call"] },
+    "call_date": { "type": "string", "format": "date" },
+    "start_time": { "type": "string", "format": "time" },
+    "duration_minutes": { "type": "integer" },
+    "initiated_by": { "type": "string", "enum": ["me", "other"] },
+    "purpose": { "type": "string" },
+    "topics": { "type": "array", "items": { "type": "string" } },
+    "call_outcome": { "type": "string", "enum": ["productive", "needs_follow_up", "inconclusive", "decision_made"] },
+    "next_steps": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" },
+    "quality": { "type": "string", "enum": ["poor", "fair", "good", "excellent"] },
+    "emotional_tone": { "type": "string", "enum": ["positive", "neutral", "negative", "mixed"] },
+    "recording_available": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "call_with", "call_type", "call_date"],
+  "_phase1_todo": [
+    "Define call transcription and summary",
+    "Define call pattern analysis (frequency, duration trends)",
+    "Define relationship health from call frequency and tone"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Retention Policy",
+  "description": "Data retention or deletion policy.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^retention_policy_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "policy_name": { "type": "string" },
+    "description": { "type": "string" },
+    "applies_to_record_type": { "type": "array", "items": { "type": "string" } },
+    "retention_period_days": { "type": "integer" },
+    "retention_trigger": { "type": "string", "enum": ["creation_date", "modification_date", "last_accessed", "event_date"] },
+    "action_after_retention": { "type": "string", "enum": ["delete", "archive", "review", "notify"] },
+    "is_active": { "type": "boolean" },
+    "is_editable": { "type": "boolean" },
+    "created_date": { "type": "string", "format": "date-time" },
+    "last_updated": { "type": "string", "format": "date-time" },
+    "created_by": { "type": "string" },
+    "exemptions": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "policy_name"],
+  "_phase1_todo": ["Define policy enforcement", "Define exemption management", "Define audit trail"]
+}

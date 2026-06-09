@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Folder",
+  "description": "Folder or directory in document hierarchy.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^folder_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "owner_id": { "type": "string" },
+    "folder_name": { "type": "string" },
+    "parent_folder_id": { "type": "string" },
+    "folder_path": { "type": "string" },
+    "description": { "type": "string" },
+    "color": { "type": "string" },
+    "icon": { "type": "string" },
+    "creation_date": { "type": "string", "format": "date-time" },
+    "modification_date": { "type": "string", "format": "date-time" },
+    "item_count": { "type": "integer" },
+    "subfolder_count": { "type": "integer" },
+    "total_size_bytes": { "type": "integer" },
+    "is_system_folder": { "type": "boolean" },
+    "is_shared": { "type": "boolean" },
+    "shared_with": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "owner_id"],
+  "_phase1_todo": ["Define folder permissions", "Define folder analytics", "Define folder templates"]
+}

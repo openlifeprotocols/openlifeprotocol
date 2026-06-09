@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Automation Log",
+  "description": "Execution log for automation rules.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^automation_log_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "automation_rule_id": { "type": "string" },
+    "execution_timestamp": { "type": "string", "format": "date-time" },
+    "execution_status": { "type": "string", "enum": ["success", "partial_success", "failed", "skipped"] },
+    "trigger_details": { "type": "object", "additionalProperties": true },
+    "action_results": { "type": "array", "items": { "type": "object", "properties": { "action": { "type": "string" }, "status": { "type": "string" }, "result": { "type": "string" } } } },
+    "error_details": { "type": "string" },
+    "duration_ms": { "type": "integer" },
+    "affected_records_count": { "type": "integer" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "automation_rule_id"],
+  "_phase1_todo": ["Define log retention", "Define log analysis", "Define performance monitoring"]
+}

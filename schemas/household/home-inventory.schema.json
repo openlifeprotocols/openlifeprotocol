@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Home Inventory",
+  "description": "Household inventory and asset list.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^home_inventory_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "household_id": { "type": "string" },
+    "inventory_date": { "type": "string", "format": "date" },
+    "last_updated": { "type": "string", "format": "date-time" },
+    "item_count": { "type": "integer" },
+    "total_value": { "type": "number" },
+    "currency": { "type": "string" },
+    "items": { "type": "array", "items": { "type": "object", "properties": { "item_name": { "type": "string" }, "category": { "type": "string" }, "quantity": { "type": "integer" }, "unit_value": { "type": "number" }, "total_value": { "type": "number" }, "location": { "type": "string" }, "serial_number": { "type": "string" }, "description": { "type": "string" }, "photo_id": { "type": "string" } } } },
+    "room_breakdown": { "type": "object", "additionalProperties": { "type": "number" } },
+    "category_breakdown": { "type": "object", "additionalProperties": { "type": "number" } },
+    "for_insurance_purposes": { "type": "boolean" },
+    "insurance_value": { "type": "number" },
+    "valuation_method": { "type": "string", "enum": ["current_market", "replacement_value", "actual_cash_value", "appraisal"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "household_id"],
+  "_phase1_todo": ["Define inventory photography", "Define item valuation", "Define insurance integration"]
+}

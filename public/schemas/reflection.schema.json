@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reflection",
+  "description": "A personal reflection — contemplation, self-examination, processing of an experience or question.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^reflection_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "title": { "type": "string" },
+    "content": { "type": "string" },
+    "reflection_type": { "type": "string", "enum": ["contemplation", "self_examination", "processing", "wisdom", "doubt", "questioning", "breakthrough"] },
+    "reflection_date": { "type": "string", "format": "date" },
+    "prompted_by": { "type": "string" },
+    "linked_event_id": { "type": "string" },
+    "linked_memory_id": { "type": "string" },
+    "emotional_tone": { "type": "string", "enum": ["peaceful", "troubled", "hopeful", "uncertain", "resolute", "confused"] },
+    "question_posed": { "type": "string" },
+    "insights_gained": { "type": "array", "items": { "type": "string" } },
+    "perspective_shift": { "type": "boolean" },
+    "changed_mind_about": { "type": "string" },
+    "action_committed_to": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "title", "content"],
+  "_phase1_todo": [
+    "Define wisdom extraction and synthesis",
+    "Define perspective evolution tracking",
+    "Define insight recirculation and reminding"
+  ]
+}

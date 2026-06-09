@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Adoption",
+  "description": "An adoption order creating a legal parent-child relationship.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^adoption_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "child_person_id": { "type": "string" },
+    "adoptive_parent_ids": { "type": "array", "items": { "type": "string" } },
+    "birth_parent_ids": { "type": "array", "items": { "type": "string" } },
+    "adoption_type": { "type": "string", "enum": ["domestic", "intercountry", "step_parent", "foster_to_adopt", "relative"] },
+    "order_date": { "type": "string", "format": "date" },
+    "effective_date": { "type": "string", "format": "date" },
+    "court_case_id": { "type": "string" },
+    "new_name": { "type": "string", "description": "If child was renamed post-adoption" },
+    "jurisdiction_id": { "type": "string" },
+    "adoption_agency_id": { "type": "string" },
+    "event_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "child_person_id", "adoptive_parent_ids", "adoption_type"],
+  "_phase1_todo": [
+    "Define birth record sealing",
+    "Define intercountry Hague Convention compliance",
+    "Define birth parent contact agreements",
+    "Define adoption disruption procedures"
+  ]
+}

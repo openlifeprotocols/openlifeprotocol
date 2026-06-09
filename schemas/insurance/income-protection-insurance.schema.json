@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Income Protection Insurance",
+  "description": "Income protection or disability insurance policy.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^income_protection_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "insurance_policy_id": { "type": "string" },
+    "person_id": { "type": "string" },
+    "policy_type": { "type": "string", "enum": ["short_term_disability", "long_term_disability", "income_protection", "critical_illness"] },
+    "monthly_benefit": { "type": "number" },
+    "currency": { "type": "string" },
+    "annual_premium": { "type": "number" },
+    "monthly_premium": { "type": "number" },
+    "coverage_percentage": { "type": "number" },
+    "maximum_monthly_benefit": { "type": "number" },
+    "waiting_period_days": { "type": "integer" },
+    "benefit_period_years": { "type": "integer" },
+    "policy_start_date": { "type": "string", "format": "date" },
+    "policy_end_date": { "type": "string", "format": "date" },
+    "occupation_class": { "type": "string" },
+    "own_occupation_protection": { "type": "boolean" },
+    "partial_disability_coverage": { "type": "boolean" },
+    "cost_of_living_adjustment": { "type": "boolean" },
+    "claims_history": { "type": "array", "items": { "type": "object", "properties": { "claim_date": { "type": "string" }, "absence_days": { "type": "integer" }, "benefit_amount": { "type": "number" } } } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id"],
+  "_phase1_todo": ["Define disability claim process", "Define income verification", "Define benefit calculation"]
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Encryption Key",
+  "description": "Encryption key management.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^encryption_key_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "key_name": { "type": "string" },
+    "key_type": { "type": "string", "enum": ["symmetric", "asymmetric", "public_key", "private_key", "master_key"] },
+    "algorithm": { "type": "string", "enum": ["aes_256", "rsa_2048", "rsa_4096", "ecc", "other"] },
+    "key_size_bits": { "type": "integer" },
+    "generated_date": { "type": "string", "format": "date-time" },
+    "expiration_date": { "type": "string", "format": "date" },
+    "is_active": { "type": "boolean" },
+    "key_storage_location": { "type": "string", "enum": ["hsm", "kms", "local_vault", "secure_enclave"] },
+    "key_rotation_enabled": { "type": "boolean" },
+    "last_rotation_date": { "type": "string", "format": "date" },
+    "next_rotation_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "key_name"],
+  "_phase1_todo": ["Define key rotation", "Define key backup", "Define key recovery"]
+}
