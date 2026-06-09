@@ -1,7 +1,7 @@
 {
   "version": 3,
   "description": "Ontology registry for schema-to-account mapping, canonical lineage, and graph references (generated index).",
-  "generatedAt": "2026-06-09T21:28:59.707Z",
+  "generatedAt": "2026-06-09T21:37:22.067Z",
   "entryCount": 811,
   "fields": {
     "required": [

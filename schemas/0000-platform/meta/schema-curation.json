@@ -218,7 +218,7 @@
           "required": false
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "actor-lifecycle",
       "expectedAuthority": "user",
       "sensitivity": "high",
       "retention": "permanent",
@@ -244,7 +244,7 @@
           "required": true
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "payment-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "high",
       "retention": "permanent",
@@ -264,7 +264,7 @@
           "required": false
         }
       ],
-      "lifecycle": null,
+      "lifecycle": "organisation-lifecycle",
       "expectedAuthority": "authoritative",
       "sensitivity": "low",
       "retention": "permanent",
