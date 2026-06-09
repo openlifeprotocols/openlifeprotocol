@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Device",
+  "description": "A digital device owned or used by a person — phone, computer, tablet, or smart home device.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^device_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "owner_id": { "type": "string" },
+    "device_type": { "type": "string", "enum": ["smartphone", "tablet", "laptop", "desktop", "smart_tv", "smart_home_hub", "wearable", "games_console", "printer", "router", "other"] },
+    "make": { "type": "string" },
+    "model": { "type": "string" },
+    "serial_number": { "type": "string" },
+    "imei": { "type": "string" },
+    "os": { "type": "string" },
+    "purchased_date": { "type": "string", "format": "date" },
+    "purchase_price": { "type": "number" },
+    "currency": { "type": "string" },
+    "insured": { "type": "boolean" },
+    "insurance_policy_id": { "type": "string" },
+    "warranty_expiry": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["active", "lost", "stolen", "sold", "disposed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "owner_id", "device_type", "make"],
+  "_phase1_todo": [
+    "Define device data on death",
+    "Define lost/stolen device workflow",
+    "Define device accessibility settings",
+    "Define device-to-account linking"
+  ]
+}

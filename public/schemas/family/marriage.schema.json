@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Marriage",
+  "description": "A marriage or civil partnership registration record.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^marriage_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "partner_ids": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "string" },
+      "description": "Person IDs of all parties to the marriage"
+    },
+    "marriage_type": { "type": "string", "enum": ["civil_marriage", "religious_marriage", "civil_partnership", "customary", "other"] },
+    "ceremony_date": { "type": "string", "format": "date" },
+    "ceremony_location": {
+      "type": "object",
+      "properties": {
+        "venue_name": { "type": "string" },
+        "address_id": { "type": "string" },
+        "jurisdiction_id": { "type": "string" }
+      }
+    },
+    "registration": {
+      "type": "object",
+      "properties": {
+        "registered_at": { "type": "string", "format": "date" },
+        "registration_number": { "type": "string" },
+        "registrar_id": { "type": "string" }
+      }
+    },
+    "prenuptial_agreement_id": { "type": "string" },
+    "witnesses": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["active", "dissolved", "annulled", "deceased_spouse"] },
+    "event_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "partner_ids", "marriage_type", "ceremony_date"],
+  "_phase1_todo": [
+    "Define name change on marriage",
+    "Define marriage recognition across jurisdictions",
+    "Define bigamy detection",
+    "Define marriage annulment procedures"
+  ]
+}

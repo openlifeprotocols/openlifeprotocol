@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Care Need",
+  "description": "An assessed care need — physical, mental, or social — driving care planning and service provision.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^care_need_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "assessed_by_id": { "type": "string" },
+    "assessment_date": { "type": "string", "format": "date" },
+    "review_date": { "type": "string", "format": "date" },
+    "needs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "domain": { "type": "string", "enum": ["mobility", "personal_care", "nutrition", "safety", "social", "mental_health", "cognition", "communication", "other"] },
+          "description": { "type": "string" },
+          "severity": { "type": "string", "enum": ["mild", "moderate", "severe", "critical"] }
+        }
+      }
+    },
+    "care_plan_id": { "type": "string" },
+    "funding_type": { "type": "string", "enum": ["self_funded", "local_authority", "nhs_continuing_care", "direct_payment", "shared"] },
+    "eligible_for_funding": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["pending_assessment", "assessed", "care_plan_active", "review_due"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "assessment_date", "needs"],
+  "_phase1_todo": [
+    "Define care needs assessment tools (Care Act 2014)",
+    "Define eligibility threshold calculations",
+    "Define care funding challenge process",
+    "Define cross-agency care coordination"
+  ]
+}

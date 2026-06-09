@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Insurance Policy",
+  "description": "An insurance policy covering life, health, property, vehicle, income, or other risk.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^insurance_policy_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "policy_holder_id": { "type": "string" },
+    "insurer_id": { "type": "string" },
+    "policy_number": { "type": "string" },
+    "insurance_type": { "type": "string", "enum": ["life", "critical_illness", "income_protection", "health", "property", "contents", "motor", "travel", "liability", "business", "pet", "other"] },
+    "sum_assured": { "type": "number" },
+    "currency": { "type": "string" },
+    "premium": {
+      "type": "object",
+      "properties": {
+        "amount": { "type": "number" },
+        "frequency": { "type": "string", "enum": ["monthly", "annual", "single"] }
+      }
+    },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "beneficiary_ids": { "type": "array", "items": { "type": "string" } },
+    "named_insured_ids": { "type": "array", "items": { "type": "string" } },
+    "excess": { "type": "number" },
+    "status": { "type": "string", "enum": ["active", "lapsed", "claimed", "cancelled"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "policy_holder_id", "insurer_id", "policy_number", "insurance_type"],
+  "_phase1_todo": [
+    "Define claim triggering workflow",
+    "Define policy renewal automation",
+    "Define policy valuation on death",
+    "Define beneficiary nomination changes"
+  ]
+}

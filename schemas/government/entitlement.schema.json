@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Entitlement",
+  "description": "A person's entitlement to a service, benefit, right, or allowance based on their status or circumstances.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^entitlement_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "entitlement_type": { "type": "string", "enum": ["free_prescriptions", "free_school_meals", "nhs_dental", "housing_benefit", "vote", "jury_duty", "free_bus_pass", "winter_fuel_payment", "state_pension", "nhs_continuing_care", "other"] },
+    "basis": { "type": "string", "description": "Why entitled — e.g., 'age >= 60', 'low income', 'disability'" },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "jurisdiction_id": { "type": "string" },
+    "verified": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["entitled", "claimed", "not_claimed", "expired", "suspended"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "entitlement_type", "basis"],
+  "_phase1_todo": [
+    "Define entitlement eligibility rules engine",
+    "Define entitlement notification on life events",
+    "Define entitlement reverification",
+    "Define entitlement claim workflow"
+  ]
+}

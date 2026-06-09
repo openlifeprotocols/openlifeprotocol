@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Probate",
+  "description": "A probate case — the legal process of administering a deceased person's estate.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^probate_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "bereavement_id": { "type": "string" },
+    "estate_id": { "type": "string" },
+    "will_id": { "type": "string" },
+    "probate_type": { "type": "string", "enum": ["grant_of_probate", "letters_of_administration", "letters_of_administration_with_will"] },
+    "applicant_ids": { "type": "array", "items": { "type": "string" } },
+    "solicitor_id": { "type": "string" },
+    "court_id": { "type": "string" },
+    "reference": { "type": "string" },
+    "application_date": { "type": "string", "format": "date" },
+    "grant_date": { "type": "string", "format": "date" },
+    "estate_value": { "type": "number" },
+    "currency": { "type": "string" },
+    "inheritance_tax_paid": { "type": "boolean" },
+    "is_contested": { "type": "boolean" },
+    "tasks": {
+      "type": "array",
+      "description": "Probate administration tasks",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task_id": { "type": "string" },
+          "description": { "type": "string" },
+          "status": { "type": "string", "enum": ["pending", "in_progress", "complete"] }
+        }
+      }
+    },
+    "status": { "type": "string", "enum": ["pending", "application_submitted", "grant_issued", "estate_distributed", "contested", "closed"] },
+    "jurisdiction_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "bereavement_id", "estate_id", "probate_type"],
+  "_phase1_todo": [
+    "Define small estate exemptions",
+    "Define contested probate litigation",
+    "Define foreign asset probate",
+    "Define digital probate submissions"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Registration",
+  "description": "A formal registration with a government body — voter, company, vehicle, GP, school, etc.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^registration_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "registrant_id": { "type": "string" },
+    "registration_type": { "type": "string", "enum": ["voter", "vehicle", "company", "gp", "school", "charity", "data_protection", "land_registry", "birth", "death", "marriage", "other"] },
+    "authority": { "type": "string" },
+    "reference_number": { "type": "string" },
+    "jurisdiction_id": { "type": "string" },
+    "registered_date": { "type": "string", "format": "date" },
+    "expiry_date": { "type": "string", "format": "date" },
+    "address_at_registration_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "expired", "cancelled", "transferred"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "registrant_id", "registration_type", "authority", "registered_date"],
+  "_phase1_todo": [
+    "Define automatic re-registration triggers",
+    "Define cross-register reconciliation",
+    "Define registration on address change",
+    "Define de-registration procedures"
+  ]
+}

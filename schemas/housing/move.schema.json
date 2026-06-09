@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Move",
+  "description": "A residential move event — changing address — with tasks for each service to notify.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^move_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_ids": { "type": "array", "items": { "type": "string" } },
+    "household_id": { "type": "string" },
+    "from_address_id": { "type": "string" },
+    "to_address_id": { "type": "string" },
+    "move_date": { "type": "string", "format": "date" },
+    "move_reason": {
+      "type": "string",
+      "enum": ["new_home_purchase", "rental_end", "relationship_change", "work_relocation", "downsizing", "eviction", "family_change", "other"]
+    },
+    "notifications_required": {
+      "type": "array",
+      "description": "Services that need to be notified",
+      "items": {
+        "type": "object",
+        "properties": {
+          "service_name": { "type": "string" },
+          "status": { "type": "string", "enum": ["pending", "in_progress", "complete", "failed"] },
+          "task_id": { "type": "string" }
+        }
+      }
+    },
+    "case_id": { "type": "string" },
+    "event_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_ids", "to_address_id", "move_date"],
+  "_phase1_todo": [
+    "Define auto-notification triggers to utility companies, DVLA, HMRC, GP, banks",
+    "Define mail redirection integration",
+    "Define move reversal procedures",
+    "Define international move procedures"
+  ]
+}

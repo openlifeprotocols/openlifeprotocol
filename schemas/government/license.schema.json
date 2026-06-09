@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "License",
+  "description": "A government-issued licence — driving, professional, business, firearms, or other regulatory licence.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^license_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "holder_id": { "type": "string" },
+    "licence_type": { "type": "string", "enum": ["driving", "professional", "business", "firearms", "alcohol", "food_hygiene", "hgv", "pilot", "amateur_radio", "tv", "other"] },
+    "licence_number": { "type": "string" },
+    "issuing_authority": { "type": "string" },
+    "jurisdiction_id": { "type": "string" },
+    "categories": { "type": "array", "items": { "type": "string" }, "description": "e.g., driving categories A, B, C" },
+    "endorsements": { "type": "array", "items": { "type": "string" } },
+    "issued_date": { "type": "string", "format": "date" },
+    "expiry_date": { "type": "string", "format": "date" },
+    "conditions": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["valid", "expired", "revoked", "suspended", "pending"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "holder_id", "licence_type", "licence_number", "issuing_authority"],
+  "_phase1_todo": [
+    "Define licence points/endorsement system",
+    "Define licence renewal workflow",
+    "Define international driving permit",
+    "Define professional licence revalidation"
+  ]
+}

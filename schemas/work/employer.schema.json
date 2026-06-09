@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Employer",
+  "description": "An employer entity — a company, organisation, or individual who employs people.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^employer_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "actor_id": { "type": "string", "description": "Reference to core Actor/Organisation record" },
+    "legal_name": { "type": "string" },
+    "trading_name": { "type": "string" },
+    "company_number": { "type": "string" },
+    "paye_reference": { "type": "string" },
+    "employer_type": { "type": "string", "enum": ["private_company", "public_company", "charity", "nhs", "government", "local_authority", "sole_trader", "partnership"] },
+    "industry": { "type": "string" },
+    "address_id": { "type": "string" },
+    "hr_contact_id": { "type": "string" },
+    "employee_count": { "type": "integer" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "legal_name"],
+  "_phase1_todo": [
+    "Define employer verification",
+    "Define employer insolvency procedures",
+    "Define employer group structures",
+    "Define employer data retention policies"
+  ]
+}

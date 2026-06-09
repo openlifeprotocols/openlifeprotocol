@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Subscription",
+  "description": "A recurring subscription or membership — streaming, software, professional, or service.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^subscription_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "service_name": { "type": "string" },
+    "subscription_type": { "type": "string", "enum": ["streaming", "software_saas", "news", "gym", "box_delivery", "professional_membership", "insurance", "utility", "gaming", "other"] },
+    "account_id": { "type": "string" },
+    "billing_amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "billing_frequency": { "type": "string", "enum": ["weekly", "monthly", "quarterly", "annual"] },
+    "billing_date": { "type": "integer", "description": "Day of month" },
+    "payment_method": { "type": "string", "enum": ["direct_debit", "card", "paypal", "voucher"] },
+    "started_date": { "type": "string", "format": "date" },
+    "cancelled_date": { "type": "string", "format": "date" },
+    "renewal_date": { "type": "string", "format": "date" },
+    "auto_renew": { "type": "boolean" },
+    "shared_with": { "type": "array", "items": { "type": "string" } },
+    "status": { "type": "string", "enum": ["active", "paused", "cancelled", "trial"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "service_name", "billing_amount", "billing_frequency"],
+  "_phase1_todo": [
+    "Define subscription audit/money saving workflow",
+    "Define cancellation difficulty ratings",
+    "Define subscription on death",
+    "Define family plan management"
+  ]
+}

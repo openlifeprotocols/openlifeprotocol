@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Business Profile",
+  "description": "A registered business entity with trading details, ownership, and compliance information.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^business_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "actor_id": { "type": "string" },
+    "legal_name": { "type": "string" },
+    "trading_name": { "type": "string" },
+    "business_type": { "type": "string", "enum": ["sole_trader", "partnership", "llp", "ltd", "plc", "charity", "cic", "cooperative", "other"] },
+    "company_number": { "type": "string" },
+    "vat_number": { "type": "string" },
+    "charity_number": { "type": "string" },
+    "incorporation_date": { "type": "string", "format": "date" },
+    "registered_address_id": { "type": "string" },
+    "trading_address_id": { "type": "string" },
+    "industry_codes": { "type": "array", "items": { "type": "string", "description": "SIC codes" } },
+    "owners": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "person_id": { "type": "string" },
+          "role": { "type": "string", "enum": ["director", "shareholder", "partner", "owner", "beneficial_owner"] },
+          "share_percentage": { "type": "number" }
+        }
+      }
+    },
+    "status": { "type": "string", "enum": ["active", "dormant", "dissolved", "in_liquidation", "in_administration"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "legal_name", "business_type"],
+  "_phase1_todo": [
+    "Define Companies House integration",
+    "Define beneficial ownership (PSC) register",
+    "Define business dissolution workflow",
+    "Define dormant company procedures"
+  ]
+}

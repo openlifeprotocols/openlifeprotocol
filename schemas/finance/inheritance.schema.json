@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Inheritance",
+  "description": "A bequest or inheritance — a transfer of assets from a deceased person to a beneficiary.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^inheritance_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "estate_id": { "type": "string" },
+    "bereavement_id": { "type": "string" },
+    "will_id": { "type": "string" },
+    "beneficiary_id": { "type": "string" },
+    "executor_id": { "type": "string" },
+    "bequest_type": { "type": "string", "enum": ["specific_item", "cash_sum", "residue", "percentage_share", "property", "trust", "intestate"] },
+    "description": { "type": "string" },
+    "asset_ids": { "type": "array", "items": { "type": "string" } },
+    "cash_value": { "type": "number" },
+    "currency": { "type": "string" },
+    "inheritance_tax_due": { "type": "number" },
+    "inheritance_tax_paid": { "type": "number" },
+    "transfer_date": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["pending_probate", "probate_granted", "distributed", "disputed", "contested"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "estate_id", "beneficiary_id", "bequest_type"],
+  "_phase1_todo": [
+    "Define inheritance tax calculation",
+    "Define intestacy rules by jurisdiction",
+    "Define contested will procedures",
+    "Define foreign asset transfer"
+  ]
+}

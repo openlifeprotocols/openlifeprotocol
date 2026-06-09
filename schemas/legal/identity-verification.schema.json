@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Identity Verification",
+  "description": "A formal identity verification record — KYC, right to work, DBS, right to rent check.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^id_verification_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "person_id": { "type": "string" },
+    "verified_by_id": { "type": "string" },
+    "verification_type": { "type": "string", "enum": ["kyc", "right_to_work", "right_to_rent", "dbs_basic", "dbs_standard", "dbs_enhanced", "facial_recognition", "document_check", "credit_check", "biometric"] },
+    "documents_checked": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "document_type": { "type": "string" },
+          "document_id": { "type": "string" },
+          "expiry_date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "result": { "type": "string", "enum": ["pass", "fail", "refer", "not_completed"] },
+    "confidence_score": { "type": "number", "minimum": 0, "maximum": 1 },
+    "verified_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "status": { "type": "string", "enum": ["valid", "expired", "revoked"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "verification_type", "result", "verified_at"],
+  "_phase1_todo": [
+    "Define reusable digital ID standard",
+    "Define cross-jurisdiction recognition",
+    "Define right to work share code integration",
+    "Define biometric data storage standards"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Property",
+  "description": "A real property — residential, commercial, or land — with ownership, title, and valuation data.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^property_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "address_id": { "type": "string" },
+    "property_type": {
+      "type": "string",
+      "enum": ["detached_house", "semi_detached", "terraced", "flat_apartment", "bungalow", "commercial", "land", "mixed_use", "mobile_home", "other"]
+    },
+    "tenure": { "type": "string", "enum": ["freehold", "leasehold", "commonhold", "shared_ownership", "social_rented", "private_rented"] },
+    "title_number": { "type": "string", "description": "Land registry title number" },
+    "uprn": { "type": "string", "description": "Unique Property Reference Number" },
+    "owner_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "actor_id": { "type": "string" },
+          "ownership_share": { "type": "number", "minimum": 0, "maximum": 1 },
+          "ownership_type": { "type": "string", "enum": ["joint_tenants", "tenants_in_common", "sole"] }
+        }
+      }
+    },
+    "bedrooms": { "type": "integer" },
+    "floor_area_sqm": { "type": "number" },
+    "construction_year": { "type": "integer" },
+    "epc_rating": { "type": "string", "enum": ["A", "B", "C", "D", "E", "F", "G"] },
+    "estimated_value": { "type": "number" },
+    "estimated_value_currency": { "type": "string" },
+    "estimated_value_date": { "type": "string", "format": "date" },
+    "mortgage_id": { "type": "string" },
+    "tenancy_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "address_id", "property_type", "tenure"],
+  "_phase1_todo": [
+    "Define property transaction history",
+    "Define planning permission records",
+    "Define property inspection schedules",
+    "Define shared ownership staircasing"
+  ]
+}

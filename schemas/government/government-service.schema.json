@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Government Service",
+  "description": "A government or public service interaction — application, registration, claim, notification, or referral.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^gov_service_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "person_id": { "type": "string" },
+    "organisation_id": { "type": "string" },
+    "service_name": { "type": "string" },
+    "department": { "type": "string" },
+    "service_type": { "type": "string", "enum": ["registration", "application", "notification", "claim", "renewal", "appeal", "cancellation", "enquiry", "referral"] },
+    "reference_number": { "type": "string" },
+    "jurisdiction_id": { "type": "string" },
+    "initiated_date": { "type": "string", "format": "date" },
+    "deadline": { "type": "string", "format": "date" },
+    "completed_date": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["pending", "in_progress", "awaiting_evidence", "approved", "refused", "appealing", "withdrawn", "completed"] },
+    "outcome": { "type": "string" },
+    "document_ids": { "type": "array", "items": { "type": "string" } },
+    "task_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "service_name", "department", "service_type", "initiated_date"],
+  "_phase1_todo": [
+    "Define GOV.UK integration patterns",
+    "Define Tell Us Once protocol",
+    "Define department data sharing standards",
+    "Define government notification preferences"
+  ]
+}

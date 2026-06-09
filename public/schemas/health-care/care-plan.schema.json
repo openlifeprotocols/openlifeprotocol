@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Care Plan",
+  "description": "A personalised care plan outlining goals, interventions, and responsibilities for a person's care.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^care_plan_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "care_need_id": { "type": "string" },
+    "lead_coordinator_id": { "type": "string" },
+    "created_date": { "type": "string", "format": "date" },
+    "review_date": { "type": "string", "format": "date" },
+    "goals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": { "type": "string" },
+          "target_date": { "type": "string", "format": "date" },
+          "status": { "type": "string", "enum": ["not_started", "in_progress", "achieved", "abandoned"] }
+        }
+      }
+    },
+    "interventions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "description": { "type": "string" },
+          "frequency": { "type": "string" },
+          "responsible_actor_id": { "type": "string" }
+        }
+      }
+    },
+    "providers": { "type": "array", "items": { "type": "string" }, "description": "Care provider IDs" },
+    "status": { "type": "string", "enum": ["draft", "active", "review_due", "ended"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "created_date"],
+  "_phase1_todo": [
+    "Define person-centred care plan templates",
+    "Define multi-agency care plan sharing",
+    "Define care plan dispute resolution",
+    "Define digital advance care plan standards"
+  ]
+}

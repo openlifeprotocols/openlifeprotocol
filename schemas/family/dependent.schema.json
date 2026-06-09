@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Dependent",
+  "description": "A person who depends on another for financial, legal, or physical care — including children, elderly relatives, and adults with disabilities.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^dependent_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string", "description": "The dependent person" },
+    "responsible_person_id": { "type": "string", "description": "The person responsible for them" },
+    "dependency_type": {
+      "type": "string",
+      "enum": ["child", "elderly_parent", "disabled_adult", "foster_child", "other"]
+    },
+    "legal_basis": { "type": "string", "enum": ["birth", "adoption", "guardianship", "court_order", "informal_arrangement"] },
+    "care_level": { "type": "string", "enum": ["financial_only", "part_time", "full_time", "residential"] },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "benefits_claims": { "type": "array", "items": { "type": "string" }, "description": "Benefit claim IDs linked to this dependency" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "responsible_person_id", "dependency_type"],
+  "_phase1_todo": [
+    "Define dependency transfer on death",
+    "Define multi-party dependency",
+    "Define dependency benefits linkage",
+    "Define dependency review schedules"
+  ]
+}

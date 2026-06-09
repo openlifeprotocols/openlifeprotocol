@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Payroll",
+  "description": "A payroll record — a single pay period's earnings, deductions, and net pay for an employee.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^payroll_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "employment_id": { "type": "string" },
+    "employee_id": { "type": "string" },
+    "employer_id": { "type": "string" },
+    "pay_period": {
+      "type": "object",
+      "properties": {
+        "from": { "type": "string", "format": "date" },
+        "to": { "type": "string", "format": "date" },
+        "payment_date": { "type": "string", "format": "date" }
+      }
+    },
+    "gross_pay": { "type": "number" },
+    "currency": { "type": "string" },
+    "deductions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["income_tax", "national_insurance", "pension", "student_loan", "attachment_of_earnings", "other"] },
+          "amount": { "type": "number" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "additions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["bonus", "overtime", "expenses", "benefit_in_kind", "other"] },
+          "amount": { "type": "number" }
+        }
+      }
+    },
+    "net_pay": { "type": "number" },
+    "tax_code": { "type": "string" },
+    "ni_number": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "employment_id", "pay_period", "gross_pay", "net_pay"],
+  "_phase1_todo": [
+    "Define P60/P45 generation",
+    "Define payslip delivery preferences",
+    "Define payroll corrections and amendments",
+    "Define Real Time Information (RTI) submission"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Consent",
+  "description": "A record of informed consent given by a person for data sharing, medical treatment, legal action, or service access.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^consent_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "grantor_id": { "type": "string", "description": "Person giving consent" },
+    "grantee_id": { "type": "string", "description": "Person or organisation receiving consent" },
+    "consent_type": {
+      "type": "string",
+      "enum": ["data_sharing", "medical_treatment", "legal_representation", "marketing", "research", "service_access", "financial_authority", "contact"]
+    },
+    "scope": { "type": "string", "description": "What exactly is consented to" },
+    "purpose": { "type": "string" },
+    "granted_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "withdrawn_at": { "type": "string", "format": "date-time" },
+    "withdrawal_reason": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "expired", "withdrawn", "superseded"] },
+    "conditions": { "type": "array", "items": { "type": "string" }, "description": "Any conditions attached to consent" },
+    "evidence_document_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "grantor_id", "consent_type", "scope", "granted_at"],
+  "_phase1_todo": [
+    "Define consent withdrawal procedures",
+    "Define minor consent (parental proxy)",
+    "Define consent auditing and proof",
+    "Define GDPR/HIPAA specific consent types"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Utility Account",
+  "description": "A utility account (gas, electricity, water, broadband, etc.) linked to a property or person.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^utility_account_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "account_number": { "type": "string" },
+    "utility_type": { "type": "string", "enum": ["electricity", "gas", "water", "broadband", "telephone", "tv_licence", "council_tax", "other"] },
+    "provider_id": { "type": "string" },
+    "property_id": { "type": "string" },
+    "account_holder_ids": { "type": "array", "items": { "type": "string" } },
+    "tariff": { "type": "string" },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "meter_reference": { "type": "string" },
+    "direct_debit_amount": { "type": "number" },
+    "direct_debit_frequency": { "type": "string", "enum": ["monthly", "quarterly", "annual"] },
+    "in_debt": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["active", "closed", "transferring", "disputed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "utility_type", "provider_id", "property_id"],
+  "_phase1_todo": [
+    "Define meter reading submission",
+    "Define switching provider workflow",
+    "Define utility debt management",
+    "Define smart meter data integration"
+  ]
+}

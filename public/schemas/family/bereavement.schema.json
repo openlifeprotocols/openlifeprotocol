@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bereavement",
+  "description": "A death record triggering downstream tasks: probate, benefits changes, tenancy transfers, account closures.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^bereavement_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "deceased_person_id": { "type": "string" },
+    "date_of_death": { "type": "string", "format": "date" },
+    "place_of_death": { "type": "string" },
+    "cause_of_death": { "type": "string" },
+    "registered_at": { "type": "string", "format": "date" },
+    "death_certificate_id": { "type": "string" },
+    "notified_by_person_id": { "type": "string", "description": "Person who notified authorities/OLP" },
+    "notified_at": { "type": "string", "format": "date-time" },
+    "estate_id": { "type": "string" },
+    "probate_case_id": { "type": "string" },
+    "tasks_triggered": {
+      "type": "array",
+      "description": "Automatically generated tasks from this bereavement",
+      "items": { "type": "string" }
+    },
+    "jurisdiction_id": { "type": "string" },
+    "event_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "deceased_person_id", "date_of_death"],
+  "_phase1_todo": [
+    "Define automatic task generation on death registration",
+    "Define digital legacy handling",
+    "Define simultaneous death scenarios",
+    "Define presumed death procedures"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Court Case",
+  "description": "A court or tribunal case with parties, proceedings, and judgments.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^court_case_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "case_reference": { "type": "string" },
+    "court_name": { "type": "string" },
+    "case_type": { "type": "string", "enum": ["civil", "criminal", "family", "employment_tribunal", "immigration_tribunal", "probate", "small_claims", "other"] },
+    "claimant_ids": { "type": "array", "items": { "type": "string" } },
+    "defendant_ids": { "type": "array", "items": { "type": "string" } },
+    "legal_representative_ids": { "type": "array", "items": { "type": "string" } },
+    "judge_id": { "type": "string" },
+    "filed_date": { "type": "string", "format": "date" },
+    "hearing_dates": { "type": "array", "items": { "type": "string", "format": "date" } },
+    "judgment_date": { "type": "string", "format": "date" },
+    "judgment_summary": { "type": "string" },
+    "amount_awarded": { "type": "number" },
+    "currency": { "type": "string" },
+    "costs_awarded": { "type": "number" },
+    "jurisdiction_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["filed", "directions", "listed", "heard", "judgment", "appeal", "enforced", "closed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "case_reference", "court_name", "case_type", "filed_date"],
+  "_phase1_todo": [
+    "Define case document management",
+    "Define hearing reminder workflow",
+    "Define judgment enforcement",
+    "Define appeals procedure"
+  ]
+}

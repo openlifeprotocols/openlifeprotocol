@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Employment",
+  "description": "An employment record — a person working for an employer under a contract.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^employment_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "employee_id": { "type": "string" },
+    "employer_id": { "type": "string" },
+    "job_title": { "type": "string" },
+    "department": { "type": "string" },
+    "employment_type": { "type": "string", "enum": ["permanent", "fixed_term", "casual", "zero_hours", "agency", "self_employed", "contractor", "apprenticeship", "internship"] },
+    "full_time_equivalent": { "type": "number", "minimum": 0, "maximum": 1, "description": "1.0 = full time" },
+    "hours_per_week": { "type": "number" },
+    "start_date": { "type": "string", "format": "date" },
+    "end_date": { "type": "string", "format": "date" },
+    "salary": {
+      "type": "object",
+      "properties": {
+        "amount": { "type": "number" },
+        "currency": { "type": "string" },
+        "frequency": { "type": "string", "enum": ["annual", "monthly", "weekly", "hourly"] }
+      }
+    },
+    "work_location": { "type": "string", "enum": ["office", "remote", "hybrid", "site_based", "travelling"] },
+    "notice_period_days": { "type": "integer" },
+    "contract_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "on_leave", "notice_period", "ended", "redundant"] },
+    "leaving_reason": { "type": "string", "enum": ["resignation", "redundancy", "dismissal", "retirement", "contract_end", "mutual_agreement", "death"] },
+    "event_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "employee_id", "employer_id", "job_title", "employment_type", "start_date"],
+  "_phase1_todo": [
+    "Define employment history aggregation",
+    "Define continuous service calculation",
+    "Define employment verification",
+    "Define TUPE transfer procedures"
+  ]
+}

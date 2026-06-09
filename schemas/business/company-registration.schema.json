@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Company Registration",
+  "description": "A company incorporation or registration event at a companies registry.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^company_reg_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "registry_name": { "type": "string", "description": "e.g., 'Companies House', 'SEC'" },
+    "jurisdiction_id": { "type": "string" },
+    "company_number": { "type": "string" },
+    "registration_date": { "type": "string", "format": "date" },
+    "registered_agent_id": { "type": "string" },
+    "articles_of_association_id": { "type": "string" },
+    "share_classes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "class": { "type": "string", "enum": ["ordinary", "preference", "deferred"] },
+          "number_issued": { "type": "integer" },
+          "nominal_value": { "type": "number" },
+          "currency": { "type": "string" }
+        }
+      }
+    },
+    "status": { "type": "string", "enum": ["active", "struck_off", "dissolved", "converted"] },
+    "event_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "registry_name", "registration_date"],
+  "_phase1_todo": [
+    "Define share allotment procedures",
+    "Define registered office change",
+    "Define annual confirmation statement",
+    "Define officer appointment and resignation"
+  ]
+}

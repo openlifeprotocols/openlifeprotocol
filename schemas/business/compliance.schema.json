@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Compliance",
+  "description": "A business compliance record — licences, certifications, regulatory filings, and audits.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^compliance_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "business_id": { "type": "string" },
+    "compliance_type": {
+      "type": "string",
+      "enum": ["annual_accounts", "confirmation_statement", "vat_return", "payroll_rti", "data_protection", "health_and_safety", "industry_licence", "regulatory_filing", "audit", "other"]
+    },
+    "regulator": { "type": "string" },
+    "reference": { "type": "string" },
+    "period_start": { "type": "string", "format": "date" },
+    "period_end": { "type": "string", "format": "date" },
+    "due_date": { "type": "string", "format": "date" },
+    "submitted_date": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["pending", "submitted", "accepted", "rejected", "overdue"] },
+    "penalty": { "type": "number" },
+    "penalty_currency": { "type": "string" },
+    "document_ids": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "business_id", "compliance_type", "due_date"],
+  "_phase1_todo": [
+    "Define automated compliance calendar",
+    "Define compliance reminder escalation",
+    "Define penalty calculation",
+    "Define multi-jurisdiction compliance matrix"
+  ]
+}

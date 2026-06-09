@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Will",
+  "description": "A last will and testament — a legal document expressing how a person's estate should be distributed.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^will_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "testator_id": { "type": "string", "description": "Person making the will" },
+    "dated": { "type": "string", "format": "date" },
+    "signed_date": { "type": "string", "format": "date" },
+    "will_type": { "type": "string", "enum": ["sole_will", "mirror_will", "mutual_will", "living_will", "codicil"] },
+    "executor_ids": { "type": "array", "items": { "type": "string" } },
+    "guardian_for_children_id": { "type": "string" },
+    "bequests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "beneficiary_id": { "type": "string" },
+          "bequest_type": { "type": "string", "enum": ["specific", "cash", "residue", "percentage", "conditional"] },
+          "description": { "type": "string" },
+          "conditions": { "type": "string" }
+        }
+      }
+    },
+    "witnesses": {
+      "type": "array",
+      "minItems": 2,
+      "items": { "type": "object", "properties": { "name": { "type": "string" }, "signed_date": { "type": "string", "format": "date" } } }
+    },
+    "solicitor_id": { "type": "string" },
+    "storage_location": { "type": "string" },
+    "jurisdiction_id": { "type": "string" },
+    "superseded_by_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["draft", "valid", "revoked", "superseded", "contested"] },
+    "document_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "testator_id", "dated", "executor_ids"],
+  "_phase1_todo": [
+    "Define will registration",
+    "Define will revocation procedures",
+    "Define foreign will recognition",
+    "Define holographic will handling"
+  ]
+}
