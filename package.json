@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "registry:generate": "node schemas/0000-platform/meta/generate-schema-registry.mjs",
-    "registry:validate": "node schemas/0000-platform/meta/validate-schema-registry.mjs"
+    "registry:validate": "node schemas/0000-platform/meta/validate-schema-registry.mjs",
+    "schemas:audit": "node schemas/0000-platform/meta/schema-quality-audit.mjs"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {

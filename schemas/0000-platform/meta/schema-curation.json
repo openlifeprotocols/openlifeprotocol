@@ -273,6 +273,366 @@
       "semanticDescription": "A legal or social entity.",
       "graphImportance": "supporting",
       "lifeDomains": ["enterprise", "career"]
+    },
+    {
+      "schema": "asset",
+      "relationships": [
+        {
+          "target": "actor",
+          "type": "owns",
+          "cardinality": "one",
+          "required": false
+        }
+      ],
+      "lifecycle": null,
+      "expectedAuthority": "user",
+      "sensitivity": "medium",
+      "retention": "permanent",
+      "channels": ["personal", "business"],
+      "roles": [],
+      "semanticDescription": "A resource or possession with value.",
+      "graphImportance": "core",
+      "lifeDomains": ["wealth", "property"]
+    },
+    {
+      "schema": "event",
+      "relationships": [
+        {
+          "target": "actor",
+          "type": "participates-in",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "location",
+          "type": "references",
+          "cardinality": "one",
+          "required": false
+        }
+      ],
+      "lifecycle": "event-lifecycle",
+      "expectedAuthority": "user",
+      "sensitivity": "low",
+      "retention": "permanent",
+      "channels": ["personal", "business", "public"],
+      "roles": [],
+      "semanticDescription": "A point-in-time occurrence with participants.",
+      "graphImportance": "core",
+      "lifeDomains": ["life-story", "community"]
+    },
+    {
+      "schema": "workflow",
+      "relationships": [
+        {
+          "target": "project",
+          "type": "supports",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "deliverable",
+          "type": "produces",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": "workflow-lifecycle",
+      "expectedAuthority": "user",
+      "sensitivity": "medium",
+      "retention": "permanent",
+      "channels": ["business", "employment"],
+      "roles": ["operator"],
+      "semanticDescription": "A repeatable sequence of steps with defined inputs/outputs.",
+      "graphImportance": "supporting",
+      "lifeDomains": ["career", "enterprise"]
+    },
+    {
+      "schema": "deliverable",
+      "relationships": [
+        {
+          "target": "project",
+          "type": "fulfills",
+          "cardinality": "one",
+          "required": true
+        },
+        {
+          "target": "workflow",
+          "type": "comes-from",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": "deliverable-lifecycle",
+      "expectedAuthority": "user",
+      "sensitivity": "medium",
+      "retention": "7-years",
+      "channels": ["business", "employment"],
+      "roles": ["operator"],
+      "semanticDescription": "A tangible output or work product.",
+      "graphImportance": "supporting",
+      "lifeDomains": ["career", "enterprise"]
+    },
+    {
+      "schema": "resource-allocation",
+      "relationships": [
+        {
+          "target": "project",
+          "type": "supports",
+          "cardinality": "one",
+          "required": true
+        },
+        {
+          "target": "actor",
+          "type": "assigns",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": null,
+      "expectedAuthority": "user",
+      "sensitivity": "medium",
+      "retention": "7-years",
+      "channels": ["business", "employment"],
+      "roles": ["operator", "manager"],
+      "semanticDescription": "Assignment of people or resources to work.",
+      "graphImportance": "supporting",
+      "lifeDomains": ["career", "enterprise", "planning"]
+    },
+    {
+      "schema": "milestone",
+      "relationships": [
+        {
+          "target": "project",
+          "type": "marks",
+          "cardinality": "one",
+          "required": true
+        },
+        {
+          "target": "deliverable",
+          "type": "gates",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": null,
+      "expectedAuthority": "user",
+      "sensitivity": "low",
+      "retention": "permanent",
+      "channels": ["personal", "business", "employment"],
+      "roles": [],
+      "semanticDescription": "A key point in time with defined criteria.",
+      "graphImportance": "supporting",
+      "lifeDomains": ["planning", "life-story"]
+    },
+    {
+      "schema": "certification",
+      "relationships": [
+        {
+          "target": "actor",
+          "type": "held-by",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": null,
+      "expectedAuthority": "authoritative",
+      "sensitivity": "medium",
+      "retention": "permanent",
+      "channels": ["business", "employment"],
+      "roles": [],
+      "semanticDescription": "Professional or educational credential.",
+      "graphImportance": "supporting",
+      "lifeDomains": ["career", "learning"]
+    },
+    {
+      "schema": "contract",
+      "relationships": [
+        {
+          "target": "actor",
+          "type": "binds",
+          "cardinality": "many",
+          "required": true
+        },
+        {
+          "target": "organisation",
+          "type": "references",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": "contract-lifecycle",
+      "expectedAuthority": "authoritative",
+      "sensitivity": "high",
+      "retention": "permanent",
+      "channels": ["business"],
+      "roles": [],
+      "semanticDescription": "A binding legal agreement.",
+      "graphImportance": "core",
+      "lifeDomains": ["wealth", "enterprise"]
+    },
+    {
+      "schema": "invoice",
+      "relationships": [
+        {
+          "target": "payment",
+          "type": "requests",
+          "cardinality": "one",
+          "required": true
+        },
+        {
+          "target": "project",
+          "type": "documents",
+          "cardinality": "one",
+          "required": false
+        }
+      ],
+      "lifecycle": "invoice-lifecycle",
+      "expectedAuthority": "authoritative",
+      "sensitivity": "high",
+      "retention": "permanent",
+      "channels": ["business"],
+      "roles": [],
+      "semanticDescription": "A request for payment for goods or services.",
+      "graphImportance": "supporting",
+      "lifeDomains": ["wealth", "enterprise"]
+    },
+    {
+      "schema": "customer",
+      "relationships": [
+        {
+          "target": "payment",
+          "type": "makes",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": null,
+      "expectedAuthority": "user",
+      "sensitivity": "medium",
+      "retention": "permanent",
+      "channels": ["business"],
+      "roles": ["customer"],
+      "semanticDescription": "An actor in the customer role within a transaction.",
+      "graphImportance": "supporting",
+      "lifeDomains": ["wealth", "enterprise"]
+    },
+    {
+      "schema": "employee",
+      "relationships": [
+        {
+          "target": "organisation",
+          "type": "works-for",
+          "cardinality": "one",
+          "required": true
+        },
+        {
+          "target": "project",
+          "type": "contributes-to",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": null,
+      "expectedAuthority": "authoritative",
+      "sensitivity": "high",
+      "retention": "permanent",
+      "channels": ["employment"],
+      "roles": ["employee"],
+      "semanticDescription": "An actor in the employee role within an organisation.",
+      "graphImportance": "supporting",
+      "lifeDomains": ["career", "enterprise"]
+    },
+    {
+      "schema": "mentor",
+      "relationships": [
+        {
+          "target": "actor",
+          "type": "advises",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": null,
+      "expectedAuthority": "user",
+      "sensitivity": "medium",
+      "retention": "permanent",
+      "channels": ["personal", "business"],
+      "roles": ["mentor"],
+      "semanticDescription": "An actor in the mentor role guiding another's growth.",
+      "graphImportance": "supporting",
+      "lifeDomains": ["learning", "relationships"]
+    },
+    {
+      "schema": "contractor",
+      "relationships": [
+        {
+          "target": "contract",
+          "type": "bound-by",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "project",
+          "type": "contributes-to",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": null,
+      "expectedAuthority": "user",
+      "sensitivity": "medium",
+      "retention": "permanent",
+      "channels": ["business"],
+      "roles": ["contractor"],
+      "semanticDescription": "An actor in the contractor role providing services.",
+      "graphImportance": "supporting",
+      "lifeDomains": ["career", "enterprise"]
+    },
+    {
+      "schema": "startup",
+      "relationships": [
+        {
+          "target": "actor",
+          "type": "founded-by",
+          "cardinality": "many",
+          "required": false
+        },
+        {
+          "target": "payment",
+          "type": "raises",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": "startup-lifecycle",
+      "expectedAuthority": "user",
+      "sensitivity": "medium",
+      "retention": "permanent",
+      "channels": ["business"],
+      "roles": ["founder"],
+      "semanticDescription": "An early-stage organisation with growth potential.",
+      "graphImportance": "supporting",
+      "lifeDomains": ["enterprise", "career"]
+    },
+    {
+      "schema": "note",
+      "relationships": [
+        {
+          "target": "document",
+          "type": "references",
+          "cardinality": "many",
+          "required": false
+        }
+      ],
+      "lifecycle": null,
+      "expectedAuthority": "user",
+      "sensitivity": "low",
+      "retention": "permanent",
+      "channels": ["personal", "business"],
+      "roles": [],
+      "semanticDescription": "A brief written record of ideas or observations.",
+      "graphImportance": "supporting",
+      "lifeDomains": ["learning", "planning"]
     }
   ]
 }
