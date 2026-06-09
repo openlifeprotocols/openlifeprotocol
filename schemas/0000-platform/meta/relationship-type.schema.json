@@ -1,12 +1,24 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Relationship Type",
-  "description": "Governed definition of relationship predicates used across the Life Graph.",
+  "title": "Relationship Type Definition",
+  "description": "Ontology governance document defining the approved relationship predicates and their properties for the Life Graph. This schema defines what relationships are valid across all schemas—not instance-level relationships, but the vocabulary of relationship types themselves.",
   "type": "object",
   "properties": {
-    "id": { "type": "string", "pattern": "^relationship_type_[a-zA-Z0-9_-]+$" },
-    "uuid": { "type": "string", "format": "uuid" },
-    "person_id": { "type": "string" },
+    "id": {
+      "type": "string",
+      "pattern": "^rel_[a-z0-9_-]+$",
+      "description": "Unique identifier for this relationship type definition"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Stable UUID for API and external references"
+    },
+    "relationship_code": {
+      "type": "string",
+      "pattern": "^REL_[A-Z0-9_]+$",
+      "description": "Machine-readable code for this relationship type (e.g., REL_BLOCKS, REL_ENABLES). Used in APIs and code generation."
+    },
     "relationship_name": {
       "type": "string",
       "enum": [
@@ -51,37 +63,159 @@
         "employs",
         "connects",
         "requires",
-        "informs"
-      ]
+        "informs",
+        "created",
+        "assigned-to",
+        "responsible-for",
+        "member-of",
+        "located-at",
+        "scheduled-for",
+        "derived-from",
+        "verified-by",
+        "conflicts-with",
+        "replaces",
+        "extends"
+      ],
+      "description": "Governed predicate name used in schema relationships arrays"
+    },
+    "inverse_relationship_name": {
+      "type": "string",
+      "description": "The precise inverse of this relationship (e.g., inverse of 'works-for' is 'employs'). Enables bidirectional querying and reasoning."
     },
     "relationship_category": {
       "type": "string",
-      "enum": ["structural", "operational", "causal", "financial", "social", "knowledge", "governance"]
+      "enum": [
+        "structural",
+        "operational",
+        "causal",
+        "financial",
+        "social",
+        "knowledge",
+        "governance",
+        "temporal",
+        "spatial"
+      ],
+      "description": "Category for relationship grouping and reasoning patterns"
     },
-    "from_entity_type": { "type": "string" },
-    "to_entity_type": { "type": "string" },
+    "allowed_from_entity_types": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "Schema names that can be sources of this relationship. Empty array means any type allowed."
+    },
+    "allowed_to_entity_types": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "description": "Schema names that can be targets of this relationship. Empty array means any type allowed."
+    },
     "description": { "type": "string" },
     "cardinality": { "type": "string", "enum": ["one_to_one", "one_to_many", "many_to_one", "many_to_many"] },
-    "directionality": { "type": "string", "enum": ["unidirectional", "bidirectional", "asymmetric"] },
-    "inverse_relationship": { "type": "string" },
-    "active_default": { "type": "boolean", "default": true },
-    "supports_reasoning": { "type": "boolean", "default": true },
-    "reasoning_weight": {
+    "directionality": {
+      "type": "string",
+      "enum": [
+        "unidirectional",
+        "bidirectional",
+        "asymmetric"
+      ],
+      "description": "Whether this relationship can be navigated in both directions"
+    },
+    "relationship_strength_default": {
       "type": "number",
       "minimum": 0,
       "maximum": 1,
-      "description": "Relative strength when traversing graph edges for AI reasoning."
+      "description": "Default strength/weight for reasoning (0=weak, 1=strong). Can be overridden at instance level."
     },
-    "evidence_required": { "type": "boolean", "default": false },
-    "properties": { "type": "array", "items": { "type": "object", "properties": { "property_name": { "type": "string" }, "type": { "type": "string" }, "description": { "type": "string" } } } },
-    "constraints": { "type": "array", "items": { "type": "string" } },
-    "examples": { "type": "array", "items": { "type": "string" } },
-    "strength_indicator": { "type": "string" },
-    "temporal_nature": { "type": "string", "enum": ["permanent", "temporal", "conditional"] },
-    "notes": { "type": "string" },
-    "created_date": { "type": "string", "format": "date-time" },
-    "metadata": { "type": "object", "additionalProperties": true }
+    "supports_reasoning": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this relationship should be considered for AI graph reasoning"
+    },
+    "confidence_required": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether instances of this relationship must include confidence scores from provenance layer"
+    },
+    "temporal_context_required": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether instances of this relationship must include temporal-context fields (valid_date, effective_date, etc.)"
+    },
+    "evidence_required": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether instances of this relationship must cite evidence or sources"
+    },
+    "properties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "property_name": { "type": "string" },
+          "type": { "type": "string" },
+          "description": { "type": "string" },
+          "required": { "type": "boolean" }
+        }
+      },
+      "description": "Additional properties that can be set on instances of this relationship type"
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Business rules and constraints for this relationship type"
+    },
+    "examples": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Real-world examples of this relationship in the Life Graph"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of this relationship definition (e.g., 1.0.0)"
+    },
+    "deprecation_status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "deprecated",
+        "superseded",
+        "archived"
+      ],
+      "default": "active",
+      "description": "Governance status for this relationship type"
+    },
+    "superseded_by": {
+      "type": "string",
+      "description": "If deprecated or superseded, the replacement relationship name"
+    },
+    "first_introduced": {
+      "type": "string",
+      "format": "date",
+      "description": "Date this relationship type was first added to governance"
+    },
+    "last_modified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this definition was last updated"
+    },
+    "ontology_notes": {
+      "type": "string",
+      "description": "Governance notes explaining reasoning intent, usage patterns, or evolution"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Additional extensible metadata"
+    }
   },
-  "required": ["id", "uuid", "person_id", "relationship_name", "from_entity_type", "to_entity_type"],
-  "_phase1_todo": ["Define relationship validation", "Define cardinality enforcement", "Define relationship querying"]
+  "required": [
+    "id",
+    "uuid",
+    "relationship_code",
+    "relationship_name",
+    "relationship_category",
+    "description"
+  ],
+  "additionalProperties": false
 }
