@@ -63,6 +63,7 @@
       "enum": [
         "email",
         "sms",
+        "whatsapp",
         "push_notification",
         "letter",
         "phone_call",
@@ -75,7 +76,7 @@
     "channel": {
       "type": "string",
       "description": "Channel/medium used",
-      "examples": ["email", "sms", "push", "post"]
+      "examples": ["email", "sms", "whatsapp", "push_notification", "letter", "phone_call", "in_app_notification", "webhook", "api_call", "formal_notice"]
     },
     "subject": {
       "type": "string",

@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Payment",
+  "description": "Financial transaction or payment record within a case or workflow. Tracks money movement, fees, distributions, and financial obligations.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^payment_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "case_id": { "type": "string" },
+    "from_actor_id": { "type": "string" },
+    "to_actor_id": { "type": "string" },
+    "payment_type": {
+      "type": "string",
+      "enum": ["fee", "distribution", "payment", "refund", "tax", "interest", "salary", "compensation"],
+      "description": "Type of payment"
+    },
+    "description": { "type": "string" },
+    "amount": {
+      "type": "number",
+      "description": "Payment amount"
+    },
+    "currency": {
+      "type": "string",
+      "examples": ["GBP", "USD", "EUR"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "authorized", "processing", "completed", "failed", "cancelled", "refunded"],
+      "description": "Payment status"
+    },
+    "payment_method": {
+      "type": "string",
+      "enum": ["bank_transfer", "cheque", "cash", "card", "digital_wallet", "cryptocurrency"],
+      "description": "How payment was made"
+    },
+    "reference": {
+      "type": "string",
+      "description": "Payment reference/transaction ID"
+    },
+    "scheduled_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When payment is/was scheduled"
+    },
+    "completed_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When payment was completed"
+    },
+    "invoice_id": { "type": "string" },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "payment_type", "amount", "currency", "from_actor_id", "to_actor_id"],
+  "_phase1_todo": [
+    "Define payment authorization workflow",
+    "Define tax withholding calculations",
+    "Define payment compliance (AML, sanctions)",
+    "Define multi-currency exchange rates and timing",
+    "Define payment reconciliation procedures",
+    "Define payment dispute resolution"
+  ]
+}

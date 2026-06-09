@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Attachment",
+  "description": "File attachment to a document, communication, or case. Tracks file metadata, storage location, and access.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^attachment_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "entity_id": {
+      "type": "string",
+      "description": "Document, message, or case this is attached to"
+    },
+    "entity_type": {
+      "type": "string",
+      "enum": ["document", "communication", "case", "task", "evidence"],
+      "description": "Type of entity"
+    },
+    "filename": { "type": "string" },
+    "file_size_bytes": { "type": "integer" },
+    "mime_type": { "type": "string" },
+    "file_hash": { "type": "string" },
+    "storage_location": {
+      "type": "string",
+      "description": "URL or reference to stored file"
+    },
+    "uploaded_by_actor_id": { "type": "string" },
+    "uploaded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "virus_scanned": {
+      "type": "boolean"
+    },
+    "scan_result": {
+      "type": "string",
+      "enum": ["clean", "infected", "suspicious", "not_scanned"],
+      "description": "Virus scan result"
+    },
+    "access_level": {
+      "type": "string",
+      "enum": ["public", "internal", "restricted", "confidential"],
+      "description": "Access restriction level"
+    },
+    "expiry_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "entity_id", "filename"],
+  "_phase1_todo": [
+    "Define file storage backends and replication",
+    "Define file versioning and history",
+    "Define file compression and optimization",
+    "Define file encryption at rest and in transit",
+    "Define malware and content filtering",
+    "Define file retention and deletion policies"
+  ]
+}

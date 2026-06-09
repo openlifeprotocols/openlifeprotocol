@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Registry Entry",
+  "description": "Entry in a registry service (business registry, people registry, institution registry, etc.). Provides lookup and reference functionality.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^registryentry_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "registry_name": {
+      "type": "string",
+      "description": "Name of registry (e.g., 'Companies House', 'Birth Registry')",
+      "examples": ["companies_house", "birth_registry", "land_registry"]
+    },
+    "registry_type": {
+      "type": "string",
+      "enum": ["business", "person", "property", "institution", "professional", "custom"],
+      "description": "Type of registry"
+    },
+    "entry_type": {
+      "type": "string",
+      "description": "Type of entry in registry"
+    },
+    "entity_id": {
+      "type": "string",
+      "description": "Reference to corresponding OLP entity (Actor, Asset, etc.)"
+    },
+    "registration_number": {
+      "type": "string",
+      "description": "Official registration number"
+    },
+    "registered_name": {
+      "type": "string"
+    },
+    "jurisdiction": {
+      "type": "string"
+    },
+    "registration_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "inactive", "dissolved", \"struck_off\", "pending"],
+      "description": "Status in registry"
+    },
+    "registrar": {
+      "type": "string",
+      "description": "Registering authority"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_url": {
+      "type": "string",
+      "description": "URL to registry entry (if available)"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "registry_name", "registry_type", "registration_number"],
+  "_phase1_todo": [
+    "Define registry sync and reconciliation",
+    "Define registry lookup API integrations",
+    "Define registry change notification",
+    "Define registry data freshness and caching",
+    "Define registry matching and deduplication",
+    "Define registry compliance and authorization"
+  ]
+}

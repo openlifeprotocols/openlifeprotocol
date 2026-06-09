@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Requirement",
+  "description": "Requirements that must be met for a case, workflow, or task. Can be documents, data points, decisions, or conditions.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^requirement_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "Requirement name"
+    },
+    "description": {
+      "type": "string"
+    },
+    "requirement_type": {
+      "type": "string",
+      "enum": ["document", "data_point", "decision", "verification", "condition", "approval", "action"],
+      "description": "Type of requirement"
+    },
+    "case_type": {
+      "type": "string",
+      "description": "Case type this requirement applies to"
+    },
+    "jurisdiction": {
+      "type": "string",
+      "description": "Jurisdiction this requirement applies to"
+    },
+    "mandatory": {
+      "type": "boolean",
+      "description": "Whether this requirement is mandatory or optional"
+    },
+    "order": {
+      "type": "integer",
+      "description": "Sequence/order of requirements"
+    },
+    "deadline": {
+      "type": "string",
+      "description": "Deadline for meeting requirement (e.g., '30 days')"
+    },
+    "depends_on": {
+      "type": "array",
+      "description": "Other requirements that must be met first",
+      "items": { "type": "string" }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "name", "requirement_type"],
+  "_phase1_todo": [
+    "Define requirement validation logic",
+    "Define requirement waiver/exemption procedures",
+    "Define requirement exceptions by actor type",
+    "Define requirement change management",
+    "Define requirement compliance tracking",
+    "Define requirement documentation"
+  ]
+}

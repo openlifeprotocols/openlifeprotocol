@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Institution",
+  "description": "A specialized organization that provides services within a specific domain (bank, hospital, school, etc.). Extends Organisation with institution-specific properties.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Semantic identifier",
+      "pattern": "^institution_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "name": { "type": "string" },
+    "institution_type": {
+      "type": "string",
+      "enum": ["bank", "hospital", "school", "university", "government", "legal", "accounting", "insurance", "notary", "registry"],
+      "description": "Type of institution"
+    },
+    "service_areas": {
+      "type": "array",
+      "description": "Geographic areas or regions served",
+      "items": { "type": "string" }
+    },
+    "licenses": {
+      "type": "array",
+      "description": "Professional licenses and regulatory approvals",
+      "items": {
+        "type": "object",
+        "properties": {
+          "license_type": { "type": "string" },
+          "number": { "type": "string" },
+          "issued_date": { "type": "string", "format": "date" },
+          "expiry_date": { "type": "string", "format": "date" },
+          "regulatory_body": { "type": "string" }
+        }
+      }
+    },
+    "accreditations": {
+      "type": "array",
+      "description": "Professional accreditations",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "issuer": { "type": "string" },
+          "date_awarded": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "hours_of_operation": {
+      "type": "object",
+      "description": "Operating hours"
+    },
+    "contact_points": {
+      "type": "array",
+      "description": "Contact points and departments",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "role": { "type": "string" },
+          "email": { "type": "string" },
+          "phone": { "type": "string" }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "name", "institution_type"],
+  "_phase1_todo": [
+    "Define regulatory compliance requirements by jurisdiction",
+    "Define institution rating and accreditation standards",
+    "Define service level agreements (SLAs)",
+    "Define data protection and privacy policies",
+    "Define complaint handling procedures",
+    "Define relationships with other institutions (partnerships, affiliations)"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Template",
+  "description": "Reusable templates for documents, communications, and other case content. Supports variable substitution and personalization.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^template_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "external_ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "template_type": {
+      "type": "string",
+      "enum": ["document", "email", "sms", "letter", "form", "notification", "report"],
+      "description": "Type of template"
+    },
+    "case_type": {
+      "type": "string",
+      "description": "Case type this template is for"
+    },
+    "jurisdiction": {
+      "type": "string",
+      "description": "Jurisdiction this template applies to"
+    },
+    "language": {
+      "type": "string",
+      "description": "Language of template"
+    },
+    "content": {
+      "type": "string",
+      "description": "Template content (with {{variables}} for substitution)"
+    },
+    "variables": {
+      "type": "array",
+      "description": "Variables used in template",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "required": { "type": "boolean" }
+        }
+      }
+    },
+    "version": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "deprecated"],
+      "description": "Template status"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "name", "template_type", "content"],
+  "_phase1_todo": [
+    "Define template versioning and rollback",
+    "Define template translation and localization",
+    "Define template approval workflow",
+    "Define template legal compliance checking",
+    "Define template personalization rules",
+    "Define template usage analytics"
+  ]
+}

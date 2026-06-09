@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Organisation",
+  "description": "Detailed information about an organization entity. Extends the Actor model with organization-specific properties.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Semantic identifier",
+      "pattern": "^org_[a-zA-Z0-9_-]+$"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Internal unique identifier"
+    },
+    "external_ids": {
+      "type": "array",
+      "description": "References in external systems",
+      "items": {
+        "type": "object",
+        "properties": {
+          "system": { "type": "string" },
+          "id": { "type": "string" },
+          "type": { "type": "string" }
+        },
+        "required": ["system", "id"]
+      }
+    },
+    "name": {
+      "type": "string",
+      "description": "Legal name of the organisation"
+    },
+    "registered_name": {
+      "type": "string",
+      "description": "Official registered name"
+    },
+    "trading_names": {
+      "type": "array",
+      "description": "Alternative trading names",
+      "items": { "type": "string" }
+    },
+    "organisation_type": {
+      "type": "string",
+      "enum": ["company", "partnership", "sole_trader", "charity", "government", "public_body", "ngo", "educational", "healthcare", "other"],
+      "description": "Type of organisation"
+    },
+    "registration_number": {
+      "type": "string",
+      "description": "Company/registration number (e.g., Companies House number)"
+    },
+    "tax_id": {
+      "type": "string",
+      "description": "Tax identification number (e.g., VAT, EIN)"
+    },
+    "founded_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Date organisation was established"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "inactive", "dissolved", "struck_off", "suspended"],
+      "description": "Current status"
+    },
+    "headquarters": {
+      "type": "object",
+      "description": "Principal place of business",
+      "properties": {
+        "address": { "type": "string" },
+        "city": { "type": "string" },
+        "country": { "type": "string" },
+        "jurisdiction": { "type": "string" }
+      }
+    },
+    "employees_count": {
+      "type": "integer",
+      "description": "Number of employees"
+    },
+    "industry": {
+      "type": "string",
+      "description": "Industry classification"
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "website": { "type": "string" }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "required": ["id", "uuid", "name", "organisation_type"],
+  "_phase1_todo": [
+    "Define organisational hierarchy and parent/subsidiary relationships",
+    "Define compliance certifications and accreditations",
+    "Define organisational policies and code of conduct",
+    "Define departmental structures and teams",
+    "Define budget and financial tracking",
+    "Define insurance and liability coverage"
+  ]
+}
