@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Commodity",
+  "description": "Commodity holdings — oil, grain, metals, agricultural products.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^commodity_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "alternative_asset_id": { "type": "string" },
+    "commodity_type": { "type": "string", "enum": ["energy", "metals", "agriculture", "livestock", "other"] },
+    "commodity_name": { "type": "string" },
+    "commodity_ticker": { "type": "string" },
+    "holding_method": { "type": "string", "enum": ["physical", "futures", "etf", "fund", "certificate", "account"] },
+    "quantity": { "type": "number" },
+    "unit": { "type": "string", "enum": ["barrel", "bushel", "ton", "ounce", "pound", "other"] },
+    "current_spot_price": { "type": "number" },
+    "price_unit": { "type": "string" },
+    "currency": { "type": "string" },
+    "current_value": { "type": "number" },
+    "acquisition_date": { "type": "string", "format": "date" },
+    "acquisition_cost": { "type": "number" },
+    "storage_location": { "type": "string" },
+    "storage_cost": { "type": "number" },
+    "insurance_cost": { "type": "number" },
+    "futures_contract_details": { "type": "string" },
+    "expiration_date": { "type": "string", "format": "date" },
+    "volatility_index": { "type": "number" },
+    "price_trend": { "type": "string", "enum": ["uptrend", "downtrend", "sideways"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "alternative_asset_id", "commodity_name"],
+  "_phase1_todo": [
+    "Define commodity price tracking",
+    "Define commodity hedging strategies",
+    "Define commodity portfolio diversification"
+  ]
+}

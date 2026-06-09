@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Artwork",
+  "description": "Art collection item — painting, sculpture, print, etc.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^artwork_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "alternative_asset_id": { "type": "string" },
+    "title": { "type": "string" },
+    "artist_name": { "type": "string" },
+    "artist_biography": { "type": "string" },
+    "art_type": { "type": "string", "enum": ["painting", "sculpture", "photography", "print", "drawing", "digital_art", "other"] },
+    "medium": { "type": "string" },
+    "year_created": { "type": "integer" },
+    "dimensions": { "type": "string" },
+    "weight": { "type": "number" },
+    "condition": { "type": "string", "enum": ["excellent", "very_good", "good", "fair", "poor"] },
+    "provenance": { "type": "string" },
+    "certificate_of_authenticity": { "type": "boolean" },
+    "acquisition_date": { "type": "string", "format": "date" },
+    "acquisition_cost": { "type": "number" },
+    "current_appraisal": { "type": "number" },
+    "currency": { "type": "string" },
+    "appraiser_name": { "type": "string" },
+    "last_appraisal_date": { "type": "string", "format": "date" },
+    "exhibition_history": { "type": "array", "items": { "type": "string" } },
+    "insurance_value": { "type": "number" },
+    "location": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "alternative_asset_id", "title", "artist_name"],
+  "_phase1_todo": [
+    "Define art market trend analysis",
+    "Define artist value tracking",
+    "Define art portfolio benchmarking"
+  ]
+}

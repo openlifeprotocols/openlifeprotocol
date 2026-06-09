@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Investor",
+  "description": "An investor in a startup.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^investor_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "startup_id": { "type": "string" },
+    "investor_name": { "type": "string" },
+    "investor_type": { "type": "string", "enum": ["angel", "venture_capital", "private_equity", "corporate_venture", "accelerator", "family_office", "individual"] },
+    "website": { "type": "string", "format": "uri" },
+    "investment_amount": { "type": "number" },
+    "investment_date": { "type": "string", "format": "date" },
+    "equity_percentage": { "type": "number" },
+    "share_type": { "type": "string", "enum": ["common", "preferred_a", "preferred_b", "notes", "safe", "other"] },
+    "valuation_at_investment": { "type": "number" },
+    "currency": { "type": "currency" },
+    "board_seat": { "type": "boolean" },
+    "liquidation_preference": { "type": "string", "enum": ["non_participating", "participating", "participating_capped"] },
+    "anti_dilution": { "type": "string", "enum": ["broad_based", "narrow_based", "none"] },
+    "current_investment_value": { "type": "number" },
+    "return_multiple": { "type": "number" },
+    "investor_status": { "type": "string", "enum": ["active", "inactive", "exited"] },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "startup_id", "investor_name", "investment_amount"],
+  "_phase1_todo": [
+    "Define investor portfolio tracking",
+    "Define investor return analysis",
+    "Define investor communication management"
+  ]
+}

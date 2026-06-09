@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Assets",
+  "description": "Inventory of all owned assets.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^assets_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "asset_type": { "type": "string", "enum": ["cash", "real_estate", "stocks", "bonds", "funds", "crypto", "business", "pension", "collectibles", "vehicles", "precious_metals", "intellectual_property", "other"] },
+    "asset_name": { "type": "string" },
+    "description": { "type": "string" },
+    "current_value": { "type": "number" },
+    "currency": { "type": "string" },
+    "acquisition_date": { "type": "string", "format": "date" },
+    "acquisition_cost": { "type": "number" },
+    "location": { "type": "string" },
+    "liquidity": { "type": "string", "enum": ["very_liquid", "liquid", "illiquid", "very_illiquid"] },
+    "growth_rate": { "type": "number" },
+    "income_generated": { "type": "number" },
+    "income_frequency": { "type": "string", "enum": ["daily", "monthly", "quarterly", "annually", "irregular"] },
+    "depreciation": { "type": "number" },
+    "insurance_status": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "asset_type", "asset_name", "current_value"],
+  "_phase1_todo": [
+    "Define asset allocation optimization",
+    "Define asset performance tracking",
+    "Define asset liquidation planning"
+  ]
+}

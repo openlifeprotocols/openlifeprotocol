@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Token",
+  "description": "A specific token holding on blockchain.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^token_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "wallet_id": { "type": "string" },
+    "token_symbol": { "type": "string" },
+    "token_name": { "type": "string" },
+    "token_address": { "type": "string" },
+    "blockchain": { "type": "string" },
+    "standard": { "type": "string", "enum": ["erc20", "erc721", "erc1155", "bep20", "spl", "other"] },
+    "quantity": { "type": "number" },
+    "decimals": { "type": "integer" },
+    "current_price": { "type": "number" },
+    "current_value": { "type": "number" },
+    "currency": { "type": "string" },
+    "token_type": { "type": "string", "enum": ["fungible", "nft", "defi", "governance", "utility", "other"] },
+    "acquired_date": { "type": "string", "format": "date" },
+    "acquisition_price": { "type": "number" },
+    "total_cost_basis": { "type": "number" },
+    "unrealized_gain_loss": { "type": "number" },
+    "is_staked": { "type": "boolean" },
+    "staking_details": { "type": "string" },
+    "last_price_update": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "wallet_id", "token_symbol", "blockchain"],
+  "_phase1_todo": [
+    "Define token valuation tracking",
+    "Define token airdrops and claims",
+    "Define token migration tracking"
+  ]
+}

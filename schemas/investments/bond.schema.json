@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Bond",
+  "description": "Bond holding and metadata.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^bond_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "investment_account_id": { "type": "string" },
+    "bond_name": { "type": "string" },
+    "bond_type": { "type": "string", "enum": ["government", "corporate", "municipal", "treasury", "junk", "high_yield", "international", "floating_rate"] },
+    "issuer": { "type": "string" },
+    "ticker_symbol": { "type": "string" },
+    "par_value": { "type": "number" },
+    "coupon_rate": { "type": "number" },
+    "current_price": { "type": "number" },
+    "current_yield": { "type": "number" },
+    "yield_to_maturity": { "type": "number" },
+    "currency": { "type": "string" },
+    "issue_date": { "type": "string", "format": "date" },
+    "maturity_date": { "type": "string", "format": "date" },
+    "years_to_maturity": { "type": "number" },
+    "interest_payment_frequency": { "type": "string", "enum": ["monthly", "quarterly", "semi_annual", "annual"] },
+    "credit_rating": { "type": "string" },
+    "duration": { "type": "number" },
+    "convexity": { "type": "number" },
+    "quantity_held": { "type": "number" },
+    "total_value": { "type": "number" },
+    "last_updated": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "investment_account_id", "bond_name"],
+  "_phase1_todo": [
+    "Define bond duration analysis",
+    "Define bond ladder strategies",
+    "Define interest rate risk tracking"
+  ]
+}

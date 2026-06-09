@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cap Table",
+  "description": "Capitalization table — ownership structure and equity breakdown.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^cap_table_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "startup_id": { "type": "string" },
+    "as_of_date": { "type": "string", "format": "date" },
+    "total_shares_outstanding": { "type": "number" },
+    "shareholders": { "type": "array", "items": { "type": "object", "properties": { "shareholder_name": { "type": "string" }, "shareholder_type": { "type": "string" }, "shares_held": { "type": "number" }, "percentage_owned": { "type": "number" }, "share_type": { "type": "string" } } } },
+    "founder_ownership_total": { "type": "number" },
+    "investor_ownership_total": { "type": "number" },
+    "option_pool": { "type": "number" },
+    "option_pool_percentage": { "type": "number" },
+    "unallocated_percentage": { "type": "number" },
+    "common_shares_outstanding": { "type": "number" },
+    "preferred_shares_outstanding": { "type": "number" },
+    "options_outstanding": { "type": "number" },
+    "fully_diluted_shares": { "type": "number" },
+    "current_valuation": { "type": "number" },
+    "currency": { "type": "string" },
+    "last_update_date": { "type": "string", "format": "date" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "startup_id", "as_of_date"],
+  "_phase1_todo": [
+    "Define cap table modeling",
+    "Define dilution projections",
+    "Define scenario analysis for future rounds"
+  ]
+}

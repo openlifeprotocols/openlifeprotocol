@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Founder Equity",
+  "description": "Founder ownership stake in a startup.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^founder_equity_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "startup_id": { "type": "string" },
+    "founder_id": { "type": "string" },
+    "founder_name": { "type": "string" },
+    "founder_role": { "type": "string", "enum": ["ceo", "cto", "cfo", "co_founder", "founder", "advisor", "early_employee"] },
+    "equity_percentage": { "type": "number" },
+    "shares_outstanding": { "type": "number" },
+    "share_type": { "type": "string", "enum": ["common", "preferred_a", "preferred_b", "options", "other"] },
+    "vesting_schedule": { "type": "string" },
+    "vesting_start_date": { "type": "string", "format": "date" },
+    "vesting_cliff_months": { "type": "integer" },
+    "vesting_period_months": { "type": "integer" },
+    "shares_vested": { "type": "number" },
+    "vesting_percentage_complete": { "type": "number" },
+    "strike_price": { "type": "number" },
+    "current_value": { "type": "number" },
+    "acquisition_date": { "type": "string", "format": "date" },
+    "currency": { "type": "string" },
+    "liquidation_preference": { "type": "string" },
+    "anti_dilution_protection": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "startup_id", "founder_id", "equity_percentage"],
+  "_phase1_todo": [
+    "Define vesting schedule tracking",
+    "Define equity dilution modeling",
+    "Define founder equity valuation"
+  ]
+}

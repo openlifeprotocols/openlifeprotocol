@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Wealth Dashboard",
+  "description": "Aggregated snapshot of key wealth metrics.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^wealth_dashboard_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "dashboard_date": { "type": "string", "format": "date" },
+    "net_worth": { "type": "number" },
+    "liquid_assets": { "type": "number" },
+    "illiquid_assets": { "type": "number" },
+    "total_liabilities": { "type": "number" },
+    "monthly_income": { "type": "number" },
+    "monthly_passive_income": { "type": "number" },
+    "monthly_expenses": { "type": "number" },
+    "monthly_savings": { "type": "number" },
+    "savings_rate_percentage": { "type": "number" },
+    "total_portfolio_value": { "type": "number" },
+    "investment_return_ytd": { "type": "number" },
+    "debt_to_asset_ratio": { "type": "number" },
+    "financial_independence_score": { "type": "number" },
+    "currency": { "type": "string" },
+    "key_metrics": { "type": "object", "additionalProperties": { "type": "number" } },
+    "alerts": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "dashboard_date"],
+  "_phase1_todo": [
+    "Define dashboard alert thresholds",
+    "Define dashboard performance indicators",
+    "Define dashboard trend analysis"
+  ]
+}

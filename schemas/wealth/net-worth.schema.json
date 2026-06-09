@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Net Worth",
+  "description": "Overall financial position snapshot — total assets minus liabilities at a point in time.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^net_worth_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "snapshot_date": { "type": "string", "format": "date" },
+    "total_assets": { "type": "number" },
+    "total_liabilities": { "type": "number" },
+    "net_worth_amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "assets_breakdown": { "type": "object", "additionalProperties": { "type": "number" } },
+    "liabilities_breakdown": { "type": "object", "additionalProperties": { "type": "number" } },
+    "net_worth_rank": { "type": "string", "enum": ["ultra_high_net_worth", "high_net_worth", "mid_affluent", "comfortable", "average", "below_average"] },
+    "year_over_year_change": { "type": "number" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "snapshot_date", "net_worth_amount"],
+  "_phase1_todo": [
+    "Define net worth projection models",
+    "Define wealth trajectory tracking",
+    "Define asset/liability anomaly detection"
+  ]
+}

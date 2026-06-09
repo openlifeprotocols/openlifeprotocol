@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Watchlist",
+  "description": "Securities being monitored for future purchase.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^watchlist_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "watchlist_name": { "type": "string" },
+    "watchlist_description": { "type": "string" },
+    "securities": { "type": "array", "items": { "type": "object", "properties": { "security_id": { "type": "string" }, "ticker": { "type": "string" }, "security_name": { "type": "string" }, "target_price": { "type": "number" }, "reason": { "type": "string" }, "date_added": { "type": "string", "format": "date" }, "current_price": { "type": "number" }, "price_change_percentage": { "type": "number" }, "alert_set": { "type": "boolean" }, "alert_price": { "type": "number" } } } },
+    "total_securities": { "type": "integer" },
+    "investment_theme": { "type": "string" },
+    "target_allocation": { "type": "number" },
+    "estimated_investment_amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "created_date": { "type": "string", "format": "date" },
+    "is_active": { "type": "boolean" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "watchlist_name"],
+  "_phase1_todo": [
+    "Define watchlist price alerts",
+    "Define watchlist performance tracking",
+    "Define watchlist to portfolio conversion"
+  ]
+}

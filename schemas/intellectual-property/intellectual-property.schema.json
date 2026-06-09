@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Intellectual Property",
+  "description": "Intellectual property asset — patents, copyrights, trademarks, trade secrets.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^intellectual_property_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "owner_id": { "type": "string" },
+    "ip_name": { "type": "string" },
+    "ip_type": { "type": "string", "enum": ["patent", "copyright", "trademark", "trade_secret", "design", "utility_model"] },
+    "description": { "type": "string" },
+    "creation_date": { "type": "string", "format": "date" },
+    "registration_date": { "type": "string", "format": "date" },
+    "registration_number": { "type": "string" },
+    "jurisdiction": { "type": "string" },
+    "expiration_date": { "type": "string", "format": "date" },
+    "is_active": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["pending", "registered", "expired", "abandoned", "cancelled"] },
+    "current_valuation": { "type": "number" },
+    "currency": { "type": "string" },
+    "annual_maintenance_cost": { "type": "number" },
+    "annual_revenue_from_ip": { "type": "number" },
+    "licensing_revenue": { "type": "number" },
+    "licensees": { "type": "array", "items": { "type": "string" } },
+    "enforcement_history": { "type": "string" },
+    "infringement_claims": { "type": "integer" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "owner_id", "ip_name", "ip_type"],
+  "_phase1_todo": [
+    "Define IP portfolio valuation",
+    "Define IP licensing management",
+    "Define IP enforcement strategies"
+  ]
+}

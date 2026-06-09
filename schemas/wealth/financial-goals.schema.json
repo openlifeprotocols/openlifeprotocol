@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Financial Goals",
+  "description": "Wealth targets and milestones.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^financial_goals_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "goal_name": { "type": "string" },
+    "goal_description": { "type": "string" },
+    "goal_type": { "type": "string", "enum": ["net_worth_target", "income_target", "savings_target", "debt_payoff", "wealth_milestone", "investment_target", "retirement_goal", "other"] },
+    "target_amount": { "type": "number" },
+    "current_progress": { "type": "number" },
+    "currency": { "type": "string" },
+    "target_date": { "type": "string", "format": "date" },
+    "priority": { "type": "integer" },
+    "status": { "type": "string", "enum": ["not_started", "in_progress", "on_track", "behind", "completed"] },
+    "required_monthly_savings": { "type": "number" },
+    "progress_percentage": { "type": "number" },
+    "time_remaining_months": { "type": "integer" },
+    "likelihood_percentage": { "type": "number" },
+    "action_plan": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "goal_name", "goal_type", "target_amount"],
+  "_phase1_todo": [
+    "Define goal achievement probability",
+    "Define goal milestone tracking",
+    "Define goal adjustment recommendations"
+  ]
+}

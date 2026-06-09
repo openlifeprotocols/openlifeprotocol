@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Retirement Forecast",
+  "description": "Projections and plan for retirement income and drawdown.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^retirement_forecast_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "forecast_date": { "type": "string", "format": "date" },
+    "target_retirement_age": { "type": "integer" },
+    "years_to_retirement": { "type": "integer" },
+    "current_age": { "type": "integer" },
+    "life_expectancy": { "type": "integer" },
+    "retirement_duration_years": { "type": "integer" },
+    "current_portfolio_value": { "type": "number" },
+    "current_annual_expenses": { "type": "number" },
+    "inflation_rate": { "type": "number" },
+    "projected_expenses_at_retirement": { "type": "number" },
+    "projected_portfolio_at_retirement": { "type": "number" },
+    "projected_annual_retirement_income": { "type": "number" },
+    "required_portfolio_for_retirement": { "type": "number" },
+    "retirement_funding_ratio": { "type": "number" },
+    "safe_withdrawal_rate": { "type": "number" },
+    "annual_withdrawal_amount": { "type": "number" },
+    "probability_of_success": { "type": "number" },
+    "currency": { "type": "string" },
+    "is_on_track": { "type": "boolean" },
+    "recommended_monthly_savings": { "type": "number" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "target_retirement_age"],
+  "_phase1_todo": [
+    "Define Monte Carlo retirement simulations",
+    "Define withdrawal strategy optimization",
+    "Define retirement goal adjustment"
+  ]
+}

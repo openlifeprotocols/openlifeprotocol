@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Asset Allocation",
+  "description": "Distribution of wealth across asset classes — strategic balance.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^asset_allocation_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "allocation_date": { "type": "string", "format": "date" },
+    "total_portfolio_value": { "type": "number" },
+    "currency": { "type": "string" },
+    "allocations": { "type": "array", "items": { "type": "object", "properties": { "asset_class": { "type": "string" }, "amount": { "type": "number" }, "percentage": { "type": "number" }, "target_percentage": { "type": "number" }, "variance": { "type": "number" } } } },
+    "risk_profile": { "type": "string", "enum": ["very_conservative", "conservative", "moderate", "aggressive", "very_aggressive"] },
+    "age": { "type": "integer" },
+    "investment_horizon_years": { "type": "integer" },
+    "rebalancing_frequency": { "type": "string", "enum": ["quarterly", "semi_annual", "annual", "as_needed"] },
+    "last_rebalance_date": { "type": "string", "format": "date" },
+    "rebalance_needed": { "type": "boolean" },
+    "expected_annual_return": { "type": "number" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "allocation_date", "total_portfolio_value"],
+  "_phase1_todo": [
+    "Define rebalancing recommendations",
+    "Define asset allocation benchmarking",
+    "Define risk-adjusted return optimization"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Net Worth Tracking",
+  "description": "Historical net worth data for trending and analysis.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^net_worth_tracking_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "tracking_period_start": { "type": "string", "format": "date" },
+    "tracking_period_end": { "type": "string", "format": "date" },
+    "snapshot_interval": { "type": "string", "enum": ["weekly", "monthly", "quarterly", "annual"] },
+    "data_points": { "type": "array", "items": { "type": "object", "properties": { "date": { "type": "string", "format": "date" }, "net_worth": { "type": "number" }, "total_assets": { "type": "number" }, "total_liabilities": { "type": "number" } } } },
+    "net_worth_change": { "type": "number" },
+    "net_worth_change_percentage": { "type": "number" },
+    "average_monthly_growth": { "type": "number" },
+    "trend": { "type": "string", "enum": ["increasing", "stable", "decreasing"] },
+    "volatility": { "type": "number" },
+    "highest_net_worth": { "type": "number" },
+    "lowest_net_worth": { "type": "number" },
+    "current_net_worth": { "type": "number" },
+    "currency": { "type": "string" },
+    "compound_annual_growth_rate": { "type": "number" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "tracking_period_start"],
+  "_phase1_todo": [
+    "Define trend analysis algorithms",
+    "Define anomaly detection in net worth",
+    "Define growth rate forecasting"
+  ]
+}

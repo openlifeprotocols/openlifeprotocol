@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cash Flow",
+  "description": "Money in and out tracking for wealth management.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^cash_flow_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "period_start": { "type": "string", "format": "date" },
+    "period_end": { "type": "string", "format": "date" },
+    "period_type": { "type": "string", "enum": ["daily", "weekly", "monthly", "quarterly", "annual"] },
+    "total_income": { "type": "number" },
+    "employment_income": { "type": "number" },
+    "passive_income": { "type": "number" },
+    "investment_income": { "type": "number" },
+    "other_income": { "type": "number" },
+    "total_expenses": { "type": "number" },
+    "fixed_expenses": { "type": "number" },
+    "variable_expenses": { "type": "number" },
+    "tax_paid": { "type": "number" },
+    "debt_payments": { "type": "number" },
+    "investments_made": { "type": "number" },
+    "net_cash_flow": { "type": "number" },
+    "savings_rate": { "type": "number" },
+    "currency": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "period_start", "period_end"],
+  "_phase1_todo": [
+    "Define cash flow forecasting",
+    "Define savings rate optimization",
+    "Define expense categorization automation"
+  ]
+}

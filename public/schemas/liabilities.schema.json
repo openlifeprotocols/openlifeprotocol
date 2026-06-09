@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Liabilities",
+  "description": "Inventory of all debts and financial obligations.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^liabilities_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "liability_type": { "type": "string", "enum": ["mortgage", "personal_loan", "car_loan", "student_loan", "credit_card", "line_of_credit", "business_loan", "investment_loan", "other"] },
+    "creditor_name": { "type": "string" },
+    "description": { "type": "string" },
+    "original_amount": { "type": "number" },
+    "current_balance": { "type": "number" },
+    "currency": { "type": "string" },
+    "interest_rate": { "type": "number" },
+    "interest_type": { "type": "string", "enum": ["fixed", "variable"] },
+    "origination_date": { "type": "string", "format": "date" },
+    "maturity_date": { "type": "string", "format": "date" },
+    "monthly_payment": { "type": "number" },
+    "payment_status": { "type": "string", "enum": ["current", "behind", "default", "paid_off"] },
+    "collateral": { "type": "string" },
+    "priority": { "type": "integer" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "liability_type", "creditor_name", "current_balance"],
+  "_phase1_todo": [
+    "Define debt payoff optimization",
+    "Define debt consolidation recommendations",
+    "Define debt-to-asset ratio tracking"
+  ]
+}

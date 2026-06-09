@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Broker",
+  "description": "Investment broker or platform provider.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^broker_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "broker_name": { "type": "string" },
+    "broker_type": { "type": "string", "enum": ["full_service", "discount_broker", "online_broker", "robo_advisor", "bank", "credit_union"] },
+    "website": { "type": "string", "format": "uri" },
+    "founded_year": { "type": "integer" },
+    "assets_under_management": { "type": "number" },
+    "customer_count": { "type": "integer" },
+    "commission_model": { "type": "string", "enum": ["commission_based", "commission_free", "flat_fee", "percentage_based"] },
+    "commission_per_trade": { "type": "number" },
+    "minimum_account_balance": { "type": "number" },
+    "account_types_offered": { "type": "array", "items": { "type": "string" } },
+    "research_quality": { "type": "string", "enum": ["excellent", "good", "average", "poor"] },
+    "customer_service_rating": { "type": "number" },
+    "mobile_app_available": { "type": "boolean" },
+    "api_available": { "type": "boolean" },
+    "fdic_insured": { "type": "boolean" },
+    "regulatory_standing": { "type": "string", "enum": ["good_standing", "under_review", "violations", "unknown"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "broker_name", "broker_type"],
+  "_phase1_todo": [
+    "Define broker fee comparison",
+    "Define broker switching recommendations",
+    "Define broker selection criteria"
+  ]
+}

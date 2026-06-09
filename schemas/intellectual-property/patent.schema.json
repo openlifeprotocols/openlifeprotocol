@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Patent",
+  "description": "Patent registration and metadata.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^patent_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "intellectual_property_id": { "type": "string" },
+    "patent_title": { "type": "string" },
+    "patent_number": { "type": "string" },
+    "jurisdiction": { "type": "string" },
+    "patent_type": { "type": "string", "enum": ["utility", "design", "plant", "provisional", "reissue", "defensive"] },
+    "filing_date": { "type": "string", "format": "date" },
+    "issue_date": { "type": "string", "format": "date" },
+    "expiration_date": { "type": "string", "format": "date" },
+    "status": { "type": "string", "enum": ["pending", "issued", "expired", "abandoned", "withdrawn", "lapsed"] },
+    "inventor_names": { "type": "array", "items": { "type": "string" } },
+    "assignee_name": { "type": "string" },
+    "abstract": { "type": "string" },
+    "claims_count": { "type": "integer" },
+    "independent_claims": { "type": "integer" },
+    "dependent_claims": { "type": "integer" },
+    "citations_count": { "type": "integer" },
+    "maintenance_fee_paid": { "type": "boolean" },
+    "maintenance_fee_due_date": { "type": "string", "format": "date" },
+    "patent_value": { "type": "number" },
+    "currency": { "type": "string" },
+    "litigation_history": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "intellectual_property_id", "patent_number"],
+  "_phase1_todo": [
+    "Define patent maintenance tracking",
+    "Define patent citation analysis",
+    "Define patent portfolio strategy"
+  ]
+}

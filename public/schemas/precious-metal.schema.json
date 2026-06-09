@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Precious Metal",
+  "description": "Precious metal holding — gold, silver, platinum, etc.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^precious_metal_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "alternative_asset_id": { "type": "string" },
+    "metal_type": { "type": "string", "enum": ["gold", "silver", "platinum", "palladium", "rhodium"] },
+    "purity": { "type": "string", "enum": ["999", "995", "990", "916", "750", "585", "375", "other"] },
+    "quantity": { "type": "number" },
+    "unit": { "type": "string", "enum": ["ounce", "gram", "kilogram", "troy_ounce"] },
+    "form": { "type": "string", "enum": ["bullion_bar", "coin", "jewelry", "numismatic", "ingot", "other"] },
+    "current_spot_price": { "type": "number" },
+    "currency": { "type": "string" },
+    "current_value": { "type": "number" },
+    "premium_percentage": { "type": "number" },
+    "total_value_with_premium": { "type": "number" },
+    "acquisition_cost": { "type": "number" },
+    "acquisition_date": { "type": "string", "format": "date" },
+    "unrealized_gain_loss": { "type": "number" },
+    "storage_location": { "type": "string", "enum": ["home_safe", "bank_vault", "depository", "allocated_storage"] },
+    "insured": { "type": "boolean" },
+    "insurance_value": { "type": "number" },
+    "mint": { "type": "string" },
+    "year_minted": { "type": "integer" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "alternative_asset_id", "metal_type", "quantity"],
+  "_phase1_todo": [
+    "Define spot price tracking",
+    "Define precious metal portfolio allocation",
+    "Define precious metal storage optimization"
+  ]
+}

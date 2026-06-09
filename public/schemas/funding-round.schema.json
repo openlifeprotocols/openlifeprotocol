@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Funding Round",
+  "description": "A funding round for a startup.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^funding_round_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "startup_id": { "type": "string" },
+    "round_name": { "type": "string" },
+    "round_type": { "type": "string", "enum": ["seed", "series_a", "series_b", "series_c", "series_d", "round_e", "grant", "loan", "ipo"] },
+    "announcement_date": { "type": "string", "format": "date" },
+    "close_date": { "type": "string", "format": "date" },
+    "valuation": { "type": "number" },
+    "post_money_valuation": { "type": "number" },
+    "amount_raised": { "type": "number" },
+    "currency": { "type": "string" },
+    "number_of_investors": { "type": "integer" },
+    "lead_investor": { "type": "string" },
+    "investors": { "type": "array", "items": { "type": "string" } },
+    "investor_breakdown": { "type": "object", "additionalProperties": { "type": "number" } },
+    "equity_dilution_percentage": { "type": "number" },
+    "use_of_funds": { "type": "string" },
+    "runway_increase_months": { "type": "integer" },
+    "status": { "type": "string", "enum": ["in_progress", "closed", "failed", "cancelled"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "startup_id", "round_type", "amount_raised"],
+  "_phase1_todo": [
+    "Define funding round performance metrics",
+    "Define investor cap table tracking",
+    "Define round valuation analysis"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Startup",
+  "description": "Early-stage company or entrepreneurial venture.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^startup_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "founder_id": { "type": "string" },
+    "company_name": { "type": "string" },
+    "company_description": { "type": "string" },
+    "website": { "type": "string", "format": "uri" },
+    "industry": { "type": "string" },
+    "business_model": { "type": "string" },
+    "founded_date": { "type": "string", "format": "date" },
+    "stage": { "type": "string", "enum": ["idea", "pre_seed", "seed", "series_a", "series_b", "series_c", "series_d", "growth", "profitable", "exited"] },
+    "status": { "type": "string", "enum": ["active", "dormant", "acquired", "closed", "merged"] },
+    "headquarters_location": { "type": "string" },
+    "number_of_employees": { "type": "integer" },
+    "estimated_valuation": { "type": "number" },
+    "last_valuation_date": { "type": "string", "format": "date" },
+    "currency": { "type": "string" },
+    "total_funding_raised": { "type": "number" },
+    "runway_months": { "type": "integer" },
+    "monthly_burn_rate": { "type": "number" },
+    "revenue": { "type": "number" },
+    "profitability": { "type": "boolean" },
+    "key_metrics": { "type": "object", "additionalProperties": { "type": "number" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "founder_id", "company_name"],
+  "_phase1_todo": [
+    "Define startup valuation tracking",
+    "Define startup exit scenario planning",
+    "Define startup investment performance"
+  ]
+}

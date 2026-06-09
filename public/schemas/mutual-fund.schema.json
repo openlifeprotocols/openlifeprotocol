@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Mutual Fund",
+  "description": "Mutual fund security metadata.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^mutual_fund_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "fund_symbol": { "type": "string" },
+    "fund_name": { "type": "string" },
+    "fund_company": { "type": "string" },
+    "fund_type": { "type": "string", "enum": ["growth", "value", "balanced", "income", "aggressive", "conservative", "other"] },
+    "investment_style": { "type": "string", "enum": ["active", "passive", "index"] },
+    "net_asset_value": { "type": "number" },
+    "current_price": { "type": "number" },
+    "currency": { "type": "string" },
+    "expense_ratio": { "type": "number" },
+    "dividend_yield": { "type": "number" },
+    "distribution_frequency": { "type": "string", "enum": ["monthly", "quarterly", "annually", "irregular"] },
+    "assets_under_management": { "type": "number" },
+    "number_of_holdings": { "type": "integer" },
+    "manager_tenure_years": { "type": "number" },
+    "one_year_return": { "type": "number" },
+    "three_year_return": { "type": "number" },
+    "five_year_return": { "type": "number" },
+    "inception_date": { "type": "string", "format": "date" },
+    "load_type": { "type": "string", "enum": ["no_load", "front_load", "back_load", "level_load"] },
+    "last_updated": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "fund_symbol", "fund_name"],
+  "_phase1_todo": [
+    "Define fund manager performance analysis",
+    "Define fund fee comparison",
+    "Define fund overlap analysis"
+  ]
+}

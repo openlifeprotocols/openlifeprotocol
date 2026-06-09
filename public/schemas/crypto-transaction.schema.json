@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Crypto Transaction",
+  "description": "A cryptocurrency transaction — buy, sell, transfer, or swap.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^crypto_transaction_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "wallet_id": { "type": "string" },
+    "exchange_id": { "type": "string" },
+    "transaction_type": { "type": "string", "enum": ["buy", "sell", "transfer", "swap", "deposit", "withdrawal", "stake", "unstake"] },
+    "transaction_date": { "type": "string", "format": "date-time" },
+    "blockchain": { "type": "string" },
+    "coin_from": { "type": "string" },
+    "coin_to": { "type": "string" },
+    "quantity_from": { "type": "number" },
+    "quantity_to": { "type": "number" },
+    "price_per_unit": { "type": "number" },
+    "transaction_value": { "type": "number" },
+    "fee_amount": { "type": "number" },
+    "fee_currency": { "type": "string" },
+    "net_amount": { "type": "number" },
+    "currency": { "type": "string" },
+    "transaction_hash": { "type": "string" },
+    "block_number": { "type": "integer" },
+    "confirmation_status": { "type": "string", "enum": ["pending", "confirmed", "failed"] },
+    "gas_fees": { "type": "number" },
+    "counterparty_address": { "type": "string" },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "wallet_id", "transaction_type", "transaction_date"],
+  "_phase1_todo": [
+    "Define transaction history tracking",
+    "Define transaction tax reporting",
+    "Define transaction reconciliation"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Financial Independence Date",
+  "description": "Calculation and tracking of FI target — when passive income covers expenses.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^fi_date_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "calculation_date": { "type": "string", "format": "date" },
+    "current_age": { "type": "integer" },
+    "current_net_worth": { "type": "number" },
+    "current_annual_expenses": { "type": "number" },
+    "current_passive_income": { "type": "number" },
+    "monthly_savings_rate": { "type": "number" },
+    "annual_return_assumption": { "type": "number" },
+    "inflation_assumption": { "type": "number" },
+    "fi_number_target": { "type": "number" },
+    "fi_number_current": { "type": "number" },
+    "fi_progress_percentage": { "type": "number" },
+    "estimated_fi_age": { "type": "integer" },
+    "estimated_fi_date": { "type": "string", "format": "date" },
+    "years_to_fi": { "type": "number" },
+    "months_to_fi": { "type": "integer" },
+    "fi_achieved": { "type": "boolean" },
+    "fi_achievement_date": { "type": "string", "format": "date" },
+    "currency": { "type": "string" },
+    "safe_withdrawal_rate": { "type": "number" },
+    "scenario_analysis": { "type": "array", "items": { "type": "object", "properties": { "name": { "type": "string" }, "years_to_fi": { "type": "number" } } } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "current_age", "current_net_worth"],
+  "_phase1_todo": [
+    "Define FI date sensitivity analysis",
+    "Define scenario-based FI projections",
+    "Define FI milestone alerts"
+  ]
+}

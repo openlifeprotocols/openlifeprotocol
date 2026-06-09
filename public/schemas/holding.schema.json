@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Holding",
+  "description": "A position in a security or investment.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^holding_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "investment_account_id": { "type": "string" },
+    "security_id": { "type": "string" },
+    "security_type": { "type": "string", "enum": ["stock", "etf", "mutual_fund", "bond", "option", "cryptocurrency", "other"] },
+    "quantity": { "type": "number" },
+    "cost_basis_per_unit": { "type": "number" },
+    "total_cost_basis": { "type": "number" },
+    "current_price_per_unit": { "type": "number" },
+    "current_value": { "type": "number" },
+    "currency": { "type": "string" },
+    "unrealized_gain_loss": { "type": "number" },
+    "unrealized_gain_loss_percentage": { "type": "number" },
+    "purchase_date": { "type": "string", "format": "date" },
+    "holding_period_days": { "type": "integer" },
+    "is_long_term_capital_gain": { "type": "boolean" },
+    "dividends_received": { "type": "number" },
+    "allocation_percentage": { "type": "number" },
+    "last_price_update": { "type": "string", "format": "date-time" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "investment_account_id", "security_id", "quantity"],
+  "_phase1_todo": [
+    "Define holding performance metrics",
+    "Define tax loss harvesting opportunities",
+    "Define rebalancing suggestions"
+  ]
+}

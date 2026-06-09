@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Investment Account",
+  "description": "Brokerage or investment account holding securities.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^investment_account_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "broker_id": { "type": "string" },
+    "account_name": { "type": "string" },
+    "account_type": { "type": "string", "enum": ["brokerage", "ira", "roth_ira", "401k", "403b", "hsa", "taxable", "joint", "trust", "other"] },
+    "account_number": { "type": "string" },
+    "account_status": { "type": "string", "enum": ["active", "frozen", "closed", "pending"] },
+    "opened_date": { "type": "string", "format": "date" },
+    "account_value": { "type": "number" },
+    "cash_balance": { "type": "number" },
+    "invested_balance": { "type": "number" },
+    "currency": { "type": "string" },
+    "contribution_limit": { "type": "number" },
+    "year_to_date_contributions": { "type": "number" },
+    "year_to_date_distributions": { "type": "number" },
+    "account_fees": { "type": "number" },
+    "annual_fee_percentage": { "type": "number" },
+    "risk_level": { "type": "string", "enum": ["conservative", "moderate", "aggressive"] },
+    "tax_treatment": { "type": "string", "enum": ["taxable", "tax_deferred", "tax_free"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "account_name", "account_type"],
+  "_phase1_todo": [
+    "Define account performance tracking",
+    "Define account fee analysis",
+    "Define account optimization recommendations"
+  ]
+}
