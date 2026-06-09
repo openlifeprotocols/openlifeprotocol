@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "id": "evt-01HYZ2J3Q5P2P4T7",
+  "detail-type": "openlife.inference.generated",
+  "source": "openlife.reasoning-engine",
+  "time": "2026-06-09T22:40:00Z",
+  "detail": {
+    "rule": "goal_blocked_by_risk",
+    "outputType": "alert",
+    "riskLevel": "high",
+    "sourceEntity": "risk_001",
+    "targetEntity": "goal_001",
+    "predicate": "at-risk",
+    "confidence": 0.9,
+    "explanation": "Goal is inferred to be at risk due to a blocking risk relation.",
+    "provenance": {
+      "evidenceRequired": true,
+      "evidenceCount": 2,
+      "sources": ["user", "institution"]
+    }
+  }
+}

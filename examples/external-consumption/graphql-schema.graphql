@@ -1,0 +1,30 @@
+type Entity {
+  id: ID!
+  schemaName: String!
+  displayName: String
+  payload: JSON!
+}
+
+type Relationship {
+  sourceEntityId: ID!
+  targetEntityId: ID!
+  predicate: String!
+  strength: Float
+  confidence: Float
+  necessity: String
+  inferred: Boolean!
+  ruleId: String
+}
+
+type InferenceExplanation {
+  rule: String!
+  explanation: String!
+  confidence: Float!
+}
+
+type Query {
+  entity(id: ID!): Entity
+  relationships(entityId: ID!, predicate: String): [Relationship!]!
+  impactPaths(entityId: ID!, maxDepth: Int = 3): [[Relationship!]!]!
+  explainInference(sourceEntityId: ID!, targetEntityId: ID!): [InferenceExplanation!]!
+}

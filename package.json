@@ -1,5 +1,5 @@
 {
-  "name": "tailwind-plus-syntax",
+  "name": "openlifeprotocol",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -7,6 +7,9 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint",
+    "test": "node --test tests",
+    "test:watch": "node --test --watch tests",
+    "benchmark": "node scripts/benchmark.mjs",
     "registry:generate": "node schemas/0000-platform/meta/generate-schema-registry.mjs",
     "registry:validate": "node schemas/0000-platform/meta/validate-schema-registry.mjs",
     "schemas:audit": "node schemas/0000-platform/meta/schema-quality-audit.mjs",
@@ -37,6 +40,8 @@
     "typescript": "^5.8.3"
   },
   "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
     "@types/node": "^24.1.0",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",

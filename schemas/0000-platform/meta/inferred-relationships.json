@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "description": "Inferred relationships from Phase 4.1 transitive inference",
-  "generatedAt": "2026-06-09T21:59:28.665Z",
+  "generatedAt": "2026-06-09T22:17:22.925Z",
   "baseRelationships": 154,
   "inferredRelationships": 190,
   "chainPatternsFound": 148,

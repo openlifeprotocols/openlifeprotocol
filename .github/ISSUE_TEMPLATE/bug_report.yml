@@ -1,0 +1,47 @@
+name: Bug report
+description: Report a defect in schemas, tooling, docs, or site behavior.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. Please provide enough detail to reproduce the issue.
+  - type: input
+    id: area
+    attributes:
+      label: Affected area
+      description: Schema, reasoning engine, registry tooling, docs site, or CI.
+      placeholder: schemas/0000-platform/meta/reasoning-rule.schema.json
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: Describe expected vs actual behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include commands and file paths.
+      placeholder: |
+        1. Run npm run registry:validate
+        2. Open ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or error output
+      description: Paste relevant logs, stack traces, or validation output.
+      render: shell
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit
+      description: Branch, commit SHA, or release tag.
+      placeholder: master @ abc123

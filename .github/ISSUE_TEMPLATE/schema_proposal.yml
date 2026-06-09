@@ -1,0 +1,44 @@
+name: Schema proposal
+description: Propose a new schema or significant schema contract change.
+title: "[Schema]: "
+labels: [schema, governance]
+body:
+  - type: input
+    id: account
+    attributes:
+      label: Target account/domain
+      description: Where does this belong in numbered accounts?
+      placeholder: 14000-planning
+    validations:
+      required: true
+  - type: input
+    id: schema_name
+    attributes:
+      label: Proposed schema name
+      placeholder: decision-signal
+    validations:
+      required: true
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose
+      description: What concept is represented and why not reuse existing schemas?
+    validations:
+      required: true
+  - type: textarea
+    id: relationships
+    attributes:
+      label: Relationships and predicates
+      description: Include expected targets and governed predicates.
+    validations:
+      required: true
+  - type: textarea
+    id: governance
+    attributes:
+      label: Governance and lifecycle
+      description: Sensitivity, retention, authority, lifecycle, reasoning implications.
+  - type: textarea
+    id: migration
+    attributes:
+      label: Migration/backward compatibility
+      description: What existing data or consumers are affected?

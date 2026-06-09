@@ -1,5 +1,27 @@
 # Changelog
 
+All notable changes to Open Life Protocol should be documented in this file.
+
+The format is based on Keep a Changelog and this project follows Semantic Versioning.
+
+## [Unreleased]
+
+### Added
+
+- Automated tests for reasoning rule schema contracts.
+- GitHub Actions CI for lint, schema validation/audits, tests, benchmark, and build.
+- Contribution and releasing discipline docs.
+- Issue templates for bug reports, feature requests, and schema proposals.
+- External-consumption examples for Neo4j, SQL, GraphQL, and event pipelines.
+
+### Changed
+
+- Root README now reflects Open Life Protocol identity and operations.
+
+---
+
+Legacy template changelog history:
+
 ## 2025-07-29
 
 - Update to React 19 and Next.js 15.4

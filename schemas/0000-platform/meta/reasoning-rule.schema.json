@@ -17,7 +17,7 @@
     },
     "rule": {
       "type": "string",
-      "pattern": "^[a-z][a-z0-9_\-]*$",
+      "pattern": "^[a-z][a-z0-9_-]*$",
       "description": "Machine-readable rule name (e.g., goal_blocked_by_risk)"
     },
     "version": {

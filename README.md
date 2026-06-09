@@ -1,58 +1,128 @@
-# Syntax
+# Open Life Protocol
 
-Syntax is a [Tailwind Plus](https://tailwindcss.com/plus) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
+Open Life Protocol is a schema-first personal knowledge graph and digital twin protocol.
 
-## Getting started
+It provides a governed ontology for representing life data across identity, relationships, health, learning, career, wealth, planning, risk, legacy, and public impact, with semantic enrichment and reasoning support.
 
-To get started with this template, first install the npm dependencies:
+## What problem this solves
+
+Personal data is usually fragmented across apps, hard to reason about, and difficult to make trustworthy for AI.
+
+Open Life Protocol addresses this by providing:
+
+1. A canonical schema layer for life entities and records.
+2. Governance constraints for consistency and interoperability.
+3. Semantic metadata for confidence-aware graph reasoning.
+4. Rule-based inference for multi-hop impact and consequence analysis.
+
+## Current status
+
+Project maturity is documented in [ARCHITECTURE_COMPLETE.md](ARCHITECTURE_COMPLETE.md) and phase reports.
+
+High-level status:
+
+1. Phases 1-4 completed (foundation, governance, semantic enrichment, reasoning).
+2. Reasoning layer includes governed inference rules, transitive inference, and consequence chain detection.
+3. Registry and audit tooling are in place for schema quality and coverage checks.
+
+## Repository structure
+
+Top-level layout:
+
+1. [schemas](schemas): authoritative ontology source, organized by numbered life accounts and platform domains.
+2. [public/schemas](public/schemas): distributable schema artifacts for APIs, clients, and tooling.
+3. [src](src): Next.js documentation and interface layer for browsing and exploring the protocol.
+4. [ARCHITECTURE_COMPLETE.md](ARCHITECTURE_COMPLETE.md): architecture overview and phase completion details.
+5. [PHASE_3_SEMANTIC_ENRICHMENT.md](PHASE_3_SEMANTIC_ENRICHMENT.md), [PHASE_3_5_COMPLETE.md](PHASE_3_5_COMPLETE.md), [PHASE_4_REASONING_LAYER.md](PHASE_4_REASONING_LAYER.md), [PHASE_4_REASONING_COMPLETE.md](PHASE_4_REASONING_COMPLETE.md): implementation history and reasoning design.
+
+## How schemas work
+
+Core authoring principles are defined in:
+
+1. [schemas/SCHEMA_CREATION_MINDSET.md](schemas/SCHEMA_CREATION_MINDSET.md)
+2. [schemas/SCHEMA_DECISION_LOG.md](schemas/SCHEMA_DECISION_LOG.md)
+
+Schema workflow:
+
+1. Choose the correct account/domain first.
+2. Reuse canonical concepts where possible.
+3. Define relationships with governed predicates.
+4. Add semantic metadata and lifecycle context.
+5. Validate registry integrity and quality audits.
+
+Reasoning rules are defined by [schemas/0000-platform/meta/reasoning-rule.schema.json](schemas/0000-platform/meta/reasoning-rule.schema.json), with additional guidance in [schemas/0000-platform/meta/README.md](schemas/0000-platform/meta/README.md).
+
+## Development and validation
+
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-Next, run the development server:
+Run the site locally:
 
 ```bash
 npm run dev
 ```
 
-Finally, open [http://localhost:3000](http://localhost:3000) in your browser to view the website.
+Build for production:
 
-## Customizing
+```bash
+npm run build
+npm run start
+```
 
-You can start editing this template by modifying the files in the `/src` folder. The site will auto-update as you edit these files.
+Lint:
 
-## Schema Mindset Workflow
+```bash
+npm run lint
+```
 
-If you are adding or changing schemas, use this order of thinking:
+Schema registry and audits:
 
-1. Choose account first (what area of life this belongs to).
-2. Choose channel next (personal, employment, founder, business, creator, investor, family, community).
-3. Choose role next (how the person is acting in that context).
-4. Reuse an existing schema if the concept is the same and only the channel/role differs.
-5. Create a new schema only when the concept itself is different.
+```bash
+npm run registry:generate
+npm run registry:validate
+npm run schemas:audit
+npm run schemas:semantic
+npm test
+npm run benchmark
+```
 
-Reference guides:
-- `schemas/SCHEMA_CREATION_MINDSET.md`
-- `schemas/SCHEMA_DECISION_LOG.md`
+## Engineering operations
 
-## Global search
+1. Contributing guide: [CONTRIBUTING.md](CONTRIBUTING.md)
+2. Release/versioning discipline: [RELEASING.md](RELEASING.md)
+3. CI workflow: [.github/workflows/ci.yml](.github/workflows/ci.yml)
+4. Issue templates: [.github/ISSUE_TEMPLATE](.github/ISSUE_TEMPLATE)
+5. External schema consumption examples: [examples/external-consumption](examples/external-consumption)
 
-This template includes a global search that's powered by the [FlexSearch](https://github.com/nextapps-de/flexsearch) library. It's available by clicking the search input or by using the `⌘K` shortcut.
+## What the app/site does
 
-This feature requires no configuration, and works out of the box by automatically scanning your documentation pages to build its index. You can adjust the search parameters by editing the `/src/markdoc/search.mjs` file.
+The application in [src](src) is the documentation and exploration interface for Open Life Protocol.
+
+It is used to:
+
+1. Browse protocol documentation and architecture.
+2. Navigate schema concepts and ontology organization.
+3. Support search-driven discovery of protocol entities and docs.
+
+## Roadmap
+
+Near-term focus:
+
+1. Phase 5 temporal reasoning extensions.
+2. API-oriented query surfaces for graph traversal and inference explanations.
+3. Visualization and impact analysis workflows.
+4. Expanded test harnesses for rule quality and inference safety.
+
+## Project identity
+
+Open Life Protocol is not a UI template project.
+
+This repository is the protocol and reference implementation workspace for a governed, semantically rich, reasoning-capable life graph.
 
 ## License
 
-This site template is a commercial product and is licensed under the [Tailwind Plus license](https://tailwindcss.com/plus/license).
-
-## Learn more
-
-To learn more about the technologies used in this site template, see the following resources:
-
-- [Tailwind CSS](https://tailwindcss.com/docs) - the official Tailwind CSS documentation
-- [Next.js](https://nextjs.org/docs) - the official Next.js documentation
-- [Headless UI](https://headlessui.dev) - the official Headless UI documentation
-- [Markdoc](https://markdoc.io) - the official Markdoc documentation
-- [Algolia Autocomplete](https://www.algolia.com/doc/ui-libraries/autocomplete/introduction/what-is-autocomplete/) - the official Algolia Autocomplete documentation
-- [FlexSearch](https://github.com/nextapps-de/flexsearch) - the official FlexSearch documentation
+See [LICENSE.md](LICENSE.md).
