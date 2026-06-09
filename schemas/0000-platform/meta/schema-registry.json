@@ -1,17 +1,211 @@
 {
-  "version": 1,
-  "description": "Ontology registry for schema-to-account mapping and canonical graph references.",
+  "version": 2,
+  "description": "Ontology registry for schema-to-account mapping and canonical graph references (full generated index).",
+  "generatedAt": "2026-06-09T21:00:01.741Z",
+  "entryCount": 807,
   "entries": [
     {
-      "schema": "mortgage",
-      "account": "7000",
-      "parent": "housing",
-      "path": "schemas/7000-property/housing/mortgage.schema.json",
-      "canonicalReferences": [
-        "document",
-        "payment",
-        "liability"
-      ]
+      "schema": "document-insight",
+      "account": "0000",
+      "parent": "ai",
+      "path": "schemas/0000-platform/ai/document-insight.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "document-summary",
+      "account": "0000",
+      "parent": "ai",
+      "path": "schemas/0000-platform/ai/document-summary.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "embedding",
+      "account": "0000",
+      "parent": "ai",
+      "path": "schemas/0000-platform/ai/embedding.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "entity-extraction",
+      "account": "0000",
+      "parent": "ai",
+      "path": "schemas/0000-platform/ai/entity-extraction.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "question-answer",
+      "account": "0000",
+      "parent": "ai",
+      "path": "schemas/0000-platform/ai/question-answer.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "archival-package",
+      "account": "0000",
+      "parent": "archive",
+      "path": "schemas/0000-platform/archive/archival-package.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "archived-record",
+      "account": "0000",
+      "parent": "archive",
+      "path": "schemas/0000-platform/archive/archived-record.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "deleted-record",
+      "account": "0000",
+      "parent": "archive",
+      "path": "schemas/0000-platform/archive/deleted-record.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "retention-policy",
+      "account": "0000",
+      "parent": "archive",
+      "path": "schemas/0000-platform/archive/retention-policy.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "access-event",
+      "account": "0000",
+      "parent": "audit",
+      "path": "schemas/0000-platform/audit/access-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "admin-event",
+      "account": "0000",
+      "parent": "audit",
+      "path": "schemas/0000-platform/audit/admin-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "change-event",
+      "account": "0000",
+      "parent": "audit",
+      "path": "schemas/0000-platform/audit/change-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "automation-log",
+      "account": "0000",
+      "parent": "automation",
+      "path": "schemas/0000-platform/automation/automation-log.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "automation-rule",
+      "account": "0000",
+      "parent": "automation",
+      "path": "schemas/0000-platform/automation/automation-rule.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "notification-rule",
+      "account": "0000",
+      "parent": "automation",
+      "path": "schemas/0000-platform/automation/notification-rule.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "reminder",
+      "account": "0000",
+      "parent": "automation",
+      "path": "schemas/0000-platform/automation/reminder.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "task-trigger",
+      "account": "0000",
+      "parent": "automation",
+      "path": "schemas/0000-platform/automation/task-trigger.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "backup-plan",
+      "account": "0000",
+      "parent": "backup",
+      "path": "schemas/0000-platform/backup/backup-plan.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "backup-snapshot",
+      "account": "0000",
+      "parent": "backup",
+      "path": "schemas/0000-platform/backup/backup-snapshot.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "restore-point",
+      "account": "0000",
+      "parent": "backup",
+      "path": "schemas/0000-platform/backup/restore-point.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "actor",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/actor.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "asset",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/asset.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "case",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/case.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "channel",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/channel.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "communication",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/communication.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "decision",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/decision.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "document",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/document.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "event",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "evidence",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/evidence.schema.json",
+      "canonicalReferences": []
     },
     {
       "schema": "goal",
@@ -25,15 +219,39 @@
       ]
     },
     {
-      "schema": "relationship",
-      "account": "2000",
-      "parent": "relationships",
-      "path": "schemas/2000-relationships/relationships/relationship.schema.json",
-      "canonicalReferences": [
-        "actor",
-        "document",
-        "event"
-      ]
+      "schema": "institution",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/institution.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "liability",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/liability.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "organisation",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/organisation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "outcome",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/outcome.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "payment",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/payment.schema.json",
+      "canonicalReferences": []
     },
     {
       "schema": "project",
@@ -47,6 +265,2372 @@
       ]
     },
     {
+      "schema": "task",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/task.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "workflow",
+      "account": "0000",
+      "parent": "core",
+      "path": "schemas/0000-platform/core/workflow.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "document-category",
+      "account": "0000",
+      "parent": "documents",
+      "path": "schemas/0000-platform/documents/document-category.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "document-relationship",
+      "account": "0000",
+      "parent": "documents",
+      "path": "schemas/0000-platform/documents/document-relationship.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "document-tag",
+      "account": "0000",
+      "parent": "documents",
+      "path": "schemas/0000-platform/documents/document-tag.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "document-version",
+      "account": "0000",
+      "parent": "documents",
+      "path": "schemas/0000-platform/documents/document-version.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "ocr-text",
+      "account": "0000",
+      "parent": "documents",
+      "path": "schemas/0000-platform/documents/ocr-text.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "bundle-audit-trail",
+      "account": "0000",
+      "parent": "evidence-bundle",
+      "path": "schemas/0000-platform/evidence-bundle/bundle-audit-trail.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "bundle-checklist",
+      "account": "0000",
+      "parent": "evidence-bundle",
+      "path": "schemas/0000-platform/evidence-bundle/bundle-checklist.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "bundle-document-link",
+      "account": "0000",
+      "parent": "evidence-bundle",
+      "path": "schemas/0000-platform/evidence-bundle/bundle-document-link.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "evidence-bundle",
+      "account": "0000",
+      "parent": "evidence-bundle",
+      "path": "schemas/0000-platform/evidence-bundle/evidence-bundle.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "collection",
+      "account": "0000",
+      "parent": "folders",
+      "path": "schemas/0000-platform/folders/collection.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "folder-permission",
+      "account": "0000",
+      "parent": "folders",
+      "path": "schemas/0000-platform/folders/folder-permission.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "folder",
+      "account": "0000",
+      "parent": "folders",
+      "path": "schemas/0000-platform/folders/folder.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "smart-folder",
+      "account": "0000",
+      "parent": "folders",
+      "path": "schemas/0000-platform/folders/smart-folder.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "entity-link",
+      "account": "0000",
+      "parent": "graph",
+      "path": "schemas/0000-platform/graph/entity-link.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "entity-mention",
+      "account": "0000",
+      "parent": "graph",
+      "path": "schemas/0000-platform/graph/entity-mention.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "entity-resolution",
+      "account": "0000",
+      "parent": "graph",
+      "path": "schemas/0000-platform/graph/entity-resolution.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "graph-export",
+      "account": "0000",
+      "parent": "graph",
+      "path": "schemas/0000-platform/graph/graph-export.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "node",
+      "account": "0000",
+      "parent": "graph",
+      "path": "schemas/0000-platform/graph/node.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "relationship",
+      "account": "0000",
+      "parent": "graph",
+      "path": "schemas/0000-platform/graph/relationship.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "cloud-import",
+      "account": "0000",
+      "parent": "imports",
+      "path": "schemas/0000-platform/imports/cloud-import.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "email-import",
+      "account": "0000",
+      "parent": "imports",
+      "path": "schemas/0000-platform/imports/email-import.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "import-source",
+      "account": "0000",
+      "parent": "imports",
+      "path": "schemas/0000-platform/imports/import-source.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "scan-import",
+      "account": "0000",
+      "parent": "imports",
+      "path": "schemas/0000-platform/imports/scan-import.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "intake-item",
+      "account": "0000",
+      "parent": "inbox",
+      "path": "schemas/0000-platform/inbox/intake-item.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "processing-queue",
+      "account": "0000",
+      "parent": "inbox",
+      "path": "schemas/0000-platform/inbox/processing-queue.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "triage-status",
+      "account": "0000",
+      "parent": "inbox",
+      "path": "schemas/0000-platform/inbox/triage-status.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "entity-alias",
+      "account": "0000",
+      "parent": "meta",
+      "path": "schemas/0000-platform/meta/entity-alias.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "lifecycle-state",
+      "account": "0000",
+      "parent": "meta",
+      "path": "schemas/0000-platform/meta/lifecycle-state.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "ontology",
+      "account": "0000",
+      "parent": "meta",
+      "path": "schemas/0000-platform/meta/ontology.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "relationship-type",
+      "account": "0000",
+      "parent": "meta",
+      "path": "schemas/0000-platform/meta/relationship-type.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "schema-extension",
+      "account": "0000",
+      "parent": "meta",
+      "path": "schemas/0000-platform/meta/schema-extension.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "schema-mapping",
+      "account": "0000",
+      "parent": "meta",
+      "path": "schemas/0000-platform/meta/schema-mapping.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "digest",
+      "account": "0000",
+      "parent": "notifications",
+      "path": "schemas/0000-platform/notifications/digest.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "notification-preference",
+      "account": "0000",
+      "parent": "notifications",
+      "path": "schemas/0000-platform/notifications/notification-preference.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "notification",
+      "account": "0000",
+      "parent": "notifications",
+      "path": "schemas/0000-platform/notifications/notification.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "data-confidence",
+      "account": "0000",
+      "parent": "provenance",
+      "path": "schemas/0000-platform/provenance/data-confidence.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "source-assertion",
+      "account": "0000",
+      "parent": "provenance",
+      "path": "schemas/0000-platform/provenance/source-assertion.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "source-record",
+      "account": "0000",
+      "parent": "provenance",
+      "path": "schemas/0000-platform/provenance/source-record.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "verification-status",
+      "account": "0000",
+      "parent": "provenance",
+      "path": "schemas/0000-platform/provenance/verification-status.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "claim",
+      "account": "0000",
+      "parent": "registry",
+      "path": "schemas/0000-platform/registry/claim.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "document-type",
+      "account": "0000",
+      "parent": "registry",
+      "path": "schemas/0000-platform/registry/document-type.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "institution-profile",
+      "account": "0000",
+      "parent": "registry",
+      "path": "schemas/0000-platform/registry/institution-profile.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "registry-entry",
+      "account": "0000",
+      "parent": "registry",
+      "path": "schemas/0000-platform/registry/registry-entry.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "review",
+      "account": "0000",
+      "parent": "registry",
+      "path": "schemas/0000-platform/registry/review.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "template",
+      "account": "0000",
+      "parent": "registry",
+      "path": "schemas/0000-platform/registry/template.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "workflow-pack",
+      "account": "0000",
+      "parent": "registry",
+      "path": "schemas/0000-platform/registry/workflow-pack.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "asset",
+      "account": "0000",
+      "parent": "resources",
+      "path": "schemas/0000-platform/resources/asset.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "bill-of-materials",
+      "account": "0000",
+      "parent": "resources",
+      "path": "schemas/0000-platform/resources/bill-of-materials.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "inventory-item",
+      "account": "0000",
+      "parent": "resources",
+      "path": "schemas/0000-platform/resources/inventory-item.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "material",
+      "account": "0000",
+      "parent": "resources",
+      "path": "schemas/0000-platform/resources/material.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "product",
+      "account": "0000",
+      "parent": "resources",
+      "path": "schemas/0000-platform/resources/product.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "purchase-order",
+      "account": "0000",
+      "parent": "resources",
+      "path": "schemas/0000-platform/resources/purchase-order.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "service",
+      "account": "0000",
+      "parent": "resources",
+      "path": "schemas/0000-platform/resources/service.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "supplier",
+      "account": "0000",
+      "parent": "resources",
+      "path": "schemas/0000-platform/resources/supplier.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "api-response",
+      "account": "0000",
+      "parent": "runtime",
+      "path": "schemas/0000-platform/runtime/api-response.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "attachment",
+      "account": "0000",
+      "parent": "runtime",
+      "path": "schemas/0000-platform/runtime/attachment.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "audit-log",
+      "account": "0000",
+      "parent": "runtime",
+      "path": "schemas/0000-platform/runtime/audit-log.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "case-participant",
+      "account": "0000",
+      "parent": "runtime",
+      "path": "schemas/0000-platform/runtime/case-participant.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "conformance-result",
+      "account": "0000",
+      "parent": "runtime",
+      "path": "schemas/0000-platform/runtime/conformance-result.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "event-envelope",
+      "account": "0000",
+      "parent": "runtime",
+      "path": "schemas/0000-platform/runtime/event-envelope.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "message-thread",
+      "account": "0000",
+      "parent": "runtime",
+      "path": "schemas/0000-platform/runtime/message-thread.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "permission",
+      "account": "0000",
+      "parent": "runtime",
+      "path": "schemas/0000-platform/runtime/permission.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "verification",
+      "account": "0000",
+      "parent": "runtime",
+      "path": "schemas/0000-platform/runtime/verification.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "webhook",
+      "account": "0000",
+      "parent": "runtime",
+      "path": "schemas/0000-platform/runtime/webhook.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "extracted-entity",
+      "account": "0000",
+      "parent": "search",
+      "path": "schemas/0000-platform/search/extracted-entity.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "saved-search",
+      "account": "0000",
+      "parent": "search",
+      "path": "schemas/0000-platform/search/saved-search.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "search-index",
+      "account": "0000",
+      "parent": "search",
+      "path": "schemas/0000-platform/search/search-index.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "search-result",
+      "account": "0000",
+      "parent": "search",
+      "path": "schemas/0000-platform/search/search-result.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "address",
+      "account": "0000",
+      "parent": "shared",
+      "path": "schemas/0000-platform/shared/address.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "confidence",
+      "account": "0000",
+      "parent": "shared",
+      "path": "schemas/0000-platform/shared/confidence.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "contact-point",
+      "account": "0000",
+      "parent": "shared",
+      "path": "schemas/0000-platform/shared/contact-point.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "identifier",
+      "account": "0000",
+      "parent": "shared",
+      "path": "schemas/0000-platform/shared/identifier.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "identity",
+      "account": "0000",
+      "parent": "shared",
+      "path": "schemas/0000-platform/shared/identity.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "jurisdiction",
+      "account": "0000",
+      "parent": "shared",
+      "path": "schemas/0000-platform/shared/jurisdiction.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "money",
+      "account": "0000",
+      "parent": "shared",
+      "path": "schemas/0000-platform/shared/money.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "provenance",
+      "account": "0000",
+      "parent": "shared",
+      "path": "schemas/0000-platform/shared/provenance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "source",
+      "account": "0000",
+      "parent": "shared",
+      "path": "schemas/0000-platform/shared/source.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "time-window",
+      "account": "0000",
+      "parent": "shared",
+      "path": "schemas/0000-platform/shared/time-window.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "external-system-map",
+      "account": "0000",
+      "parent": "sync",
+      "path": "schemas/0000-platform/sync/external-system-map.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "sync-conflict",
+      "account": "0000",
+      "parent": "sync",
+      "path": "schemas/0000-platform/sync/sync-conflict.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "sync-job",
+      "account": "0000",
+      "parent": "sync",
+      "path": "schemas/0000-platform/sync/sync-job.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "category",
+      "account": "0000",
+      "parent": "taxonomy",
+      "path": "schemas/0000-platform/taxonomy/category.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "classification",
+      "account": "0000",
+      "parent": "taxonomy",
+      "path": "schemas/0000-platform/taxonomy/classification.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "label",
+      "account": "0000",
+      "parent": "taxonomy",
+      "path": "schemas/0000-platform/taxonomy/label.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "tag",
+      "account": "0000",
+      "parent": "taxonomy",
+      "path": "schemas/0000-platform/taxonomy/tag.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "checklist-template",
+      "account": "0000",
+      "parent": "templates",
+      "path": "schemas/0000-platform/templates/checklist-template.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "document-template",
+      "account": "0000",
+      "parent": "templates",
+      "path": "schemas/0000-platform/templates/document-template.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "email-template",
+      "account": "0000",
+      "parent": "templates",
+      "path": "schemas/0000-platform/templates/email-template.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "workflow-template",
+      "account": "0000",
+      "parent": "templates",
+      "path": "schemas/0000-platform/templates/workflow-template.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "belief",
+      "account": "1000",
+      "parent": "beliefs",
+      "path": "schemas/1000-person/beliefs/belief.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "conviction",
+      "account": "1000",
+      "parent": "beliefs",
+      "path": "schemas/1000-person/beliefs/conviction.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "life-rule",
+      "account": "1000",
+      "parent": "beliefs",
+      "path": "schemas/1000-person/beliefs/life-rule.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "philosophy",
+      "account": "1000",
+      "parent": "beliefs",
+      "path": "schemas/1000-person/beliefs/philosophy.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "principle",
+      "account": "1000",
+      "parent": "beliefs",
+      "path": "schemas/1000-person/beliefs/principle.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "worldview",
+      "account": "1000",
+      "parent": "beliefs",
+      "path": "schemas/1000-person/beliefs/worldview.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "emotion",
+      "account": "1000",
+      "parent": "emotions",
+      "path": "schemas/1000-person/emotions/emotion.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "emotional-relationship",
+      "account": "1000",
+      "parent": "emotions",
+      "path": "schemas/1000-person/emotions/emotional-relationship.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "mood",
+      "account": "1000",
+      "parent": "emotions",
+      "path": "schemas/1000-person/emotions/mood.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "sentiment",
+      "account": "1000",
+      "parent": "emotions",
+      "path": "schemas/1000-person/emotions/sentiment.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "stressor",
+      "account": "1000",
+      "parent": "emotions",
+      "path": "schemas/1000-person/emotions/stressor.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "wellbeing-event",
+      "account": "1000",
+      "parent": "emotions",
+      "path": "schemas/1000-person/emotions/wellbeing-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "addiction",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/addiction.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "aspiration",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/aspiration.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "behavior-log",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/behavior-log.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "dependency",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/dependency.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "fear",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/fear.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "habit",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/habit.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "life-area",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/life-area.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "life-satisfaction",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/life-satisfaction.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "motivation",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/motivation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "need",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/need.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "personality",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/personality.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "relationship-reflection",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/relationship-reflection.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "routine",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/routine.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "strength",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/strength.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "trait",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/trait.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "value",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/value.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "weakness",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/weakness.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "wellbeing",
+      "account": "1000",
+      "parent": "human",
+      "path": "schemas/1000-person/human/wellbeing.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "biography",
+      "account": "1000",
+      "parent": "identity",
+      "path": "schemas/1000-person/identity/biography.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "identity-claim",
+      "account": "1000",
+      "parent": "identity",
+      "path": "schemas/1000-person/identity/identity-claim.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "life-role",
+      "account": "1000",
+      "parent": "identity",
+      "path": "schemas/1000-person/identity/life-role.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "nickname",
+      "account": "1000",
+      "parent": "identity",
+      "path": "schemas/1000-person/identity/nickname.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "personal-brand",
+      "account": "1000",
+      "parent": "identity",
+      "path": "schemas/1000-person/identity/personal-brand.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "self-description",
+      "account": "1000",
+      "parent": "identity",
+      "path": "schemas/1000-person/identity/self-description.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "authority",
+      "account": "1000",
+      "parent": "people",
+      "path": "schemas/1000-person/people/authority.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "consent",
+      "account": "1000",
+      "parent": "people",
+      "path": "schemas/1000-person/people/consent.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "household",
+      "account": "1000",
+      "parent": "people",
+      "path": "schemas/1000-person/people/household.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "person-profile",
+      "account": "1000",
+      "parent": "people",
+      "path": "schemas/1000-person/people/person-profile.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "preference",
+      "account": "1000",
+      "parent": "people",
+      "path": "schemas/1000-person/people/preference.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "communication-preference",
+      "account": "1000",
+      "parent": "preferences",
+      "path": "schemas/1000-person/preferences/communication-preference.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "household-preference",
+      "account": "1000",
+      "parent": "preferences",
+      "path": "schemas/1000-person/preferences/household-preference.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "personal-preference",
+      "account": "1000",
+      "parent": "preferences",
+      "path": "schemas/1000-person/preferences/personal-preference.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "place-of-worship",
+      "account": "1000",
+      "parent": "spirituality",
+      "path": "schemas/1000-person/spirituality/place-of-worship.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "religious-affiliation",
+      "account": "1000",
+      "parent": "spirituality",
+      "path": "schemas/1000-person/spirituality/religious-affiliation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "religious-event",
+      "account": "1000",
+      "parent": "spirituality",
+      "path": "schemas/1000-person/spirituality/religious-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "spiritual-practice",
+      "account": "1000",
+      "parent": "spirituality",
+      "path": "schemas/1000-person/spirituality/spiritual-practice.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "acquisition",
+      "account": "10000",
+      "parent": "collections",
+      "path": "schemas/10000-culture/collections/acquisition.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "collection-item",
+      "account": "10000",
+      "parent": "collections",
+      "path": "schemas/10000-culture/collections/collection-item.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "collection",
+      "account": "10000",
+      "parent": "collections",
+      "path": "schemas/10000-culture/collections/collection.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "valuation",
+      "account": "10000",
+      "parent": "collections",
+      "path": "schemas/10000-culture/collections/valuation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "cultural-event",
+      "account": "10000",
+      "parent": "culture",
+      "path": "schemas/10000-culture/culture/cultural-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "exhibition",
+      "account": "10000",
+      "parent": "culture",
+      "path": "schemas/10000-culture/culture/exhibition.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "museum-visit",
+      "account": "10000",
+      "parent": "culture",
+      "path": "schemas/10000-culture/culture/museum-visit.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "performance",
+      "account": "10000",
+      "parent": "culture",
+      "path": "schemas/10000-culture/culture/performance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "theatre-show",
+      "account": "10000",
+      "parent": "culture",
+      "path": "schemas/10000-culture/culture/theatre-show.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "cinema-visit",
+      "account": "10000",
+      "parent": "film",
+      "path": "schemas/10000-culture/film/cinema-visit.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "episode",
+      "account": "10000",
+      "parent": "film",
+      "path": "schemas/10000-culture/film/episode.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "favourite-film",
+      "account": "10000",
+      "parent": "film",
+      "path": "schemas/10000-culture/film/favourite-film.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "movie",
+      "account": "10000",
+      "parent": "film",
+      "path": "schemas/10000-culture/film/movie.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "review",
+      "account": "10000",
+      "parent": "film",
+      "path": "schemas/10000-culture/film/review.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "streaming-subscription",
+      "account": "10000",
+      "parent": "film",
+      "path": "schemas/10000-culture/film/streaming-subscription.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "tv-show",
+      "account": "10000",
+      "parent": "film",
+      "path": "schemas/10000-culture/film/tv-show.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "watch-history",
+      "account": "10000",
+      "parent": "film",
+      "path": "schemas/10000-culture/film/watch-history.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "watchlist",
+      "account": "10000",
+      "parent": "film",
+      "path": "schemas/10000-culture/film/watchlist.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "achievement",
+      "account": "10000",
+      "parent": "gaming",
+      "path": "schemas/10000-culture/gaming/achievement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "clan",
+      "account": "10000",
+      "parent": "gaming",
+      "path": "schemas/10000-culture/gaming/clan.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "esports-event",
+      "account": "10000",
+      "parent": "gaming",
+      "path": "schemas/10000-culture/gaming/esports-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "game-library",
+      "account": "10000",
+      "parent": "gaming",
+      "path": "schemas/10000-culture/gaming/game-library.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "game-platform",
+      "account": "10000",
+      "parent": "gaming",
+      "path": "schemas/10000-culture/gaming/game-platform.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "game-save",
+      "account": "10000",
+      "parent": "gaming",
+      "path": "schemas/10000-culture/gaming/game-save.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "game-session",
+      "account": "10000",
+      "parent": "gaming",
+      "path": "schemas/10000-culture/gaming/game-session.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "game",
+      "account": "10000",
+      "parent": "gaming",
+      "path": "schemas/10000-culture/gaming/game.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "guild",
+      "account": "10000",
+      "parent": "gaming",
+      "path": "schemas/10000-culture/gaming/guild.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "in-game-purchase",
+      "account": "10000",
+      "parent": "gaming",
+      "path": "schemas/10000-culture/gaming/in-game-purchase.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "collection",
+      "account": "10000",
+      "parent": "interests",
+      "path": "schemas/10000-culture/interests/collection.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "creative-project",
+      "account": "10000",
+      "parent": "interests",
+      "path": "schemas/10000-culture/interests/creative-project.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "fandom",
+      "account": "10000",
+      "parent": "interests",
+      "path": "schemas/10000-culture/interests/fandom.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "game-played",
+      "account": "10000",
+      "parent": "interests",
+      "path": "schemas/10000-culture/interests/game-played.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "hobby",
+      "account": "10000",
+      "parent": "interests",
+      "path": "schemas/10000-culture/interests/hobby.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "interest",
+      "account": "10000",
+      "parent": "interests",
+      "path": "schemas/10000-culture/interests/interest.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "sport-participation",
+      "account": "10000",
+      "parent": "interests",
+      "path": "schemas/10000-culture/interests/sport-participation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "album",
+      "account": "10000",
+      "parent": "music",
+      "path": "schemas/10000-culture/music/album.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "artist",
+      "account": "10000",
+      "parent": "music",
+      "path": "schemas/10000-culture/music/artist.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "concert",
+      "account": "10000",
+      "parent": "music",
+      "path": "schemas/10000-culture/music/concert.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "favourite-artist",
+      "account": "10000",
+      "parent": "music",
+      "path": "schemas/10000-culture/music/favourite-artist.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "festival",
+      "account": "10000",
+      "parent": "music",
+      "path": "schemas/10000-culture/music/festival.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "instrument",
+      "account": "10000",
+      "parent": "music",
+      "path": "schemas/10000-culture/music/instrument.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "listening-history",
+      "account": "10000",
+      "parent": "music",
+      "path": "schemas/10000-culture/music/listening-history.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "music-collection",
+      "account": "10000",
+      "parent": "music",
+      "path": "schemas/10000-culture/music/music-collection.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "music-practice",
+      "account": "10000",
+      "parent": "music",
+      "path": "schemas/10000-culture/music/music-practice.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "playlist",
+      "account": "10000",
+      "parent": "music",
+      "path": "schemas/10000-culture/music/playlist.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "song",
+      "account": "10000",
+      "parent": "music",
+      "path": "schemas/10000-culture/music/song.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "blog-post",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/blog-post.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "content-performance",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/content-performance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "course",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/course.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "creative-project",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/creative-project.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "creator-profile",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/creator-profile.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "digital-product",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/digital-product.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "distribution-channel",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/distribution-channel.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "livestream",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/livestream.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "newsletter",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/newsletter.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "podcast-episode",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/podcast-episode.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "publishing-schedule",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/publishing-schedule.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "script",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/script.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "shot-list",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/shot-list.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "thumbnail",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/thumbnail.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "video",
+      "account": "11000",
+      "parent": "creator",
+      "path": "schemas/11000-creativity/creator/video.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "copyright",
+      "account": "11000",
+      "parent": "intellectual-property",
+      "path": "schemas/11000-creativity/intellectual-property/copyright.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "intellectual-property",
+      "account": "11000",
+      "parent": "intellectual-property",
+      "path": "schemas/11000-creativity/intellectual-property/intellectual-property.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "license",
+      "account": "11000",
+      "parent": "intellectual-property",
+      "path": "schemas/11000-creativity/intellectual-property/license.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "patent",
+      "account": "11000",
+      "parent": "intellectual-property",
+      "path": "schemas/11000-creativity/intellectual-property/patent.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "royalty",
+      "account": "11000",
+      "parent": "intellectual-property",
+      "path": "schemas/11000-creativity/intellectual-property/royalty.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "charity",
+      "account": "12000",
+      "parent": "charity",
+      "path": "schemas/12000-community-impact/charity/charity.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "donation-receipt",
+      "account": "12000",
+      "parent": "charity",
+      "path": "schemas/12000-community-impact/charity/donation-receipt.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "donation",
+      "account": "12000",
+      "parent": "charity",
+      "path": "schemas/12000-community-impact/charity/donation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "fundraiser",
+      "account": "12000",
+      "parent": "charity",
+      "path": "schemas/12000-community-impact/charity/fundraiser.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "gift-aid",
+      "account": "12000",
+      "parent": "charity",
+      "path": "schemas/12000-community-impact/charity/gift-aid.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "sponsorship",
+      "account": "12000",
+      "parent": "charity",
+      "path": "schemas/12000-community-impact/charity/sponsorship.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "volunteer-hours",
+      "account": "12000",
+      "parent": "charity",
+      "path": "schemas/12000-community-impact/charity/volunteer-hours.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "volunteering",
+      "account": "12000",
+      "parent": "charity",
+      "path": "schemas/12000-community-impact/charity/volunteering.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "campaign",
+      "account": "12000",
+      "parent": "civic",
+      "path": "schemas/12000-community-impact/civic/campaign.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "community-representation",
+      "account": "12000",
+      "parent": "civic",
+      "path": "schemas/12000-community-impact/civic/community-representation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "petition",
+      "account": "12000",
+      "parent": "civic",
+      "path": "schemas/12000-community-impact/civic/petition.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "public-consultation",
+      "account": "12000",
+      "parent": "civic",
+      "path": "schemas/12000-community-impact/civic/public-consultation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "carbon-footprint",
+      "account": "12000",
+      "parent": "environment",
+      "path": "schemas/12000-community-impact/environment/carbon-footprint.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "recycling-record",
+      "account": "12000",
+      "parent": "environment",
+      "path": "schemas/12000-community-impact/environment/recycling-record.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "sustainability-goal",
+      "account": "12000",
+      "parent": "environment",
+      "path": "schemas/12000-community-impact/environment/sustainability-goal.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "impact-goal",
+      "account": "12000",
+      "parent": "social-impact",
+      "path": "schemas/12000-community-impact/social-impact/impact-goal.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "impact-report",
+      "account": "12000",
+      "parent": "social-impact",
+      "path": "schemas/12000-community-impact/social-impact/impact-report.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pledge",
+      "account": "12000",
+      "parent": "social-impact",
+      "path": "schemas/12000-community-impact/social-impact/pledge.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "ancestor",
+      "account": "13000",
+      "parent": "genealogy",
+      "path": "schemas/13000-life-story/genealogy/ancestor.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "family-record",
+      "account": "13000",
+      "parent": "genealogy",
+      "path": "schemas/13000-life-story/genealogy/family-record.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "lineage",
+      "account": "13000",
+      "parent": "genealogy",
+      "path": "schemas/13000-life-story/genealogy/lineage.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "digital-heir",
+      "account": "13000",
+      "parent": "legacy",
+      "path": "schemas/13000-life-story/legacy/digital-heir.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "end-of-life-wishes",
+      "account": "13000",
+      "parent": "legacy",
+      "path": "schemas/13000-life-story/legacy/end-of-life-wishes.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "legacy-message",
+      "account": "13000",
+      "parent": "legacy",
+      "path": "schemas/13000-life-story/legacy/legacy-message.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "memory-capsule",
+      "account": "13000",
+      "parent": "legacy",
+      "path": "schemas/13000-life-story/legacy/memory-capsule.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "event-document",
+      "account": "13000",
+      "parent": "life-events",
+      "path": "schemas/13000-life-story/life-events/event-document.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "event-impact",
+      "account": "13000",
+      "parent": "life-events",
+      "path": "schemas/13000-life-story/life-events/event-impact.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "event-timeline",
+      "account": "13000",
+      "parent": "life-events",
+      "path": "schemas/13000-life-story/life-events/event-timeline.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "life-event",
+      "account": "13000",
+      "parent": "life-events",
+      "path": "schemas/13000-life-story/life-events/life-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "chapter",
+      "account": "13000",
+      "parent": "life-timeline",
+      "path": "schemas/13000-life-story/life-timeline/chapter.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "era",
+      "account": "13000",
+      "parent": "life-timeline",
+      "path": "schemas/13000-life-story/life-timeline/era.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "life-stage",
+      "account": "13000",
+      "parent": "life-timeline",
+      "path": "schemas/13000-life-story/life-timeline/life-stage.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "season-of-life",
+      "account": "13000",
+      "parent": "life-timeline",
+      "path": "schemas/13000-life-story/life-timeline/season-of-life.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "transition",
+      "account": "13000",
+      "parent": "life-timeline",
+      "path": "schemas/13000-life-story/life-timeline/transition.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "achievement",
+      "account": "13000",
+      "parent": "memory",
+      "path": "schemas/13000-life-story/memory/achievement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "anecdote",
+      "account": "13000",
+      "parent": "memory",
+      "path": "schemas/13000-life-story/memory/anecdote.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "experience",
+      "account": "13000",
+      "parent": "memory",
+      "path": "schemas/13000-life-story/memory/experience.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "journal-entry",
+      "account": "13000",
+      "parent": "memory",
+      "path": "schemas/13000-life-story/memory/journal-entry.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "lesson-learned",
+      "account": "13000",
+      "parent": "memory",
+      "path": "schemas/13000-life-story/memory/lesson-learned.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "life-story",
+      "account": "13000",
+      "parent": "memory",
+      "path": "schemas/13000-life-story/memory/life-story.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "memory",
+      "account": "13000",
+      "parent": "memory",
+      "path": "schemas/13000-life-story/memory/memory.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "milestone",
+      "account": "13000",
+      "parent": "memory",
+      "path": "schemas/13000-life-story/memory/milestone.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "reflection",
+      "account": "13000",
+      "parent": "memory",
+      "path": "schemas/13000-life-story/memory/reflection.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "regret",
+      "account": "13000",
+      "parent": "memory",
+      "path": "schemas/13000-life-story/memory/regret.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "timeline-entry",
+      "account": "13000",
+      "parent": "timeline",
+      "path": "schemas/13000-life-story/timeline/timeline-entry.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "timeline-event",
+      "account": "13000",
+      "parent": "timeline",
+      "path": "schemas/13000-life-story/timeline/timeline-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "timeline-view",
+      "account": "13000",
+      "parent": "timeline",
+      "path": "schemas/13000-life-story/timeline/timeline-view.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "decision-framework",
+      "account": "14000",
+      "parent": "decision-making",
+      "path": "schemas/14000-planning/decision-making/decision-framework.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "decision-journal",
+      "account": "14000",
+      "parent": "decision-making",
+      "path": "schemas/14000-planning/decision-making/decision-journal.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "decision-outcome",
+      "account": "14000",
+      "parent": "decision-making",
+      "path": "schemas/14000-planning/decision-making/decision-outcome.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "decision-review",
+      "account": "14000",
+      "parent": "decision-making",
+      "path": "schemas/14000-planning/decision-making/decision-review.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "action-item",
+      "account": "14000",
+      "parent": "planning",
+      "path": "schemas/14000-planning/planning/action-item.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "area-of-focus",
+      "account": "14000",
+      "parent": "planning",
+      "path": "schemas/14000-planning/planning/area-of-focus.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "objective",
+      "account": "14000",
+      "parent": "planning",
+      "path": "schemas/14000-planning/planning/objective.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "review",
+      "account": "14000",
+      "parent": "planning",
+      "path": "schemas/14000-planning/planning/review.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "deliverable",
+      "account": "14000",
+      "parent": "projects",
+      "path": "schemas/14000-planning/projects/deliverable.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "estimate",
+      "account": "14000",
+      "parent": "projects",
+      "path": "schemas/14000-planning/projects/estimate.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "milestone",
+      "account": "14000",
+      "parent": "projects",
+      "path": "schemas/14000-planning/projects/milestone.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "project-costing",
+      "account": "14000",
+      "parent": "projects",
+      "path": "schemas/14000-planning/projects/project-costing.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "resource-allocation",
+      "account": "14000",
+      "parent": "projects",
+      "path": "schemas/14000-planning/projects/resource-allocation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "scope",
+      "account": "14000",
+      "parent": "projects",
+      "path": "schemas/14000-planning/projects/scope.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "condition",
+      "account": "14000",
+      "parent": "workflow",
+      "path": "schemas/14000-planning/workflow/condition.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "decision-factor",
+      "account": "14000",
+      "parent": "workflow",
+      "path": "schemas/14000-planning/workflow/decision-factor.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "decision-option",
+      "account": "14000",
+      "parent": "workflow",
+      "path": "schemas/14000-planning/workflow/decision-option.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "decision-outcome",
+      "account": "14000",
+      "parent": "workflow",
+      "path": "schemas/14000-planning/workflow/decision-outcome.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "decision-review",
+      "account": "14000",
+      "parent": "workflow",
+      "path": "schemas/14000-planning/workflow/decision-review.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "escalation",
+      "account": "14000",
+      "parent": "workflow",
+      "path": "schemas/14000-planning/workflow/escalation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "requirement",
+      "account": "14000",
+      "parent": "workflow",
+      "path": "schemas/14000-planning/workflow/requirement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "rule",
+      "account": "14000",
+      "parent": "workflow",
+      "path": "schemas/14000-planning/workflow/rule.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "trigger",
+      "account": "14000",
+      "parent": "workflow",
+      "path": "schemas/14000-planning/workflow/trigger.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "workflow-run",
+      "account": "14000",
+      "parent": "workflow",
+      "path": "schemas/14000-planning/workflow/workflow-run.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "workflow-step",
+      "account": "14000",
+      "parent": "workflow",
+      "path": "schemas/14000-planning/workflow/workflow-step.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "complaint",
+      "account": "15000",
+      "parent": "claims",
+      "path": "schemas/15000-administration/claims/complaint.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "insurance-claim",
+      "account": "15000",
+      "parent": "claims",
+      "path": "schemas/15000-administration/claims/insurance-claim.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "warranty-claim",
+      "account": "15000",
+      "parent": "claims",
+      "path": "schemas/15000-administration/claims/warranty-claim.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "entitlement",
+      "account": "15000",
+      "parent": "government",
+      "path": "schemas/15000-administration/government/entitlement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "government-service",
+      "account": "15000",
+      "parent": "government",
+      "path": "schemas/15000-administration/government/government-service.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "license",
+      "account": "15000",
+      "parent": "government",
+      "path": "schemas/15000-administration/government/license.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "official-notification",
+      "account": "15000",
+      "parent": "government",
+      "path": "schemas/15000-administration/government/official-notification.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "permit",
+      "account": "15000",
+      "parent": "government",
+      "path": "schemas/15000-administration/government/permit.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "registration",
+      "account": "15000",
+      "parent": "government",
+      "path": "schemas/15000-administration/government/registration.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "affidavit",
+      "account": "15000",
+      "parent": "legal-documents",
+      "path": "schemas/15000-administration/legal-documents/affidavit.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "contract",
+      "account": "15000",
+      "parent": "legal-documents",
+      "path": "schemas/15000-administration/legal-documents/contract.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "deed",
+      "account": "15000",
+      "parent": "legal-documents",
+      "path": "schemas/15000-administration/legal-documents/deed.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "power-of-attorney",
+      "account": "15000",
+      "parent": "legal-documents",
+      "path": "schemas/15000-administration/legal-documents/power-of-attorney.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "court-case",
+      "account": "15000",
+      "parent": "legal",
+      "path": "schemas/15000-administration/legal/court-case.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "dispute",
+      "account": "15000",
+      "parent": "legal",
+      "path": "schemas/15000-administration/legal/dispute.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "identity-verification",
+      "account": "15000",
+      "parent": "legal",
+      "path": "schemas/15000-administration/legal/identity-verification.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "legal-representative",
+      "account": "15000",
+      "parent": "legal",
+      "path": "schemas/15000-administration/legal/legal-representative.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "probate",
+      "account": "15000",
+      "parent": "legal",
+      "path": "schemas/15000-administration/legal/probate.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "will",
+      "account": "15000",
+      "parent": "legal",
+      "path": "schemas/15000-administration/legal/will.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "arrest-record",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/arrest-record.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "charge",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/charge.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "claim",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/claim.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "contract",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/contract.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "conviction",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/conviction.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "court-case",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/court-case.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "court-date",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/court-date.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "criminal-record",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/criminal-record.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "disclosure-check",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/disclosure-check.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "dispute",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/dispute.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "expungement",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/expungement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "fine",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/fine.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "judgment",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/judgment.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "legal-document",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/legal-document.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "legal-matter",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/legal-matter.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "legal-representative",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/legal-representative.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "parole",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/parole.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "penalty",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/penalty.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "police-report",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/police-report.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "probation",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/probation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "rehabilitation",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/rehabilitation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "restraining-order",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/restraining-order.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "safeguarding",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/safeguarding.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "sentence",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/sentence.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "settlement",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/settlement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "victim-support",
+      "account": "15000",
+      "parent": "legal-justice",
+      "path": "schemas/15000-administration/life/legal-justice/victim-support.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "birth-certificate",
+      "account": "15000",
+      "parent": "personal-admin",
+      "path": "schemas/15000-administration/personal-admin/birth-certificate.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "identification",
+      "account": "15000",
+      "parent": "personal-admin",
+      "path": "schemas/15000-administration/personal-admin/identification.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "name-change",
+      "account": "15000",
+      "parent": "personal-admin",
+      "path": "schemas/15000-administration/personal-admin/name-change.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "passport",
+      "account": "15000",
+      "parent": "personal-admin",
+      "path": "schemas/15000-administration/personal-admin/passport.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "vital-record",
+      "account": "15000",
+      "parent": "personal-admin",
+      "path": "schemas/15000-administration/personal-admin/vital-record.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "support-ticket",
+      "account": "15000",
+      "parent": "support",
+      "path": "schemas/15000-administration/support/support-ticket.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "availability",
+      "account": "16000",
+      "parent": "time",
+      "path": "schemas/16000-time/time/availability.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "calendar",
+      "account": "16000",
+      "parent": "time",
+      "path": "schemas/16000-time/time/calendar.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "commitment",
+      "account": "16000",
+      "parent": "time",
+      "path": "schemas/16000-time/time/commitment.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "recurring-schedule",
+      "account": "16000",
+      "parent": "time",
+      "path": "schemas/16000-time/time/recurring-schedule.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "season",
+      "account": "16000",
+      "parent": "time",
+      "path": "schemas/16000-time/time/season.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "time-allocation",
+      "account": "16000",
+      "parent": "time",
+      "path": "schemas/16000-time/time/time-allocation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "time-block",
+      "account": "16000",
+      "parent": "time",
+      "path": "schemas/16000-time/time/time-block.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "application",
+      "account": "17000",
+      "parent": "opportunities",
+      "path": "schemas/17000-opportunities/opportunities/application.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "idea",
+      "account": "17000",
+      "parent": "opportunities",
+      "path": "schemas/17000-opportunities/opportunities/idea.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "introduction",
+      "account": "17000",
+      "parent": "opportunities",
+      "path": "schemas/17000-opportunities/opportunities/introduction.schema.json",
+      "canonicalReferences": []
+    },
+    {
       "schema": "opportunity",
       "account": "17000",
       "parent": "opportunities",
@@ -56,6 +2640,3038 @@
         "relationship",
         "decision"
       ]
+    },
+    {
+      "schema": "pipeline",
+      "account": "17000",
+      "parent": "opportunities",
+      "path": "schemas/17000-opportunities/opportunities/pipeline.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "contingency-plan",
+      "account": "18000",
+      "parent": "risks",
+      "path": "schemas/18000-risks/risks/contingency-plan.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "cyber-risk",
+      "account": "18000",
+      "parent": "risks",
+      "path": "schemas/18000-risks/risks/cyber-risk.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "dependency-risk",
+      "account": "18000",
+      "parent": "risks",
+      "path": "schemas/18000-risks/risks/dependency-risk.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "disaster-plan",
+      "account": "18000",
+      "parent": "risks",
+      "path": "schemas/18000-risks/risks/disaster-plan.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "financial-risk",
+      "account": "18000",
+      "parent": "risks",
+      "path": "schemas/18000-risks/risks/financial-risk.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "health-risk",
+      "account": "18000",
+      "parent": "risks",
+      "path": "schemas/18000-risks/risks/health-risk.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "legal-risk",
+      "account": "18000",
+      "parent": "risks",
+      "path": "schemas/18000-risks/risks/legal-risk.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "branch",
+      "account": "19000",
+      "parent": "core",
+      "path": "schemas/19000-enterprise-ventures/19100-business/core/branch.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "business-profile",
+      "account": "19000",
+      "parent": "core",
+      "path": "schemas/19000-enterprise-ventures/19100-business/core/business-profile.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "business",
+      "account": "19000",
+      "parent": "core",
+      "path": "schemas/19000-enterprise-ventures/19100-business/core/business.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "department",
+      "account": "19000",
+      "parent": "core",
+      "path": "schemas/19000-enterprise-ventures/19100-business/core/department.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "legal-entity",
+      "account": "19000",
+      "parent": "core",
+      "path": "schemas/19000-enterprise-ventures/19100-business/core/legal-entity.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "location",
+      "account": "19000",
+      "parent": "core",
+      "path": "schemas/19000-enterprise-ventures/19100-business/core/location.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "organisation",
+      "account": "19000",
+      "parent": "core",
+      "path": "schemas/19000-enterprise-ventures/19100-business/core/organisation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "business-process-template",
+      "account": "19000",
+      "parent": "registry",
+      "path": "schemas/19000-enterprise-ventures/19100-business/registry/business-process-template.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "business-template",
+      "account": "19000",
+      "parent": "registry",
+      "path": "schemas/19000-enterprise-ventures/19100-business/registry/business-template.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "company-registration",
+      "account": "19000",
+      "parent": "registry",
+      "path": "schemas/19000-enterprise-ventures/19100-business/registry/company-registration.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "compliance-pack",
+      "account": "19000",
+      "parent": "registry",
+      "path": "schemas/19000-enterprise-ventures/19100-business/registry/compliance-pack.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "industry",
+      "account": "19000",
+      "parent": "registry",
+      "path": "schemas/19000-enterprise-ventures/19100-business/registry/industry.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "workflow-pack",
+      "account": "19000",
+      "parent": "registry",
+      "path": "schemas/19000-enterprise-ventures/19100-business/registry/workflow-pack.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "cap-table",
+      "account": "19000",
+      "parent": "startups",
+      "path": "schemas/19000-enterprise-ventures/19200-startups/startups/cap-table.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "exit",
+      "account": "19000",
+      "parent": "startups",
+      "path": "schemas/19000-enterprise-ventures/19200-startups/startups/exit.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "founder-equity",
+      "account": "19000",
+      "parent": "startups",
+      "path": "schemas/19000-enterprise-ventures/19200-startups/startups/founder-equity.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "funding-round",
+      "account": "19000",
+      "parent": "startups",
+      "path": "schemas/19000-enterprise-ventures/19200-startups/startups/funding-round.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "investor",
+      "account": "19000",
+      "parent": "startups",
+      "path": "schemas/19000-enterprise-ventures/19200-startups/startups/investor.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "startup",
+      "account": "19000",
+      "parent": "startups",
+      "path": "schemas/19000-enterprise-ventures/19200-startups/startups/startup.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "account",
+      "account": "19000",
+      "parent": "customers",
+      "path": "schemas/19000-enterprise-ventures/19300-customers/customers/account.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "contact",
+      "account": "19000",
+      "parent": "customers",
+      "path": "schemas/19000-enterprise-ventures/19300-customers/customers/contact.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "customer-journey",
+      "account": "19000",
+      "parent": "customers",
+      "path": "schemas/19000-enterprise-ventures/19300-customers/customers/customer-journey.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "customer-segment",
+      "account": "19000",
+      "parent": "customers",
+      "path": "schemas/19000-enterprise-ventures/19300-customers/customers/customer-segment.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "customer",
+      "account": "19000",
+      "parent": "customers",
+      "path": "schemas/19000-enterprise-ventures/19300-customers/customers/customer.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "lead",
+      "account": "19000",
+      "parent": "customers",
+      "path": "schemas/19000-enterprise-ventures/19300-customers/customers/lead.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "prospect",
+      "account": "19000",
+      "parent": "customers",
+      "path": "schemas/19000-enterprise-ventures/19300-customers/customers/prospect.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "customer-health",
+      "account": "19000",
+      "parent": "support-success",
+      "path": "schemas/19000-enterprise-ventures/19300-customers/support-success/customer-health.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "knowledge-base-article",
+      "account": "19000",
+      "parent": "support-success",
+      "path": "schemas/19000-enterprise-ventures/19300-customers/support-success/knowledge-base-article.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "renewal",
+      "account": "19000",
+      "parent": "support-success",
+      "path": "schemas/19000-enterprise-ventures/19300-customers/support-success/renewal.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "service-level-agreement",
+      "account": "19000",
+      "parent": "support-success",
+      "path": "schemas/19000-enterprise-ventures/19300-customers/support-success/service-level-agreement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "support-interaction",
+      "account": "19000",
+      "parent": "support-success",
+      "path": "schemas/19000-enterprise-ventures/19300-customers/support-success/support-interaction.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "ticket",
+      "account": "19000",
+      "parent": "support-success",
+      "path": "schemas/19000-enterprise-ventures/19300-customers/support-success/ticket.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "contract",
+      "account": "19000",
+      "parent": "sales",
+      "path": "schemas/19000-enterprise-ventures/19400-sales/sales/contract.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "invoice",
+      "account": "19000",
+      "parent": "sales",
+      "path": "schemas/19000-enterprise-ventures/19400-sales/sales/invoice.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "opportunity",
+      "account": "19000",
+      "parent": "sales",
+      "path": "schemas/19000-enterprise-ventures/19400-sales/sales/opportunity.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "order",
+      "account": "19000",
+      "parent": "sales",
+      "path": "schemas/19000-enterprise-ventures/19400-sales/sales/order.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pipeline",
+      "account": "19000",
+      "parent": "sales",
+      "path": "schemas/19000-enterprise-ventures/19400-sales/sales/pipeline.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "proposal",
+      "account": "19000",
+      "parent": "sales",
+      "path": "schemas/19000-enterprise-ventures/19400-sales/sales/proposal.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "quote",
+      "account": "19000",
+      "parent": "sales",
+      "path": "schemas/19000-enterprise-ventures/19400-sales/sales/quote.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "sales-activity",
+      "account": "19000",
+      "parent": "sales",
+      "path": "schemas/19000-enterprise-ventures/19400-sales/sales/sales-activity.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "attribution",
+      "account": "19000",
+      "parent": "marketing",
+      "path": "schemas/19000-enterprise-ventures/19500-marketing/marketing/attribution.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "audience",
+      "account": "19000",
+      "parent": "marketing",
+      "path": "schemas/19000-enterprise-ventures/19500-marketing/marketing/audience.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "campaign",
+      "account": "19000",
+      "parent": "marketing",
+      "path": "schemas/19000-enterprise-ventures/19500-marketing/marketing/campaign.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "channel",
+      "account": "19000",
+      "parent": "marketing",
+      "path": "schemas/19000-enterprise-ventures/19500-marketing/marketing/channel.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "content",
+      "account": "19000",
+      "parent": "marketing",
+      "path": "schemas/19000-enterprise-ventures/19500-marketing/marketing/content.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "marketing-metric",
+      "account": "19000",
+      "parent": "marketing",
+      "path": "schemas/19000-enterprise-ventures/19500-marketing/marketing/marketing-metric.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "business-closed",
+      "account": "19000",
+      "parent": "events",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/events/business-closed.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "business-event",
+      "account": "19000",
+      "parent": "events",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/events/business-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "company-formed",
+      "account": "19000",
+      "parent": "events",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/events/company-formed.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "contract-signed",
+      "account": "19000",
+      "parent": "events",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/events/contract-signed.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "customer-won",
+      "account": "19000",
+      "parent": "events",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/events/customer-won.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "employee-hired",
+      "account": "19000",
+      "parent": "events",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/events/employee-hired.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "funding-raised",
+      "account": "19000",
+      "parent": "events",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/events/funding-raised.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "invoice-paid",
+      "account": "19000",
+      "parent": "events",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/events/invoice-paid.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "capacity",
+      "account": "19000",
+      "parent": "operations",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/capacity.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "deliverable",
+      "account": "19000",
+      "parent": "operations",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/deliverable.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "milestone",
+      "account": "19000",
+      "parent": "operations",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/milestone.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "process",
+      "account": "19000",
+      "parent": "operations",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/process.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "resource-allocation",
+      "account": "19000",
+      "parent": "operations",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/resource-allocation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "sop",
+      "account": "19000",
+      "parent": "operations",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/sop.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "workflow",
+      "account": "19000",
+      "parent": "operations",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/operations/workflow.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "bill-of-materials",
+      "account": "19000",
+      "parent": "procurement",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/procurement/bill-of-materials.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "bill",
+      "account": "19000",
+      "parent": "procurement",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/procurement/bill.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "inventory-item",
+      "account": "19000",
+      "parent": "procurement",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/procurement/inventory-item.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "material",
+      "account": "19000",
+      "parent": "procurement",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/procurement/material.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "purchase-order",
+      "account": "19000",
+      "parent": "procurement",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/procurement/purchase-order.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "stock-movement",
+      "account": "19000",
+      "parent": "procurement",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/procurement/stock-movement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "supplier",
+      "account": "19000",
+      "parent": "procurement",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/procurement/supplier.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "vendor",
+      "account": "19000",
+      "parent": "procurement",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/procurement/vendor.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "catalogue",
+      "account": "19000",
+      "parent": "products-services",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/products-services/catalogue.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "feature",
+      "account": "19000",
+      "parent": "products-services",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/products-services/feature.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "offering",
+      "account": "19000",
+      "parent": "products-services",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/products-services/offering.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "package",
+      "account": "19000",
+      "parent": "products-services",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/products-services/package.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pricing",
+      "account": "19000",
+      "parent": "products-services",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/products-services/pricing.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "product",
+      "account": "19000",
+      "parent": "products-services",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/products-services/product.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "service",
+      "account": "19000",
+      "parent": "products-services",
+      "path": "schemas/19000-enterprise-ventures/19600-operations/products-services/service.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "business-asset",
+      "account": "19000",
+      "parent": "assets",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/assets/business-asset.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "depreciation",
+      "account": "19000",
+      "parent": "assets",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/assets/depreciation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "equipment",
+      "account": "19000",
+      "parent": "assets",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/assets/equipment.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "intellectual-property",
+      "account": "19000",
+      "parent": "assets",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/assets/intellectual-property.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "property",
+      "account": "19000",
+      "parent": "assets",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/assets/property.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "vehicle",
+      "account": "19000",
+      "parent": "assets",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/assets/vehicle.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "budget",
+      "account": "19000",
+      "parent": "finance",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/finance/budget.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "cashflow",
+      "account": "19000",
+      "parent": "finance",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/finance/cashflow.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "cost",
+      "account": "19000",
+      "parent": "finance",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/finance/cost.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "expense",
+      "account": "19000",
+      "parent": "finance",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/finance/expense.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "forecast",
+      "account": "19000",
+      "parent": "finance",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/finance/forecast.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "invoice",
+      "account": "19000",
+      "parent": "finance",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/finance/invoice.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "payment",
+      "account": "19000",
+      "parent": "finance",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/finance/payment.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "profit-loss",
+      "account": "19000",
+      "parent": "finance",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/finance/profit-loss.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "revenue",
+      "account": "19000",
+      "parent": "finance",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/finance/revenue.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "subscription",
+      "account": "19000",
+      "parent": "finance",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/finance/subscription.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "tax",
+      "account": "19000",
+      "parent": "finance",
+      "path": "schemas/19000-enterprise-ventures/19700-finance/finance/tax.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "candidate",
+      "account": "19000",
+      "parent": "hr",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/hr/candidate.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "employment-contract",
+      "account": "19000",
+      "parent": "hr",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/hr/employment-contract.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "interview",
+      "account": "19000",
+      "parent": "hr",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/hr/interview.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "job",
+      "account": "19000",
+      "parent": "hr",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/hr/job.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "leave",
+      "account": "19000",
+      "parent": "hr",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/hr/leave.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "offboarding",
+      "account": "19000",
+      "parent": "hr",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/hr/offboarding.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "onboarding",
+      "account": "19000",
+      "parent": "hr",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/hr/onboarding.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "payroll",
+      "account": "19000",
+      "parent": "hr",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/hr/payroll.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "performance-review",
+      "account": "19000",
+      "parent": "hr",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/hr/performance-review.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "advisor",
+      "account": "19000",
+      "parent": "people",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/people/advisor.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "contractor",
+      "account": "19000",
+      "parent": "people",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/people/contractor.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "director",
+      "account": "19000",
+      "parent": "people",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/people/director.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "employee",
+      "account": "19000",
+      "parent": "people",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/people/employee.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "founder",
+      "account": "19000",
+      "parent": "people",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/people/founder.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "role",
+      "account": "19000",
+      "parent": "people",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/people/role.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "shareholder",
+      "account": "19000",
+      "parent": "people",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/people/shareholder.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "team",
+      "account": "19000",
+      "parent": "people",
+      "path": "schemas/19000-enterprise-ventures/19800-hr/people/team.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "audit",
+      "account": "19000",
+      "parent": "compliance-risk",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/compliance-risk/audit.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "compliance-requirement",
+      "account": "19000",
+      "parent": "compliance-risk",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/compliance-risk/compliance-requirement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "compliance",
+      "account": "19000",
+      "parent": "compliance-risk",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/compliance-risk/compliance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "control",
+      "account": "19000",
+      "parent": "compliance-risk",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/compliance-risk/control.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "incident",
+      "account": "19000",
+      "parent": "compliance-risk",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/compliance-risk/incident.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "insurance",
+      "account": "19000",
+      "parent": "compliance-risk",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/compliance-risk/insurance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "license",
+      "account": "19000",
+      "parent": "compliance-risk",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/compliance-risk/license.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "policy",
+      "account": "19000",
+      "parent": "compliance-risk",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/compliance-risk/policy.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "risk",
+      "account": "19000",
+      "parent": "compliance-risk",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/compliance-risk/risk.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "business-plan",
+      "account": "19000",
+      "parent": "strategy",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/strategy/business-plan.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "initiative",
+      "account": "19000",
+      "parent": "strategy",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/strategy/initiative.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "key-result",
+      "account": "19000",
+      "parent": "strategy",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/strategy/key-result.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "kpi",
+      "account": "19000",
+      "parent": "strategy",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/strategy/kpi.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "metric",
+      "account": "19000",
+      "parent": "strategy",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/strategy/metric.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "objective",
+      "account": "19000",
+      "parent": "strategy",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/strategy/objective.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "roadmap",
+      "account": "19000",
+      "parent": "strategy",
+      "path": "schemas/19000-enterprise-ventures/19900-strategy/strategy/roadmap.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "connection",
+      "account": "2000",
+      "parent": "2400-networks",
+      "path": "schemas/2000-relationships/2400-networks/connection.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "influence",
+      "account": "2000",
+      "parent": "2400-networks",
+      "path": "schemas/2000-relationships/2400-networks/influence.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "introduction",
+      "account": "2000",
+      "parent": "2400-networks",
+      "path": "schemas/2000-relationships/2400-networks/introduction.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "network",
+      "account": "2000",
+      "parent": "2400-networks",
+      "path": "schemas/2000-relationships/2400-networks/network.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "referral",
+      "account": "2000",
+      "parent": "2400-networks",
+      "path": "schemas/2000-relationships/2400-networks/referral.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "cause",
+      "account": "2000",
+      "parent": "community",
+      "path": "schemas/2000-relationships/community/cause.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "community-event",
+      "account": "2000",
+      "parent": "community",
+      "path": "schemas/2000-relationships/community/community-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "community-group",
+      "account": "2000",
+      "parent": "community",
+      "path": "schemas/2000-relationships/community/community-group.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "help-request",
+      "account": "2000",
+      "parent": "community",
+      "path": "schemas/2000-relationships/community/help-request.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "impact-record",
+      "account": "2000",
+      "parent": "community",
+      "path": "schemas/2000-relationships/community/impact-record.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "membership",
+      "account": "2000",
+      "parent": "community",
+      "path": "schemas/2000-relationships/community/membership.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "mutual-aid",
+      "account": "2000",
+      "parent": "community",
+      "path": "schemas/2000-relationships/community/mutual-aid.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "support-offered",
+      "account": "2000",
+      "parent": "community",
+      "path": "schemas/2000-relationships/community/support-offered.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "adoption",
+      "account": "2000",
+      "parent": "family",
+      "path": "schemas/2000-relationships/family/adoption.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "bereavement",
+      "account": "2000",
+      "parent": "family",
+      "path": "schemas/2000-relationships/family/bereavement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "birth",
+      "account": "2000",
+      "parent": "family",
+      "path": "schemas/2000-relationships/family/birth.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "dependent",
+      "account": "2000",
+      "parent": "family",
+      "path": "schemas/2000-relationships/family/dependent.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "divorce",
+      "account": "2000",
+      "parent": "family",
+      "path": "schemas/2000-relationships/family/divorce.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "marriage",
+      "account": "2000",
+      "parent": "family",
+      "path": "schemas/2000-relationships/family/marriage.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "care-arrangement",
+      "account": "2000",
+      "parent": "parenting",
+      "path": "schemas/2000-relationships/parenting/care-arrangement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "child-development",
+      "account": "2000",
+      "parent": "parenting",
+      "path": "schemas/2000-relationships/parenting/child-development.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "parenting-goal",
+      "account": "2000",
+      "parent": "parenting",
+      "path": "schemas/2000-relationships/parenting/parenting-goal.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "school-event",
+      "account": "2000",
+      "parent": "parenting",
+      "path": "schemas/2000-relationships/parenting/school-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "breed",
+      "account": "2000",
+      "parent": "pets",
+      "path": "schemas/2000-relationships/pets/breed.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pet-adoption",
+      "account": "2000",
+      "parent": "pets",
+      "path": "schemas/2000-relationships/pets/pet-adoption.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pet-breeding",
+      "account": "2000",
+      "parent": "pets",
+      "path": "schemas/2000-relationships/pets/pet-breeding.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pet-care-plan",
+      "account": "2000",
+      "parent": "pets",
+      "path": "schemas/2000-relationships/pets/pet-care-plan.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pet-death",
+      "account": "2000",
+      "parent": "pets",
+      "path": "schemas/2000-relationships/pets/pet-death.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pet-estate",
+      "account": "2000",
+      "parent": "pets",
+      "path": "schemas/2000-relationships/pets/pet-estate.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pet-insurance",
+      "account": "2000",
+      "parent": "pets",
+      "path": "schemas/2000-relationships/pets/pet-insurance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pet-medical-record",
+      "account": "2000",
+      "parent": "pets",
+      "path": "schemas/2000-relationships/pets/pet-medical-record.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pet-medication",
+      "account": "2000",
+      "parent": "pets",
+      "path": "schemas/2000-relationships/pets/pet-medication.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pet-owner",
+      "account": "2000",
+      "parent": "pets",
+      "path": "schemas/2000-relationships/pets/pet-owner.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pet-travel",
+      "account": "2000",
+      "parent": "pets",
+      "path": "schemas/2000-relationships/pets/pet-travel.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pet",
+      "account": "2000",
+      "parent": "pets",
+      "path": "schemas/2000-relationships/pets/pet.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "species",
+      "account": "2000",
+      "parent": "pets",
+      "path": "schemas/2000-relationships/pets/species.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "relationship-asset",
+      "account": "2000",
+      "parent": "relationships",
+      "path": "schemas/2000-relationships/relationships/relationship-asset.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "relationship-case",
+      "account": "2000",
+      "parent": "relationships",
+      "path": "schemas/2000-relationships/relationships/relationship-case.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "relationship-document",
+      "account": "2000",
+      "parent": "relationships",
+      "path": "schemas/2000-relationships/relationships/relationship-document.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "relationship-history",
+      "account": "2000",
+      "parent": "relationships",
+      "path": "schemas/2000-relationships/relationships/relationship-history.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "relationship",
+      "account": "2000",
+      "parent": "relationships",
+      "path": "schemas/2000-relationships/relationships/relationship.schema.json",
+      "canonicalReferences": [
+        "actor",
+        "document",
+        "event"
+      ]
+    },
+    {
+      "schema": "emergency-contact",
+      "account": "3000",
+      "parent": "emergency",
+      "path": "schemas/3000-health/emergency/emergency-contact.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "emergency-document",
+      "account": "3000",
+      "parent": "emergency",
+      "path": "schemas/3000-health/emergency/emergency-document.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "emergency-procedure",
+      "account": "3000",
+      "parent": "emergency",
+      "path": "schemas/3000-health/emergency/emergency-procedure.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "go-bag-inventory",
+      "account": "3000",
+      "parent": "emergency",
+      "path": "schemas/3000-health/emergency/go-bag-inventory.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "appointment",
+      "account": "3000",
+      "parent": "health-care",
+      "path": "schemas/3000-health/health-care/appointment.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "care-need",
+      "account": "3000",
+      "parent": "health-care",
+      "path": "schemas/3000-health/health-care/care-need.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "care-plan",
+      "account": "3000",
+      "parent": "health-care",
+      "path": "schemas/3000-health/health-care/care-plan.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "care-provider",
+      "account": "3000",
+      "parent": "health-care",
+      "path": "schemas/3000-health/health-care/care-provider.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "disability",
+      "account": "3000",
+      "parent": "health-care",
+      "path": "schemas/3000-health/health-care/disability.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "medical-condition",
+      "account": "3000",
+      "parent": "health-care",
+      "path": "schemas/3000-health/health-care/medical-condition.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "medication",
+      "account": "3000",
+      "parent": "health-care",
+      "path": "schemas/3000-health/health-care/medication.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "author",
+      "account": "4000",
+      "parent": "books",
+      "path": "schemas/4000-learning/books/author.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "book-collection",
+      "account": "4000",
+      "parent": "books",
+      "path": "schemas/4000-learning/books/book-collection.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "book-review",
+      "account": "4000",
+      "parent": "books",
+      "path": "schemas/4000-learning/books/book-review.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "book",
+      "account": "4000",
+      "parent": "books",
+      "path": "schemas/4000-learning/books/book.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "reading-list",
+      "account": "4000",
+      "parent": "books",
+      "path": "schemas/4000-learning/books/reading-list.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "reading-session",
+      "account": "4000",
+      "parent": "books",
+      "path": "schemas/4000-learning/books/reading-session.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "certification",
+      "account": "4000",
+      "parent": "credentials",
+      "path": "schemas/4000-learning/credentials/certification.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "license",
+      "account": "4000",
+      "parent": "credentials",
+      "path": "schemas/4000-learning/credentials/license.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "membership",
+      "account": "4000",
+      "parent": "credentials",
+      "path": "schemas/4000-learning/credentials/membership.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "professional-registration",
+      "account": "4000",
+      "parent": "credentials",
+      "path": "schemas/4000-learning/credentials/professional-registration.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "certificate",
+      "account": "4000",
+      "parent": "education",
+      "path": "schemas/4000-learning/education/certificate.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "education-history",
+      "account": "4000",
+      "parent": "education",
+      "path": "schemas/4000-learning/education/education-history.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "student-loan",
+      "account": "4000",
+      "parent": "education",
+      "path": "schemas/4000-learning/education/student-loan.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "transcript",
+      "account": "4000",
+      "parent": "education",
+      "path": "schemas/4000-learning/education/transcript.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "certification",
+      "account": "4000",
+      "parent": "learning",
+      "path": "schemas/4000-learning/learning/certification.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "competency",
+      "account": "4000",
+      "parent": "learning",
+      "path": "schemas/4000-learning/learning/competency.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "course",
+      "account": "4000",
+      "parent": "learning",
+      "path": "schemas/4000-learning/learning/course.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "exam",
+      "account": "4000",
+      "parent": "learning",
+      "path": "schemas/4000-learning/learning/exam.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "learning-goal",
+      "account": "4000",
+      "parent": "learning",
+      "path": "schemas/4000-learning/learning/learning-goal.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "learning-record",
+      "account": "4000",
+      "parent": "learning",
+      "path": "schemas/4000-learning/learning/learning-record.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "note",
+      "account": "4000",
+      "parent": "learning",
+      "path": "schemas/4000-learning/learning/note.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "qualification",
+      "account": "4000",
+      "parent": "learning",
+      "path": "schemas/4000-learning/learning/qualification.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "research-topic",
+      "account": "4000",
+      "parent": "learning",
+      "path": "schemas/4000-learning/learning/research-topic.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "skill",
+      "account": "4000",
+      "parent": "learning",
+      "path": "schemas/4000-learning/learning/skill.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "training-session",
+      "account": "4000",
+      "parent": "learning",
+      "path": "schemas/4000-learning/learning/training-session.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "cv",
+      "account": "5000",
+      "parent": "employment-documents",
+      "path": "schemas/5000-career-profession/5100-employment/employment-documents/cv.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "employment-contract",
+      "account": "5000",
+      "parent": "employment-documents",
+      "path": "schemas/5000-career-profession/5100-employment/employment-documents/employment-contract.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "offer-letter",
+      "account": "5000",
+      "parent": "employment-documents",
+      "path": "schemas/5000-career-profession/5100-employment/employment-documents/offer-letter.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "reference",
+      "account": "5000",
+      "parent": "employment-documents",
+      "path": "schemas/5000-career-profession/5100-employment/employment-documents/reference.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "benefits",
+      "account": "5000",
+      "parent": "work",
+      "path": "schemas/5000-career-profession/5100-employment/work/benefits.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "employer",
+      "account": "5000",
+      "parent": "work",
+      "path": "schemas/5000-career-profession/5100-employment/work/employer.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "employment",
+      "account": "5000",
+      "parent": "work",
+      "path": "schemas/5000-career-profession/5100-employment/work/employment.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "payroll",
+      "account": "5000",
+      "parent": "work",
+      "path": "schemas/5000-career-profession/5100-employment/work/payroll.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "pension",
+      "account": "5000",
+      "parent": "work",
+      "path": "schemas/5000-career-profession/5100-employment/work/pension.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "redundancy",
+      "account": "5000",
+      "parent": "work",
+      "path": "schemas/5000-career-profession/5100-employment/work/redundancy.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "career-goal",
+      "account": "5000",
+      "parent": "5200-career-development",
+      "path": "schemas/5000-career-profession/5200-career-development/career-goal.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "career-path",
+      "account": "5000",
+      "parent": "5200-career-development",
+      "path": "schemas/5000-career-profession/5200-career-development/career-path.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "competency-gap",
+      "account": "5000",
+      "parent": "5200-career-development",
+      "path": "schemas/5000-career-profession/5200-career-development/competency-gap.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "promotion-plan",
+      "account": "5000",
+      "parent": "5200-career-development",
+      "path": "schemas/5000-career-profession/5200-career-development/promotion-plan.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "promotion",
+      "account": "5000",
+      "parent": "5200-career-development",
+      "path": "schemas/5000-career-profession/5200-career-development/promotion.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "interview",
+      "account": "5000",
+      "parent": "5300-job-search",
+      "path": "schemas/5000-career-profession/5300-job-search/interview.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "job-search-pipeline",
+      "account": "5000",
+      "parent": "5300-job-search",
+      "path": "schemas/5000-career-profession/5300-job-search/job-search-pipeline.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "networking-event",
+      "account": "5000",
+      "parent": "5300-job-search",
+      "path": "schemas/5000-career-profession/5300-job-search/networking-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "recruiter-contact",
+      "account": "5000",
+      "parent": "5300-job-search",
+      "path": "schemas/5000-career-profession/5300-job-search/recruiter-contact.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "recruiter",
+      "account": "5000",
+      "parent": "5300-job-search",
+      "path": "schemas/5000-career-profession/5300-job-search/recruiter.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "client",
+      "account": "5000",
+      "parent": "5400-consulting",
+      "path": "schemas/5000-career-profession/5400-consulting/client.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "consulting-engagement",
+      "account": "5000",
+      "parent": "5400-consulting",
+      "path": "schemas/5000-career-profession/5400-consulting/consulting-engagement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "engagement",
+      "account": "5000",
+      "parent": "5400-consulting",
+      "path": "schemas/5000-career-profession/5400-consulting/engagement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "statement-of-work",
+      "account": "5000",
+      "parent": "5400-consulting",
+      "path": "schemas/5000-career-profession/5400-consulting/statement-of-work.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "professional-network",
+      "account": "5000",
+      "parent": "5500-professional-network",
+      "path": "schemas/5000-career-profession/5500-professional-network/professional-network.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "referral",
+      "account": "5000",
+      "parent": "5500-professional-network",
+      "path": "schemas/5000-career-profession/5500-professional-network/referral.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "development-plan",
+      "account": "5000",
+      "parent": "mentorship",
+      "path": "schemas/5000-career-profession/5600-mentorship/mentorship/development-plan.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "mentor",
+      "account": "5000",
+      "parent": "mentorship",
+      "path": "schemas/5000-career-profession/5600-mentorship/mentorship/mentor.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "session",
+      "account": "5000",
+      "parent": "mentorship",
+      "path": "schemas/5000-career-profession/5600-mentorship/mentorship/session.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "alternative-asset",
+      "account": "6000",
+      "parent": "alternative-assets",
+      "path": "schemas/6000-wealth/alternative-assets/alternative-asset.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "artwork",
+      "account": "6000",
+      "parent": "alternative-assets",
+      "path": "schemas/6000-wealth/alternative-assets/artwork.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "collectible",
+      "account": "6000",
+      "parent": "alternative-assets",
+      "path": "schemas/6000-wealth/alternative-assets/collectible.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "commodity",
+      "account": "6000",
+      "parent": "alternative-assets",
+      "path": "schemas/6000-wealth/alternative-assets/commodity.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "precious-metal",
+      "account": "6000",
+      "parent": "alternative-assets",
+      "path": "schemas/6000-wealth/alternative-assets/precious-metal.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "bill",
+      "account": "6000",
+      "parent": "bills",
+      "path": "schemas/6000-wealth/bills/bill.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "council-tax",
+      "account": "6000",
+      "parent": "bills",
+      "path": "schemas/6000-wealth/bills/council-tax.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "recurring-bill",
+      "account": "6000",
+      "parent": "bills",
+      "path": "schemas/6000-wealth/bills/recurring-bill.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "utility-bill",
+      "account": "6000",
+      "parent": "bills",
+      "path": "schemas/6000-wealth/bills/utility-bill.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "account",
+      "account": "6000",
+      "parent": "commerce",
+      "path": "schemas/6000-wealth/commerce/account.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "budget",
+      "account": "6000",
+      "parent": "commerce",
+      "path": "schemas/6000-wealth/commerce/budget.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "cost",
+      "account": "6000",
+      "parent": "commerce",
+      "path": "schemas/6000-wealth/commerce/cost.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "invoice",
+      "account": "6000",
+      "parent": "commerce",
+      "path": "schemas/6000-wealth/commerce/invoice.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "money",
+      "account": "6000",
+      "parent": "commerce",
+      "path": "schemas/6000-wealth/commerce/money.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "order",
+      "account": "6000",
+      "parent": "commerce",
+      "path": "schemas/6000-wealth/commerce/order.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "payment",
+      "account": "6000",
+      "parent": "commerce",
+      "path": "schemas/6000-wealth/commerce/payment.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "profit-loss",
+      "account": "6000",
+      "parent": "commerce",
+      "path": "schemas/6000-wealth/commerce/profit-loss.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "quote",
+      "account": "6000",
+      "parent": "commerce",
+      "path": "schemas/6000-wealth/commerce/quote.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "revenue",
+      "account": "6000",
+      "parent": "commerce",
+      "path": "schemas/6000-wealth/commerce/revenue.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "subscription",
+      "account": "6000",
+      "parent": "commerce",
+      "path": "schemas/6000-wealth/commerce/subscription.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "tax",
+      "account": "6000",
+      "parent": "commerce",
+      "path": "schemas/6000-wealth/commerce/tax.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "transaction",
+      "account": "6000",
+      "parent": "commerce",
+      "path": "schemas/6000-wealth/commerce/transaction.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "airdrop",
+      "account": "6000",
+      "parent": "crypto",
+      "path": "schemas/6000-wealth/crypto/airdrop.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "crypto-transaction",
+      "account": "6000",
+      "parent": "crypto",
+      "path": "schemas/6000-wealth/crypto/crypto-transaction.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "cryptocurrency",
+      "account": "6000",
+      "parent": "crypto",
+      "path": "schemas/6000-wealth/crypto/cryptocurrency.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "exchange",
+      "account": "6000",
+      "parent": "crypto",
+      "path": "schemas/6000-wealth/crypto/exchange.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "staking",
+      "account": "6000",
+      "parent": "crypto",
+      "path": "schemas/6000-wealth/crypto/staking.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "token",
+      "account": "6000",
+      "parent": "crypto",
+      "path": "schemas/6000-wealth/crypto/token.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "wallet",
+      "account": "6000",
+      "parent": "crypto",
+      "path": "schemas/6000-wealth/crypto/wallet.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "yield",
+      "account": "6000",
+      "parent": "crypto",
+      "path": "schemas/6000-wealth/crypto/yield.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "beneficiary-wishes",
+      "account": "6000",
+      "parent": "death-and-estate",
+      "path": "schemas/6000-wealth/death-and-estate/beneficiary-wishes.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "executor-instructions",
+      "account": "6000",
+      "parent": "death-and-estate",
+      "path": "schemas/6000-wealth/death-and-estate/executor-instructions.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "funeral-wishes",
+      "account": "6000",
+      "parent": "death-and-estate",
+      "path": "schemas/6000-wealth/death-and-estate/funeral-wishes.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "bank-account",
+      "account": "6000",
+      "parent": "finance",
+      "path": "schemas/6000-wealth/finance/bank-account.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "benefit",
+      "account": "6000",
+      "parent": "finance",
+      "path": "schemas/6000-wealth/finance/benefit.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "estate",
+      "account": "6000",
+      "parent": "finance",
+      "path": "schemas/6000-wealth/finance/estate.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "inheritance",
+      "account": "6000",
+      "parent": "finance",
+      "path": "schemas/6000-wealth/finance/inheritance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "insurance-policy",
+      "account": "6000",
+      "parent": "finance",
+      "path": "schemas/6000-wealth/finance/insurance-policy.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "tax",
+      "account": "6000",
+      "parent": "finance",
+      "path": "schemas/6000-wealth/finance/tax.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "credit-report",
+      "account": "6000",
+      "parent": "financial-documents",
+      "path": "schemas/6000-wealth/financial-documents/credit-report.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "financial-statement",
+      "account": "6000",
+      "parent": "financial-documents",
+      "path": "schemas/6000-wealth/financial-documents/financial-statement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "loan-document",
+      "account": "6000",
+      "parent": "financial-documents",
+      "path": "schemas/6000-wealth/financial-documents/loan-document.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "payslip",
+      "account": "6000",
+      "parent": "financial-documents",
+      "path": "schemas/6000-wealth/financial-documents/payslip.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "tax-document",
+      "account": "6000",
+      "parent": "financial-documents",
+      "path": "schemas/6000-wealth/financial-documents/tax-document.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "device-insurance",
+      "account": "6000",
+      "parent": "insurance",
+      "path": "schemas/6000-wealth/insurance/device-insurance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "home-insurance",
+      "account": "6000",
+      "parent": "insurance",
+      "path": "schemas/6000-wealth/insurance/home-insurance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "income-protection-insurance",
+      "account": "6000",
+      "parent": "insurance",
+      "path": "schemas/6000-wealth/insurance/income-protection-insurance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "insurance-policy",
+      "account": "6000",
+      "parent": "insurance",
+      "path": "schemas/6000-wealth/insurance/insurance-policy.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "life-insurance",
+      "account": "6000",
+      "parent": "insurance",
+      "path": "schemas/6000-wealth/insurance/life-insurance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "travel-insurance",
+      "account": "6000",
+      "parent": "insurance",
+      "path": "schemas/6000-wealth/insurance/travel-insurance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "bond",
+      "account": "6000",
+      "parent": "investments",
+      "path": "schemas/6000-wealth/investments/bond.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "broker",
+      "account": "6000",
+      "parent": "investments",
+      "path": "schemas/6000-wealth/investments/broker.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "capital-gain",
+      "account": "6000",
+      "parent": "investments",
+      "path": "schemas/6000-wealth/investments/capital-gain.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "dividend-income",
+      "account": "6000",
+      "parent": "investments",
+      "path": "schemas/6000-wealth/investments/dividend-income.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "etf",
+      "account": "6000",
+      "parent": "investments",
+      "path": "schemas/6000-wealth/investments/etf.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "holding",
+      "account": "6000",
+      "parent": "investments",
+      "path": "schemas/6000-wealth/investments/holding.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "investment-account",
+      "account": "6000",
+      "parent": "investments",
+      "path": "schemas/6000-wealth/investments/investment-account.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "mutual-fund",
+      "account": "6000",
+      "parent": "investments",
+      "path": "schemas/6000-wealth/investments/mutual-fund.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "stock",
+      "account": "6000",
+      "parent": "investments",
+      "path": "schemas/6000-wealth/investments/stock.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "watchlist",
+      "account": "6000",
+      "parent": "investments",
+      "path": "schemas/6000-wealth/investments/watchlist.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "asset-allocation",
+      "account": "6000",
+      "parent": "wealth",
+      "path": "schemas/6000-wealth/wealth/asset-allocation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "assets",
+      "account": "6000",
+      "parent": "wealth",
+      "path": "schemas/6000-wealth/wealth/assets.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "cash-flow",
+      "account": "6000",
+      "parent": "wealth",
+      "path": "schemas/6000-wealth/wealth/cash-flow.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "financial-goals",
+      "account": "6000",
+      "parent": "wealth",
+      "path": "schemas/6000-wealth/wealth/financial-goals.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "financial-independence-date",
+      "account": "6000",
+      "parent": "wealth",
+      "path": "schemas/6000-wealth/wealth/financial-independence-date.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "income-sources",
+      "account": "6000",
+      "parent": "wealth",
+      "path": "schemas/6000-wealth/wealth/income-sources.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "liabilities",
+      "account": "6000",
+      "parent": "wealth",
+      "path": "schemas/6000-wealth/wealth/liabilities.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "net-worth-tracking",
+      "account": "6000",
+      "parent": "wealth",
+      "path": "schemas/6000-wealth/wealth/net-worth-tracking.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "net-worth",
+      "account": "6000",
+      "parent": "wealth",
+      "path": "schemas/6000-wealth/wealth/net-worth.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "passive-income",
+      "account": "6000",
+      "parent": "wealth",
+      "path": "schemas/6000-wealth/wealth/passive-income.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "retirement-forecast",
+      "account": "6000",
+      "parent": "wealth",
+      "path": "schemas/6000-wealth/wealth/retirement-forecast.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "wealth-dashboard",
+      "account": "6000",
+      "parent": "wealth",
+      "path": "schemas/6000-wealth/wealth/wealth-dashboard.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "appliance",
+      "account": "7000",
+      "parent": "household",
+      "path": "schemas/7000-property/household/appliance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "home-inventory",
+      "account": "7000",
+      "parent": "household",
+      "path": "schemas/7000-property/household/home-inventory.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "manual",
+      "account": "7000",
+      "parent": "household",
+      "path": "schemas/7000-property/household/manual.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "warranty",
+      "account": "7000",
+      "parent": "household",
+      "path": "schemas/7000-property/household/warranty.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "address-history",
+      "account": "7000",
+      "parent": "housing",
+      "path": "schemas/7000-property/housing/address-history.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "mortgage",
+      "account": "7000",
+      "parent": "housing",
+      "path": "schemas/7000-property/housing/mortgage.schema.json",
+      "canonicalReferences": [
+        "document",
+        "payment",
+        "liability"
+      ]
+    },
+    {
+      "schema": "move",
+      "account": "7000",
+      "parent": "housing",
+      "path": "schemas/7000-property/housing/move.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "property",
+      "account": "7000",
+      "parent": "housing",
+      "path": "schemas/7000-property/housing/property.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "tenancy",
+      "account": "7000",
+      "parent": "housing",
+      "path": "schemas/7000-property/housing/tenancy.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "utility-account",
+      "account": "7000",
+      "parent": "housing",
+      "path": "schemas/7000-property/housing/utility-account.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "geofenced-reminder",
+      "account": "7000",
+      "parent": "locations",
+      "path": "schemas/7000-property/locations/geofenced-reminder.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "important-location",
+      "account": "7000",
+      "parent": "locations",
+      "path": "schemas/7000-property/locations/important-location.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "saved-location",
+      "account": "7000",
+      "parent": "locations",
+      "path": "schemas/7000-property/locations/saved-location.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "building",
+      "account": "7000",
+      "parent": "property-construction",
+      "path": "schemas/7000-property/property-construction/building.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "construction-project",
+      "account": "7000",
+      "parent": "property-construction",
+      "path": "schemas/7000-property/property-construction/construction-project.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "contractor",
+      "account": "7000",
+      "parent": "property-construction",
+      "path": "schemas/7000-property/property-construction/contractor.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "inspection",
+      "account": "7000",
+      "parent": "property-construction",
+      "path": "schemas/7000-property/property-construction/inspection.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "land",
+      "account": "7000",
+      "parent": "property-construction",
+      "path": "schemas/7000-property/property-construction/land.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "maintenance",
+      "account": "7000",
+      "parent": "property-construction",
+      "path": "schemas/7000-property/property-construction/maintenance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "material-spec",
+      "account": "7000",
+      "parent": "property-construction",
+      "path": "schemas/7000-property/property-construction/material-spec.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "property",
+      "account": "7000",
+      "parent": "property-construction",
+      "path": "schemas/7000-property/property-construction/property.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "renovation",
+      "account": "7000",
+      "parent": "property-construction",
+      "path": "schemas/7000-property/property-construction/renovation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "room",
+      "account": "7000",
+      "parent": "property-construction",
+      "path": "schemas/7000-property/property-construction/room.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "mot",
+      "account": "7000",
+      "parent": "vehicles",
+      "path": "schemas/7000-property/vehicles/mot.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "parking-permit",
+      "account": "7000",
+      "parent": "vehicles",
+      "path": "schemas/7000-property/vehicles/parking-permit.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "servicing-record",
+      "account": "7000",
+      "parent": "vehicles",
+      "path": "schemas/7000-property/vehicles/servicing-record.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "vehicle",
+      "account": "7000",
+      "parent": "vehicles",
+      "path": "schemas/7000-property/vehicles/vehicle.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "accommodation",
+      "account": "8000",
+      "parent": "travel",
+      "path": "schemas/8000-mobility/8100-travel/travel/accommodation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "activity",
+      "account": "8000",
+      "parent": "travel",
+      "path": "schemas/8000-mobility/8100-travel/travel/activity.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "booking",
+      "account": "8000",
+      "parent": "travel",
+      "path": "schemas/8000-mobility/8100-travel/travel/booking.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "disruption",
+      "account": "8000",
+      "parent": "travel",
+      "path": "schemas/8000-mobility/8100-travel/travel/disruption.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "emergency-contact",
+      "account": "8000",
+      "parent": "travel",
+      "path": "schemas/8000-mobility/8100-travel/travel/emergency-contact.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "flight",
+      "account": "8000",
+      "parent": "travel",
+      "path": "schemas/8000-mobility/8100-travel/travel/flight.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "itinerary",
+      "account": "8000",
+      "parent": "travel",
+      "path": "schemas/8000-mobility/8100-travel/travel/itinerary.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "packing-list",
+      "account": "8000",
+      "parent": "travel",
+      "path": "schemas/8000-mobility/8100-travel/travel/packing-list.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "travel-budget",
+      "account": "8000",
+      "parent": "travel",
+      "path": "schemas/8000-mobility/8100-travel/travel/travel-budget.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "travel-document",
+      "account": "8000",
+      "parent": "travel",
+      "path": "schemas/8000-mobility/8100-travel/travel/travel-document.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "travel-expense",
+      "account": "8000",
+      "parent": "travel",
+      "path": "schemas/8000-mobility/8100-travel/travel/travel-expense.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "travel-insurance",
+      "account": "8000",
+      "parent": "travel",
+      "path": "schemas/8000-mobility/8100-travel/travel/travel-insurance.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "trip",
+      "account": "8000",
+      "parent": "travel",
+      "path": "schemas/8000-mobility/8100-travel/travel/trip.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "transport",
+      "account": "8000",
+      "parent": "transport",
+      "path": "schemas/8000-mobility/8200-transport/transport/transport.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "commute-pattern",
+      "account": "8000",
+      "parent": "commuting",
+      "path": "schemas/8000-mobility/8300-commuting/commuting/commute-pattern.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "visa",
+      "account": "8000",
+      "parent": "visas",
+      "path": "schemas/8000-mobility/8400-visas/visas/visa.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "movement-event",
+      "account": "8000",
+      "parent": "movement",
+      "path": "schemas/8000-mobility/8500-movement/movement/movement-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "agreement",
+      "account": "9000",
+      "parent": "communications",
+      "path": "schemas/9000-digital-life/communications/agreement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "call",
+      "account": "9000",
+      "parent": "communications",
+      "path": "schemas/9000-digital-life/communications/call.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "chat-message",
+      "account": "9000",
+      "parent": "communications",
+      "path": "schemas/9000-digital-life/communications/chat-message.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "conversation",
+      "account": "9000",
+      "parent": "communications",
+      "path": "schemas/9000-digital-life/communications/conversation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "discussion-topic",
+      "account": "9000",
+      "parent": "communications",
+      "path": "schemas/9000-digital-life/communications/discussion-topic.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "meeting",
+      "account": "9000",
+      "parent": "communications",
+      "path": "schemas/9000-digital-life/communications/meeting.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "voice-note",
+      "account": "9000",
+      "parent": "communications",
+      "path": "schemas/9000-digital-life/communications/voice-note.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "credential-reference",
+      "account": "9000",
+      "parent": "digital-life",
+      "path": "schemas/9000-digital-life/digital-life/credential-reference.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "device",
+      "account": "9000",
+      "parent": "digital-life",
+      "path": "schemas/9000-digital-life/digital-life/device.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "digital-asset",
+      "account": "9000",
+      "parent": "digital-life",
+      "path": "schemas/9000-digital-life/digital-life/digital-asset.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "digital-legacy",
+      "account": "9000",
+      "parent": "digital-life",
+      "path": "schemas/9000-digital-life/digital-life/digital-legacy.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "online-account",
+      "account": "9000",
+      "parent": "digital-life",
+      "path": "schemas/9000-digital-life/digital-life/online-account.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "subscription",
+      "account": "9000",
+      "parent": "digital-life",
+      "path": "schemas/9000-digital-life/digital-life/subscription.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "delegation",
+      "account": "9000",
+      "parent": "permissions",
+      "path": "schemas/9000-digital-life/permissions/delegation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "emergency-access",
+      "account": "9000",
+      "parent": "permissions",
+      "path": "schemas/9000-digital-life/permissions/emergency-access.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "sharing-permission",
+      "account": "9000",
+      "parent": "permissions",
+      "path": "schemas/9000-digital-life/permissions/sharing-permission.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "trusted-contact",
+      "account": "9000",
+      "parent": "permissions",
+      "path": "schemas/9000-digital-life/permissions/trusted-contact.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "account-detected",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/account-detected.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "album",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/album.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "calendar-event",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/calendar-event.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "contact-group",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/contact-group.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "contact",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/contact.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "digital-activity",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/digital-activity.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "document-content",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/document-content.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "drive-file",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/drive-file.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "email-account",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/email-account.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "email-label",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/email-label.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "email-message",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/email-message.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "email-thread",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/email-thread.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "folder",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/folder.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "location-history",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/location-history.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "photo",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/photo.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "purchase-receipt",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/purchase-receipt.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "reminder",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/reminder.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "subscription-detected",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/subscription-detected.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "task-list",
+      "account": "9000",
+      "parent": "personal-digital",
+      "path": "schemas/9000-digital-life/personal-digital/task-list.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "access-control",
+      "account": "9000",
+      "parent": "privacy",
+      "path": "schemas/9000-digital-life/privacy/access-control.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "audit-access-log",
+      "account": "9000",
+      "parent": "privacy",
+      "path": "schemas/9000-digital-life/privacy/audit-access-log.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "consent",
+      "account": "9000",
+      "parent": "privacy",
+      "path": "schemas/9000-digital-life/privacy/consent.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "data-retention",
+      "account": "9000",
+      "parent": "privacy",
+      "path": "schemas/9000-digital-life/privacy/data-retention.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "disclosure-purpose",
+      "account": "9000",
+      "parent": "privacy",
+      "path": "schemas/9000-digital-life/privacy/disclosure-purpose.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "redaction",
+      "account": "9000",
+      "parent": "privacy",
+      "path": "schemas/9000-digital-life/privacy/redaction.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "sensitivity-classification",
+      "account": "9000",
+      "parent": "privacy",
+      "path": "schemas/9000-digital-life/privacy/sensitivity-classification.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "encryption-key",
+      "account": "9000",
+      "parent": "security",
+      "path": "schemas/9000-digital-life/security/encryption-key.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "encryption-status",
+      "account": "9000",
+      "parent": "security",
+      "path": "schemas/9000-digital-life/security/encryption-status.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "recovery-code",
+      "account": "9000",
+      "parent": "security",
+      "path": "schemas/9000-digital-life/security/recovery-code.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "vault-entry",
+      "account": "9000",
+      "parent": "security",
+      "path": "schemas/9000-digital-life/security/vault-entry.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "media-mention",
+      "account": "9500",
+      "parent": "media",
+      "path": "schemas/9500-public-presence/media/media-mention.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "public-profile",
+      "account": "9500",
+      "parent": "profiles",
+      "path": "schemas/9500-public-presence/profiles/public-profile.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "award",
+      "account": "9500",
+      "parent": "reputation",
+      "path": "schemas/9500-public-presence/reputation/award.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "analytics",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/analytics.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "audience",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/audience.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "brand-deal",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/brand-deal.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "campaign",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/campaign.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "caption",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/caption.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "comment",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/comment.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "community",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/community.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "content-calendar",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/content-calendar.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "content-draft",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/content-draft.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "content-piece",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/content-piece.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "content-plan",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/content-plan.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "content-series",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/content-series.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "engagement",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/engagement.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "follower",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/follower.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "handle",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/handle.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "hashtag",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/hashtag.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "media-asset",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/media-asset.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "message",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/message.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "moderation-action",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/moderation-action.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "monetisation",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/monetisation.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "platform",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/platform.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "post",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/post.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "profile",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/profile.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "social-account",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/social-account.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "sponsorship",
+      "account": "9500",
+      "parent": "social-media",
+      "path": "schemas/9500-public-presence/social-media/sponsorship.schema.json",
+      "canonicalReferences": []
+    },
+    {
+      "schema": "speaking-engagement",
+      "account": "9500",
+      "parent": "speaking",
+      "path": "schemas/9500-public-presence/speaking/speaking-engagement.schema.json",
+      "canonicalReferences": []
     }
   ]
 }
