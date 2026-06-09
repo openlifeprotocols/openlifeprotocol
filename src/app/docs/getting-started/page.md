@@ -49,51 +49,54 @@ my-project/
 
 ## Create Your First Workflow
 
-Let's create a simple death workflow:
+Let's create a simple hiring workflow:
 
 ```bash
-olp workflow create death-uk
+olp workflow create employee-onboarding
 ```
 
-This generates a workflow file at `workflows/death-uk.yaml`:
+This generates a workflow file at `workflows/employee-onboarding.yaml`:
 
 ```yaml
-id: death.uk.v1
+id: employee.onboarding.v1
 type: workflow
-title: "UK Death Case Workflow"
+title: "Employee Onboarding Workflow"
 
 event:
-  type: death
-  jurisdiction: UK
+  type: hiring
 
 steps:
-  - id: register_death
-    title: "Register Death with Government"
-    task_type: notification
-    recipients:
-      - institutional_id: "uk.gov.register-office"
-    required_documents:
-      - death_certificate
-    
-  - id: notify_beneficiaries
-    title: "Notify Beneficiaries"
-    depends_on:
-      - register_death
+  - id: send_offer
+    title: "Send Job Offer"
     task_type: communication
+    recipients:
+      - role: candidate
     
-  - id: probate_assessment
-    title: "Assess Probate Requirements"
+  - id: collect_paperwork
+    title: "Collect Required Paperwork"
     depends_on:
-      - register_death
-    rules:
-      - id: probate_required
-        if:
-          estate_value > 5000
-        then:
-          require:
-            - probate_assessment
+      - send_offer
+    task_type: document
+    required_documents:
+      - tax_form_w4
+      - i9_verification
+      - nda
+    
+  - id: provision_access
+    title: "Provision System Access"
+    depends_on:
+      - collect_paperwork
+    task_type: external_service
+    recipients:
+      - institutional_id: "it.department"
 
-outcome: death_case_completed
+  - id: schedule_training
+    title: "Schedule Training"
+    depends_on:
+      - provision_access
+    task_type: communication
+
+outcome: onboarding_completed
 ```
 
 ---
@@ -101,7 +104,7 @@ outcome: death_case_completed
 ## Validate Your Workflow
 
 ```bash
-olp validate workflows/death-uk.yaml
+olp validate workflows/employee-onboarding.yaml
 ```
 
 Output:
@@ -110,6 +113,7 @@ Output:
 ✓ All event types are recognized
 ✓ All steps have valid configurations
 ✓ All dependencies are satisfied
+✓ All actors are defined
 ```
 
 {% callout title="TODO" %}
@@ -122,24 +126,23 @@ Output:
 ## Test Your Workflow
 
 ```bash
-olp test workflows/death-uk.yaml \
-  --event '{"type":"death", "actor_id":"person_123", "jurisdiction":"UK"}'
+olp test workflows/employee-onboarding.yaml \
+  --event '{"type":"hiring", "candidate_id":"person_123", "role":"Engineer"}'
 ```
 
 Output:
 ```
-Testing: death.uk.v1
-  Event: death
-  Actor: person_123
+Testing: employee.onboarding.v1
+  Event: hiring
+  Candidate: person_123
   
-  ✓ Step 1: register_death
-  ✓ Step 2: notify_beneficiaries
-  ✓ Step 3: probate_assessment
-    - Applied rule: probate_required
-    - Probate assessment required
+  ✓ Step 1: send_offer
+  ✓ Step 2: collect_paperwork
+  ✓ Step 3: provision_access
+  ✓ Step 4: schedule_training
     
 ✓ All steps passed
-✓ Outcome: death_case_completed
+✓ Outcome: onboarding_completed
 ```
 
 {% callout title="TODO" %}
@@ -155,17 +158,17 @@ Testing: death.uk.v1
 When you're ready to share your workflow:
 
 ```bash
-olp publish workflows/death-uk.yaml
+olp publish workflows/employee-onboarding.yaml
 ```
 
 This uploads your workflow to the OLP Registry. It's now available for:
-- Other developers to discover
-- Institutions to implement
-- Systems to execute
+- Other organizations to discover and adapt
+- HR systems to implement
+- Talent acquisition tools to use
 
 ```
-Published workflow: death.uk.v1
-Registry URL: https://registry.openlifeprotocol.org/workflows/death.uk.v1
+Published workflow: employee.onboarding.v1
+Registry URL: https://registry.openlifeprotocol.org/workflows/employee.onboarding.v1
 Visibility: public
 Version: 1.0.0
 ```
@@ -177,33 +180,33 @@ Version: 1.0.0
 ### TypeScript
 
 ```typescript
-import { LifeOS } from '@openlife/core';
+import { OLP } from '@openlife/core';
 
-const lifeOS = new LifeOS({
+const olp = new OLP({
   apiKey: process.env.OLP_API_KEY,
 });
 
-// Create an actor (person)
-const person = await lifeOS.actors.create({
+// Create an actor (candidate)
+const candidate = await olp.actors.create({
   type: 'person',
-  name: 'John Doe',
-  email: 'john@example.com',
+  name: 'Jane Smith',
+  email: 'jane@example.com',
 });
 
 // Emit an event
-const deathEvent = await lifeOS.events.create({
-  type: 'death',
-  actor_id: person.id,
-  jurisdiction: 'UK',
+const hiringEvent = await olp.events.create({
+  type: 'hiring',
+  actor_id: candidate.id,
+  role: 'Software Engineer',
   timestamp: new Date(),
 });
 
 // Workflow triggers automatically
 // Track the case
-const deathCase = await lifeOS.cases.get(deathEvent.case_id);
+const onboardingCase = await olp.cases.get(hiringEvent.case_id);
 
-console.log(deathCase.status); // 'in_progress'
-console.log(deathCase.steps);  // All workflow steps
+console.log(onboardingCase.status); // 'in_progress'
+console.log(onboardingCase.steps);  // All workflow steps
 ```
 
 {% callout title="TODO" %}

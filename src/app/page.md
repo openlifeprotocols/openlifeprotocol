@@ -4,13 +4,13 @@ title: Open Life Protocol
 
 The contract-first standard for life, business, and AI workflows. {% .lead %}
 
-Like OpenAPI, but for your entire life.
+Like OpenAPI, but for every process that matters.
 
 {% quick-links %}
 
 {% quick-link title="Why OLP Matters" icon="lightbulb" href="/docs/why-olp" description="Understand the problem OLP solves and the vision for interconnected systems." /%}
 
-{% quick-link title="Getting Started" icon="installation" href="/docs/getting-started" description="Install the CLI and deploy your first workflow in 15 minutes." /%}
+{% quick-link title="Getting Started" icon="installation" href="/docs/getting-started" description="Install the CLI and define your first workflow in 15 minutes." /%}
 
 {% quick-link title="Core Concepts" icon="plugins" href="/docs/core-concepts-overview" description="Learn about Actors, Events, Cases, Workflows, and more." /%}
 
@@ -22,18 +22,18 @@ Like OpenAPI, but for your entire life.
 
 ## What is OLP?
 
-The Open Life Protocol is a standardized specification for representing and executing life and business processes. Just as OpenAPI revolutionized API development by providing a universal contract, OLP creates a universal contract for the processes that matter: births, deaths, moves, employment changes, business formations, healthcare coordination, and more.
+The Open Life Protocol is a standardized specification for representing and executing any process that matters: hiring, moving, business formation, healthcare enrollment, onboarding, and thousands more. Just as OpenAPI revolutionized API development by providing a universal contract, OLP creates a universal contract for processes across life and business.
 
 ### The Core Idea
 
-Today, these processes are fragmented across incompatible systems:
-- A death triggers manual touchpoints across dozens of institutions
-- A business formation requires separate filings in multiple systems
-- A move requires updates in dozens of databases
-- Healthcare coordination involves incompatible data formats
+Today, critical processes are fragmented across incompatible systems:
+- Hiring requires separate forms and systems at HR, IT, Finance, Security
+- Relocating triggers manual updates across dozens of institutions
+- Starting a business requires separate filings in multiple systems
+- Healthcare enrollment involves incompatible data formats
 
 OLP makes these processes:
-- **Standardized** - One way to represent any life or business event
+- **Standardized** - One way to represent any process and event
 - **Portable** - Workflows work across any OLP-compliant system
 - **Automated** - Events trigger automated workflows instead of manual work
 - **Auditable** - Complete history and decision tracking
@@ -75,14 +75,15 @@ olp publish
 
 ## The Vision: From LifeOS to an Entire Ecosystem
 
-OLP is designed to enable:
+OLP is designed to enable specialized operating systems for different domains:
 
-- **LifeOS** - Reference implementation covering all life events
-- **DeathOS** - Estate management, legal processes, beneficiary notification
-- **MoveOS** - Address changes, utility transfers, document updates
-- **CareOS** - Healthcare coordination, provider networks, care planning
-- **RetirementOS** - Pension management, benefit enrollment, financial planning
+- **LifeOS** - All life events in one system
 - **BusinessOS** - Company formation, hiring, compliance, fundraising
+- **HROS** - Employee lifecycle from hire to retirement
+- **MoveOS** - Address changes, utility transfers, document updates
+- **HealthOS** - Healthcare coordination and enrollment
+- **RetirementOS** - Pension and benefit management
+- **ProcurementOS** - Vendor onboarding and contracting
 
 Each system uses the same OLP specification, so they integrate seamlessly and can share data across the entire ecosystem.
 
@@ -91,10 +92,11 @@ Each system uses the same OLP specification, so they integrate seamlessly and ca
 ## Why Now?
 
 1. **AI is Ready** - AI agents need standardized process specifications to participate in workflows
-2. **Fragmentation is Expensive** - Manual integration costs billions globally
+2. **Fragmentation is Expensive** - Manual integration and data re-entry costs billions globally
 3. **OpenAPI Proved It Works** - The contract-first approach scaled to 10,000+ integrations
-4. **Governments are Moving** - Digital government initiatives need standards
-5. **Businesses Demand It** - Enterprises want interoperability
+4. **Government Initiatives** - Digital transformation needs standards
+5. **Business Demand** - Enterprises want interoperability with partners and vendors
+6. **Remote/Distributed Work** - Processes span multiple organizations and systems
 
 ---
 

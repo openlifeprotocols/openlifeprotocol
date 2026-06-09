@@ -23,11 +23,11 @@ const lexend = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Docs',
-    default: 'CacheAdvance - Never miss the cache again.',
+    template: '%s - Open Life Protocol',
+    default: 'Open Life Protocol - Standardizing Life and Business Workflows',
   },
   description:
-    'Cache every single thing your app could ever do ahead of time, so your code never even has to run at all.',
+    'The Open Life Protocol (OLP) is a contract-first standard for life, business, and AI-native workflows, like OpenAPI for your entire life.',
 }
 
 export default function RootLayout({

@@ -2,40 +2,57 @@
 title: Why OLP Matters
 ---
 
-Today's world is broken into silos. Your death, your move, your job change—each triggers separate, incompatible processes across dozens of systems. The Open Life Protocol fixes this. {% .lead %}
+Today's world is broken into silos. Every significant life or business event—hiring, moving, starting a company, dying—triggers separate, incompatible processes across dozens of systems. The Open Life Protocol fixes this. {% .lead %}
 
 ---
 
 ## The Problem: Fragmented Processes
 
-### A Death in Reality
+### Examples of Fragmentation
 
-When someone dies, 500+ manual touchpoints must occur:
-- Register death with government
-- Notify financial institutions
-- Update government records
-- Update employer records
-- Update healthcare providers
-- Distribute assets
-- Cancel subscriptions
-- Notify beneficiaries
+**When someone hires an employee:**
+- HR creates a form
+- IT creates a ticket  
+- Finance creates a record
+- Security runs a background check
+- Payroll creates a system record
+- Benefits creates an enrollment record
 
-Each touchpoint is:
-- **Manual** - Someone has to email, call, or visit in person
-- **Incompatible** - Different forms, different systems, different requirements
-- **Error-prone** - Information gets lost or duplicated
-- **Expensive** - Manually executing these processes costs billions globally
+Each is manual, each uses different systems, each duplicates information.
+
+**When someone relocates:**
+- Notify employer (usually manually)
+- Update address with government (1+ systems depending on state/country)
+- Update address with utility companies (call each one)
+- Update address with healthcare providers (mail or phone)
+- Update subscriptions and services (dozens of companies)
+- Update insurance (car, home, etc.)
+
+**When someone starts a business:**
+- File formation documents (varies by state/country)
+- Create business bank account (visit bank)
+- Obtain EIN (apply separately)
+- Register for sales tax (state-specific)
+- File for business licenses (varies by locality)
+- Register with business registries
+- Set up payroll (separate system)
+- File initial reports (state/country-specific)
+
+Each process involves:
+- **Manual Steps** - Phone calls, emails, form-filling
+- **Incompatible Systems** - Different formats, different requirements
+- **Error Prone** - Information gets lost or duplicated
+- **Expensive** - Billions spent globally on manual coordination
 
 ### Why This Happens
 
-Every institution built their own workflow:
-- Banks have their own death notification process
-- Insurance companies have their own
-- Governments have their own
-- Healthcare providers have their own
-- Employers have their own
+Every institution, government, and company built their own workflow with no shared contract:
+- Each bank has their own systems
+- Each government has their own requirements
+- Each employer has their own HR systems
+- Each vendor has their own onboarding flow
 
-There's no shared contract, no standard format, no automation.
+There's no standard format, no automation, no interoperability.
 
 ---
 

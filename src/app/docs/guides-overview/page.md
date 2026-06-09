@@ -19,25 +19,46 @@ The best way to learn OLP is through real-world case studies. Each guide shows:
 
 ## Case Studies
 
-### 1. Death Case: England, UK
+### 1. Employee Onboarding: A Simple Workflow
 
-The most complex case. Managing death in England involves:
-- Registering death with government
-- Notifying financial institutions
-- Identifying and valuing assets
-- Determining probate requirements
-- Managing estate distribution
-- Notifying beneficiaries
+Hiring someone and getting them productive involves:
+- Sending offer and collecting acceptance
+- Gathering required documents (I9, tax forms, background check)
+- Provisioning IT access and tools
+- Setting up payroll and benefits
+- Scheduling training and first-day activities
+- Coordinating across HR, IT, Finance, and Management
 
 **What you'll learn:**
-- How to model complex, multi-step workflows
-- How to handle conditional logic (probate assessment)
-- How to integrate with external institutions
-- How to track evidence and decisions
+- How to model a multi-step sequential workflow
+- How to handle dependencies between steps
+- How to involve multiple actors (departments)
+- How to track document requirements
+- How to integrate with external systems
 
-[Read the Death Case Study →](/docs/guide-death-case-uk)
+[Read the Employee Onboarding Guide →](/docs/guide-employee-onboarding)
 
-### 2. Business Formation: USA
+### 2. Relocating/Moving: Geographic Complexity
+
+When someone relocates:
+- Update address across government systems
+- Notify employer and financial institutions
+- Transfer utilities and services
+- Update vehicle registration and insurance
+- Update health insurance and providers
+- Redirect mail
+- Cancel/transfer subscriptions
+
+**What you'll learn:**
+- How to handle jurisdiction-specific variations
+- How to integrate with multiple institutions
+- How to manage parallel vs. sequential steps
+- How to model geographic complexity
+- How to handle conditional requirements
+
+[Read the Move Case Study →](/docs/guide-move)
+
+### 3. Business Formation: Structural Complexity
 
 Creating a business in the USA requires:
 - Selecting business structure (LLC, C-Corp, S-Corp)
@@ -54,24 +75,6 @@ Creating a business in the USA requires:
 - How to automate form submission
 
 [Read the Business Formation Case Study →](/docs/guide-business-formation-us)
-
-### 3. Employee Onboarding
-
-Hiring and onboarding a new employee:
-- Job offer and acceptance
-- Paperwork (tax, benefits, NDA)
-- Background check
-- System access provisioning
-- Training and orientation
-- Probation period
-
-**What you'll learn:**
-- How to model workflows with human approval steps
-- How to handle multiple actors (HR, manager, employee)
-- How to integrate with external systems (HR systems, IT)
-- How to track compliance
-
-[Read the Employee Onboarding Case Study →](/docs/guide-employee-onboarding)
 
 ### 4. Healthcare Enrollment
 
@@ -91,42 +94,11 @@ Registering for healthcare:
 
 [Read the Healthcare Enrollment Case Study →](/docs/guide-healthcare-enrollment)
 
-### 5. Relocation / Move
-
-Moving to a new address:
-- Address change notification
-- Utility transfers
-- Mail forwarding
-- Government notifications
-- Driver license update
-- Voter registration
-
-**What you'll learn:**
-- How to model workflows with many parallel tasks
-- How to handle geographic variation (state/country rules)
-- How to integrate with utilities and services
-- How to notify multiple institutions
-
-[Read the Move Case Study →](/docs/guide-move)
-
 ---
 
-## Workflow Design Patterns
+## Why These Examples?
 
-### Pattern 1: Sequential Tasks
-
-Some tasks must happen in order:
-
-```yaml
-steps:
-  - id: step1
-  - id: step2
-    depends_on: step1
-  - id: step3
-    depends_on: step2
-```
-
-**Use when:**
+Each case study demonstrates different workflow patterns:
 - Step 2 needs output from Step 1
 - There's a natural ordering to follow
 - You need to validate before proceeding

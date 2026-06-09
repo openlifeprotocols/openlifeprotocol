@@ -41,11 +41,10 @@ export const navigation = [
     title: 'Guides & Case Studies',
     links: [
       { title: 'Overview', href: '/docs/guides-overview' },
-      { title: 'Death Case (UK)', href: '/docs/guide-death-case-uk' },
-      { title: 'Business Formation (US)', href: '/docs/guide-business-formation-us' },
       { title: 'Employee Onboarding', href: '/docs/guide-employee-onboarding' },
-      { title: 'Healthcare Enrollment', href: '/docs/guide-healthcare-enrollment' },
       { title: 'Relocation / Move', href: '/docs/guide-move' },
+      { title: 'Business Formation (US)', href: '/docs/guide-business-formation-us' },
+      { title: 'Healthcare Enrollment', href: '/docs/guide-healthcare-enrollment' },
       { title: 'Design Patterns', href: '/docs/guides-patterns' },
     ],
   },
