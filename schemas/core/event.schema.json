@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openlifeprotocol.org/schemas/core/event.schema.json",
+  "title": "OLP Event",
+  "description": "An event is something that happens and triggers a workflow. Events are immutable facts in time.",
+  "type": "object",
+  "required": ["id", "type", "actor_id", "timestamp"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this event",
+      "pattern": "^event_[a-zA-Z0-9_-]+$"
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of event that occurred",
+      "enum": [
+        "birth",
+        "death", 
+        "hiring",
+        "termination",
+        "promotion",
+        "business_formation",
+        "business_closure",
+        "move",
+        "healthcare_enrollment",
+        "healthcare_disenrollment",
+        "marriage",
+        "divorce",
+        "name_change",
+        "address_change",
+        "status_change"
+      ]
+    },
+    "actor_id": {
+      "type": "string",
+      "description": "ID of the actor this event is about"
+    },
+    "triggered_by_actor_id": {
+      "type": "string",
+      "description": "Optional: ID of the actor who triggered this event (e.g., HR manager hiring someone)"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this event occurred (ISO 8601)"
+    },
+    "effective_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Optional: Date when the event becomes effective (may differ from timestamp)"
+    },
+    "jurisdiction": {
+      "type": "string",
+      "description": "Geographic or legal jurisdiction for this event"
+    },
+    "data": {
+      "type": "object",
+      "description": "Event-specific data",
+      "additionalProperties": true
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "source_system": {
+          "type": "string",
+          "description": "System that generated this event"
+        },
+        "source_id": {
+          "type": "string",
+          "description": "ID in the source system"
+        },
+        "version": {
+          "type": "string",
+          "default": "1.0.0"
+        }
+      }
+    },
+    "audit": {
+      "type": "object",
+      "description": "Audit trail information",
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "created_by": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "type": { "const": "hiring" } }
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": ["job_title", "department"],
+            "properties": {
+              "job_title": { "type": "string" },
+              "department": { "type": "string" },
+              "manager_id": { "type": "string" },
+              "start_date": { "type": "string", "format": "date" },
+              "employment_type": {
+                "type": "string",
+                "enum": ["full_time", "part_time", "contract", "intern"]
+              },
+              "compensation": {
+                "type": "object",
+                "properties": {
+                  "salary": { "type": "number" },
+                  "currency": { "type": "string" },
+                  "frequency": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "move" } }
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": ["from_address", "to_address"],
+            "properties": {
+              "from_address": { "type": "string" },
+              "to_address": { "type": "string" },
+              "from_jurisdiction": { "type": "string" },
+              "to_jurisdiction": { "type": "string" },
+              "move_date": { "type": "string", "format": "date" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "business_formation" } }
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": ["business_name", "structure"],
+            "properties": {
+              "business_name": { "type": "string" },
+              "structure": {
+                "type": "string",
+                "enum": ["sole_proprietor", "llc", "c_corp", "s_corp", "partnership"]
+              },
+              "jurisdiction": { "type": "string" },
+              "industry": { "type": "string" },
+              "principals": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "IDs of principals"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "healthcare_enrollment" } }
+      },
+      "then": {
+        "properties": {
+          "data": {
+            "type": "object",
+            "required": ["plan_id", "effective_date"],
+            "properties": {
+              "plan_id": { "type": "string" },
+              "plan_name": { "type": "string" },
+              "carrier": { "type": "string" },
+              "effective_date": { "type": "string", "format": "date" },
+              "coverage_type": {
+                "type": "string",
+                "enum": ["individual", "family", "group"]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
