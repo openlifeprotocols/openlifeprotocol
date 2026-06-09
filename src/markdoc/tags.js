@@ -1,5 +1,6 @@
 import { Callout } from '@/components/Callout'
 import { QuickLink, QuickLinks } from '@/components/QuickLinks'
+import { SchemaViewer } from '@/components/SchemaViewer'
 
 const tags = {
   callout: {
@@ -40,6 +41,13 @@ const tags = {
       description: { type: String },
       icon: { type: String },
       href: { type: String },
+    },
+  },
+  schema: {
+    render: SchemaViewer,
+    attributes: {
+      filename: { type: String },
+      title: { type: String },
     },
   },
 }

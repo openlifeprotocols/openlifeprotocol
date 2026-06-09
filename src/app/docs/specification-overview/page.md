@@ -46,6 +46,8 @@ The fundamental objects in OLP:
 - **Decision** - Human or AI decision + evidence
 - **Outcome** - Process completion result
 
+{% schema filename="actor.schema.json" title="Actor Schema" %}
+
 [Learn more about Core Object Model →](/docs/specification-core-object-model)
 
 ### 2. **Graph Specification**

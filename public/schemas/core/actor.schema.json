@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openlifeprotocol.org/schemas/core/actor.schema.json",
+  "title": "OLP Actor",
+  "description": "Any entity that participates in a workflow: person, organization, AI agent, team, etc.",
+  "type": "object",
+  "required": ["id", "type", "name"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for this actor. Format: {type}_{uuid}",
+      "pattern": "^(person|org|ai|team|government|professional)_[a-zA-Z0-9_-]+$",
+      "examples": ["person_alice_123", "org_acme_corp", "ai_workflow_engine_v1"]
+    },
+    "type": {
+      "type": "string",
+      "enum": ["person", "organization", "ai_agent", "team", "government", "professional"],
+      "description": "Classification of the actor"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "description": {
+      "type": "string",
+      "description": "Optional description of the actor's role or purpose"
+    },
+    "contact": {
+      "type": "object",
+      "description": "Contact information",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional properties specific to actor type",
+      "additionalProperties": true
+    },
+    "credentials": {
+      "type": "array",
+      "description": "Credentials or certifications for this actor",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "examples": ["license", "certification", "accreditation", "registration"]
+          },
+          "identifier": {
+            "type": "string"
+          },
+          "issuer": {
+            "type": "string"
+          },
+          "issued_date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expires_date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether this actor is currently active in workflows"
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "type": { "const": "person" }
+      },
+      "required": ["id", "type", "name"],
+      "properties": {
+        "birth_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "ssn": {
+          "type": "string",
+          "description": "Social Security Number or equivalent identifier"
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["M", "F", "Other", "Prefer not to say"]
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": { "const": "organization" }
+      },
+      "required": ["id", "type", "name"],
+      "properties": {
+        "ein": {
+          "type": "string",
+          "description": "Employer Identification Number or equivalent"
+        },
+        "industry": {
+          "type": "string"
+        },
+        "headquarters": {
+          "type": "string"
+        },
+        "founded_date": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": { "const": "ai_agent" }
+      },
+      "required": ["id", "type", "name"],
+      "properties": {
+        "model": {
+          "type": "string",
+          "description": "AI model identifier"
+        },
+        "version": {
+          "type": "string"
+        },
+        "capabilities": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": { "const": "team" }
+      },
+      "required": ["id", "type", "name"],
+      "properties": {
+        "members": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "IDs of actors in this team"
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": { "const": "government" }
+      },
+      "required": ["id", "type", "name"],
+      "properties": {
+        "jurisdiction": {
+          "type": "string",
+          "description": "Geographic or administrative jurisdiction"
+        },
+        "level": {
+          "type": "string",
+          "enum": ["federal", "state", "local", "international"]
+        }
+      }
+    },
+    {
+      "properties": {
+        "type": { "const": "professional" }
+      },
+      "required": ["id", "type", "name"],
+      "properties": {
+        "specialization": {
+          "type": "string"
+        },
+        "license_number": {
+          "type": "string"
+        }
+      }
+    }
+  ]
+}
