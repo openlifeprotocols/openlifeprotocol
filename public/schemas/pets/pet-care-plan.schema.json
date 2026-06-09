@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pet Care Plan",
+  "description": "An ongoing care plan for a pet — scheduled treatments, grooming, exercise, and dietary management.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^pet_care_plan_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "pet_id": { "type": "string" },
+    "vet_id": { "type": "string" },
+    "created_date": { "type": "string", "format": "date" },
+    "review_date": { "type": "string", "format": "date" },
+    "diet": {
+      "type": "object",
+      "properties": {
+        "food_type": { "type": "string", "enum": ["dry", "wet", "raw", "home_cooked", "prescription", "mixed"] },
+        "brand": { "type": "string" },
+        "daily_amount": { "type": "string" },
+        "feeding_times": { "type": "integer" },
+        "restrictions": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "exercise": {
+      "type": "object",
+      "properties": {
+        "walks_per_day": { "type": "integer" },
+        "walk_duration_minutes": { "type": "integer" },
+        "off_lead_allowed": { "type": "boolean" },
+        "restrictions": { "type": "string" }
+      }
+    },
+    "grooming": {
+      "type": "object",
+      "properties": {
+        "frequency": { "type": "string" },
+        "professional_groomer_id": { "type": "string" }
+      }
+    },
+    "scheduled_treatments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "treatment": { "type": "string", "examples": ["flea treatment", "worming", "dental check"] },
+          "frequency": { "type": "string" },
+          "next_due": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "status": { "type": "string", "enum": ["active", "review_due", "ended"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "pet_id", "created_date"],
+  "_phase1_todo": [
+    "Define vet-approved care plan templates by species/breed",
+    "Define care plan sharing with pet sitter",
+    "Define care plan for elderly or palliative pets",
+    "Define care plan cost estimation"
+  ]
+}

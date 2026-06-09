@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pet Travel",
+  "description": "A pet travel record — crossing borders with an animal, including documentation, health checks, and quarantine.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^pet_travel_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "pet_id": { "type": "string" },
+    "owner_id": { "type": "string" },
+    "trip_id": { "type": "string" },
+    "departure_country": { "type": "string", "description": "ISO 3166-1 alpha-2" },
+    "destination_country": { "type": "string" },
+    "travel_date": { "type": "string", "format": "date" },
+    "return_date": { "type": "string", "format": "date" },
+    "travel_method": { "type": "string", "enum": ["air", "ferry", "rail", "road", "other"] },
+    "approved_route": { "type": "boolean" },
+    "documents_required": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "document_type": { "type": "string", "enum": ["pet_passport", "health_certificate", "rabies_titre_test", "tapeworm_treatment", "import_permit", "microchip_confirmation", "vaccination_record"] },
+          "completed": { "type": "boolean" },
+          "document_id": { "type": "string" },
+          "expiry_date": { "type": "string", "format": "date" }
+        }
+      }
+    },
+    "vet_health_check_date": { "type": "string", "format": "date" },
+    "vet_id": { "type": "string" },
+    "quarantine_required": { "type": "boolean" },
+    "quarantine_facility_id": { "type": "string" },
+    "quarantine_days": { "type": "integer" },
+    "carrier_name": { "type": "string" },
+    "cabin_or_cargo": { "type": "string", "enum": ["cabin", "cargo", "checked_baggage", "road"] },
+    "status": { "type": "string", "enum": ["planning", "documents_ready", "in_transit", "arrived", "in_quarantine", "complete"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "pet_id", "owner_id", "departure_country", "destination_country", "travel_date"],
+  "_phase1_todo": [
+    "Define DEFRA pet travel rules by country",
+    "Define rabies-free vs non-rabies-free routing",
+    "Define approved-route carrier list",
+    "Define post-Brexit pet travel rule updates"
+  ]
+}

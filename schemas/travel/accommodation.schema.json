@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Accommodation",
+  "description": "A place to stay — hotel, hostel, rental, campsite, or private stay.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^accommodation_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "booking_id": { "type": "string" },
+    "trip_id": { "type": "string" },
+    "name": { "type": "string" },
+    "accommodation_type": { "type": "string", "enum": ["hotel", "hostel", "apartment", "villa", "holiday_let", "bnb", "guesthouse", "campsite", "boat", "friends_family", "other"] },
+    "address_id": { "type": "string" },
+    "check_in_date": { "type": "string", "format": "date" },
+    "check_in_time": { "type": "string" },
+    "check_out_date": { "type": "string", "format": "date" },
+    "check_out_time": { "type": "string" },
+    "nights": { "type": "integer" },
+    "room_type": { "type": "string" },
+    "guests": { "type": "integer" },
+    "board_basis": { "type": "string", "enum": ["room_only", "bed_breakfast", "half_board", "full_board", "all_inclusive", "self_catering"] },
+    "cost_per_night": { "type": "number" },
+    "total_cost": { "type": "number" },
+    "currency": { "type": "string" },
+    "confirmation_number": { "type": "string" },
+    "contact_phone": { "type": "string" },
+    "notes": { "type": "string" },
+    "status": { "type": "string", "enum": ["confirmed", "cancelled", "completed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "name", "accommodation_type", "check_in_date", "check_out_date"],
+  "_phase1_todo": [
+    "Define accessibility requirements",
+    "Define child cot/bed requirements",
+    "Define loyalty programme integration",
+    "Define late check-out request workflow"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pet Death",
+  "description": "A pet death record — the end-of-life event triggering estate, insurance, and cremation/burial tasks.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^pet_death_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "pet_id": { "type": "string" },
+    "owner_id": { "type": "string" },
+    "date_of_death": { "type": "string", "format": "date" },
+    "cause_of_death": { "type": "string", "enum": ["natural_causes", "euthanasia", "accident", "illness", "unknown", "other"] },
+    "euthanasia_authorised_by_id": { "type": "string" },
+    "attending_vet_id": { "type": "string" },
+    "location": { "type": "string", "enum": ["vet_surgery", "at_home", "outdoors", "road_accident", "other"] },
+    "remains_handling": { "type": "string", "enum": ["individual_cremation", "communal_cremation", "burial_at_home", "pet_cemetery", "vet_disposal", "other"] },
+    "cremation_provider_id": { "type": "string" },
+    "ashes_returned": { "type": "boolean" },
+    "certificate_issued": { "type": "boolean" },
+    "insurance_notified": { "type": "boolean" },
+    "microchip_deregistered": { "type": "boolean" },
+    "estate_id": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "pet_id", "owner_id", "date_of_death", "cause_of_death"],
+  "_phase1_todo": [
+    "Define microchip deregistration workflow",
+    "Define insurance claim on death",
+    "Define pet cemetery/cremation provider registry",
+    "Define death notification to relevant services"
+  ]
+}

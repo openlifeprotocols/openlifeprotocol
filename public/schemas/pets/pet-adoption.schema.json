@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pet Adoption",
+  "description": "A pet adoption record — acquiring a pet from a rescue, shelter, or rehoming organisation.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^pet_adoption_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "pet_id": { "type": "string" },
+    "adopter_id": { "type": "string" },
+    "organisation_id": { "type": "string", "description": "Rescue or shelter" },
+    "fostering_period": {
+      "type": "object",
+      "properties": {
+        "started": { "type": "string", "format": "date" },
+        "ended": { "type": "string", "format": "date" }
+      }
+    },
+    "adoption_date": { "type": "string", "format": "date" },
+    "adoption_fee": { "type": "number" },
+    "currency": { "type": "string" },
+    "home_check_completed": { "type": "boolean" },
+    "home_check_date": { "type": "string", "format": "date" },
+    "home_checker_id": { "type": "string" },
+    "trial_period_days": { "type": "integer" },
+    "adoption_conditions": { "type": "array", "items": { "type": "string" } },
+    "follow_up_date": { "type": "string", "format": "date" },
+    "background": { "type": "string", "description": "Known history of the pet" },
+    "previous_owner_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["application", "fostering", "trial", "adopted", "returned"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "pet_id", "adopter_id", "adoption_date"],
+  "_phase1_todo": [
+    "Define adoption contract",
+    "Define return/surrender workflow",
+    "Define post-adoption follow-up schedule",
+    "Define cross-rescue transfer procedures"
+  ]
+}

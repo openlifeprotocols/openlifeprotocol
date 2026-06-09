@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Itinerary",
+  "description": "A day-by-day travel itinerary — the sequence of places, activities, transfers, and accommodation.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^itinerary_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "trip_id": { "type": "string" },
+    "days": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": { "type": "string", "format": "date" },
+          "location": { "type": "string" },
+          "accommodation_id": { "type": "string" },
+          "transport_ids": { "type": "array", "items": { "type": "string" } },
+          "activity_ids": { "type": "array", "items": { "type": "string" } },
+          "notes": { "type": "string" }
+        },
+        "required": ["date"]
+      }
+    },
+    "total_days": { "type": "integer" },
+    "booking_ids": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "trip_id", "days"],
+  "_phase1_todo": [
+    "Define itinerary conflict detection",
+    "Define itinerary sharing and collaboration",
+    "Define real-time disruption updates to itinerary",
+    "Define offline itinerary access"
+  ]
+}

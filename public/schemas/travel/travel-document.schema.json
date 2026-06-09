@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Travel Document",
+  "description": "A travel document required for a trip — passport, driving licence, EHIC, vaccination certificate, or entry requirement.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^travel_doc_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "person_id": { "type": "string" },
+    "trip_id": { "type": "string" },
+    "document_type": { "type": "string", "enum": ["passport", "national_id", "driving_licence", "international_driving_permit", "ehic_ghic", "vaccination_certificate", "birth_certificate", "visa", "invitation_letter", "travel_insurance", "hotel_confirmation", "flight_confirmation", "other"] },
+    "document_number": { "type": "string" },
+    "issuing_country": { "type": "string" },
+    "issuing_authority": { "type": "string" },
+    "issued_date": { "type": "string", "format": "date" },
+    "expiry_date": { "type": "string", "format": "date" },
+    "days_valid_at_entry": { "type": "integer", "description": "Minimum days remaining required at destination" },
+    "months_valid_required": { "type": "integer", "description": "Some countries require 6 months validity" },
+    "document_id": { "type": "string", "description": "Reference to core Document record" },
+    "status": { "type": "string", "enum": ["valid", "expired", "renewal_required", "lost", "cancelled"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "document_type", "document_number", "expiry_date"],
+  "_phase1_todo": [
+    "Define destination-specific document requirements",
+    "Define expiry alert workflow",
+    "Define emergency passport application",
+    "Define document notarisation requirements"
+  ]
+}

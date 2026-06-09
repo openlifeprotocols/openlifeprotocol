@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trip",
+  "description": "A trip — a planned or completed journey with defined dates, destinations, and travellers. The top-level container for all travel schemas.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^trip_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "name": { "type": "string", "examples": ["Summer holiday 2026", "Tokyo conference trip"] },
+    "trip_type": { "type": "string", "enum": ["leisure", "business", "family", "medical", "relocation", "adventure", "pilgrimage", "other"] },
+    "traveller_ids": { "type": "array", "items": { "type": "string" } },
+    "origin_address_id": { "type": "string" },
+    "destinations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "country": { "type": "string", "description": "ISO 3166-1 alpha-2" },
+          "city": { "type": "string" },
+          "arrival_date": { "type": "string", "format": "date" },
+          "departure_date": { "type": "string", "format": "date" }
+        },
+        "required": ["country", "arrival_date"]
+      }
+    },
+    "departure_date": { "type": "string", "format": "date" },
+    "return_date": { "type": "string", "format": "date" },
+    "duration_nights": { "type": "integer" },
+    "budget_id": { "type": "string" },
+    "total_budget": { "type": "number" },
+    "currency": { "type": "string" },
+    "insurance_policy_ids": { "type": "array", "items": { "type": "string" } },
+    "itinerary_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["planning", "booked", "in_progress", "complete", "cancelled"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "name", "trip_type", "traveller_ids", "departure_date"],
+  "_phase1_todo": [
+    "Define FCDO travel advice integration",
+    "Define trip document checklist by destination",
+    "Define trip sharing with companions",
+    "Define trip expense tracking"
+  ]
+}

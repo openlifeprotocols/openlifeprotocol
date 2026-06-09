@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Species",
+  "description": "A species registry entry — the top-level classification of an animal.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^species_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "common_name": { "type": "string", "examples": ["Dog", "Cat", "Rabbit", "Horse", "Parrot"] },
+    "scientific_name": { "type": "string", "examples": ["Canis lupus familiaris"] },
+    "category": { "type": "string", "enum": ["mammal", "bird", "reptile", "amphibian", "fish", "invertebrate", "other"] },
+    "domestication_status": { "type": "string", "enum": ["domestic", "exotic", "wild", "agricultural"] },
+    "requires_license": { "type": "boolean", "description": "Dangerous Wild Animals Act or similar" },
+    "license_type": { "type": "string" },
+    "typical_lifespan_years": { "type": "object", "properties": { "min": { "type": "number" }, "max": { "type": "number" } } },
+    "regulated_breeds": { "type": "array", "items": { "type": "string" }, "description": "Breed-specific legislation" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "common_name", "category"],
+  "_phase1_todo": [
+    "Define CITES protected species flags",
+    "Define invasive species restrictions",
+    "Define species-specific vaccination schedules",
+    "Define species-specific import/export rules"
+  ]
+}

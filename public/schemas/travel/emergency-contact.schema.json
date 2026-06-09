@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Emergency Contact",
+  "description": "Emergency contact information for a traveller — local embassy, next of kin, insurance line, and medical contacts.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^emergency_contact_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "trip_id": { "type": "string" },
+    "person_id": { "type": "string" },
+    "home_contacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "relationship": { "type": "string" },
+          "phone": { "type": "string" },
+          "email": { "type": "string", "format": "email" }
+        },
+        "required": ["name", "phone"]
+      }
+    },
+    "local_contacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string", "enum": ["embassy_consulate", "local_police", "local_hospital", "accommodation", "tour_operator", "friend_local"] },
+          "name": { "type": "string" },
+          "phone": { "type": "string" },
+          "address": { "type": "string" },
+          "country": { "type": "string" }
+        }
+      }
+    },
+    "insurance_emergency_line": { "type": "string" },
+    "insurance_policy_number": { "type": "string" },
+    "blood_type": { "type": "string" },
+    "allergies": { "type": "array", "items": { "type": "string" } },
+    "medications": { "type": "array", "items": { "type": "string" } },
+    "doctor_name": { "type": "string" },
+    "doctor_phone": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "trip_id", "person_id", "home_contacts"],
+  "_phase1_todo": [
+    "Define FCDO registration for risky destinations",
+    "Define medical alert card generation",
+    "Define next of kin notification workflow",
+    "Define offline emergency card output"
+  ]
+}

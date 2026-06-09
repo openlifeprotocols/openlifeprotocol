@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Pet Owner",
+  "description": "The ownership record linking a person to a pet — with role, responsibilities, and legal obligations.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^pet_owner_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "pet_id": { "type": "string" },
+    "person_id": { "type": "string" },
+    "ownership_type": { "type": "string", "enum": ["sole_owner", "joint_owner", "guardian", "foster", "emergency_carer"] },
+    "ownership_start": { "type": "string", "format": "date" },
+    "ownership_end": { "type": "string", "format": "date" },
+    "is_primary": { "type": "boolean" },
+    "acquired_from": { "type": "string", "enum": ["breeder", "rescue_shelter", "private_sale", "found_stray", "inherited", "born_at_home", "other"] },
+    "purchase_price": { "type": "number" },
+    "currency": { "type": "string" },
+    "registered_with_council": { "type": "boolean" },
+    "council_registration_ref": { "type": "string" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "pet_id", "person_id", "ownership_type"],
+  "_phase1_todo": [
+    "Define ownership transfer workflow",
+    "Define dog control order obligations",
+    "Define council licensing integration",
+    "Define multi-owner custody arrangements"
+  ]
+}

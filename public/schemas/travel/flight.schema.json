@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Flight",
+  "description": "A flight booking — single leg or return, with passenger details, seats, and baggage.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^flight_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "booking_id": { "type": "string" },
+    "trip_id": { "type": "string" },
+    "flight_number": { "type": "string" },
+    "airline": { "type": "string" },
+    "departure_airport": { "type": "string", "description": "IATA code" },
+    "arrival_airport": { "type": "string", "description": "IATA code" },
+    "departure_datetime": { "type": "string", "format": "date-time" },
+    "arrival_datetime": { "type": "string", "format": "date-time" },
+    "duration_minutes": { "type": "integer" },
+    "cabin_class": { "type": "string", "enum": ["economy", "premium_economy", "business", "first"] },
+    "passengers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "person_id": { "type": "string" },
+          "seat": { "type": "string" },
+          "meal_preference": { "type": "string" },
+          "frequent_flyer_number": { "type": "string" }
+        }
+      }
+    },
+    "baggage": {
+      "type": "object",
+      "properties": {
+        "cabin_bags": { "type": "integer" },
+        "checked_bags": { "type": "integer" },
+        "checked_weight_kg": { "type": "number" },
+        "additional_baggage_cost": { "type": "number" }
+      }
+    },
+    "cost": { "type": "number" },
+    "currency": { "type": "string" },
+    "pnr": { "type": "string", "description": "Passenger Name Record / booking reference" },
+    "terminal": { "type": "string" },
+    "gate": { "type": "string" },
+    "status": { "type": "string", "enum": ["confirmed", "checked_in", "boarded", "departed", "arrived", "cancelled", "diverted", "delayed"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "flight_number", "airline", "departure_airport", "arrival_airport", "departure_datetime"],
+  "_phase1_todo": [
+    "Define flight status live update integration",
+    "Define missed connection procedure",
+    "Define EU261 compensation eligibility",
+    "Define infant and unaccompanied minor handling"
+  ]
+}

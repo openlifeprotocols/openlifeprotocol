@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Travel Budget",
+  "description": "A travel budget — estimated and actual spend for a trip by category.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^travel_budget_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "trip_id": { "type": "string" },
+    "currency": { "type": "string" },
+    "total_budget": { "type": "number" },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": { "type": "string", "enum": ["flights", "accommodation", "transport", "food_drink", "activities", "shopping", "insurance", "visas", "vaccinations", "gear", "emergencies", "other"] },
+          "budgeted": { "type": "number" },
+          "actual": { "type": "number" },
+          "variance": { "type": "number" }
+        },
+        "required": ["category", "budgeted"]
+      }
+    },
+    "total_spent": { "type": "number" },
+    "remaining": { "type": "number" },
+    "daily_rate_budgeted": { "type": "number" },
+    "daily_rate_actual": { "type": "number" },
+    "expense_ids": { "type": "array", "items": { "type": "string" } },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "trip_id", "currency", "total_budget"],
+  "_phase1_todo": [
+    "Define budget split per traveller",
+    "Define foreign currency conversion",
+    "Define budget overrun alerts",
+    "Define post-trip expense reconciliation"
+  ]
+}

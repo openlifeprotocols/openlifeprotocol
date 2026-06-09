@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Packing List",
+  "description": "A packing list for a trip — items to bring, organised by category and traveller.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^packing_list_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "trip_id": { "type": "string" },
+    "for_person_id": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "category": { "type": "string", "enum": ["clothing", "toiletries", "documents", "electronics", "medical", "gear_equipment", "food_drink", "entertainment", "baby_child", "pet", "other"] },
+          "quantity": { "type": "integer", "default": 1 },
+          "packed": { "type": "boolean", "default": false },
+          "essential": { "type": "boolean" },
+          "notes": { "type": "string" }
+        },
+        "required": ["name", "category"]
+      }
+    },
+    "total_items": { "type": "integer" },
+    "packed_count": { "type": "integer" },
+    "template_name": { "type": "string", "description": "e.g., 'Beach holiday', 'Business trip'" },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "trip_id", "items"],
+  "_phase1_todo": [
+    "Define reusable packing list templates",
+    "Define weather-adaptive packing suggestions",
+    "Define destination-specific essential items",
+    "Define shared packing list for group trips"
+  ]
+}

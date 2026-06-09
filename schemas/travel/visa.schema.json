@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Visa",
+  "description": "A visa or entry permit granting permission to enter or remain in a country.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^visa_[a-zA-Z0-9_-]+$" },
+    "uuid": { "type": "string", "format": "uuid" },
+    "external_ids": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "system": { "type": "string" }, "id": { "type": "string" } }, "required": ["system", "id"] }
+    },
+    "person_id": { "type": "string" },
+    "trip_id": { "type": "string" },
+    "destination_country": { "type": "string", "description": "ISO 3166-1 alpha-2" },
+    "visa_type": { "type": "string", "enum": ["tourist", "business", "student", "work", "transit", "medical", "family_visit", "digital_nomad", "electronic_travel_authority", "visa_on_arrival", "other"] },
+    "visa_number": { "type": "string" },
+    "application_date": { "type": "string", "format": "date" },
+    "approved_date": { "type": "string", "format": "date" },
+    "valid_from": { "type": "string", "format": "date" },
+    "valid_to": { "type": "string", "format": "date" },
+    "entries_permitted": { "type": "string", "enum": ["single", "double", "multiple"] },
+    "max_stay_days": { "type": "integer" },
+    "max_stay_per_entry_days": { "type": "integer" },
+    "conditions": { "type": "array", "items": { "type": "string" }, "description": "e.g., 'No paid work', 'Must not use NHS'" },
+    "application_fee": { "type": "number" },
+    "currency": { "type": "string" },
+    "biometrics_enrolled": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["not_applied", "applied", "approved", "refused", "expired", "cancelled"] },
+    "metadata": { "type": "object", "additionalProperties": true }
+  },
+  "required": ["id", "uuid", "person_id", "destination_country", "visa_type"],
+  "_phase1_todo": [
+    "Define eVisa integration by country",
+    "Define visa application checklist",
+    "Define overstay detection and alerts",
+    "Define visa refusal appeal workflow"
+  ]
+}
