@@ -1,10 +1,42 @@
 {
-  "name": "openlifeprotocol",
+  "name": "@openlifeprotocol/schemas",
   "version": "0.1.0",
-  "private": true,
+  "description": "Open Life Protocol: Schema-first personal knowledge graph ontology for identity, relationships, health, learning, career, wealth, planning, risk, and legacy.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openlifeprotocols/openlifeprotocol.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "schema",
+    "json-schema",
+    "ontology",
+    "life-data",
+    "personal-knowledge-graph",
+    "digital-twin",
+    "semantic",
+    "identity",
+    "relationships",
+    "health",
+    "learning",
+    "career",
+    "wealth",
+    "planning"
+  ],
+  "files": [
+    "dist/schemas",
+    "LICENSE.md",
+    "CHANGELOG.md",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
+    "build:schemas": "node scripts/build-schemas.mjs",
     "start": "next start",
     "lint": "eslint",
     "test": "node --test tests/*.test.mjs",
@@ -13,7 +45,8 @@
     "registry:generate": "node schemas/0000-platform/meta/generate-schema-registry.mjs",
     "registry:validate": "node schemas/0000-platform/meta/validate-schema-registry.mjs",
     "schemas:audit": "node schemas/0000-platform/meta/schema-quality-audit.mjs",
-    "schemas:semantic": "node schemas/0000-platform/meta/semantic-coverage-audit.mjs"
+    "schemas:semantic": "node schemas/0000-platform/meta/semantic-coverage-audit.mjs",
+    "prepublishOnly": "npm run lint && npm run registry:validate && npm run schemas:audit && npm test && npm run build:schemas"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
